@@ -1,0 +1,24 @@
+interpretation( 10, [number = 1,seconds = 0], [
+    function(A, [1]),
+    function(B, [4]),
+    function(C, [2]),
+    function(C1, [2]),
+    function(C2, [1]),
+    function(C3, [2]),
+    function(C4, [0]),
+    function(C5, [1]),
+    function(D, [8]),
+    function(E, [5]),
+    function(F, [7])]).
+interpretation( 10, [number = 2,seconds = 0], [
+    function(A, [2]),
+    function(B, [8]),
+    function(C, [5]),
+    function(C1, [1]),
+    function(C2, [0]),
+    function(C3, [2]),
+    function(C4, [1]),
+    function(C5, [2]),
+    function(D, [7]),
+    function(E, [1]),
+    function(F, [4])]).

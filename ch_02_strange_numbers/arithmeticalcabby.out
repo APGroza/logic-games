@@ -1,0 +1,8 @@
+interpretation( 122, [number = 1,seconds = 0], [
+    function(number, [121]),
+    function(r11, [11]),
+    function(r2, [60]),
+    function(r3, [40]),
+    function(r4, [30]),
+    function(r5, [24]),
+    function(r6, [20])]).

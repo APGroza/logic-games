@@ -1,0 +1,19 @@
+set(arithmetic).
+assign(domain_size,10).
+assign(max_models, -1).
+
+list(distinct).
+ [A, B, C, D, E, F].
+end_of_list.
+
+formulas(assumptions).
+ A != 0 & B != 0.
+ C1 < 3 & C2 < 4 & C3 < 4 & C4 < 4 & C5 < 4.
+
+ 3 * F      = A + C1 * 10.
+ 3 * E + C1 = F + C2 * 10.
+ 3 * D + C2 = E + C3 * 10.
+ 3 * C + C3 = D + C4 * 10.
+ 3 * B + C4 = C + C5 * 10.
+ 3 * A + C5 = B.
+end_of_list.

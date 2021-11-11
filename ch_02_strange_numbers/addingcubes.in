@@ -1,0 +1,10 @@
+assign(domain_size,1000).
+assign(max_models,-1).
+set(arithmetic).
+
+formulas(addingcubes).
+  X = D2 * 100 + D1 * 10 + D0. 
+  X = D2 * D2 * D2 + D1 * D1 * D1 + D0 * D0 * D0.
+  D0 != 0 & D1 != 0 & D2 != 0.	
+  D0 < 10 & D1 < 10 & D2 < 10.	
+end_of_list.

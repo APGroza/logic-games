@@ -1,0 +1,16 @@
+set(arithmetic).
+
+list(distinct).
+  [r2,r3,r4,r5,r6,r11].
+end_of_list.
+
+formulas(cabby).
+  number != 0.
+  number  = 2  * r2  + 1.
+  number  = 3  * r3  + 1.
+  number  = 4  * r4  + 1.
+  number  = 5  * r5  + 1.
+  number  = 6  * r6  + 1.
+  number  = 11 * r11.
+end_of_list.
+
