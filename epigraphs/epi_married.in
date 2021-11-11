@@ -1,0 +1,9 @@
+assign(max_models, -1).
+
+formulas(assumptions).
+ all x (man(x) & wife(x) = c -> (all z -attractive(x,z) <-> z !=c)).
+end_of_list.
+
+formulas(goals).
+
+end_of_list.

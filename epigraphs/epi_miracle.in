@@ -1,0 +1,12 @@
+assign(max_models, -1).
+
+formulas(assumptions).
+ exists x exists y ((x != y & (all z wayToLive(z) <-> (z = x | z = y)))  & 
+                    (wayToLive(x) -> (all u -miracle(u))) & 
+                    (wayToLive(y) -> (all u  miracle(u)))
+                   ).
+end_of_list.
+
+formulas(goals).
+
+end_of_list.

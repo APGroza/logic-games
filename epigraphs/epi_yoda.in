@@ -1,0 +1,10 @@
+assign(max_models, -1).
+
+formulas(assumptions).
+ exists x exists y (x != y & (all z (z = x | z = y)) & Master(x) & Apprentice(y)).
+ %exists x exists y (x != y & (all z (z = x | z = y))).
+end_of_list.
+
+formulas(goals).
+
+end_of_list.

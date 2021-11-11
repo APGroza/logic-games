@@ -1,0 +1,9 @@
+assign(max_models, -1).
+
+formulas(assumptions).
+ all x refuses(x,do(arithmetic)) -> doomed(x,talk(nonsense)).
+end_of_list.
+
+formulas(goals).
+
+end_of_list.

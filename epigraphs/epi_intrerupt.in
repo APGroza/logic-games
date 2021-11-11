@@ -1,0 +1,9 @@
+assign(max_models, -1).
+
+formulas(assumptions).
+ exists x (interrupt(I, x) -> (all y -interrupt(y, I))).
+end_of_list.
+
+formulas(goals).
+
+end_of_list.

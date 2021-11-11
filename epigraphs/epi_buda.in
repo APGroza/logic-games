@@ -1,0 +1,9 @@
+assign(max_models, -1).
+
+formulas(assumptions).
+  Mind(undisciplined) & all x (Mind(x) & x != undisciplined -> moreDisobedient(undisciplined,x)).
+  Mind(disciplined) & all x (Mind(x) & x != disciplined -> moreObedient(disciplined,x)).
+  moreObedient(x,y) <-> moreDisobedient(y,x).
+end_of_list.
+
+

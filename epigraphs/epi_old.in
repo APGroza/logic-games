@@ -1,0 +1,8 @@
+assign(max_models, -1).
+
+formulas(assumptions).
+ all x all y (old(x) -> belive(x,y)).
+ all x all y (middleAged(x) -> suspect(x,y)).
+ all x all y (young(x) -> know(x,y)).
+end_of_list.
+

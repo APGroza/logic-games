@@ -1,0 +1,6 @@
+assign(max_models,-1).
+
+formulas(assumptions).
+ all x all y (man(x) & has(x,h) & hammer(h) & problem(y) -> sees(x,y,nail)).
+end_of_list.
+

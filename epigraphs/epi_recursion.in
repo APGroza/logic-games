@@ -1,0 +1,7 @@
+assign(max_models,-1).
+
+formulas(assumptions).
+ all x all y ((link(x) & chain(y) & contains(y,x) & weakest(x) -> canBreak(x,y)) -> strongest(x)).
+% all x all y (link(x) & chain(y) & contains(y,x) & canBreak(x,y) -> strongest(x)).
+end_of_list.
+
