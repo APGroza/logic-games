@@ -1,0 +1,20 @@
+interpretation( 10, [number = 1,seconds = 1], [
+    function(a1, [4]),
+    function(a2, [8]),
+    function(a3, [2]),
+    function(a4, [1]),
+    function(a5, [5]),
+    function(a6, [7]),
+    function(a7, [6]),
+    function(a8, [3]),
+    function(a9, [9])]).
+interpretation( 10, [number = 2,seconds = 1], [
+    function(a1, [5]),
+    function(a2, [8]),
+    function(a3, [3]),
+    function(a4, [1]),
+    function(a5, [4]),
+    function(a6, [6]),
+    function(a7, [7]),
+    function(a8, [2]),
+    function(a9, [9])]).

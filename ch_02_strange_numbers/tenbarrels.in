@@ -1,0 +1,22 @@
+assign(start_size,14).
+assign(max_models,1).
+set(arithmetic).
+
+list(distinct).
+  [b1,b2,b3,b4,b5,b6,b7,b8,b9,b10].
+end_of_list.
+
+formulas(tenbarrels).
+  p > 12.
+  3 * p = 45 + b1 + b4 + b7 + -b10.
+  
+  b1 + b2 + b3 + b4 = p.
+  b4 + b5 + b6 + b7 = p.
+  b7 + b8 + b9 + b1 = p. 
+  
+  b1 < 10.   b2 < 10.   b3 < 10.   b4 < 10.   b5 < 10. 
+  b6 < 10.   b7 < 10.   b8 < 10.   b9 < 10.   b10 < 10.
+
+  p = 13.
+  b10 != 9.
+end_of_list.

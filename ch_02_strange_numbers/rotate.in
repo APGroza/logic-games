@@ -1,0 +1,12 @@
+set(arithmetic).
+assign(domain_size,10).
+assign(max_models,-1).
+
+list(distinct).
+  [0,a1,a2,a3,a4,a5,a6,a7,a8,a9].
+end_of_list.
+
+formulas(assumptions).
+  100*a1 + 10*a2 + a3 + 100*a4 + 10*a5 + a6 = 100*a7 + 10*a8 + a9.
+  100*a7 + 10*a4 + a1 + 100*a8 + 10*a5 + a2 = 100*a9 + 10*a6 + a3.
+end_of_list.
