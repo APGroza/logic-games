@@ -1,0 +1,8 @@
+interpretation( 3, [number = 1,seconds = 0], [
+    function(accountant, [0]),
+    function(bob, [0]),
+    function(director, [2]),
+    function(engineer, [1]),
+    function(janet, [1]),
+    function(shirley, [2]),
+    function(job(_), [1,0,2])]).

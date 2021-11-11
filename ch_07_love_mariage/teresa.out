@@ -1,0 +1,7 @@
+interpretation( 4, [number = 1,seconds = 0], [
+    function(Me, [0]),
+    function(MyDaughter, [1]),
+    function(Teresa, [2]),
+    function(TeresaDaughter, [0]),
+    function(hasDaughter(_), [1,3,0,2]),
+    function(mother(_), [2,0,3,1])]).

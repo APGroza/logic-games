@@ -1,0 +1,20 @@
+formulas(assumptions).
+  all x (inhabitant(x) -> mino(x) | amino(x)). 
+  all x (mino(x) -> -amino(x)).  
+  mino(x)  ->  m(x).
+  amino(x) -> -m(x).
+  same_family(x,y) -> mino(x) & mino(y) | amino(x) & amino(y).
+  brother(x,y) -> same_family(x,y).
+ -brother(x,x).
+  same_family(x,x).
+
+  inhabitant(Bahman) & inhabitant(Perviz) & (Bahman != Perviz).
+  brother(Bahman,Perviz) & brother(Perviz,Bahman).
+  m(Bahman) <->  (married(Bahman) & married(Perviz) | 
+                -married(Bahman) & -married(Perviz)). 
+  m(Perviz) <-> -married(Perviz). 
+end_of_list.
+
+formulas(goals).
+  -married(Bahman).
+end_of_list.

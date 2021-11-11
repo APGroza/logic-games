@@ -1,0 +1,165 @@
+============================== Prover9 ===============================
+Prover9 (64) version 2009-11A, November 2009.
+Process 28070 was started by adrian on adrian,
+Wed Jan 20 10:11:07 2021
+The command was "prover9 -f arranged_married_p.in".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+% Reading from file arranged_married_p.in
+
+
+formulas(assumptions).
+north != south & south != east & north != east.
+m(north) <-> (married(south) -> -peace).
+m(south) <-> (all x (married(x) -> -peace)).
+m(east) <-> (married(east) -> peace) & (married(south) -> -peace).
+-m(north) & -m(south) & -m(east).
+married(north) | married(south) | married(east).
+(all x all y (married(x) & married(y) -> x = y)).
+peace.
+end_of_list.
+
+formulas(goals).
+married(south).
+end_of_list.
+
+============================== end of input ==========================
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+1 north != south & south != east & north != east # label(non_clause).  [assumption].
+2 m(north) <-> (married(south) -> -peace) # label(non_clause).  [assumption].
+3 m(south) <-> (all x (married(x) -> -peace)) # label(non_clause).  [assumption].
+4 m(east) <-> (married(east) -> peace) & (married(south) -> -peace) # label(non_clause).  [assumption].
+5 -m(north) & -m(south) & -m(east) # label(non_clause).  [assumption].
+6 (all x all y (married(x) & married(y) -> x = y)) # label(non_clause).  [assumption].
+7 married(south) # label(non_clause) # label(goal).  [goal].
+
+============================== end of process non-clausal formulas ===
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+south != north.  [clausify(1)].
+east != south.  [clausify(1)].
+east != north.  [clausify(1)].
+-m(north) | -married(south) | -peace.  [clausify(2)].
+m(north) | married(south).  [clausify(2)].
+m(north) | peace.  [clausify(2)].
+-m(south) | -married(x) | -peace.  [clausify(3)].
+m(south) | married(c1).  [clausify(3)].
+m(south) | peace.  [clausify(3)].
+-m(east) | -married(east) | peace.  [clausify(4)].
+-m(east) | -married(south) | -peace.  [clausify(4)].
+m(east) | married(east) | married(south).  [clausify(4)].
+m(east) | married(east) | peace.  [clausify(4)].
+m(east) | -peace | married(south).  [clausify(4)].
+-m(north).  [clausify(5)].
+-m(south).  [clausify(5)].
+-m(east).  [clausify(5)].
+married(north) | married(south) | married(east).  [assumption].
+-married(x) | -married(y) | y = x.  [clausify(6)].
+peace.  [assumption].
+-married(south).  [deny(7)].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== PREDICATE ELIMINATION =================
+
+No predicates eliminated.
+
+============================== end predicate elimination =============
+
+Auto_denials:  (non-Horn, no changes).
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ =, peace, married, m ]).
+Function symbol precedence:  function_order([ east, south, north, c1 ]).
+After inverse_order:  (no changes).
+Unfolding symbols: (none).
+
+Auto_inference settings:
+  % set(paramodulation).  % (positive equality literals)
+  % set(binary_resolution).  % (non-Horn)
+  % set(neg_ur_resolution).  % (non-Horn, less than 100 clauses)
+
+Auto_process settings:
+  % set(factor).  % (non-Horn)
+  % set(unit_deletion).  % (non-Horn)
+
+           8 south != north.  [clausify(1)].
+kept:      9 north != south.  [copy(8),flip(a)].
+           10 east != south.  [clausify(1)].
+kept:      11 south != east.  [copy(10),flip(a)].
+           12 east != north.  [clausify(1)].
+kept:      13 north != east.  [copy(12),flip(a)].
+kept:      14 -m(north) | -married(south) | -peace.  [clausify(2)].
+kept:      15 m(north) | married(south).  [clausify(2)].
+kept:      16 m(north) | peace.  [clausify(2)].
+kept:      17 -m(south) | -married(x) | -peace.  [clausify(3)].
+kept:      18 m(south) | married(c1).  [clausify(3)].
+kept:      19 m(south) | peace.  [clausify(3)].
+kept:      20 -m(east) | -married(east) | peace.  [clausify(4)].
+kept:      21 -m(east) | -married(south) | -peace.  [clausify(4)].
+kept:      22 m(east) | married(east) | married(south).  [clausify(4)].
+kept:      23 m(east) | married(east) | peace.  [clausify(4)].
+kept:      24 m(east) | -peace | married(south).  [clausify(4)].
+kept:      25 -m(north).  [clausify(5)].
+kept:      26 -m(south).  [clausify(5)].
+kept:      27 -m(east).  [clausify(5)].
+kept:      28 married(north) | married(south) | married(east).  [assumption].
+kept:      29 -married(x) | -married(y) | y = x.  [clausify(6)].
+kept:      30 peace.  [assumption].
+kept:      31 -married(south).  [deny(7)].
+
+============================== PROOF =================================
+
+% Proof 1 at 0.00 (+ 0.00) seconds.
+% Length of proof is 7.
+% Level of proof is 2.
+% Maximum clause weight is 4.000.
+% Given clauses 0.
+
+2 m(north) <-> (married(south) -> -peace) # label(non_clause).  [assumption].
+5 -m(north) & -m(south) & -m(east) # label(non_clause).  [assumption].
+7 married(south) # label(non_clause) # label(goal).  [goal].
+15 m(north) | married(south).  [clausify(2)].
+25 -m(north).  [clausify(5)].
+31 -married(south).  [deny(7)].
+32 $F.  [back_unit_del(15),unit_del(a,25),unit_del(b,31)].
+
+============================== end of proof ==========================
+
+============================== STATISTICS ============================
+
+Given=0. Generated=23. Kept=21. proofs=1.
+Usable=0. Sos=11. Demods=0. Limbo=7, Disabled=24. Hints=0.
+Kept_by_rule=0, Deleted_by_rule=0.
+Forward_subsumed=1. Back_subsumed=1.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=0 (0 lex), Back_demodulated=0. Back_unit_deleted=2.
+Demod_attempts=0. Demod_rewrites=0.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=1. Nonunit_bsub_feature_tests=14.
+Megabytes=0.06.
+User_CPU=0.00, System_CPU=0.00, Wall_clock=0.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+THEOREM PROVED
+
+Exiting with 1 proof.
+
+Process 28070 exit (max_proofs) Wed Jan 20 10:11:07 2021

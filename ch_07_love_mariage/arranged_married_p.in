@@ -1,0 +1,15 @@
+formulas(assumptions).
+   north != south & south !=east & north !=east.
+   m(north) <->  (married(south) -> -peace).
+   m(south) <-> (all x (married(x) -> -peace)).
+   m(east)  <-> ((married(east) -> peace) & (married(south) -> -peace)).
+
+  -m(north) & -m(south) & -m(east). 
+   married(north) | married(south) | married(east).
+   all x all y (married(x) & married(y) -> x = y).
+   peace.
+end_of_list.
+
+formulas(goals).
+   married(south).
+end_of_list.

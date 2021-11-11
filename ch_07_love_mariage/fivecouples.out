@@ -1,0 +1,11 @@
+interpretation( 9, [number = 1,seconds = 0], [
+    function(H2, [3]),
+    function(H3, [2]),
+    function(H4, [1]),
+    function(H5, [0]),
+    function(W2, [5]),
+    function(W3, [6]),
+    function(W4, [7]),
+    function(W5, [8]),
+    function(me, [4]),
+    function(my_wife, [4])]).

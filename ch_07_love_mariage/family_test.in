@@ -1,0 +1,7 @@
+formulas(test).
+ John = 3.   David = 0.   Tina = 8.  %assumptions to avoid isomorphisms
+ %Sonia != 1.                             %Sonia is not the grandmather
+ %Mary  != 4.              %Mary is not the daughter of Sonia and David  
+ %Caty != 2.                               %Caty is not married to john
+ %Lincoln != 6 & Lincoln != 7.          %Lincoln is not the son of John
+end_of_list.

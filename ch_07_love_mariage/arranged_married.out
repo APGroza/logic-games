@@ -1,0 +1,8 @@
+interpretation( 3, [number = 1,seconds = 0], [
+    function(east, [0]),
+    function(north, [1]),
+    function(south, [2]),
+    function(c1, [2]),
+    relation(peace, [1]),
+    relation(m(_), [0,0,0]),
+    relation(married(_), [0,0,1])]).

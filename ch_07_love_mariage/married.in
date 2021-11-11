@@ -1,0 +1,10 @@
+formulas(assumptions).
+   married(Monica).
+  -married(Rachel). 
+   looking(Monica,Ross).
+   looking(Ross,Rachel).
+end_of_list.
+
+formulas(goals).
+ exists x exists y (married(x) & -married(y) & looking(x,y)).
+end_of_list.

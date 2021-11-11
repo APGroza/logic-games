@@ -1,0 +1,10 @@
+interpretation( 2, [number = 1,seconds = 0], [
+    function(Bahman, [0]),
+    function(Perviz, [1]),
+    relation(amino(_), [1,1]),
+    relation(inhabitant(_), [1,1]),
+    relation(m(_), [0,0]),
+    relation(married(_), [0,1]),
+    relation(mino(_), [0,0]),
+    relation(brother(_,_), [0,1,1,0]),
+    relation(same_family(_,_), [1,1,1,1])]).

@@ -1,0 +1,18 @@
+set(arithmetic).
+assign(domain_size,9).
+assign(max_models,-1).
+
+list(distinct).
+  [H2,H3,H4,H5,my_wife,W2,W3,W4,W5].
+end_of_list.
+
+formulas(five_couples).
+  me + my_wife = 8.                     %first couple 
+  H2 + W2 = 8.                          %second couple 
+  H3 + W3 = 8.                          %third couple 
+  H4 + W4 = 8.                          %fourth couple
+  H5 + W5 = 8.                          %fifth couple
+  W2 < W3 & W3 < W4 & W4 < W5.          %remove isomorphisms
+  4 < W2.                               %remove isomorphisms
+end_of_list.
+

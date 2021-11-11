@@ -1,0 +1,13 @@
+assign(domain_size,3).
+assign(max_models,-1).
+ 
+formulas(assumptions).
+  bob = 0 & janet = 1 & shirley = 2.
+  accountant = 0 & engineer = 1 & director = 2. 
+  all x all y (job(x) = job(y) -> x=y). 
+
+  job(shirley) != engineer.              %Clue 1 
+  job(shirley) != accountant.            %Clue 2
+  job(bob) != accountant.                %Clue 3 
+end_of_list.
+

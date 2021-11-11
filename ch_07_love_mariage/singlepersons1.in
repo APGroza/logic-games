@@ -1,0 +1,8 @@
+set(arithmetic).
+assign(domain_size,7).
+assign(max_models,-1).
+
+list(distinct).
+  [m0,m1,m2,m3,s4,s5,s6].
+end_of_list.
+

@@ -1,0 +1,55 @@
+interpretation( 9, [number = 1,seconds = 0], [
+    function(H2, [3]),
+    function(H3, [2]),
+    function(H4, [1]),
+    function(H5, [0]),
+    function(W2, [5]),
+    function(W3, [6]),
+    function(W4, [7]),
+    function(W5, [8]),
+    function(me, [0]),
+    function(my_wife, [4])]).
+interpretation( 9, [number = 2,seconds = 0], [
+    function(H2, [3]),
+    function(H3, [2]),
+    function(H4, [1]),
+    function(H5, [0]),
+    function(W2, [5]),
+    function(W3, [6]),
+    function(W4, [7]),
+    function(W5, [8]),
+    function(me, [1]),
+    function(my_wife, [4])]).
+interpretation( 9, [number = 3,seconds = 0], [
+    function(H2, [3]),
+    function(H3, [2]),
+    function(H4, [1]),
+    function(H5, [0]),
+    function(W2, [5]),
+    function(W3, [6]),
+    function(W4, [7]),
+    function(W5, [8]),
+    function(me, [2]),
+    function(my_wife, [4])]).
+interpretation( 9, [number = 4,seconds = 0], [
+    function(H2, [3]),
+    function(H3, [2]),
+    function(H4, [1]),
+    function(H5, [0]),
+    function(W2, [5]),
+    function(W3, [6]),
+    function(W4, [7]),
+    function(W5, [8]),
+    function(me, [3]),
+    function(my_wife, [4])]).
+interpretation( 9, [number = 5,seconds = 0], [
+    function(H2, [3]),
+    function(H3, [2]),
+    function(H4, [1]),
+    function(H5, [0]),
+    function(W2, [5]),
+    function(W3, [6]),
+    function(W4, [7]),
+    function(W5, [8]),
+    function(me, [4]),
+    function(my_wife, [4])]).

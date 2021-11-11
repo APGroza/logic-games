@@ -1,0 +1,316 @@
+============================== Prover9 ===============================
+Prover9 (64) version 2009-11A, November 2009.
+Process 10094 was started by adrian on adrian,
+Tue Jan 19 19:20:07 2021
+The command was "prover9 -f minosaminos2p.in".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+% Reading from file minosaminos2p.in
+
+
+formulas(assumptions).
+(all x (inhabitant(x) -> mino(x) | amino(x))).
+(all x (mino(x) -> -amino(x))).
+mino(x) -> m(x).
+amino(x) -> -m(x).
+same_family(x,y) -> mino(x) & mino(y) | amino(x) & amino(y).
+brother(x,y) -> same_family(x,y).
+-brother(x,x).
+same_family(x,x).
+inhabitant(Bahman) & inhabitant(Perviz) & Bahman != Perviz.
+brother(Bahman,Perviz) & brother(Perviz,Bahman).
+m(Bahman) <-> married(Bahman) & married(Perviz) | -married(Bahman) & -married(Perviz).
+m(Perviz) <-> -married(Perviz).
+end_of_list.
+
+formulas(goals).
+-married(Bahman).
+end_of_list.
+
+============================== end of input ==========================
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+1 (all x (inhabitant(x) -> mino(x) | amino(x))) # label(non_clause).  [assumption].
+2 (all x (mino(x) -> -amino(x))) # label(non_clause).  [assumption].
+3 mino(x) -> m(x) # label(non_clause).  [assumption].
+4 amino(x) -> -m(x) # label(non_clause).  [assumption].
+5 same_family(x,y) -> mino(x) & mino(y) | amino(x) & amino(y) # label(non_clause).  [assumption].
+6 brother(x,y) -> same_family(x,y) # label(non_clause).  [assumption].
+7 inhabitant(Bahman) & inhabitant(Perviz) & Bahman != Perviz # label(non_clause).  [assumption].
+8 brother(Bahman,Perviz) & brother(Perviz,Bahman) # label(non_clause).  [assumption].
+9 m(Bahman) <-> married(Bahman) & married(Perviz) | -married(Bahman) & -married(Perviz) # label(non_clause).  [assumption].
+10 m(Perviz) <-> -married(Perviz) # label(non_clause).  [assumption].
+11 -married(Bahman) # label(non_clause) # label(goal).  [goal].
+
+============================== end of process non-clausal formulas ===
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+-inhabitant(x) | mino(x) | amino(x).  [clausify(1)].
+-mino(x) | -amino(x).  [clausify(2)].
+-mino(x) | m(x).  [clausify(3)].
+-amino(x) | -m(x).  [clausify(4)].
+-same_family(x,y) | mino(x) | amino(x).  [clausify(5)].
+-same_family(x,y) | mino(x) | amino(y).  [clausify(5)].
+-same_family(x,y) | mino(y) | amino(x).  [clausify(5)].
+-same_family(x,y) | mino(y) | amino(y).  [clausify(5)].
+-brother(x,y) | same_family(x,y).  [clausify(6)].
+-brother(x,x).  [assumption].
+same_family(x,x).  [assumption].
+inhabitant(Bahman).  [clausify(7)].
+inhabitant(Perviz).  [clausify(7)].
+Perviz != Bahman.  [clausify(7)].
+brother(Bahman,Perviz).  [clausify(8)].
+brother(Perviz,Bahman).  [clausify(8)].
+-m(Bahman) | married(Bahman) | -married(Perviz).  [clausify(9)].
+-m(Bahman) | married(Perviz) | -married(Bahman).  [clausify(9)].
+m(Bahman) | -married(Bahman) | -married(Perviz).  [clausify(9)].
+m(Bahman) | married(Bahman) | married(Perviz).  [clausify(9)].
+-m(Perviz) | -married(Perviz).  [clausify(10)].
+m(Perviz) | married(Perviz).  [clausify(10)].
+married(Bahman).  [deny(11)].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== PREDICATE ELIMINATION =================
+
+Eliminating inhabitant/1
+12 inhabitant(Bahman).  [clausify(7)].
+13 -inhabitant(x) | mino(x) | amino(x).  [clausify(1)].
+Derived: mino(Bahman) | amino(Bahman).  [resolve(12,a,13,a)].
+14 inhabitant(Perviz).  [clausify(7)].
+Derived: mino(Perviz) | amino(Perviz).  [resolve(14,a,13,a)].
+
+Eliminating mino/1
+15 -same_family(x,y) | mino(x) | amino(x).  [clausify(5)].
+16 -mino(x) | -amino(x).  [clausify(2)].
+17 -mino(x) | m(x).  [clausify(3)].
+Derived: -same_family(x,y) | amino(x) | m(x).  [resolve(15,b,17,a)].
+18 -same_family(x,y) | mino(x) | amino(y).  [clausify(5)].
+Derived: -same_family(x,y) | amino(y) | -amino(x).  [resolve(18,b,16,a)].
+Derived: -same_family(x,y) | amino(y) | m(x).  [resolve(18,b,17,a)].
+19 -same_family(x,y) | mino(y) | amino(x).  [clausify(5)].
+Derived: -same_family(x,y) | amino(x) | -amino(y).  [resolve(19,b,16,a)].
+Derived: -same_family(x,y) | amino(x) | m(y).  [resolve(19,b,17,a)].
+20 -same_family(x,y) | mino(y) | amino(y).  [clausify(5)].
+Derived: -same_family(x,y) | amino(y) | m(y).  [resolve(20,b,17,a)].
+21 mino(Bahman) | amino(Bahman).  [resolve(12,a,13,a)].
+Derived: amino(Bahman) | m(Bahman).  [resolve(21,a,17,a)].
+22 mino(Perviz) | amino(Perviz).  [resolve(14,a,13,a)].
+Derived: amino(Perviz) | m(Perviz).  [resolve(22,a,17,a)].
+
+Eliminating same_family/2
+23 -same_family(x,y) | amino(x) | m(x).  [resolve(15,b,17,a)].
+24 -brother(x,y) | same_family(x,y).  [clausify(6)].
+25 same_family(x,x).  [assumption].
+Derived: amino(x) | m(x) | -brother(x,y).  [resolve(23,a,24,b)].
+Derived: amino(x) | m(x).  [resolve(23,a,25,a)].
+26 -same_family(x,y) | amino(y) | -amino(x).  [resolve(18,b,16,a)].
+Derived: amino(x) | -amino(y) | -brother(y,x).  [resolve(26,a,24,b)].
+27 -same_family(x,y) | amino(y) | m(x).  [resolve(18,b,17,a)].
+Derived: amino(x) | m(y) | -brother(y,x).  [resolve(27,a,24,b)].
+28 -same_family(x,y) | amino(x) | -amino(y).  [resolve(19,b,16,a)].
+Derived: amino(x) | -amino(y) | -brother(x,y).  [resolve(28,a,24,b)].
+29 -same_family(x,y) | amino(x) | m(y).  [resolve(19,b,17,a)].
+Derived: amino(x) | m(y) | -brother(x,y).  [resolve(29,a,24,b)].
+30 -same_family(x,y) | amino(y) | m(y).  [resolve(20,b,17,a)].
+
+============================== end predicate elimination =============
+
+Auto_denials:  (non-Horn, no changes).
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ =, m, amino, married, brother ]).
+Function symbol precedence:  function_order([ Bahman, Perviz ]).
+After inverse_order:  (no changes).
+Unfolding symbols: (none).
+
+Auto_inference settings:
+  % set(binary_resolution).  % (non-Horn)
+  % set(neg_ur_resolution).  % (non-Horn, less than 100 clauses)
+
+Auto_process settings:
+  % set(factor).  % (non-Horn)
+  % set(unit_deletion).  % (non-Horn)
+
+kept:      31 -amino(x) | -m(x).  [clausify(4)].
+kept:      32 -brother(x,x).  [assumption].
+kept:      33 Perviz != Bahman.  [clausify(7)].
+kept:      34 brother(Bahman,Perviz).  [clausify(8)].
+kept:      35 brother(Perviz,Bahman).  [clausify(8)].
+kept:      36 -m(Bahman) | married(Bahman) | -married(Perviz).  [clausify(9)].
+kept:      37 -m(Bahman) | married(Perviz) | -married(Bahman).  [clausify(9)].
+kept:      38 m(Bahman) | -married(Bahman) | -married(Perviz).  [clausify(9)].
+kept:      39 m(Bahman) | married(Bahman) | married(Perviz).  [clausify(9)].
+kept:      40 -m(Perviz) | -married(Perviz).  [clausify(10)].
+kept:      41 m(Perviz) | married(Perviz).  [clausify(10)].
+kept:      42 married(Bahman).  [deny(11)].
+kept:      43 amino(Bahman) | m(Bahman).  [resolve(21,a,17,a)].
+kept:      44 amino(Perviz) | m(Perviz).  [resolve(22,a,17,a)].
+kept:      45 amino(x) | m(x) | -brother(x,y).  [resolve(23,a,24,b)].
+kept:      46 amino(x) | m(x).  [resolve(23,a,25,a)].
+kept:      47 amino(x) | -amino(y) | -brother(y,x).  [resolve(26,a,24,b)].
+kept:      48 amino(x) | m(y) | -brother(y,x).  [resolve(27,a,24,b)].
+kept:      49 amino(x) | -amino(y) | -brother(x,y).  [resolve(28,a,24,b)].
+kept:      50 amino(x) | m(y) | -brother(x,y).  [resolve(29,a,24,b)].
+kept:      51 m(Bahman) | -married(Perviz).  [back_unit_del(38),unit_del(b,42)].
+kept:      52 -m(Bahman) | married(Perviz).  [back_unit_del(37),unit_del(c,42)].
+
+============================== end of process initial clauses ========
+
+============================== CLAUSES FOR SEARCH ====================
+
+% Clauses after input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+31 -amino(x) | -m(x).  [clausify(4)].
+32 -brother(x,x).  [assumption].
+33 Perviz != Bahman.  [clausify(7)].
+34 brother(Bahman,Perviz).  [clausify(8)].
+35 brother(Perviz,Bahman).  [clausify(8)].
+40 -m(Perviz) | -married(Perviz).  [clausify(10)].
+41 m(Perviz) | married(Perviz).  [clausify(10)].
+42 married(Bahman).  [deny(11)].
+46 amino(x) | m(x).  [resolve(23,a,25,a)].
+47 amino(x) | -amino(y) | -brother(y,x).  [resolve(26,a,24,b)].
+48 amino(x) | m(y) | -brother(y,x).  [resolve(27,a,24,b)].
+49 amino(x) | -amino(y) | -brother(x,y).  [resolve(28,a,24,b)].
+50 amino(x) | m(y) | -brother(x,y).  [resolve(29,a,24,b)].
+51 m(Bahman) | -married(Perviz).  [back_unit_del(38),unit_del(b,42)].
+52 -m(Bahman) | married(Perviz).  [back_unit_del(37),unit_del(c,42)].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== end of clauses for search =============
+
+============================== SEARCH ================================
+
+% Starting search at 0.00 seconds.
+
+given #1 (I,wt=4): 31 -amino(x) | -m(x).  [clausify(4)].
+
+given #2 (I,wt=3): 32 -brother(x,x).  [assumption].
+
+given #3 (I,wt=3): 33 Perviz != Bahman.  [clausify(7)].
+
+given #4 (I,wt=3): 34 brother(Bahman,Perviz).  [clausify(8)].
+
+given #5 (I,wt=3): 35 brother(Perviz,Bahman).  [clausify(8)].
+
+given #6 (I,wt=4): 40 -m(Perviz) | -married(Perviz).  [clausify(10)].
+
+given #7 (I,wt=4): 41 m(Perviz) | married(Perviz).  [clausify(10)].
+
+given #8 (I,wt=2): 42 married(Bahman).  [deny(11)].
+
+given #9 (I,wt=4): 46 amino(x) | m(x).  [resolve(23,a,25,a)].
+
+given #10 (I,wt=7): 47 amino(x) | -amino(y) | -brother(y,x).  [resolve(26,a,24,b)].
+
+given #11 (I,wt=7): 48 amino(x) | m(y) | -brother(y,x).  [resolve(27,a,24,b)].
+
+given #12 (I,wt=7): 49 amino(x) | -amino(y) | -brother(x,y).  [resolve(28,a,24,b)].
+
+given #13 (I,wt=7): 50 amino(x) | m(y) | -brother(x,y).  [resolve(29,a,24,b)].
+
+given #14 (I,wt=4): 51 m(Bahman) | -married(Perviz).  [back_unit_del(38),unit_del(b,42)].
+
+given #15 (I,wt=4): 52 -m(Bahman) | married(Perviz).  [back_unit_del(37),unit_del(c,42)].
+
+given #16 (A,wt=4): 53 amino(Bahman) | -amino(Perviz).  [resolve(47,c,35,a)].
+
+given #17 (T,wt=4): 54 amino(Perviz) | -amino(Bahman).  [resolve(47,c,34,a)].
+
+given #18 (T,wt=4): 55 amino(Bahman) | m(Perviz).  [resolve(48,c,35,a)].
+
+given #19 (T,wt=4): 56 amino(Perviz) | m(Bahman).  [resolve(48,c,34,a)].
+
+given #20 (T,wt=4): 57 m(Bahman) | m(Perviz).  [resolve(51,b,41,b)].
+
+given #21 (A,wt=4): 58 m(Perviz) | -m(Bahman).  [resolve(55,a,31,a)].
+
+given #22 (T,wt=4): 59 m(Bahman) | -m(Perviz).  [resolve(56,a,31,a)].
+
+============================== PROOF =================================
+
+% Proof 1 at 0.00 (+ 0.00) seconds.
+% Length of proof is 32.
+% Level of proof is 8.
+% Maximum clause weight is 7.000.
+% Given clauses 22.
+
+3 mino(x) -> m(x) # label(non_clause).  [assumption].
+4 amino(x) -> -m(x) # label(non_clause).  [assumption].
+5 same_family(x,y) -> mino(x) & mino(y) | amino(x) & amino(y) # label(non_clause).  [assumption].
+6 brother(x,y) -> same_family(x,y) # label(non_clause).  [assumption].
+8 brother(Bahman,Perviz) & brother(Perviz,Bahman) # label(non_clause).  [assumption].
+9 m(Bahman) <-> married(Bahman) & married(Perviz) | -married(Bahman) & -married(Perviz) # label(non_clause).  [assumption].
+10 m(Perviz) <-> -married(Perviz) # label(non_clause).  [assumption].
+11 -married(Bahman) # label(non_clause) # label(goal).  [goal].
+17 -mino(x) | m(x).  [clausify(3)].
+18 -same_family(x,y) | mino(x) | amino(y).  [clausify(5)].
+24 -brother(x,y) | same_family(x,y).  [clausify(6)].
+27 -same_family(x,y) | amino(y) | m(x).  [resolve(18,b,17,a)].
+31 -amino(x) | -m(x).  [clausify(4)].
+34 brother(Bahman,Perviz).  [clausify(8)].
+35 brother(Perviz,Bahman).  [clausify(8)].
+37 -m(Bahman) | married(Perviz) | -married(Bahman).  [clausify(9)].
+38 m(Bahman) | -married(Bahman) | -married(Perviz).  [clausify(9)].
+40 -m(Perviz) | -married(Perviz).  [clausify(10)].
+41 m(Perviz) | married(Perviz).  [clausify(10)].
+42 married(Bahman).  [deny(11)].
+48 amino(x) | m(y) | -brother(y,x).  [resolve(27,a,24,b)].
+51 m(Bahman) | -married(Perviz).  [back_unit_del(38),unit_del(b,42)].
+52 -m(Bahman) | married(Perviz).  [back_unit_del(37),unit_del(c,42)].
+55 amino(Bahman) | m(Perviz).  [resolve(48,c,35,a)].
+56 amino(Perviz) | m(Bahman).  [resolve(48,c,34,a)].
+57 m(Bahman) | m(Perviz).  [resolve(51,b,41,b)].
+58 m(Perviz) | -m(Bahman).  [resolve(55,a,31,a)].
+59 m(Bahman) | -m(Perviz).  [resolve(56,a,31,a)].
+60 m(Bahman).  [resolve(59,b,57,b),merge(b)].
+61 m(Perviz).  [back_unit_del(58),unit_del(b,60)].
+62 married(Perviz).  [back_unit_del(52),unit_del(a,60)].
+63 $F.  [back_unit_del(40),unit_del(a,61),unit_del(b,62)].
+
+============================== end of proof ==========================
+
+============================== STATISTICS ============================
+
+Given=22. Generated=43. Kept=32. proofs=1.
+Usable=13. Sos=1. Demods=0. Limbo=2, Disabled=55. Hints=0.
+Kept_by_rule=0, Deleted_by_rule=0.
+Forward_subsumed=10. Back_subsumed=11.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=0 (0 lex), Back_demodulated=0. Back_unit_deleted=5.
+Demod_attempts=0. Demod_rewrites=0.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=23. Nonunit_bsub_feature_tests=51.
+Megabytes=0.08.
+User_CPU=0.00, System_CPU=0.00, Wall_clock=0.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+THEOREM PROVED
+
+Exiting with 1 proof.
+
+Process 10094 exit (max_proofs) Tue Jan 19 19:20:07 2021

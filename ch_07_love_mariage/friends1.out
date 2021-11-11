@@ -1,0 +1,7 @@
+interpretation( 4, [number = 1,seconds = 0], [
+    function(chandler, [0]),
+    function(monica, [1]),
+    function(rachel, [2]),
+    function(ross, [3]),
+    relation(m(_), [1,0,0,1]),
+    relation(married(_), [1,0,0,1])]).

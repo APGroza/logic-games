@@ -1,0 +1,13 @@
+interpretation( 6, [number = 1,seconds = 0], [
+    function(Anna, [5]),
+    function(Esther, [1]),
+    function(HH, [0]),
+    function(Helen, [3]),
+    function(Jim, [4]),
+    function(Roger, [0]),
+    function(Victor, [2]),
+    function(left(_), [5,0,1,2,3,4]),
+    relation(even(_), [1,0,1,0,1,0]),
+    relation(man(_), [1,0,1,0,1,0]),
+    relation(woman(_), [0,1,0,1,0,1]),
+    relation(beside(_,_), [0,1,0,0,0,1,1,0,1,0,0,0,0,1,0,1,0,0,0,0,1,0,1,0,0,0,0,1,0,1,1,0,0,0,1,0])]).

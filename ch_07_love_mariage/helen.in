@@ -1,0 +1,32 @@
+assign(domain_size,6).                           %six places at the table
+assign(max_models,-1).
+set(arithmetic).
+
+list(distinct).
+  [Anna, Esther, Helen, Jim, Roger, Victor].
+end_of_list.
+
+formulas(utils).
+  x > 0  -> left(x) = x + -1.
+  left(0) = domain_size + -1.                      %round table
+  beside(x,y) <-> left(x) = y | left(y) = x.
+  even(x) <-> x = 0 | x = 2 | x = 4. 
+  man(x) <-> -woman(x).
+end_of_list.
+
+formulas(assumptions). 
+  man(Roger) & man(Jim) & man(Victor).
+  woman(Helen) & woman(Anna) & woman(Esther).
+  man(HH).                                         %HH is a man
+  HH = 0.                                          %avoid isomorphisms
+  man(x) <->  even(x).                             %men on even places
+end_of_list.
+
+formulas(round_table).
+  left(left(left(Anna))) = Victor.                 %Clue1
+  left(left(left(left(left(HH))))) = Esther.       %Clue2
+  left(left(Roger)) = Jim.                         %Clue3
+ -beside(HH,Helen).                                %Clue4
+end_of_list.
+
+

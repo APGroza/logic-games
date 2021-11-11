@@ -1,0 +1,40 @@
+assign(domain_size,10).                     %ten distinct family members
+assign(max_models,-1).
+
+list(distinct).
+  [Alex,Bob,Caty,David,Elton,John,Lincoln,Sonia,Mary,Tina].
+end_of_list.
+
+formulas(utils).
+  gp(x) <-> x = 0 | x = 1.
+  p(x)  <-> x = 2 | x = 3 | x = 4 | x = 5.
+  c(x)  <-> x = 6 | x = 7 | x = 8 | x = 9.
+end_of_list.
+
+formulas(family_tree).
+ -gp(Elton) & -c(David) & Elton != 2 & Elton != 5.                %Clue 1 
+  
+  p(John) & c(Tina) & John != 2 & John != 5.                      %Clue 2
+  John = 3 -> (Tina = 8 | Tina = 9).
+  John = 4 -> (Tina = 6 | Tina = 7).
+  John = 3 -> (Mary = 4 | Elton = 4 | Caty = 4 | Sonia = 4). 
+  John = 4 -> (Mary = 3 | Elton = 3 | Caty = 3 | Sonia = 3). 
+
+  Mary = 3 | Mary = 4.                                            %Clue 3
+
+  c(Alex).                                                        %Clue 4
+  
+  Mary = 3 -> Bob = 2.                                            %Clue 5
+  Mary = 4 -> Bob = 5.
+  
+  Tina = 6 -> (Caty = 4 | Caty = 5 | Caty = 7).                   %Clue 6
+  Tina = 7 -> (Caty = 4 | Caty = 5 | Caty = 6).
+  Tina = 8 -> (Caty = 2 | Caty = 3 | Caty = 9).
+  Tina = 9 -> (Caty = 2 | Caty = 3 | Caty = 8).
+
+ -gp(Lincoln) & Lincoln != 2 & Lincoln != 5.                      %Clue 7
+ -c(Bob) & c(Lincoln).
+  Tina = 8 | Tina = 9 -> Lincoln != 8 & Lincoln != 9.
+  Tina = 6 | Tina = 7 -> Lincoln != 6 & Lincoln != 7.
+end_of_list.
+

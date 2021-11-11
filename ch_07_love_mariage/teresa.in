@@ -1,0 +1,27 @@
+assign(domain_size,4).
+assign(max_models,-1).
+
+formulas(background_knowledge).
+   hasDaughter(x) = y -> x != y.
+   hasDaughter(x) = y -> hasDaughter(y) != x. 
+   mother(x) = y & mother(z) = y -> x = z.
+   mother(x) = y -> x != y.
+   mother(x)= y -> mother(y) != x.
+   hasDaughter(x) = y -> mother(x) != y.
+   hasDaughter(x) = y -> mother(y)  = x. 
+  (hasDaughter(x) = y & hasDaughter(y) = z) -> hasDaughter(z) != x. 
+end_of_list.
+
+formulas(teresa_family).
+  hasDaughter(Teresa) = TeresaDaughter. 
+  TeresaDaughter = mother(MyDaughter).
+  hasDaughter(Me)= MyDaughter.
+end_of_list.
+
+formulas(quiz).
+  %Me=mother(mother(Teresa)).           %0 models  domain size = 4,5,6 
+  %Me=mother(Teresa).                   %0 models, domain size = 4,5
+   Me=TeresaDaughter.                   %1 model,  domain size = 4
+  %Me=hasDaughter(hasDaughter(Teresa)). %0 models, domain size = 4,5
+  %Me=Teresa.                           %0 models, domain size = 4
+end_of_list. 

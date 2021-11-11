@@ -1,0 +1,14 @@
+assign(domain_size,4).
+assign(max_models,-1).
+
+list(distinct).
+  [ross, chandler, monica, rachel].
+end_of_list.
+
+formulas(married).
+   all x (married(x)  <->  m(x)).
+   m(ross)     <-> (married(rachel) -> -married(ross)).
+   m(rachel)   <-> -married(chandler).
+   m(monica)   <-> (married(monica) & married(chandler)).
+   m(chandler) <-> -m(monica).
+end_of_list.
