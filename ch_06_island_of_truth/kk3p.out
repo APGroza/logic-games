@@ -1,0 +1,267 @@
+============================== Prover9 ===============================
+Prover9 (64) version 2009-11A, November 2009.
+Process 8855 was started by adrian on adrian,
+Tue Jan 19 18:46:19 2021
+The command was "prover9 -f kk3p.in".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+% Reading from file kk3p.in
+
+
+formulas(assumptions).
+(all x (inhabitant(x) -> knight(x) | knave(x))).
+(all x ((knight(x) -> -knave(x)) & (knave(x) -> -knight(x)))).
+knight(x) -> m(x).
+knave(x) -> -m(x).
+inhabitant(jim) & inhabitant(joe) & inhabitant(jon).
+jim != jon.
+jon != joe.
+jim != joe.
+m(jim) <-> knave(joe) | knight(jim).
+m(jon) <-> knight(jim) & knave(jon) | knave(jim) & knight(jon).
+m(joe) <-> -knight(jim) & -knight(jon).
+end_of_list.
+
+formulas(goals).
+knave(jon).
+end_of_list.
+
+============================== end of input ==========================
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+1 (all x (inhabitant(x) -> knight(x) | knave(x))) # label(non_clause).  [assumption].
+2 (all x ((knight(x) -> -knave(x)) & (knave(x) -> -knight(x)))) # label(non_clause).  [assumption].
+3 knight(x) -> m(x) # label(non_clause).  [assumption].
+4 knave(x) -> -m(x) # label(non_clause).  [assumption].
+5 inhabitant(jim) & inhabitant(joe) & inhabitant(jon) # label(non_clause).  [assumption].
+6 m(jim) <-> knave(joe) | knight(jim) # label(non_clause).  [assumption].
+7 m(jon) <-> knight(jim) & knave(jon) | knave(jim) & knight(jon) # label(non_clause).  [assumption].
+8 m(joe) <-> -knight(jim) & -knight(jon) # label(non_clause).  [assumption].
+9 knave(jon) # label(non_clause) # label(goal).  [goal].
+
+============================== end of process non-clausal formulas ===
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+-inhabitant(x) | knight(x) | knave(x).  [clausify(1)].
+-knight(x) | -knave(x).  [clausify(2)].
+-knight(x) | m(x).  [clausify(3)].
+-knave(x) | -m(x).  [clausify(4)].
+inhabitant(jim).  [clausify(5)].
+inhabitant(joe).  [clausify(5)].
+inhabitant(jon).  [clausify(5)].
+jim != jon.  [assumption].
+jon != joe.  [assumption].
+jim != joe.  [assumption].
+-m(jim) | knave(joe) | knight(jim).  [clausify(6)].
+m(jim) | -knave(joe).  [clausify(6)].
+m(jim) | -knight(jim).  [clausify(6)].
+-m(jon) | knight(jim) | knave(jim).  [clausify(7)].
+-m(jon) | knight(jim) | knight(jon).  [clausify(7)].
+-m(jon) | knave(jon) | knave(jim).  [clausify(7)].
+-m(jon) | knave(jon) | knight(jon).  [clausify(7)].
+m(jon) | -knight(jim) | -knave(jon).  [clausify(7)].
+m(jon) | -knave(jim) | -knight(jon).  [clausify(7)].
+-m(joe) | -knight(jim).  [clausify(8)].
+-m(joe) | -knight(jon).  [clausify(8)].
+m(joe) | knight(jim) | knight(jon).  [clausify(8)].
+-knave(jon).  [deny(9)].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== PREDICATE ELIMINATION =================
+
+Eliminating inhabitant/1
+10 inhabitant(jim).  [clausify(5)].
+11 -inhabitant(x) | knight(x) | knave(x).  [clausify(1)].
+Derived: knight(jim) | knave(jim).  [resolve(10,a,11,a)].
+12 inhabitant(joe).  [clausify(5)].
+Derived: knight(joe) | knave(joe).  [resolve(12,a,11,a)].
+13 inhabitant(jon).  [clausify(5)].
+Derived: knight(jon) | knave(jon).  [resolve(13,a,11,a)].
+
+============================== end predicate elimination =============
+
+Auto_denials:  (non-Horn, no changes).
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ =, knight, knave, m ]).
+Function symbol precedence:  function_order([ jon, jim, joe ]).
+After inverse_order:  (no changes).
+Unfolding symbols: (none).
+
+Auto_inference settings:
+  % set(binary_resolution).  % (non-Horn)
+  % set(neg_ur_resolution).  % (non-Horn, less than 100 clauses)
+
+Auto_process settings:
+  % set(factor).  % (non-Horn)
+  % set(unit_deletion).  % (non-Horn)
+
+kept:      14 -knight(x) | -knave(x).  [clausify(2)].
+kept:      15 -knight(x) | m(x).  [clausify(3)].
+kept:      16 -knave(x) | -m(x).  [clausify(4)].
+kept:      17 jim != jon.  [assumption].
+           18 jon != joe.  [assumption].
+kept:      19 joe != jon.  [copy(18),flip(a)].
+           20 jim != joe.  [assumption].
+kept:      21 joe != jim.  [copy(20),flip(a)].
+kept:      22 -m(jim) | knave(joe) | knight(jim).  [clausify(6)].
+kept:      23 m(jim) | -knave(joe).  [clausify(6)].
+kept:      24 -m(jon) | knight(jim) | knave(jim).  [clausify(7)].
+kept:      25 -m(jon) | knight(jim) | knight(jon).  [clausify(7)].
+kept:      26 -m(jon) | knave(jon) | knave(jim).  [clausify(7)].
+kept:      27 -m(jon) | knave(jon) | knight(jon).  [clausify(7)].
+kept:      28 m(jon) | -knight(jim) | -knave(jon).  [clausify(7)].
+kept:      29 -m(joe) | -knight(jim).  [clausify(8)].
+kept:      30 -m(joe) | -knight(jon).  [clausify(8)].
+kept:      31 m(joe) | knight(jim) | knight(jon).  [clausify(8)].
+kept:      32 -knave(jon).  [deny(9)].
+kept:      33 knight(jim) | knave(jim).  [resolve(10,a,11,a)].
+kept:      34 knight(joe) | knave(joe).  [resolve(12,a,11,a)].
+           35 knight(jon) | knave(jon).  [resolve(13,a,11,a)].
+kept:      36 knight(jon).  [copy(35),unit_del(b,32)].
+kept:      37 -m(jon) | knave(jim).  [back_unit_del(26),unit_del(b,32)].
+kept:      38 -m(joe).  [back_unit_del(30),unit_del(b,36)].
+
+============================== end of process initial clauses ========
+
+============================== CLAUSES FOR SEARCH ====================
+
+% Clauses after input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+14 -knight(x) | -knave(x).  [clausify(2)].
+15 -knight(x) | m(x).  [clausify(3)].
+16 -knave(x) | -m(x).  [clausify(4)].
+17 jim != jon.  [assumption].
+19 joe != jon.  [copy(18),flip(a)].
+21 joe != jim.  [copy(20),flip(a)].
+22 -m(jim) | knave(joe) | knight(jim).  [clausify(6)].
+23 m(jim) | -knave(joe).  [clausify(6)].
+32 -knave(jon).  [deny(9)].
+33 knight(jim) | knave(jim).  [resolve(10,a,11,a)].
+34 knight(joe) | knave(joe).  [resolve(12,a,11,a)].
+36 knight(jon).  [copy(35),unit_del(b,32)].
+37 -m(jon) | knave(jim).  [back_unit_del(26),unit_del(b,32)].
+38 -m(joe).  [back_unit_del(30),unit_del(b,36)].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== end of clauses for search =============
+
+============================== SEARCH ================================
+
+% Starting search at 0.01 seconds.
+
+given #1 (I,wt=4): 14 -knight(x) | -knave(x).  [clausify(2)].
+
+given #2 (I,wt=4): 15 -knight(x) | m(x).  [clausify(3)].
+
+given #3 (I,wt=4): 16 -knave(x) | -m(x).  [clausify(4)].
+
+given #4 (I,wt=3): 17 jim != jon.  [assumption].
+
+given #5 (I,wt=3): 19 joe != jon.  [copy(18),flip(a)].
+
+given #6 (I,wt=3): 21 joe != jim.  [copy(20),flip(a)].
+
+given #7 (I,wt=6): 22 -m(jim) | knave(joe) | knight(jim).  [clausify(6)].
+
+given #8 (I,wt=4): 23 m(jim) | -knave(joe).  [clausify(6)].
+
+given #9 (I,wt=2): 32 -knave(jon).  [deny(9)].
+
+given #10 (I,wt=4): 33 knight(jim) | knave(jim).  [resolve(10,a,11,a)].
+
+given #11 (I,wt=4): 34 knight(joe) | knave(joe).  [resolve(12,a,11,a)].
+
+given #12 (I,wt=2): 36 knight(jon).  [copy(35),unit_del(b,32)].
+
+given #13 (I,wt=2): 38 -m(joe).  [back_unit_del(30),unit_del(b,36)].
+
+given #14 (A,wt=2): 40 m(jon).  [resolve(36,a,15,a)].
+
+given #15 (F,wt=2): 42 -knight(joe).  [ur(15,b,38,a)].
+
+given #16 (T,wt=2): 41 knave(jim).  [back_unit_del(37),unit_del(a,40)].
+
+============================== PROOF =================================
+
+% Proof 1 at 0.01 (+ 0.00) seconds.
+% Length of proof is 28.
+% Level of proof is 7.
+% Maximum clause weight is 6.000.
+% Given clauses 16.
+
+1 (all x (inhabitant(x) -> knight(x) | knave(x))) # label(non_clause).  [assumption].
+3 knight(x) -> m(x) # label(non_clause).  [assumption].
+4 knave(x) -> -m(x) # label(non_clause).  [assumption].
+5 inhabitant(jim) & inhabitant(joe) & inhabitant(jon) # label(non_clause).  [assumption].
+6 m(jim) <-> knave(joe) | knight(jim) # label(non_clause).  [assumption].
+7 m(jon) <-> knight(jim) & knave(jon) | knave(jim) & knight(jon) # label(non_clause).  [assumption].
+8 m(joe) <-> -knight(jim) & -knight(jon) # label(non_clause).  [assumption].
+9 knave(jon) # label(non_clause) # label(goal).  [goal].
+11 -inhabitant(x) | knight(x) | knave(x).  [clausify(1)].
+12 inhabitant(joe).  [clausify(5)].
+13 inhabitant(jon).  [clausify(5)].
+15 -knight(x) | m(x).  [clausify(3)].
+16 -knave(x) | -m(x).  [clausify(4)].
+23 m(jim) | -knave(joe).  [clausify(6)].
+26 -m(jon) | knave(jon) | knave(jim).  [clausify(7)].
+30 -m(joe) | -knight(jon).  [clausify(8)].
+32 -knave(jon).  [deny(9)].
+34 knight(joe) | knave(joe).  [resolve(12,a,11,a)].
+35 knight(jon) | knave(jon).  [resolve(13,a,11,a)].
+36 knight(jon).  [copy(35),unit_del(b,32)].
+37 -m(jon) | knave(jim).  [back_unit_del(26),unit_del(b,32)].
+38 -m(joe).  [back_unit_del(30),unit_del(b,36)].
+39 knight(joe) | m(jim).  [resolve(34,b,23,b)].
+40 m(jon).  [resolve(36,a,15,a)].
+41 knave(jim).  [back_unit_del(37),unit_del(a,40)].
+42 -knight(joe).  [ur(15,b,38,a)].
+43 m(jim).  [back_unit_del(39),unit_del(a,42)].
+46 $F.  [ur(16,a,41,a),unit_del(a,43)].
+
+============================== end of proof ==========================
+
+============================== STATISTICS ============================
+
+Given=16. Generated=39. Kept=29. proofs=1.
+Usable=12. Sos=2. Demods=0. Limbo=1, Disabled=40. Hints=0.
+Kept_by_rule=0, Deleted_by_rule=0.
+Forward_subsumed=9. Back_subsumed=7.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=0 (0 lex), Back_demodulated=0. Back_unit_deleted=7.
+Demod_attempts=0. Demod_rewrites=0.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=5. Nonunit_bsub_feature_tests=27.
+Megabytes=0.07.
+User_CPU=0.01, System_CPU=0.00, Wall_clock=0.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+THEOREM PROVED
+
+Exiting with 1 proof.
+
+Process 8855 exit (max_proofs) Tue Jan 19 18:46:19 2021

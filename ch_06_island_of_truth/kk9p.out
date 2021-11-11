@@ -1,0 +1,302 @@
+============================== Prover9 ===============================
+Prover9 (64) version 2009-11A, November 2009.
+Process 8710 was started by adrian on adrian,
+Tue Jan 19 18:41:01 2021
+The command was "prover9 -f kk9p.in".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+% Reading from file kk9p.in
+
+
+formulas(assumptions).
+(all x (inhabitant(x) -> knight(x) | knave(x))).
+(all x ((knight(x) -> -knave(x)) & (knave(x) -> -knight(x)))).
+knight(x) -> m(x).
+knave(x) -> -m(x).
+inhabitant(a) & inhabitant(b) & inhabitant(c).
+a != b & b != c & c != a.
+m(a) <-> knave(a) & knave(b) & knave(c).
+m(b) <-> knave(a) & knight(b) & knight(c) | knight(a) & knave(b) & knight(c) | knight(a) & knight(b) & knave(c).
+end_of_list.
+
+formulas(goals).
+knight(c).
+end_of_list.
+
+============================== end of input ==========================
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+1 (all x (inhabitant(x) -> knight(x) | knave(x))) # label(non_clause).  [assumption].
+2 (all x ((knight(x) -> -knave(x)) & (knave(x) -> -knight(x)))) # label(non_clause).  [assumption].
+3 knight(x) -> m(x) # label(non_clause).  [assumption].
+4 knave(x) -> -m(x) # label(non_clause).  [assumption].
+5 inhabitant(a) & inhabitant(b) & inhabitant(c) # label(non_clause).  [assumption].
+6 a != b & b != c & c != a # label(non_clause).  [assumption].
+7 m(a) <-> knave(a) & knave(b) & knave(c) # label(non_clause).  [assumption].
+8 m(b) <-> knave(a) & knight(b) & knight(c) | knight(a) & knave(b) & knight(c) | knight(a) & knight(b) & knave(c) # label(non_clause).  [assumption].
+9 knight(c) # label(non_clause) # label(goal).  [goal].
+
+============================== end of process non-clausal formulas ===
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+-inhabitant(x) | knight(x) | knave(x).  [clausify(1)].
+-knight(x) | -knave(x).  [clausify(2)].
+-knight(x) | m(x).  [clausify(3)].
+-knave(x) | -m(x).  [clausify(4)].
+inhabitant(a).  [clausify(5)].
+inhabitant(b).  [clausify(5)].
+inhabitant(c).  [clausify(5)].
+b != a.  [clausify(6)].
+c != b.  [clausify(6)].
+c != a.  [clausify(6)].
+-m(a) | knave(a).  [clausify(7)].
+-m(a) | knave(b).  [clausify(7)].
+-m(a) | knave(c).  [clausify(7)].
+m(a) | -knave(a) | -knave(b) | -knave(c).  [clausify(7)].
+-m(b) | knave(a) | knight(a).  [clausify(8)].
+-m(b) | knave(a) | knave(b) | knave(c).  [clausify(8)].
+-m(b) | knight(b) | knight(a).  [clausify(8)].
+-m(b) | knight(b) | knave(b).  [clausify(8)].
+-m(b) | knight(b) | knight(c).  [clausify(8)].
+-m(b) | knight(c) | knight(a).  [clausify(8)].
+-m(b) | knight(c) | knave(c).  [clausify(8)].
+m(b) | -knave(a) | -knight(b) | -knight(c).  [clausify(8)].
+m(b) | -knight(a) | -knave(b) | -knight(c).  [clausify(8)].
+m(b) | -knight(a) | -knight(b) | -knave(c).  [clausify(8)].
+-knight(c).  [deny(9)].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== PREDICATE ELIMINATION =================
+
+Eliminating inhabitant/1
+10 inhabitant(a).  [clausify(5)].
+11 -inhabitant(x) | knight(x) | knave(x).  [clausify(1)].
+Derived: knight(a) | knave(a).  [resolve(10,a,11,a)].
+12 inhabitant(b).  [clausify(5)].
+Derived: knight(b) | knave(b).  [resolve(12,a,11,a)].
+13 inhabitant(c).  [clausify(5)].
+Derived: knight(c) | knave(c).  [resolve(13,a,11,a)].
+
+============================== end predicate elimination =============
+
+Auto_denials:  (non-Horn, no changes).
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ =, knight, knave, m ]).
+Function symbol precedence:  function_order([ b, a, c ]).
+After inverse_order:  (no changes).
+Unfolding symbols: (none).
+
+Auto_inference settings:
+  % set(binary_resolution).  % (non-Horn)
+  % set(neg_ur_resolution).  % (non-Horn, less than 100 clauses)
+
+Auto_process settings:
+  % set(factor).  % (non-Horn)
+  % set(unit_deletion).  % (non-Horn)
+
+kept:      14 -knight(x) | -knave(x).  [clausify(2)].
+kept:      15 -knight(x) | m(x).  [clausify(3)].
+kept:      16 -knave(x) | -m(x).  [clausify(4)].
+           17 b != a.  [clausify(6)].
+kept:      18 a != b.  [copy(17),flip(a)].
+kept:      19 c != b.  [clausify(6)].
+kept:      20 c != a.  [clausify(6)].
+kept:      21 -m(a) | knave(a).  [clausify(7)].
+kept:      22 -m(a) | knave(b).  [clausify(7)].
+kept:      23 -m(a) | knave(c).  [clausify(7)].
+kept:      24 m(a) | -knave(a) | -knave(b) | -knave(c).  [clausify(7)].
+kept:      25 -m(b) | knave(a) | knight(a).  [clausify(8)].
+kept:      26 -m(b) | knave(a) | knave(b) | knave(c).  [clausify(8)].
+kept:      27 -m(b) | knight(b) | knight(a).  [clausify(8)].
+kept:      28 -m(b) | knight(b) | knave(b).  [clausify(8)].
+kept:      29 -m(b) | knight(b) | knight(c).  [clausify(8)].
+kept:      30 -m(b) | knight(c) | knight(a).  [clausify(8)].
+kept:      31 -m(b) | knight(c) | knave(c).  [clausify(8)].
+kept:      32 m(b) | -knight(a) | -knave(b) | -knight(c).  [clausify(8)].
+kept:      33 -knight(c).  [deny(9)].
+kept:      34 knight(a) | knave(a).  [resolve(10,a,11,a)].
+kept:      35 knight(b) | knave(b).  [resolve(12,a,11,a)].
+           36 knight(c) | knave(c).  [resolve(13,a,11,a)].
+kept:      37 knave(c).  [copy(36),unit_del(a,33)].
+kept:      38 -m(b) | knight(a).  [back_unit_del(30),unit_del(b,33)].
+kept:      39 -m(b) | knight(b).  [back_unit_del(29),unit_del(c,33)].
+kept:      40 m(a) | -knave(a) | -knave(b).  [back_unit_del(24),unit_del(d,37)].
+
+============================== end of process initial clauses ========
+
+============================== CLAUSES FOR SEARCH ====================
+
+% Clauses after input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+14 -knight(x) | -knave(x).  [clausify(2)].
+15 -knight(x) | m(x).  [clausify(3)].
+16 -knave(x) | -m(x).  [clausify(4)].
+18 a != b.  [copy(17),flip(a)].
+19 c != b.  [clausify(6)].
+20 c != a.  [clausify(6)].
+21 -m(a) | knave(a).  [clausify(7)].
+22 -m(a) | knave(b).  [clausify(7)].
+33 -knight(c).  [deny(9)].
+34 knight(a) | knave(a).  [resolve(10,a,11,a)].
+35 knight(b) | knave(b).  [resolve(12,a,11,a)].
+37 knave(c).  [copy(36),unit_del(a,33)].
+38 -m(b) | knight(a).  [back_unit_del(30),unit_del(b,33)].
+39 -m(b) | knight(b).  [back_unit_del(29),unit_del(c,33)].
+40 m(a) | -knave(a) | -knave(b).  [back_unit_del(24),unit_del(d,37)].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== end of clauses for search =============
+
+============================== SEARCH ================================
+
+% Starting search at 0.02 seconds.
+
+given #1 (I,wt=4): 14 -knight(x) | -knave(x).  [clausify(2)].
+
+given #2 (I,wt=4): 15 -knight(x) | m(x).  [clausify(3)].
+
+given #3 (I,wt=4): 16 -knave(x) | -m(x).  [clausify(4)].
+
+given #4 (I,wt=3): 18 a != b.  [copy(17),flip(a)].
+
+given #5 (I,wt=3): 19 c != b.  [clausify(6)].
+
+given #6 (I,wt=3): 20 c != a.  [clausify(6)].
+
+given #7 (I,wt=4): 21 -m(a) | knave(a).  [clausify(7)].
+
+given #8 (I,wt=4): 22 -m(a) | knave(b).  [clausify(7)].
+
+given #9 (I,wt=2): 33 -knight(c).  [deny(9)].
+
+given #10 (I,wt=4): 34 knight(a) | knave(a).  [resolve(10,a,11,a)].
+
+given #11 (I,wt=4): 35 knight(b) | knave(b).  [resolve(12,a,11,a)].
+
+given #12 (I,wt=2): 37 knave(c).  [copy(36),unit_del(a,33)].
+
+given #13 (I,wt=4): 38 -m(b) | knight(a).  [back_unit_del(30),unit_del(b,33)].
+
+given #14 (I,wt=4): 39 -m(b) | knight(b).  [back_unit_del(29),unit_del(c,33)].
+
+given #15 (I,wt=6): 40 m(a) | -knave(a) | -knave(b).  [back_unit_del(24),unit_del(d,37)].
+
+given #16 (A,wt=2): 41 -m(c).  [ur(16,a,37,a)].
+
+given #17 (T,wt=6): 42 m(a) | -knave(b) | knight(a).  [resolve(40,b,34,b)].
+
+given #18 (T,wt=6): 43 m(a) | knight(a) | knight(b).  [resolve(42,b,35,b)].
+
+given #19 (T,wt=6): 44 knight(a) | knight(b) | -knave(a).  [resolve(43,a,16,b)].
+
+given #20 (T,wt=4): 45 knight(a) | knight(b).  [resolve(44,c,34,b),merge(c)].
+
+given #21 (A,wt=4): 46 knight(b) | m(a).  [resolve(45,a,15,a)].
+
+given #22 (T,wt=4): 47 knight(b) | knave(a).  [resolve(46,b,21,a)].
+
+given #23 (T,wt=4): 48 knight(b) | -knave(a).  [resolve(46,b,16,b)].
+
+given #24 (T,wt=2): 50 knight(b).  [resolve(48,b,47,b),merge(b)].
+
+given #25 (T,wt=2): 51 m(b).  [resolve(50,a,15,a)].
+
+given #26 (A,wt=2): 52 -knave(b).  [ur(14,a,50,a)].
+
+given #27 (F,wt=2): 54 -m(a).  [back_unit_del(22),unit_del(b,52)].
+
+============================== PROOF =================================
+
+% Proof 1 at 0.02 (+ 0.01) seconds.
+% Length of proof is 39.
+% Level of proof is 14.
+% Maximum clause weight is 8.000.
+% Given clauses 27.
+
+1 (all x (inhabitant(x) -> knight(x) | knave(x))) # label(non_clause).  [assumption].
+2 (all x ((knight(x) -> -knave(x)) & (knave(x) -> -knight(x)))) # label(non_clause).  [assumption].
+3 knight(x) -> m(x) # label(non_clause).  [assumption].
+4 knave(x) -> -m(x) # label(non_clause).  [assumption].
+5 inhabitant(a) & inhabitant(b) & inhabitant(c) # label(non_clause).  [assumption].
+7 m(a) <-> knave(a) & knave(b) & knave(c) # label(non_clause).  [assumption].
+8 m(b) <-> knave(a) & knight(b) & knight(c) | knight(a) & knave(b) & knight(c) | knight(a) & knight(b) & knave(c) # label(non_clause).  [assumption].
+9 knight(c) # label(non_clause) # label(goal).  [goal].
+10 inhabitant(a).  [clausify(5)].
+11 -inhabitant(x) | knight(x) | knave(x).  [clausify(1)].
+12 inhabitant(b).  [clausify(5)].
+13 inhabitant(c).  [clausify(5)].
+14 -knight(x) | -knave(x).  [clausify(2)].
+15 -knight(x) | m(x).  [clausify(3)].
+16 -knave(x) | -m(x).  [clausify(4)].
+21 -m(a) | knave(a).  [clausify(7)].
+22 -m(a) | knave(b).  [clausify(7)].
+24 m(a) | -knave(a) | -knave(b) | -knave(c).  [clausify(7)].
+30 -m(b) | knight(c) | knight(a).  [clausify(8)].
+33 -knight(c).  [deny(9)].
+34 knight(a) | knave(a).  [resolve(10,a,11,a)].
+35 knight(b) | knave(b).  [resolve(12,a,11,a)].
+36 knight(c) | knave(c).  [resolve(13,a,11,a)].
+37 knave(c).  [copy(36),unit_del(a,33)].
+38 -m(b) | knight(a).  [back_unit_del(30),unit_del(b,33)].
+40 m(a) | -knave(a) | -knave(b).  [back_unit_del(24),unit_del(d,37)].
+42 m(a) | -knave(b) | knight(a).  [resolve(40,b,34,b)].
+43 m(a) | knight(a) | knight(b).  [resolve(42,b,35,b)].
+44 knight(a) | knight(b) | -knave(a).  [resolve(43,a,16,b)].
+45 knight(a) | knight(b).  [resolve(44,c,34,b),merge(c)].
+46 knight(b) | m(a).  [resolve(45,a,15,a)].
+47 knight(b) | knave(a).  [resolve(46,b,21,a)].
+48 knight(b) | -knave(a).  [resolve(46,b,16,b)].
+50 knight(b).  [resolve(48,b,47,b),merge(b)].
+51 m(b).  [resolve(50,a,15,a)].
+52 -knave(b).  [ur(14,a,50,a)].
+53 knight(a).  [back_unit_del(38),unit_del(a,51)].
+54 -m(a).  [back_unit_del(22),unit_del(b,52)].
+55 $F.  [ur(15,b,54,a),unit_del(a,53)].
+
+============================== end of proof ==========================
+
+============================== STATISTICS ============================
+
+Given=27. Generated=55. Kept=39. proofs=1.
+Usable=13. Sos=1. Demods=0. Limbo=0, Disabled=53. Hints=0.
+Kept_by_rule=0, Deleted_by_rule=0.
+Forward_subsumed=15. Back_subsumed=19.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=0 (0 lex), Back_demodulated=0. Back_unit_deleted=6.
+Demod_attempts=0. Demod_rewrites=0.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=10. Nonunit_bsub_feature_tests=49.
+Megabytes=0.08.
+User_CPU=0.02, System_CPU=0.01, Wall_clock=0.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+THEOREM PROVED
+
+Exiting with 1 proof.
+
+Process 8710 exit (max_proofs) Tue Jan 19 18:41:01 2021

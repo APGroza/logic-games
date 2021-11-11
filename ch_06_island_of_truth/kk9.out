@@ -1,0 +1,16 @@
+interpretation( 3, [number = 1,seconds = 0], [
+    function(a, [0]),
+    function(b, [1]),
+    function(c, [2]),
+    relation(inhabitant(_), [1,1,1]),
+    relation(knave(_), [1,0,0]),
+    relation(knight(_), [0,1,1]),
+    relation(m(_), [0,1,1])]).
+interpretation( 3, [number = 2,seconds = 0], [
+    function(a, [0]),
+    function(b, [1]),
+    function(c, [2]),
+    relation(inhabitant(_), [1,1,1]),
+    relation(knave(_), [1,1,0]),
+    relation(knight(_), [0,0,1]),
+    relation(m(_), [0,0,1])]).

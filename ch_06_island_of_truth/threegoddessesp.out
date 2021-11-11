@@ -1,0 +1,334 @@
+============================== Prover9 ===============================
+Prover9 (64) version 2009-11A, November 2009.
+Process 9244 was started by adrian on adrian,
+Tue Jan 19 19:00:27 2021
+The command was "prover9 -f threegoddessesp.in".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+% Reading from file threegoddessesp.in
+
+
+formulas(assumptions).
+(T1 | T2 | T3) & (L1 | L2 | L3) & (W1 | W2 | W3).
+(T1 -> -T2 & -T3) & (T2 -> -T1 & -T3) & (T3 -> -T1 & -T2).
+(L1 -> -L2 & -L3) & (L2 -> -L1 & -L3) & (L3 -> -L1 & -L2).
+(W1 -> -W2 & -W3) & (W2 -> -W1 & -W3) & (W3 -> -W1 & -W2).
+(T1 -> -L1 & -W1) & (T2 -> -L2 & -W2) & (T3 -> -L3 & -W3).
+(L1 -> -T1 & -W1) & (L2 -> -T2 & -W2) & (L3 -> -T3 & -W3).
+(W1 -> -L1 & -T1) & (W2 -> -L2 & -T2) & (W3 -> -L3 & -T3).
+(L1 -> -T2) & (T1 -> T2).
+(L2 -> -W2) & (T2 -> W2).
+(T3 -> L2) & (L3 -> -L2).
+end_of_list.
+
+formulas(goals).
+W1 & L2 & T3.
+end_of_list.
+
+============================== end of input ==========================
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+1 (T1 | T2 | T3) & (L1 | L2 | L3) & (W1 | W2 | W3) # label(non_clause).  [assumption].
+2 (T1 -> -T2 & -T3) & (T2 -> -T1 & -T3) & (T3 -> -T1 & -T2) # label(non_clause).  [assumption].
+3 (L1 -> -L2 & -L3) & (L2 -> -L1 & -L3) & (L3 -> -L1 & -L2) # label(non_clause).  [assumption].
+4 (W1 -> -W2 & -W3) & (W2 -> -W1 & -W3) & (W3 -> -W1 & -W2) # label(non_clause).  [assumption].
+5 (T1 -> -L1 & -W1) & (T2 -> -L2 & -W2) & (T3 -> -L3 & -W3) # label(non_clause).  [assumption].
+6 (L1 -> -T1 & -W1) & (L2 -> -T2 & -W2) & (L3 -> -T3 & -W3) # label(non_clause).  [assumption].
+7 (W1 -> -L1 & -T1) & (W2 -> -L2 & -T2) & (W3 -> -L3 & -T3) # label(non_clause).  [assumption].
+8 (L1 -> -T2) & (T1 -> T2) # label(non_clause).  [assumption].
+9 (L2 -> -W2) & (T2 -> W2) # label(non_clause).  [assumption].
+10 (T3 -> L2) & (L3 -> -L2) # label(non_clause).  [assumption].
+11 W1 & L2 & T3 # label(non_clause) # label(goal).  [goal].
+
+============================== end of process non-clausal formulas ===
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+T1 | T2 | T3.  [clausify(1)].
+L1 | L2 | L3.  [clausify(1)].
+W1 | W2 | W3.  [clausify(1)].
+-T1 | -T2.  [clausify(2)].
+-T1 | -T3.  [clausify(2)].
+-T2 | -T3.  [clausify(2)].
+-L1 | -L2.  [clausify(3)].
+-L1 | -L3.  [clausify(3)].
+-L2 | -L3.  [clausify(3)].
+-W1 | -W2.  [clausify(4)].
+-W1 | -W3.  [clausify(4)].
+-W2 | -W3.  [clausify(4)].
+-T1 | -L1.  [clausify(5)].
+-T1 | -W1.  [clausify(5)].
+-T2 | -L2.  [clausify(5)].
+-T2 | -W2.  [clausify(5)].
+-T3 | -L3.  [clausify(5)].
+-T3 | -W3.  [clausify(5)].
+-L1 | -T1.  [clausify(6)].
+-L1 | -W1.  [clausify(6)].
+-L2 | -T2.  [clausify(6)].
+-L2 | -W2.  [clausify(6)].
+-L3 | -T3.  [clausify(6)].
+-L3 | -W3.  [clausify(6)].
+-W1 | -L1.  [clausify(7)].
+-W1 | -T1.  [clausify(7)].
+-W2 | -L2.  [clausify(7)].
+-W2 | -T2.  [clausify(7)].
+-W3 | -L3.  [clausify(7)].
+-W3 | -T3.  [clausify(7)].
+-L1 | -T2.  [clausify(8)].
+-T1 | T2.  [clausify(8)].
+-L2 | -W2.  [clausify(9)].
+-T2 | W2.  [clausify(9)].
+-T3 | L2.  [clausify(10)].
+-L3 | -L2.  [clausify(10)].
+-W1 | -L2 | -T3.  [deny(11)].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== PREDICATE ELIMINATION =================
+
+No predicates eliminated.
+
+============================== end predicate elimination =============
+
+Auto_denials:  (non-Horn, no changes).
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ T2, L2, T1, T3, W2, L1, L3, W1, W3 ]).
+Function symbol precedence:  function_order([ ]).
+After inverse_order:  (no changes).
+Unfolding symbols: (none).
+
+Auto_inference settings:
+  % set(binary_resolution).  % (non-Horn)
+  % set(neg_ur_resolution).  % (non-Horn, less than 100 clauses)
+
+Auto_process settings:
+  % set(factor).  % (non-Horn)
+  % set(unit_deletion).  % (non-Horn)
+
+kept:      12 T1 | T2 | T3.  [clausify(1)].
+kept:      13 L1 | L2 | L3.  [clausify(1)].
+kept:      14 W1 | W2 | W3.  [clausify(1)].
+kept:      15 -T1 | -T2.  [clausify(2)].
+kept:      16 -T1 | -T3.  [clausify(2)].
+kept:      17 -T2 | -T3.  [clausify(2)].
+kept:      18 -L1 | -L2.  [clausify(3)].
+kept:      19 -L1 | -L3.  [clausify(3)].
+kept:      20 -L2 | -L3.  [clausify(3)].
+kept:      21 -W1 | -W2.  [clausify(4)].
+kept:      22 -W1 | -W3.  [clausify(4)].
+kept:      23 -W2 | -W3.  [clausify(4)].
+kept:      24 -T1 | -L1.  [clausify(5)].
+kept:      25 -T1 | -W1.  [clausify(5)].
+kept:      26 -T2 | -L2.  [clausify(5)].
+kept:      27 -T2 | -W2.  [clausify(5)].
+kept:      28 -T3 | -L3.  [clausify(5)].
+kept:      29 -T3 | -W3.  [clausify(5)].
+kept:      30 -L1 | -W1.  [clausify(6)].
+kept:      31 -L2 | -W2.  [clausify(6)].
+kept:      32 -L3 | -W3.  [clausify(6)].
+kept:      33 -L1 | -T2.  [clausify(8)].
+kept:      34 -T1 | T2.  [clausify(8)].
+kept:      35 -T2 | W2.  [clausify(9)].
+kept:      36 -T3 | L2.  [clausify(10)].
+kept:      37 -W1 | -L2 | -T3.  [deny(11)].
+
+============================== end of process initial clauses ========
+
+============================== CLAUSES FOR SEARCH ====================
+
+% Clauses after input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+12 T1 | T2 | T3.  [clausify(1)].
+13 L1 | L2 | L3.  [clausify(1)].
+14 W1 | W2 | W3.  [clausify(1)].
+15 -T1 | -T2.  [clausify(2)].
+16 -T1 | -T3.  [clausify(2)].
+17 -T2 | -T3.  [clausify(2)].
+18 -L1 | -L2.  [clausify(3)].
+19 -L1 | -L3.  [clausify(3)].
+20 -L2 | -L3.  [clausify(3)].
+21 -W1 | -W2.  [clausify(4)].
+22 -W1 | -W3.  [clausify(4)].
+23 -W2 | -W3.  [clausify(4)].
+24 -T1 | -L1.  [clausify(5)].
+25 -T1 | -W1.  [clausify(5)].
+26 -T2 | -L2.  [clausify(5)].
+27 -T2 | -W2.  [clausify(5)].
+28 -T3 | -L3.  [clausify(5)].
+29 -T3 | -W3.  [clausify(5)].
+30 -L1 | -W1.  [clausify(6)].
+31 -L2 | -W2.  [clausify(6)].
+32 -L3 | -W3.  [clausify(6)].
+33 -L1 | -T2.  [clausify(8)].
+34 -T1 | T2.  [clausify(8)].
+35 -T2 | W2.  [clausify(9)].
+36 -T3 | L2.  [clausify(10)].
+37 -W1 | -L2 | -T3.  [deny(11)].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== end of clauses for search =============
+
+============================== SEARCH ================================
+
+% Starting search at 0.02 seconds.
+
+given #1 (I,wt=3): 12 T1 | T2 | T3.  [clausify(1)].
+
+given #2 (I,wt=3): 13 L1 | L2 | L3.  [clausify(1)].
+
+given #3 (I,wt=3): 14 W1 | W2 | W3.  [clausify(1)].
+
+given #4 (I,wt=2): 15 -T1 | -T2.  [clausify(2)].
+
+given #5 (I,wt=2): 16 -T1 | -T3.  [clausify(2)].
+
+given #6 (I,wt=2): 17 -T2 | -T3.  [clausify(2)].
+
+given #7 (I,wt=2): 18 -L1 | -L2.  [clausify(3)].
+
+given #8 (I,wt=2): 19 -L1 | -L3.  [clausify(3)].
+
+given #9 (I,wt=2): 20 -L2 | -L3.  [clausify(3)].
+
+given #10 (I,wt=2): 21 -W1 | -W2.  [clausify(4)].
+
+given #11 (I,wt=2): 22 -W1 | -W3.  [clausify(4)].
+
+given #12 (I,wt=2): 23 -W2 | -W3.  [clausify(4)].
+
+given #13 (I,wt=2): 24 -T1 | -L1.  [clausify(5)].
+
+given #14 (I,wt=2): 25 -T1 | -W1.  [clausify(5)].
+
+given #15 (I,wt=2): 26 -T2 | -L2.  [clausify(5)].
+
+given #16 (I,wt=2): 27 -T2 | -W2.  [clausify(5)].
+
+given #17 (I,wt=2): 28 -T3 | -L3.  [clausify(5)].
+
+given #18 (I,wt=2): 29 -T3 | -W3.  [clausify(5)].
+
+given #19 (I,wt=2): 30 -L1 | -W1.  [clausify(6)].
+
+given #20 (I,wt=2): 31 -L2 | -W2.  [clausify(6)].
+
+given #21 (I,wt=2): 32 -L3 | -W3.  [clausify(6)].
+
+given #22 (I,wt=2): 33 -L1 | -T2.  [clausify(8)].
+
+given #23 (I,wt=2): 34 -T1 | T2.  [clausify(8)].
+
+given #24 (I,wt=2): 35 -T2 | W2.  [clausify(9)].
+
+given #25 (I,wt=2): 36 -T3 | L2.  [clausify(10)].
+
+given #26 (I,wt=3): 37 -W1 | -L2 | -T3.  [deny(11)].
+
+given #27 (A,wt=3): 38 -T3 | W1 | W2.  [resolve(29,b,14,c)].
+
+given #28 (T,wt=3): 39 -L3 | W1 | W2.  [resolve(32,b,14,c)].
+
+given #29 (T,wt=3): 40 L2 | T1 | T2.  [resolve(36,a,12,c)].
+
+given #30 (T,wt=2): 43 L2 | T2.  [resolve(40,b,34,a),merge(c)].
+
+given #31 (T,wt=4): 41 W1 | W2 | T1 | T2.  [resolve(38,a,12,c)].
+
+given #32 (A,wt=4): 42 W1 | W2 | L1 | L2.  [resolve(39,a,13,c)].
+
+given #33 (T,wt=4): 45 W2 | T1 | T2 | -L1.  [resolve(41,a,30,b)].
+
+given #34 (T,wt=4): 46 W2 | L1 | L2 | -T1.  [resolve(42,a,25,b)].
+
+given #35 (T,wt=5): 44 W2 | T1 | T2 | -L2 | -T3.  [resolve(41,a,37,a)].
+
+given #36 (T,wt=4): 47 W2 | T1 | T2 | -L2.  [resolve(44,e,12,c),merge(e),merge(f)].
+
+given #37 (A,wt=3): 48 W2 | T1 | T2.  [resolve(47,d,43,a),merge(d)].
+
+given #38 (T,wt=3): 49 T1 | T2 | -L2.  [resolve(48,a,31,b)].
+
+given #39 (T,wt=2): 50 T1 | T2.  [resolve(49,c,43,a),merge(c)].
+
+============================== PROOF =================================
+
+% Proof 1 at 0.02 (+ 0.00) seconds.
+% Length of proof is 28.
+% Level of proof is 11.
+% Maximum clause weight is 5.000.
+% Given clauses 39.
+
+1 (T1 | T2 | T3) & (L1 | L2 | L3) & (W1 | W2 | W3) # label(non_clause).  [assumption].
+5 (T1 -> -L1 & -W1) & (T2 -> -L2 & -W2) & (T3 -> -L3 & -W3) # label(non_clause).  [assumption].
+6 (L1 -> -T1 & -W1) & (L2 -> -T2 & -W2) & (L3 -> -T3 & -W3) # label(non_clause).  [assumption].
+8 (L1 -> -T2) & (T1 -> T2) # label(non_clause).  [assumption].
+9 (L2 -> -W2) & (T2 -> W2) # label(non_clause).  [assumption].
+10 (T3 -> L2) & (L3 -> -L2) # label(non_clause).  [assumption].
+11 W1 & L2 & T3 # label(non_clause) # label(goal).  [goal].
+12 T1 | T2 | T3.  [clausify(1)].
+14 W1 | W2 | W3.  [clausify(1)].
+27 -T2 | -W2.  [clausify(5)].
+29 -T3 | -W3.  [clausify(5)].
+31 -L2 | -W2.  [clausify(6)].
+34 -T1 | T2.  [clausify(8)].
+35 -T2 | W2.  [clausify(9)].
+36 -T3 | L2.  [clausify(10)].
+37 -W1 | -L2 | -T3.  [deny(11)].
+38 -T3 | W1 | W2.  [resolve(29,b,14,c)].
+40 L2 | T1 | T2.  [resolve(36,a,12,c)].
+41 W1 | W2 | T1 | T2.  [resolve(38,a,12,c)].
+43 L2 | T2.  [resolve(40,b,34,a),merge(c)].
+44 W2 | T1 | T2 | -L2 | -T3.  [resolve(41,a,37,a)].
+47 W2 | T1 | T2 | -L2.  [resolve(44,e,12,c),merge(e),merge(f)].
+48 W2 | T1 | T2.  [resolve(47,d,43,a),merge(d)].
+49 T1 | T2 | -L2.  [resolve(48,a,31,b)].
+50 T1 | T2.  [resolve(49,c,43,a),merge(c)].
+51 T2.  [resolve(50,a,34,a),merge(b)].
+52 W2.  [back_unit_del(35),unit_del(a,51)].
+54 $F.  [back_unit_del(27),unit_del(a,51),unit_del(b,52)].
+
+============================== end of proof ==========================
+
+============================== STATISTICS ============================
+
+Given=39. Generated=71. Kept=42. proofs=1.
+Usable=25. Sos=0. Demods=0. Limbo=3, Disabled=51. Hints=0.
+Kept_by_rule=0, Deleted_by_rule=0.
+Forward_subsumed=28. Back_subsumed=11.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=0 (0 lex), Back_demodulated=0. Back_unit_deleted=3.
+Demod_attempts=0. Demod_rewrites=0.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=13. Nonunit_bsub_feature_tests=50.
+Megabytes=0.10.
+User_CPU=0.02, System_CPU=0.00, Wall_clock=0.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+THEOREM PROVED
+
+Exiting with 1 proof.
+
+Process 9244 exit (max_proofs) Tue Jan 19 19:00:27 2021

@@ -1,0 +1,21 @@
+============================== Prover9 ===============================
+Prover9 (64) version 2009-11A, November 2009.
+Process 8333 was started by adrian on adrian,
+Tue Jan 19 18:22:43 2021
+The command was "prover9 -f kk4.in".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+% Reading from file kk4.in
+
+assign(domain_size,2).
+
+%%ERROR: Parameter not recognized:
+
+%%START ERROR%%
+assign(domain_size,2).
+%%END ERROR%%
+
+Fatal error:  Parameter not recognized
+

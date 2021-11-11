@@ -1,0 +1,171 @@
+============================== Prover9 ===============================
+Prover9 (64) version 2009-11A, November 2009.
+Process 8089 was started by adrian on adrian,
+Tue Jan 19 18:15:36 2021
+The command was "prover9 -f kk1p.in".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+% Reading from file kk1p.in
+
+
+formulas(assumptions).
+(all x (inhabitant(x) -> knight(x) | knave(x))).
+(all x ((knight(x) -> -knave(x)) & (knave(x) -> -knight(x)))).
+knight(x) -> m(x).
+knave(x) -> -m(x).
+inhabitant(a) & inhabitant(b).
+m(a) <-> knave(a) | knave(b).
+end_of_list.
+
+formulas(goals).
+knight(a) & knave(b).
+end_of_list.
+
+============================== end of input ==========================
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+1 (all x (inhabitant(x) -> knight(x) | knave(x))) # label(non_clause).  [assumption].
+2 (all x ((knight(x) -> -knave(x)) & (knave(x) -> -knight(x)))) # label(non_clause).  [assumption].
+3 knight(x) -> m(x) # label(non_clause).  [assumption].
+4 knave(x) -> -m(x) # label(non_clause).  [assumption].
+5 inhabitant(a) & inhabitant(b) # label(non_clause).  [assumption].
+6 m(a) <-> knave(a) | knave(b) # label(non_clause).  [assumption].
+7 knight(a) & knave(b) # label(non_clause) # label(goal).  [goal].
+
+============================== end of process non-clausal formulas ===
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+-inhabitant(x) | knight(x) | knave(x).  [clausify(1)].
+-knight(x) | -knave(x).  [clausify(2)].
+-knight(x) | m(x).  [clausify(3)].
+-knave(x) | -m(x).  [clausify(4)].
+inhabitant(a).  [clausify(5)].
+inhabitant(b).  [clausify(5)].
+-m(a) | knave(a) | knave(b).  [clausify(6)].
+m(a) | -knave(a).  [clausify(6)].
+m(a) | -knave(b).  [clausify(6)].
+-knight(a) | -knave(b).  [deny(7)].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== PREDICATE ELIMINATION =================
+
+Eliminating inhabitant/1
+8 inhabitant(a).  [clausify(5)].
+9 -inhabitant(x) | knight(x) | knave(x).  [clausify(1)].
+Derived: knight(a) | knave(a).  [resolve(8,a,9,a)].
+10 inhabitant(b).  [clausify(5)].
+Derived: knight(b) | knave(b).  [resolve(10,a,9,a)].
+
+Eliminating knight/1
+11 knight(a) | knave(a).  [resolve(8,a,9,a)].
+12 -knight(x) | -knave(x).  [clausify(2)].
+13 -knight(x) | m(x).  [clausify(3)].
+14 -knight(a) | -knave(b).  [deny(7)].
+Derived: knave(a) | m(a).  [resolve(11,a,13,a)].
+Derived: knave(a) | -knave(b).  [resolve(11,a,14,a)].
+15 knight(b) | knave(b).  [resolve(10,a,9,a)].
+Derived: knave(b) | m(b).  [resolve(15,a,13,a)].
+
+Eliminating m/1
+16 m(a) | -knave(a).  [clausify(6)].
+17 -knave(x) | -m(x).  [clausify(4)].
+18 -m(a) | knave(a) | knave(b).  [clausify(6)].
+Derived: -knave(a) | -knave(a).  [resolve(16,a,17,b)].
+19 m(a) | -knave(b).  [clausify(6)].
+20 knave(a) | m(a).  [resolve(11,a,13,a)].
+Derived: knave(a) | knave(a) | knave(b).  [resolve(20,b,18,a)].
+21 knave(b) | m(b).  [resolve(15,a,13,a)].
+
+============================== end predicate elimination =============
+
+Auto_denials:  (non-Horn, no changes).
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ knave ]).
+Function symbol precedence:  function_order([ a, b ]).
+After inverse_order:  (no changes).
+Unfolding symbols: (none).
+
+Auto_inference settings:
+  % set(binary_resolution).  % (non-Horn)
+  % set(neg_ur_resolution).  % (non-Horn, less than 100 clauses)
+
+Auto_process settings:
+  % set(factor).  % (non-Horn)
+  % set(unit_deletion).  % (non-Horn)
+
+kept:      22 knave(a) | -knave(b).  [resolve(11,a,14,a)].
+           23 -knave(a) | -knave(a).  [resolve(16,a,17,b)].
+kept:      24 -knave(a).  [copy(23),merge(b)].
+           25 knave(a) | knave(a) | knave(b).  [resolve(20,b,18,a)].
+kept:      26 knave(b).  [copy(25),merge(b),unit_del(a,24)].
+
+============================== PROOF =================================
+
+% Proof 1 at 0.01 (+ 0.00) seconds.
+% Length of proof is 21.
+% Level of proof is 6.
+% Maximum clause weight is 4.000.
+% Given clauses 0.
+
+1 (all x (inhabitant(x) -> knight(x) | knave(x))) # label(non_clause).  [assumption].
+3 knight(x) -> m(x) # label(non_clause).  [assumption].
+4 knave(x) -> -m(x) # label(non_clause).  [assumption].
+5 inhabitant(a) & inhabitant(b) # label(non_clause).  [assumption].
+6 m(a) <-> knave(a) | knave(b) # label(non_clause).  [assumption].
+7 knight(a) & knave(b) # label(non_clause) # label(goal).  [goal].
+8 inhabitant(a).  [clausify(5)].
+9 -inhabitant(x) | knight(x) | knave(x).  [clausify(1)].
+11 knight(a) | knave(a).  [resolve(8,a,9,a)].
+13 -knight(x) | m(x).  [clausify(3)].
+14 -knight(a) | -knave(b).  [deny(7)].
+16 m(a) | -knave(a).  [clausify(6)].
+17 -knave(x) | -m(x).  [clausify(4)].
+18 -m(a) | knave(a) | knave(b).  [clausify(6)].
+20 knave(a) | m(a).  [resolve(11,a,13,a)].
+22 knave(a) | -knave(b).  [resolve(11,a,14,a)].
+23 -knave(a) | -knave(a).  [resolve(16,a,17,b)].
+24 -knave(a).  [copy(23),merge(b)].
+25 knave(a) | knave(a) | knave(b).  [resolve(20,b,18,a)].
+26 knave(b).  [copy(25),merge(b),unit_del(a,24)].
+27 $F.  [back_unit_del(22),unit_del(a,24),unit_del(b,26)].
+
+============================== end of proof ==========================
+
+============================== STATISTICS ============================
+
+Given=0. Generated=4. Kept=3. proofs=1.
+Usable=0. Sos=0. Demods=0. Limbo=2, Disabled=18. Hints=0.
+Kept_by_rule=0, Deleted_by_rule=0.
+Forward_subsumed=0. Back_subsumed=0.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=0 (0 lex), Back_demodulated=0. Back_unit_deleted=1.
+Demod_attempts=0. Demod_rewrites=0.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=1.
+Megabytes=0.04.
+User_CPU=0.01, System_CPU=0.00, Wall_clock=0.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+THEOREM PROVED
+
+Exiting with 1 proof.
+
+Process 8089 exit (max_proofs) Tue Jan 19 18:15:36 2021

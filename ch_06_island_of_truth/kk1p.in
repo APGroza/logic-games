@@ -1,0 +1,12 @@
+formulas(assumptions).
+  all x (inhabitant(x) -> knight(x) | knave(x)). 
+  all x ((knight(x) -> -knave(x)) & (knave(x) -> -knight(x))).
+  knight(x) -> m(x).              knave(x)  -> -m(x).
+
+  inhabitant(a) & inhabitant(b).
+  m(a) <->  knave(a) | knave(b). 
+end_of_list.
+
+formulas(goals).
+  knight(a) & knave(b).
+end_of_list.

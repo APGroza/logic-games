@@ -1,0 +1,21 @@
+formulas(assumptions).
+  (T1 | T2 | T3) & (L1 | L2 | L3) & (W1 | W2 | W3).	
+
+  %T, L and W occupies only one position
+  (T1 -> -T2 & -T3) & (T2 -> -T1 & -T3) & (T3 -> -T1 & -T2).
+  (L1 -> -L2 & -L3) & (L2 -> -L1 & -L3) & (L3 -> -L1 & -L2).
+  (W1 -> -W2 & -W3) & (W2 -> -W1 & -W3) & (W3 -> -W1 & -W2).
+
+  %Each position is ocupied by one godess.
+  (T1 -> -L1 & -W1) & (T2 -> -L2 & -W2) & (T3 -> -L3 & -W3).
+  (L1 -> -T1 & -W1) & (L2 -> -T2 & -W2) & (L3 -> -T3 & -W3).
+  (W1 -> -L1 & -T1) & (W2 -> -L2 & -T2) & (W3 -> -L3 & -T3).
+
+  (L1 -> -T2) & (T1 -> T2).             % the first  answer
+  (L2 -> -W2) & (T2 -> W2).             % the second answer
+  (T3 -> L2) & (L3 -> -L2).             % the third  answer
+end_of_list.
+
+formulas(goals).
+  W1 & L2 & T3. 
+end_of_list.

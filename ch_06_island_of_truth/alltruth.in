@@ -1,0 +1,24 @@
+assign(domain_size,3).
+assign(max_models,-1).
+
+list(distinct).
+  [n1,n2,n3].
+end_of_list.
+
+formulas(assumptions).
+  exists x (white(x)) & exists x (black(x)) & exists x (gray(x)).
+  all x (white(x) & white(y) -> x=y). %Each one from a different tribe
+  all x (black(x) & black(y) -> x=y).
+  all x (gray(x)  & gray(y)  -> x=y).
+
+  all x (white(x) -> -black(x) & -gray(x)). %Each one from a single tribe
+  all x (black(x) -> -white(x) & -gray(x)). 
+  all x (gray(x)  -> -white(x) & -black(x)). 
+end_of_list.
+
+formulas(alltruth_puzzle). 
+  white(n1) ->   gray(n1) &  black(n2) &  white(n3).   %Case 1: w answers
+  black(n1) ->  -gray(n1) & -black(n2) & -white(n3).   %Case 2: b answers
+  gray(n1)  -> ( gray(n1) & -black(n2) &  white(n3)) | %Case 3: g answers
+               (-gray(n1) &  black(n2) &  white(n3)). 
+end_of_list.

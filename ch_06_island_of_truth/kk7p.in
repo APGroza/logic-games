@@ -1,0 +1,46 @@
+formulas(assumptions).
+  all x (inhabitant(x) -> knight(x) | knave(x) | spy(x)). 
+  all x (knight(x) -> -knave(x) & -spy(x)).
+  all x (knave(x) -> -knight(x) & -spy(x)).
+  all x (spy(x) -> -knight(x) & -knave(x)).
+  knight(x) ->  m(x).
+  knave(x)  -> -m(x).
+   knight(x) ->  m2(x).
+  knave(x)  -> -m2(x).
+
+  inhabitant(blue) & inhabitant(red) & inhabitant(green).
+  blue != red & red != green & green != blue.
+  knight(x) & knight(y) -> x=y. 
+  knave(x)  & knave(y)  -> x=y. 
+  spy(x)    & spy(y)    -> x=y. 
+
+  exists x knight(x) & exists x knave(x) & exists x spy(x). 
+  
+  (m(blue)  <-> spy(blue))  |  (m(blue)  <-> -spy(blue)).
+  (m(red)   <-> spy(red))   |  (m(red)   <-> -spy(red)).
+  (m(green) <-> spy(green)) |  (m(green) <-> -spy(green)).
+
+  %1 "no" and 2 "yes" -> the man who answered no is the knight
+  ((m(blue)  <-> spy(blue)) & (m(red) <-> spy(red)) & (m(green) <-> -spy(green))) -> knight(green).
+  ((m(blue)  <-> spy(blue)) & (m(red) <-> -spy(red)) & (m(green) <-> spy(green))) -> knight(red).
+  ((m(blue)  <-> -spy(blue)) & (m(red) <-> -spy(red)) & (m(green) <-> spy(green))) -> knight(green).
+
+  %2 "no" and 1 "yes" -> the man who said "yes" is a knave.  
+   ((m(blue)  <-> spy(blue)) & (m(red) <-> -spy(red)) & (m(green) <-> -spy(green))) -> knave(blue).
+   ((m(blue)  <-> -spy(blue)) & (m(red) <-> spy(red)) & (m(green) <-> -spy(green))) -> knave(red).
+   ((m(blue)  <-> -spy(blue)) & (m(red) <-> -spy(red)) & (m(green) <-> spy(green))) -> knave(green).
+
+   %pick the person you know to be either a knight or a knave. Point to one of the others and ask, "is he a spy?" 
+   % maybe we need to prove knave(blue) or ....
+   
+   %second question spy(green)? for blue and red
+   (m2(blue) <->  spy(green)) |  (m2(blue) <->  spy(green)).
+   (m2(red) <->  spy(green)) |  (m2(red) <->  spy(green)).
+
+    %second question spy(blue)? for green
+   (m2(green) <->  spy(blue)) |  (m2(green) <->  spy(blue)).
+end_of_list.
+
+formulas(goals).
+  knight(red).
+end_of_list.

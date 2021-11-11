@@ -1,0 +1,10 @@
+interpretation( 3, [number = 1,seconds = 0], [
+    function(n1, [0]),
+    function(n2, [1]),
+    function(n3, [2]),
+    function(c1, [1]),
+    function(c2, [0]),
+    function(c3, [2]),
+    relation(black(_), [1,0,0]),
+    relation(gray(_), [0,0,1]),
+    relation(white(_), [0,1,0])]).

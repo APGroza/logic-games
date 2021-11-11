@@ -1,0 +1,25 @@
+assign(domain_size,3).
+assign(max_models,-1).
+
+formulas(island_of_truth_with_spies).
+  all x (inhabitant(x) -> knight(x) | knave(x) | spy(x)). 
+  all x (knight(x) -> -knave(x) & -spy(x)).
+  all x (knave(x) -> -knight(x) & -spy(x)).
+  all x (spy(x) -> -knight(x) & -knave(x)).
+  knight(x) ->  m(x).
+  knave(x)  -> -m(x).
+end_of_list.
+
+formulas(puzzle).  
+  inhabitant(blue) & inhabitant(red) & inhabitant(green).
+  blue = 0 & red = 1 & green = 2.
+  knight(x) & knight(y) -> x=y. 
+  knave(x)  & knave(y)  -> x=y. 
+  spy(x)    & spy(y)    -> x=y. 
+
+  (exists x knight(x)) & (exists x knave(x)) & (exists x spy(x)). 
+  
+  m(blue)  <-> knight(blue).
+  m(red)   <-> knight(blue).
+  m(green) <-> spy(green).
+end_of_list.

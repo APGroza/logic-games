@@ -1,0 +1,16 @@
+formulas(assumptions).
+  all x (inhabitant(x) -> knight(x) | knave(x)). 
+  all x ((knight(x) -> -knave(x)) & (knave(x) -> -knight(x))).
+  knight(x) ->  m(x).  knave(x)  -> -m(x).
+  
+  inhabitant(jim) & inhabitant(joe) & inhabitant(jon).
+  jim != jon. jon != joe. jim != joe. 
+  m(jim) <->  (knave(joe)  |  knight(jim)). 
+  m(jon) <-> ((knight(jim) &  knave(jon)) | (knave(jim) & knight(jon))).  
+  m(joe) <-> (-knight(jim) & -knight(jon)).  
+end_of_list.
+
+formulas(goals).
+  %knave(jon) & knight(joe) & knave(jim).
+  knave(jon).  %knight(joe). %knave(jim).
+end_of_list.

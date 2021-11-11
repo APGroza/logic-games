@@ -1,0 +1,415 @@
+============================== Prover9 ===============================
+Prover9 (64) version 2009-11A, November 2009.
+Process 8897 was started by adrian on adrian,
+Tue Jan 19 18:47:49 2021
+The command was "prover9 -f kk5p.in".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+% Reading from file kk5p.in
+
+
+formulas(assumptions).
+(all x (inhabitant(x) -> knight(x) | knave(x) | spy(x))).
+(all x (knight(x) -> -knave(x) & -spy(x))).
+(all x (knave(x) -> -knight(x) & -spy(x))).
+(all x (spy(x) -> -knight(x) & -knave(x))).
+knight(x) -> m(x).
+knave(x) -> -m(x).
+inhabitant(blue) & inhabitant(red) & inhabitant(green).
+blue != red & red != green & blue != green.
+knight(x) & knight(y) -> x = y.
+knave(x) & knave(y) -> x = y.
+spy(x) & spy(y) -> x = y.
+(exists x knight(x)) & (exists x knave(x)) & (exists x spy(x)).
+m(blue) <-> knight(blue).
+m(red) <-> knight(blue).
+m(green) <-> spy(green).
+end_of_list.
+
+formulas(goals).
+spy(red).
+end_of_list.
+
+============================== end of input ==========================
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+1 (all x (inhabitant(x) -> knight(x) | knave(x) | spy(x))) # label(non_clause).  [assumption].
+2 (all x (knight(x) -> -knave(x) & -spy(x))) # label(non_clause).  [assumption].
+3 (all x (knave(x) -> -knight(x) & -spy(x))) # label(non_clause).  [assumption].
+4 (all x (spy(x) -> -knight(x) & -knave(x))) # label(non_clause).  [assumption].
+5 knight(x) -> m(x) # label(non_clause).  [assumption].
+6 knave(x) -> -m(x) # label(non_clause).  [assumption].
+7 inhabitant(blue) & inhabitant(red) & inhabitant(green) # label(non_clause).  [assumption].
+8 blue != red & red != green & blue != green # label(non_clause).  [assumption].
+9 knight(x) & knight(y) -> x = y # label(non_clause).  [assumption].
+10 knave(x) & knave(y) -> x = y # label(non_clause).  [assumption].
+11 spy(x) & spy(y) -> x = y # label(non_clause).  [assumption].
+12 (exists x knight(x)) & (exists x knave(x)) & (exists x spy(x)) # label(non_clause).  [assumption].
+13 m(blue) <-> knight(blue) # label(non_clause).  [assumption].
+14 m(red) <-> knight(blue) # label(non_clause).  [assumption].
+15 m(green) <-> spy(green) # label(non_clause).  [assumption].
+16 spy(red) # label(non_clause) # label(goal).  [goal].
+
+============================== end of process non-clausal formulas ===
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+-inhabitant(x) | knight(x) | knave(x) | spy(x).  [clausify(1)].
+-knight(x) | -knave(x).  [clausify(2)].
+-knight(x) | -spy(x).  [clausify(2)].
+-knave(x) | -knight(x).  [clausify(3)].
+-knave(x) | -spy(x).  [clausify(3)].
+-spy(x) | -knight(x).  [clausify(4)].
+-spy(x) | -knave(x).  [clausify(4)].
+-knight(x) | m(x).  [clausify(5)].
+-knave(x) | -m(x).  [clausify(6)].
+inhabitant(blue).  [clausify(7)].
+inhabitant(red).  [clausify(7)].
+inhabitant(green).  [clausify(7)].
+red != blue.  [clausify(8)].
+green != red.  [clausify(8)].
+green != blue.  [clausify(8)].
+-knight(x) | -knight(y) | y = x.  [clausify(9)].
+-knave(x) | -knave(y) | y = x.  [clausify(10)].
+-spy(x) | -spy(y) | y = x.  [clausify(11)].
+knight(c1).  [clausify(12)].
+knave(c2).  [clausify(12)].
+spy(c3).  [clausify(12)].
+-m(blue) | knight(blue).  [clausify(13)].
+m(blue) | -knight(blue).  [clausify(13)].
+-m(red) | knight(blue).  [clausify(14)].
+m(red) | -knight(blue).  [clausify(14)].
+-m(green) | spy(green).  [clausify(15)].
+m(green) | -spy(green).  [clausify(15)].
+-spy(red).  [deny(16)].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== PREDICATE ELIMINATION =================
+
+Eliminating inhabitant/1
+17 inhabitant(blue).  [clausify(7)].
+18 -inhabitant(x) | knight(x) | knave(x) | spy(x).  [clausify(1)].
+Derived: knight(blue) | knave(blue) | spy(blue).  [resolve(17,a,18,a)].
+19 inhabitant(red).  [clausify(7)].
+Derived: knight(red) | knave(red) | spy(red).  [resolve(19,a,18,a)].
+20 inhabitant(green).  [clausify(7)].
+Derived: knight(green) | knave(green) | spy(green).  [resolve(20,a,18,a)].
+
+============================== end predicate elimination =============
+
+Auto_denials:  (non-Horn, no changes).
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ =, knight, spy, m, knave ]).
+Function symbol precedence:  function_order([ blue, green, red, c1, c2, c3 ]).
+After inverse_order:  (no changes).
+Unfolding symbols: (none).
+
+Auto_inference settings:
+  % set(paramodulation).  % (positive equality literals)
+  % set(binary_resolution).  % (non-Horn)
+  % set(neg_ur_resolution).  % (non-Horn, less than 100 clauses)
+
+Auto_process settings:
+  % set(factor).  % (non-Horn)
+  % set(unit_deletion).  % (non-Horn)
+
+kept:      21 -knight(x) | -knave(x).  [clausify(2)].
+kept:      22 -knight(x) | -spy(x).  [clausify(2)].
+kept:      23 -knave(x) | -spy(x).  [clausify(3)].
+kept:      24 -knight(x) | m(x).  [clausify(5)].
+kept:      25 -knave(x) | -m(x).  [clausify(6)].
+kept:      26 red != blue.  [clausify(8)].
+           27 green != red.  [clausify(8)].
+kept:      28 red != green.  [copy(27),flip(a)].
+kept:      29 green != blue.  [clausify(8)].
+kept:      30 -knight(x) | -knight(y) | y = x.  [clausify(9)].
+kept:      31 -knave(x) | -knave(y) | y = x.  [clausify(10)].
+kept:      32 -spy(x) | -spy(y) | y = x.  [clausify(11)].
+kept:      33 knight(c1).  [clausify(12)].
+kept:      34 knave(c2).  [clausify(12)].
+kept:      35 spy(c3).  [clausify(12)].
+kept:      36 -m(blue) | knight(blue).  [clausify(13)].
+kept:      37 -m(red) | knight(blue).  [clausify(14)].
+kept:      38 m(red) | -knight(blue).  [clausify(14)].
+kept:      39 -m(green) | spy(green).  [clausify(15)].
+kept:      40 m(green) | -spy(green).  [clausify(15)].
+kept:      41 -spy(red).  [deny(16)].
+kept:      42 knight(blue) | knave(blue) | spy(blue).  [resolve(17,a,18,a)].
+           43 knight(red) | knave(red) | spy(red).  [resolve(19,a,18,a)].
+kept:      44 knight(red) | knave(red).  [copy(43),unit_del(c,41)].
+kept:      45 knight(green) | knave(green) | spy(green).  [resolve(20,a,18,a)].
+
+============================== end of process initial clauses ========
+
+============================== CLAUSES FOR SEARCH ====================
+
+% Clauses after input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+21 -knight(x) | -knave(x).  [clausify(2)].
+22 -knight(x) | -spy(x).  [clausify(2)].
+23 -knave(x) | -spy(x).  [clausify(3)].
+24 -knight(x) | m(x).  [clausify(5)].
+25 -knave(x) | -m(x).  [clausify(6)].
+26 red != blue.  [clausify(8)].
+28 red != green.  [copy(27),flip(a)].
+29 green != blue.  [clausify(8)].
+30 -knight(x) | -knight(y) | y = x.  [clausify(9)].
+31 -knave(x) | -knave(y) | y = x.  [clausify(10)].
+32 -spy(x) | -spy(y) | y = x.  [clausify(11)].
+33 knight(c1).  [clausify(12)].
+34 knave(c2).  [clausify(12)].
+35 spy(c3).  [clausify(12)].
+36 -m(blue) | knight(blue).  [clausify(13)].
+37 -m(red) | knight(blue).  [clausify(14)].
+38 m(red) | -knight(blue).  [clausify(14)].
+39 -m(green) | spy(green).  [clausify(15)].
+40 m(green) | -spy(green).  [clausify(15)].
+41 -spy(red).  [deny(16)].
+42 knight(blue) | knave(blue) | spy(blue).  [resolve(17,a,18,a)].
+44 knight(red) | knave(red).  [copy(43),unit_del(c,41)].
+45 knight(green) | knave(green) | spy(green).  [resolve(20,a,18,a)].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== end of clauses for search =============
+
+============================== SEARCH ================================
+
+% Starting search at 0.01 seconds.
+
+given #1 (I,wt=4): 21 -knight(x) | -knave(x).  [clausify(2)].
+
+given #2 (I,wt=4): 22 -knight(x) | -spy(x).  [clausify(2)].
+
+given #3 (I,wt=4): 23 -knave(x) | -spy(x).  [clausify(3)].
+
+given #4 (I,wt=4): 24 -knight(x) | m(x).  [clausify(5)].
+
+given #5 (I,wt=4): 25 -knave(x) | -m(x).  [clausify(6)].
+
+given #6 (I,wt=3): 26 red != blue.  [clausify(8)].
+
+given #7 (I,wt=3): 28 red != green.  [copy(27),flip(a)].
+
+given #8 (I,wt=3): 29 green != blue.  [clausify(8)].
+
+given #9 (I,wt=7): 30 -knight(x) | -knight(y) | y = x.  [clausify(9)].
+
+given #10 (I,wt=7): 31 -knave(x) | -knave(y) | y = x.  [clausify(10)].
+
+given #11 (I,wt=7): 32 -spy(x) | -spy(y) | y = x.  [clausify(11)].
+
+given #12 (I,wt=2): 33 knight(c1).  [clausify(12)].
+
+given #13 (I,wt=2): 34 knave(c2).  [clausify(12)].
+
+given #14 (I,wt=2): 35 spy(c3).  [clausify(12)].
+
+given #15 (I,wt=4): 36 -m(blue) | knight(blue).  [clausify(13)].
+
+given #16 (I,wt=4): 37 -m(red) | knight(blue).  [clausify(14)].
+
+given #17 (I,wt=4): 38 m(red) | -knight(blue).  [clausify(14)].
+
+given #18 (I,wt=4): 39 -m(green) | spy(green).  [clausify(15)].
+
+given #19 (I,wt=4): 40 m(green) | -spy(green).  [clausify(15)].
+
+given #20 (I,wt=2): 41 -spy(red).  [deny(16)].
+
+given #21 (I,wt=6): 42 knight(blue) | knave(blue) | spy(blue).  [resolve(17,a,18,a)].
+
+given #22 (I,wt=4): 44 knight(red) | knave(red).  [copy(43),unit_del(c,41)].
+
+given #23 (I,wt=6): 45 knight(green) | knave(green) | spy(green).  [resolve(20,a,18,a)].
+
+given #24 (A,wt=5): 46 -knight(x) | c1 = x.  [resolve(33,a,30,b)].
+
+given #25 (F,wt=2): 48 -spy(c1).  [ur(22,a,33,a)].
+
+given #26 (F,wt=2): 49 -knave(c1).  [ur(21,a,33,a)].
+
+given #27 (F,wt=2): 51 -m(c2).  [resolve(34,a,25,a)].
+
+given #28 (F,wt=2): 52 -spy(c2).  [resolve(34,a,23,a)].
+
+given #29 (T,wt=2): 47 m(c1).  [resolve(33,a,24,a)].
+
+given #30 (T,wt=4): 59 knight(red) | -m(red).  [resolve(44,b,25,a)].
+
+given #31 (T,wt=5): 50 -knave(x) | c2 = x.  [resolve(34,a,31,b)].
+
+given #32 (T,wt=5): 54 -spy(x) | c3 = x.  [resolve(35,a,32,b)].
+
+given #33 (A,wt=2): 53 -knight(c2).  [resolve(34,a,21,b)].
+
+given #34 (F,wt=2): 55 -knight(c3).  [resolve(35,a,22,b)].
+
+given #35 (F,wt=2): 56 -knave(c3).  [ur(23,b,35,a)].
+
+given #36 (T,wt=5): 62 c2 = red | knight(red).  [resolve(50,a,44,b)].
+
+given #37 (T,wt=5): 66 c2 = red | m(red).  [resolve(62,b,24,a)].
+
+given #38 (T,wt=5): 67 c2 = red | knight(blue).  [resolve(66,b,37,a)].
+
+given #39 (T,wt=5): 70 c2 = red | m(blue).  [resolve(67,b,24,a)].
+
+given #40 (A,wt=9): 57 knight(blue) | spy(blue) | -knave(x) | blue = x.  [resolve(42,b,31,b)].
+
+given #41 (T,wt=6): 64 c2 = red | c1 = red.  [resolve(62,b,46,a)].
+
+given #42 (T,wt=5): 73 c1 = red | knave(red).  [para(64(a,1),34(a,1))].
+
+given #43 (T,wt=5): 74 c1 = red | -m(red).  [para(64(a,1),51(a,1))].
+
+given #44 (T,wt=6): 68 c2 = red | c1 = blue.  [resolve(67,b,46,a)].
+
+given #45 (A,wt=7): 58 knight(red) | -knave(x) | red = x.  [resolve(44,b,31,b)].
+
+given #46 (T,wt=5): 77 c1 = blue | knave(red).  [para(68(a,1),34(a,1))].
+
+given #47 (T,wt=5): 78 c1 = blue | -m(red).  [para(68(a,1),51(a,1))].
+
+given #48 (T,wt=5): 79 c1 = blue | -knight(red).  [para(68(a,1),53(a,1))].
+
+given #49 (T,wt=6): 72 knight(blue) | spy(blue) | knight(red).  [resolve(57,c,44,b),flip(c),unit_del(c,26)].
+
+given #50 (A,wt=9): 60 knight(green) | spy(green) | -knave(x) | green = x.  [resolve(45,b,31,b)].
+
+given #51 (T,wt=6): 80 knight(red) | knight(green) | spy(green).  [resolve(58,b,45,b),unit_del(b,28)].
+
+given #52 (T,wt=6): 88 knight(red) | knight(green) | m(green).  [resolve(80,c,40,b)].
+
+given #53 (T,wt=7): 61 c2 = green | knight(green) | spy(green).  [resolve(50,a,45,b)].
+
+given #54 (T,wt=7): 63 c2 = blue | knight(blue) | spy(blue).  [resolve(50,a,42,b)].
+
+given #55 (A,wt=8): 65 c2 = red | -knight(x) | red = x.  [resolve(62,b,30,b)].
+
+given #56 (F,wt=2): 103 -knight(red).  [back_rewrite(53),rewrite([95(1)])].
+
+given #57 (F,wt=2): 104 -m(red).  [back_rewrite(51),rewrite([95(1)])].
+
+given #58 (F,wt=2): 107 -knight(blue).  [back_unit_del(38),unit_del(a,104)].
+
+given #59 (F,wt=2): 111 -m(blue).  [back_unit_del(36),unit_del(b,107)].
+
+given #60 (T,wt=2): 106 knave(red).  [back_rewrite(34),rewrite([95(1)])].
+
+given #61 (T,wt=2): 108 spy(blue).  [back_unit_del(101),unit_del(a,107)].
+
+given #62 (T,wt=2): 112 knight(green).  [back_rewrite(100),rewrite([109(3)]),flip(b),unit_del(b,29)].
+
+============================== PROOF =================================
+
+% Proof 1 at 0.01 (+ 0.00) seconds.
+% Length of proof is 58.
+% Level of proof is 13.
+% Maximum clause weight is 8.000.
+% Given clauses 62.
+
+1 (all x (inhabitant(x) -> knight(x) | knave(x) | spy(x))) # label(non_clause).  [assumption].
+5 knight(x) -> m(x) # label(non_clause).  [assumption].
+6 knave(x) -> -m(x) # label(non_clause).  [assumption].
+7 inhabitant(blue) & inhabitant(red) & inhabitant(green) # label(non_clause).  [assumption].
+8 blue != red & red != green & blue != green # label(non_clause).  [assumption].
+9 knight(x) & knight(y) -> x = y # label(non_clause).  [assumption].
+10 knave(x) & knave(y) -> x = y # label(non_clause).  [assumption].
+11 spy(x) & spy(y) -> x = y # label(non_clause).  [assumption].
+12 (exists x knight(x)) & (exists x knave(x)) & (exists x spy(x)) # label(non_clause).  [assumption].
+14 m(red) <-> knight(blue) # label(non_clause).  [assumption].
+15 m(green) <-> spy(green) # label(non_clause).  [assumption].
+16 spy(red) # label(non_clause) # label(goal).  [goal].
+17 inhabitant(blue).  [clausify(7)].
+18 -inhabitant(x) | knight(x) | knave(x) | spy(x).  [clausify(1)].
+19 inhabitant(red).  [clausify(7)].
+20 inhabitant(green).  [clausify(7)].
+24 -knight(x) | m(x).  [clausify(5)].
+25 -knave(x) | -m(x).  [clausify(6)].
+26 red != blue.  [clausify(8)].
+27 green != red.  [clausify(8)].
+28 red != green.  [copy(27),flip(a)].
+29 green != blue.  [clausify(8)].
+30 -knight(x) | -knight(y) | y = x.  [clausify(9)].
+31 -knave(x) | -knave(y) | y = x.  [clausify(10)].
+32 -spy(x) | -spy(y) | y = x.  [clausify(11)].
+34 knave(c2).  [clausify(12)].
+35 spy(c3).  [clausify(12)].
+37 -m(red) | knight(blue).  [clausify(14)].
+38 m(red) | -knight(blue).  [clausify(14)].
+39 -m(green) | spy(green).  [clausify(15)].
+41 -spy(red).  [deny(16)].
+42 knight(blue) | knave(blue) | spy(blue).  [resolve(17,a,18,a)].
+43 knight(red) | knave(red) | spy(red).  [resolve(19,a,18,a)].
+44 knight(red) | knave(red).  [copy(43),unit_del(c,41)].
+45 knight(green) | knave(green) | spy(green).  [resolve(20,a,18,a)].
+50 -knave(x) | c2 = x.  [resolve(34,a,31,b)].
+51 -m(c2).  [resolve(34,a,25,a)].
+54 -spy(x) | c3 = x.  [resolve(35,a,32,b)].
+61 c2 = green | knight(green) | spy(green).  [resolve(50,a,45,b)].
+62 c2 = red | knight(red).  [resolve(50,a,44,b)].
+63 c2 = blue | knight(blue) | spy(blue).  [resolve(50,a,42,b)].
+65 c2 = red | -knight(x) | red = x.  [resolve(62,b,30,b)].
+66 c2 = red | m(red).  [resolve(62,b,24,a)].
+67 c2 = red | knight(blue).  [resolve(66,b,37,a)].
+90 c2 = green | knight(green) | c3 = green.  [resolve(61,c,54,a)].
+93 c2 = blue | knight(blue) | c3 = blue.  [resolve(63,c,54,a)].
+95 c2 = red.  [resolve(65,b,67,b),merge(c),unit_del(b,26)].
+97 knight(blue) | c3 = blue.  [back_rewrite(93),rewrite([95(1)]),unit_del(a,26)].
+100 knight(green) | c3 = green.  [back_rewrite(90),rewrite([95(1)]),unit_del(a,28)].
+101 knight(blue) | spy(blue).  [back_rewrite(63),rewrite([95(1)]),unit_del(a,26)].
+104 -m(red).  [back_rewrite(51),rewrite([95(1)])].
+107 -knight(blue).  [back_unit_del(38),unit_del(a,104)].
+108 spy(blue).  [back_unit_del(101),unit_del(a,107)].
+109 c3 = blue.  [back_unit_del(97),unit_del(a,107)].
+112 knight(green).  [back_rewrite(100),rewrite([109(3)]),flip(b),unit_del(b,29)].
+115 -spy(green).  [ur(32,b,108,a,c,29,a(flip))].
+116 -m(green).  [back_unit_del(39),unit_del(b,115)].
+119 $F.  [resolve(112,a,24,a),unit_del(a,116)].
+
+============================== end of proof ==========================
+
+============================== STATISTICS ============================
+
+Given=62. Generated=202. Kept=96. proofs=1.
+Usable=24. Sos=8. Demods=3. Limbo=2, Disabled=93. Hints=0.
+Kept_by_rule=0, Deleted_by_rule=0.
+Forward_subsumed=105. Back_subsumed=36.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=3 (0 lex), Back_demodulated=17. Back_unit_deleted=9.
+Demod_attempts=213. Demod_rewrites=20.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=50. Nonunit_bsub_feature_tests=103.
+Megabytes=0.16.
+User_CPU=0.01, System_CPU=0.00, Wall_clock=0.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+THEOREM PROVED
+
+Exiting with 1 proof.
+
+Process 8897 exit (max_proofs) Tue Jan 19 18:47:49 2021

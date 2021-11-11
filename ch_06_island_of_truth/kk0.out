@@ -1,0 +1,7 @@
+interpretation( 2, [number = 1,seconds = 0], [
+    function(a, [0]),
+    function(b, [1]),
+    relation(inhabitant(_), [1,1]),
+    relation(knave(_), [1,0]),
+    relation(knight(_), [0,1]),
+    relation(m(_), [0,1])]).

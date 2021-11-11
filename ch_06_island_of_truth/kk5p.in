@@ -1,0 +1,23 @@
+formulas(assumptions).
+  all x (inhabitant(x) -> knight(x) | knave(x) | spy(x)). 
+  all x (knight(x) -> -knave(x)  & -spy(x)).
+  all x (knave(x)  -> -knight(x) & -spy(x)).
+  all x (spy(x)    -> -knight(x) & -knave(x)).
+  knight(x) ->  m(x).  knave(x)  -> -m(x).
+
+  inhabitant(blue) & inhabitant(red) & inhabitant(green).
+  blue != red & red != green & blue != green.
+  knight(x) & knight(y) -> x=y. 
+  knave(x)  & knave(y)  -> x=y. 
+  spy(x)    & spy(y)    -> x=y. 
+
+  exists x knight(x) & exists x knave(x) & exists x spy(x). 
+  
+  m(blue)  <-> knight(blue).
+  m(red)   <-> knight(blue).
+  m(green) <-> spy(green).
+end_of_list.
+
+formulas(goals).
+  spy(red).
+end_of_list.
