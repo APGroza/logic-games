@@ -1,0 +1,989 @@
+============================== Mace4 =================================
+Mace4 (64) version 2009-11A, November 2009.
+Process 25410 was started by adrian on adrian,
+Thu Jan 21 12:16:50 2021
+The command was "mace4 -f p327_hexagon.in".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+% Reading from file p327_hexagon.in
+
+assign(domain_size,20).
+    % assign(domain_size, 20) -> assign(start_size, 20).
+    % assign(domain_size, 20) -> assign(end_size, 20).
+assign(max_models,-1).
+set(arithmetic).
+    % set(arithmetic) -> clear(lnh).
+    % set(arithmetic) -> assign(selection_order, 0).
+
+    % Declaring Mace4 arithmetic parse types.
+
+list(distinct).
+[0,n1,n2,n3,n4,n5,n6,n7,n8,n9,n10,n11,n12,n13,n14,n15,n16,n17,n18,n19].
+end_of_list.
+
+formulas(demodulators).
+n1 + n2 + n3 = 23.
+n1 + n4 + n8 = 23.
+n8 + n13 + n17 = 23.
+n17 + n18 + n19 = 23.
+n19 + n16 + n12 = 23.
+n3 + n7 + n12 = 23.
+n1 + n10 + n5 = 23.
+n10 + n6 + n3 = 23.
+n8 + n9 + n10 = 23.
+n10 + n11 + n12 = 23.
+n10 + n14 + n17 = 23.
+n10 + n15 + n19 = 23.
+n10 < 11 & n1 < 17 & n3 < 17 & n8 < 17 & n12 < 17 & n17 < 17 & n19 < 17.
+end_of_list.
+
+============================== end of input ==========================
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+1 n10 < 11 & n1 < 17 & n3 < 17 & n8 < 17 & n12 < 17 & n17 < 17 & n19 < 17 # label(non_clause).  [assumption].
+
+============================== end of process non-clausal formulas ===
+
+============================== CLAUSES FOR SEARCH ====================
+
+formulas(mace4_clauses).
+n1 + n2 + n3 = 23.
+n1 + n4 + n8 = 23.
+n8 + n13 + n17 = 23.
+n17 + n18 + n19 = 23.
+n19 + n16 + n12 = 23.
+n3 + n7 + n12 = 23.
+n1 + n10 + n5 = 23.
+n10 + n6 + n3 = 23.
+n8 + n9 + n10 = 23.
+n10 + n11 + n12 = 23.
+n10 + n14 + n17 = 23.
+n10 + n15 + n19 = 23.
+n10 < 11.
+n1 < 17.
+n3 < 17.
+n8 < 17.
+n12 < 17.
+n17 < 17.
+n19 < 17.
+0 != n1.
+0 != n2.
+0 != n3.
+0 != n4.
+0 != n5.
+0 != n6.
+0 != n7.
+0 != n8.
+0 != n9.
+0 != n10.
+0 != n11.
+0 != n12.
+0 != n13.
+0 != n14.
+0 != n15.
+0 != n16.
+0 != n17.
+0 != n18.
+0 != n19.
+n1 != n2.
+n1 != n3.
+n1 != n4.
+n1 != n5.
+n1 != n6.
+n1 != n7.
+n1 != n8.
+n1 != n9.
+n1 != n10.
+n1 != n11.
+n1 != n12.
+n1 != n13.
+n1 != n14.
+n1 != n15.
+n1 != n16.
+n1 != n17.
+n1 != n18.
+n1 != n19.
+n2 != n3.
+n2 != n4.
+n2 != n5.
+n2 != n6.
+n2 != n7.
+n2 != n8.
+n2 != n9.
+n2 != n10.
+n2 != n11.
+n2 != n12.
+n2 != n13.
+n2 != n14.
+n2 != n15.
+n2 != n16.
+n2 != n17.
+n2 != n18.
+n2 != n19.
+n3 != n4.
+n3 != n5.
+n3 != n6.
+n3 != n7.
+n3 != n8.
+n3 != n9.
+n3 != n10.
+n3 != n11.
+n3 != n12.
+n3 != n13.
+n3 != n14.
+n3 != n15.
+n3 != n16.
+n3 != n17.
+n3 != n18.
+n3 != n19.
+n4 != n5.
+n4 != n6.
+n4 != n7.
+n4 != n8.
+n4 != n9.
+n4 != n10.
+n4 != n11.
+n4 != n12.
+n4 != n13.
+n4 != n14.
+n4 != n15.
+n4 != n16.
+n4 != n17.
+n4 != n18.
+n4 != n19.
+n5 != n6.
+n5 != n7.
+n5 != n8.
+n5 != n9.
+n5 != n10.
+n5 != n11.
+n5 != n12.
+n5 != n13.
+n5 != n14.
+n5 != n15.
+n5 != n16.
+n5 != n17.
+n5 != n18.
+n5 != n19.
+n6 != n7.
+n6 != n8.
+n6 != n9.
+n6 != n10.
+n6 != n11.
+n6 != n12.
+n6 != n13.
+n6 != n14.
+n6 != n15.
+n6 != n16.
+n6 != n17.
+n6 != n18.
+n6 != n19.
+n7 != n8.
+n7 != n9.
+n7 != n10.
+n7 != n11.
+n7 != n12.
+n7 != n13.
+n7 != n14.
+n7 != n15.
+n7 != n16.
+n7 != n17.
+n7 != n18.
+n7 != n19.
+n8 != n9.
+n8 != n10.
+n8 != n11.
+n8 != n12.
+n8 != n13.
+n8 != n14.
+n8 != n15.
+n8 != n16.
+n8 != n17.
+n8 != n18.
+n8 != n19.
+n9 != n10.
+n9 != n11.
+n9 != n12.
+n9 != n13.
+n9 != n14.
+n9 != n15.
+n9 != n16.
+n9 != n17.
+n9 != n18.
+n9 != n19.
+n10 != n11.
+n10 != n12.
+n10 != n13.
+n10 != n14.
+n10 != n15.
+n10 != n16.
+n10 != n17.
+n10 != n18.
+n10 != n19.
+n11 != n12.
+n11 != n13.
+n11 != n14.
+n11 != n15.
+n11 != n16.
+n11 != n17.
+n11 != n18.
+n11 != n19.
+n12 != n13.
+n12 != n14.
+n12 != n15.
+n12 != n16.
+n12 != n17.
+n12 != n18.
+n12 != n19.
+n13 != n14.
+n13 != n15.
+n13 != n16.
+n13 != n17.
+n13 != n18.
+n13 != n19.
+n14 != n15.
+n14 != n16.
+n14 != n17.
+n14 != n18.
+n14 != n19.
+n15 != n16.
+n15 != n17.
+n15 != n18.
+n15 != n19.
+n16 != n17.
+n16 != n18.
+n16 != n19.
+n17 != n18.
+n17 != n19.
+n18 != n19.
+end_of_list.
+
+============================== end of clauses for search =============
+
+% The largest natural number in the input is 23.
+
+============================== DOMAIN SIZE 20 ========================
+
+============================== MODEL =================================
+
+interpretation( 20, [number=1, seconds=418], [
+
+        function(n1, [ 1 ]),
+
+        function(n10, [ 6 ]),
+
+        function(n11, [ 9 ]),
+
+        function(n12, [ 8 ]),
+
+        function(n13, [17 ]),
+
+        function(n14, [15 ]),
+
+        function(n15, [ 7 ]),
+
+        function(n16, [ 5 ]),
+
+        function(n17, [ 2 ]),
+
+        function(n18, [11 ]),
+
+        function(n19, [10 ]),
+
+        function(n2, [19 ]),
+
+        function(n3, [ 3 ]),
+
+        function(n4, [18 ]),
+
+        function(n5, [16 ]),
+
+        function(n6, [14 ]),
+
+        function(n7, [12 ]),
+
+        function(n8, [ 4 ]),
+
+        function(n9, [13 ])
+]).
+
+============================== end of model ==========================
+
+============================== MODEL =================================
+
+interpretation( 20, [number=2, seconds=419], [
+
+        function(n1, [ 1 ]),
+
+        function(n10, [ 6 ]),
+
+        function(n11, [ 9 ]),
+
+        function(n12, [ 8 ]),
+
+        function(n13, [18 ]),
+
+        function(n14, [15 ]),
+
+        function(n15, [13 ]),
+
+        function(n16, [11 ]),
+
+        function(n17, [ 2 ]),
+
+        function(n18, [17 ]),
+
+        function(n19, [ 4 ]),
+
+        function(n2, [12 ]),
+
+        function(n3, [10 ]),
+
+        function(n4, [19 ]),
+
+        function(n5, [16 ]),
+
+        function(n6, [ 7 ]),
+
+        function(n7, [ 5 ]),
+
+        function(n8, [ 3 ]),
+
+        function(n9, [14 ])
+]).
+
+============================== end of model ==========================
+
+============================== MODEL =================================
+
+interpretation( 20, [number=3, seconds=446], [
+
+        function(n1, [ 1 ]),
+
+        function(n10, [ 6 ]),
+
+        function(n11, [15 ]),
+
+        function(n12, [ 2 ]),
+
+        function(n13, [ 5 ]),
+
+        function(n14, [ 9 ]),
+
+        function(n15, [13 ]),
+
+        function(n16, [17 ]),
+
+        function(n17, [ 8 ]),
+
+        function(n18, [11 ]),
+
+        function(n19, [ 4 ]),
+
+        function(n2, [19 ]),
+
+        function(n3, [ 3 ]),
+
+        function(n4, [12 ]),
+
+        function(n5, [16 ]),
+
+        function(n6, [14 ]),
+
+        function(n7, [18 ]),
+
+        function(n8, [10 ]),
+
+        function(n9, [ 7 ])
+]).
+
+============================== end of model ==========================
+
+============================== MODEL =================================
+
+interpretation( 20, [number=4, seconds=449], [
+
+        function(n1, [ 1 ]),
+
+        function(n10, [ 6 ]),
+
+        function(n11, [15 ]),
+
+        function(n12, [ 2 ]),
+
+        function(n13, [12 ]),
+
+        function(n14, [ 9 ]),
+
+        function(n15, [ 7 ]),
+
+        function(n16, [11 ]),
+
+        function(n17, [ 8 ]),
+
+        function(n18, [ 5 ]),
+
+        function(n19, [10 ]),
+
+        function(n2, [18 ]),
+
+        function(n3, [ 4 ]),
+
+        function(n4, [19 ]),
+
+        function(n5, [16 ]),
+
+        function(n6, [13 ]),
+
+        function(n7, [17 ]),
+
+        function(n8, [ 3 ]),
+
+        function(n9, [14 ])
+]).
+
+============================== end of model ==========================
+
+============================== MODEL =================================
+
+interpretation( 20, [number=5, seconds=1000], [
+
+        function(n1, [ 2 ]),
+
+        function(n10, [ 6 ]),
+
+        function(n11, [ 9 ]),
+
+        function(n12, [ 8 ]),
+
+        function(n13, [18 ]),
+
+        function(n14, [16 ]),
+
+        function(n15, [14 ]),
+
+        function(n16, [12 ]),
+
+        function(n17, [ 1 ]),
+
+        function(n18, [19 ]),
+
+        function(n19, [ 3 ]),
+
+        function(n2, [11 ]),
+
+        function(n3, [10 ]),
+
+        function(n4, [17 ]),
+
+        function(n5, [15 ]),
+
+        function(n6, [ 7 ]),
+
+        function(n7, [ 5 ]),
+
+        function(n8, [ 4 ]),
+
+        function(n9, [13 ])
+]).
+
+============================== end of model ==========================
+
+============================== MODEL =================================
+
+interpretation( 20, [number=6, seconds=1001], [
+
+        function(n1, [ 2 ]),
+
+        function(n10, [ 6 ]),
+
+        function(n11, [ 9 ]),
+
+        function(n12, [ 8 ]),
+
+        function(n13, [19 ]),
+
+        function(n14, [16 ]),
+
+        function(n15, [ 7 ]),
+
+        function(n16, [ 5 ]),
+
+        function(n17, [ 1 ]),
+
+        function(n18, [12 ]),
+
+        function(n19, [10 ]),
+
+        function(n2, [17 ]),
+
+        function(n3, [ 4 ]),
+
+        function(n4, [18 ]),
+
+        function(n5, [15 ]),
+
+        function(n6, [13 ]),
+
+        function(n7, [11 ]),
+
+        function(n8, [ 3 ]),
+
+        function(n9, [14 ])
+]).
+
+============================== end of model ==========================
+
+============================== MODEL =================================
+
+interpretation( 20, [number=7, seconds=1027], [
+
+        function(n1, [ 2 ]),
+
+        function(n10, [ 6 ]),
+
+        function(n11, [16 ]),
+
+        function(n12, [ 1 ]),
+
+        function(n13, [ 5 ]),
+
+        function(n14, [ 9 ]),
+
+        function(n15, [14 ]),
+
+        function(n16, [19 ]),
+
+        function(n17, [ 8 ]),
+
+        function(n18, [12 ]),
+
+        function(n19, [ 3 ]),
+
+        function(n2, [17 ]),
+
+        function(n3, [ 4 ]),
+
+        function(n4, [11 ]),
+
+        function(n5, [15 ]),
+
+        function(n6, [13 ]),
+
+        function(n7, [18 ]),
+
+        function(n8, [10 ]),
+
+        function(n9, [ 7 ])
+]).
+
+============================== end of model ==========================
+
+============================== MODEL =================================
+
+interpretation( 20, [number=8, seconds=1029], [
+
+        function(n1, [ 2 ]),
+
+        function(n10, [ 6 ]),
+
+        function(n11, [16 ]),
+
+        function(n12, [ 1 ]),
+
+        function(n13, [11 ]),
+
+        function(n14, [ 9 ]),
+
+        function(n15, [ 7 ]),
+
+        function(n16, [12 ]),
+
+        function(n17, [ 8 ]),
+
+        function(n18, [ 5 ]),
+
+        function(n19, [10 ]),
+
+        function(n2, [18 ]),
+
+        function(n3, [ 3 ]),
+
+        function(n4, [17 ]),
+
+        function(n5, [15 ]),
+
+        function(n6, [14 ]),
+
+        function(n7, [19 ]),
+
+        function(n8, [ 4 ]),
+
+        function(n9, [13 ])
+]).
+
+============================== end of model ==========================
+
+============================== MODEL =================================
+
+interpretation( 20, [number=9, seconds=1551], [
+
+        function(n1, [ 3 ]),
+
+        function(n10, [ 6 ]),
+
+        function(n11, [ 7 ]),
+
+        function(n12, [10 ]),
+
+        function(n13, [17 ]),
+
+        function(n14, [13 ]),
+
+        function(n15, [ 9 ]),
+
+        function(n16, [ 5 ]),
+
+        function(n17, [ 4 ]),
+
+        function(n18, [11 ]),
+
+        function(n19, [ 8 ]),
+
+        function(n2, [19 ]),
+
+        function(n3, [ 1 ]),
+
+        function(n4, [18 ]),
+
+        function(n5, [14 ]),
+
+        function(n6, [16 ]),
+
+        function(n7, [12 ]),
+
+        function(n8, [ 2 ]),
+
+        function(n9, [15 ])
+]).
+
+============================== end of model ==========================
+
+============================== MODEL =================================
+
+interpretation( 20, [number=10, seconds=1551], [
+
+        function(n1, [ 3 ]),
+
+        function(n10, [ 6 ]),
+
+        function(n11, [ 7 ]),
+
+        function(n12, [10 ]),
+
+        function(n13, [18 ]),
+
+        function(n14, [13 ]),
+
+        function(n15, [15 ]),
+
+        function(n16, [11 ]),
+
+        function(n17, [ 4 ]),
+
+        function(n18, [17 ]),
+
+        function(n19, [ 2 ]),
+
+        function(n2, [12 ]),
+
+        function(n3, [ 8 ]),
+
+        function(n4, [19 ]),
+
+        function(n5, [14 ]),
+
+        function(n6, [ 9 ]),
+
+        function(n7, [ 5 ]),
+
+        function(n8, [ 1 ]),
+
+        function(n9, [16 ])
+]).
+
+============================== end of model ==========================
+
+============================== MODEL =================================
+
+interpretation( 20, [number=11, seconds=1578], [
+
+        function(n1, [ 3 ]),
+
+        function(n10, [ 6 ]),
+
+        function(n11, [13 ]),
+
+        function(n12, [ 4 ]),
+
+        function(n13, [ 5 ]),
+
+        function(n14, [ 7 ]),
+
+        function(n15, [15 ]),
+
+        function(n16, [17 ]),
+
+        function(n17, [10 ]),
+
+        function(n18, [11 ]),
+
+        function(n19, [ 2 ]),
+
+        function(n2, [19 ]),
+
+        function(n3, [ 1 ]),
+
+        function(n4, [12 ]),
+
+        function(n5, [14 ]),
+
+        function(n6, [16 ]),
+
+        function(n7, [18 ]),
+
+        function(n8, [ 8 ]),
+
+        function(n9, [ 9 ])
+]).
+
+============================== end of model ==========================
+
+============================== MODEL =================================
+
+interpretation( 20, [number=12, seconds=1581], [
+
+        function(n1, [ 3 ]),
+
+        function(n10, [ 6 ]),
+
+        function(n11, [13 ]),
+
+        function(n12, [ 4 ]),
+
+        function(n13, [12 ]),
+
+        function(n14, [ 7 ]),
+
+        function(n15, [ 9 ]),
+
+        function(n16, [11 ]),
+
+        function(n17, [10 ]),
+
+        function(n18, [ 5 ]),
+
+        function(n19, [ 8 ]),
+
+        function(n2, [18 ]),
+
+        function(n3, [ 2 ]),
+
+        function(n4, [19 ]),
+
+        function(n5, [14 ]),
+
+        function(n6, [15 ]),
+
+        function(n7, [17 ]),
+
+        function(n8, [ 1 ]),
+
+        function(n9, [16 ])
+]).
+
+============================== end of model ==========================
+
+============================== MODEL =================================
+
+interpretation( 20, [number=13, seconds=2119], [
+
+        function(n1, [ 4 ]),
+
+        function(n10, [ 6 ]),
+
+        function(n11, [ 7 ]),
+
+        function(n12, [10 ]),
+
+        function(n13, [18 ]),
+
+        function(n14, [14 ]),
+
+        function(n15, [16 ]),
+
+        function(n16, [12 ]),
+
+        function(n17, [ 3 ]),
+
+        function(n18, [19 ]),
+
+        function(n19, [ 1 ]),
+
+        function(n2, [11 ]),
+
+        function(n3, [ 8 ]),
+
+        function(n4, [17 ]),
+
+        function(n5, [13 ]),
+
+        function(n6, [ 9 ]),
+
+        function(n7, [ 5 ]),
+
+        function(n8, [ 2 ]),
+
+        function(n9, [15 ])
+]).
+
+============================== end of model ==========================
+
+============================== MODEL =================================
+
+interpretation( 20, [number=14, seconds=2120], [
+
+        function(n1, [ 4 ]),
+
+        function(n10, [ 6 ]),
+
+        function(n11, [ 7 ]),
+
+        function(n12, [10 ]),
+
+        function(n13, [19 ]),
+
+        function(n14, [14 ]),
+
+        function(n15, [ 9 ]),
+
+        function(n16, [ 5 ]),
+
+        function(n17, [ 3 ]),
+
+        function(n18, [12 ]),
+
+        function(n19, [ 8 ]),
+
+        function(n2, [17 ]),
+
+        function(n3, [ 2 ]),
+
+        function(n4, [18 ]),
+
+        function(n5, [13 ]),
+
+        function(n6, [15 ]),
+
+        function(n7, [11 ]),
+
+        function(n8, [ 1 ]),
+
+        function(n9, [16 ])
+]).
+
+============================== end of model ==========================
+
+============================== MODEL =================================
+
+interpretation( 20, [number=15, seconds=2147], [
+
+        function(n1, [ 4 ]),
+
+        function(n10, [ 6 ]),
+
+        function(n11, [14 ]),
+
+        function(n12, [ 3 ]),
+
+        function(n13, [ 5 ]),
+
+        function(n14, [ 7 ]),
+
+        function(n15, [16 ]),
+
+        function(n16, [19 ]),
+
+        function(n17, [10 ]),
+
+        function(n18, [12 ]),
+
+        function(n19, [ 1 ]),
+
+        function(n2, [17 ]),
+
+        function(n3, [ 2 ]),
+
+        function(n4, [11 ]),
+
+        function(n5, [13 ]),
+
+        function(n6, [15 ]),
+
+        function(n7, [18 ]),
+
+        function(n8, [ 8 ]),
+
+        function(n9, [ 9 ])
+]).
+
+============================== end of model ==========================
+
+============================== MODEL =================================
+
+interpretation( 20, [number=16, seconds=2149], [
+
+        function(n1, [ 4 ]),
+
+        function(n10, [ 6 ]),
+
+        function(n11, [14 ]),
+
+        function(n12, [ 3 ]),
+
+        function(n13, [11 ]),
+
+        function(n14, [ 7 ]),
+
+        function(n15, [ 9 ]),
+
+        function(n16, [12 ]),
+
+        function(n17, [10 ]),
+
+        function(n18, [ 5 ]),
+
+        function(n19, [ 8 ]),
+
+        function(n2, [18 ]),
+
+        function(n3, [ 1 ]),
+
+        function(n4, [17 ]),
+
+        function(n5, [13 ]),
+
+        function(n6, [16 ]),
+
+        function(n7, [19 ]),
+
+        function(n8, [ 2 ]),
+
+        function(n9, [15 ])
+]).
+
+============================== end of model ==========================

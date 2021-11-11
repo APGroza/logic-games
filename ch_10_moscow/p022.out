@@ -1,0 +1,521 @@
+============================== Mace4 =================================
+Mace4 (64) version 2009-11A, November 2009.
+Process 21384 was started by adrian on adrian,
+Thu Jan 21 09:37:54 2021
+The command was "mace4 -f p022.in".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+% Reading from file p022.in
+
+set(arithmetic).
+    % set(arithmetic) -> clear(lnh).
+    % set(arithmetic) -> assign(selection_order, 0).
+
+    % Declaring Mace4 arithmetic parse types.
+assign(domain_size,10).
+    % assign(domain_size, 10) -> assign(start_size, 10).
+    % assign(domain_size, 10) -> assign(end_size, 10).
+assign(max_models,-1).
+
+list(distinct).
+[AB1,AB2,AC1,AC2,BC1,BC2,0,1,2,3].
+end_of_list.
+
+formulas(assumptions).
+A = 1 & B = 2 & C = 3.
+A + B + AB1 + AB2 = 17.
+A + C + AC1 + AC2 = 17.
+B + C + BC1 + BC2 = 17.
+end_of_list.
+
+============================== end of input ==========================
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+1 A = 1 & B = 2 & C = 3 # label(non_clause).  [assumption].
+
+============================== end of process non-clausal formulas ===
+
+============================== CLAUSES FOR SEARCH ====================
+
+formulas(mace4_clauses).
+A = 1.
+B = 2.
+C = 3.
+A + B + AB1 + AB2 = 17.
+A + C + AC1 + AC2 = 17.
+B + C + BC1 + BC2 = 17.
+AB1 != AB2.
+AB1 != AC1.
+AB1 != AC2.
+AB1 != BC1.
+AB1 != BC2.
+AB1 != 0.
+AB1 != 1.
+AB1 != 2.
+AB1 != 3.
+AB2 != AC1.
+AB2 != AC2.
+AB2 != BC1.
+AB2 != BC2.
+AB2 != 0.
+AB2 != 1.
+AB2 != 2.
+AB2 != 3.
+AC1 != AC2.
+AC1 != BC1.
+AC1 != BC2.
+AC1 != 0.
+AC1 != 1.
+AC1 != 2.
+AC1 != 3.
+AC2 != BC1.
+AC2 != BC2.
+AC2 != 0.
+AC2 != 1.
+AC2 != 2.
+AC2 != 3.
+BC1 != BC2.
+BC1 != 0.
+BC1 != 1.
+BC1 != 2.
+BC1 != 3.
+BC2 != 0.
+BC2 != 1.
+BC2 != 2.
+BC2 != 3.
+0 != 1.
+0 != 2.
+0 != 3.
+1 != 2.
+1 != 3.
+2 != 3.
+end_of_list.
+
+============================== end of clauses for search =============
+
+% The largest natural number in the input is 17.
+
+============================== DOMAIN SIZE 10 ========================
+
+============================== MODEL =================================
+
+interpretation( 10, [number=1, seconds=0], [
+
+        function(A, [ 1 ]),
+
+        function(AB1, [ 5 ]),
+
+        function(AB2, [ 9 ]),
+
+        function(AC1, [ 6 ]),
+
+        function(AC2, [ 7 ]),
+
+        function(B, [ 2 ]),
+
+        function(BC1, [ 4 ]),
+
+        function(BC2, [ 8 ]),
+
+        function(C, [ 3 ])
+]).
+
+============================== end of model ==========================
+
+============================== MODEL =================================
+
+interpretation( 10, [number=2, seconds=0], [
+
+        function(A, [ 1 ]),
+
+        function(AB1, [ 5 ]),
+
+        function(AB2, [ 9 ]),
+
+        function(AC1, [ 6 ]),
+
+        function(AC2, [ 7 ]),
+
+        function(B, [ 2 ]),
+
+        function(BC1, [ 8 ]),
+
+        function(BC2, [ 4 ]),
+
+        function(C, [ 3 ])
+]).
+
+============================== end of model ==========================
+
+============================== MODEL =================================
+
+interpretation( 10, [number=3, seconds=0], [
+
+        function(A, [ 1 ]),
+
+        function(AB1, [ 5 ]),
+
+        function(AB2, [ 9 ]),
+
+        function(AC1, [ 7 ]),
+
+        function(AC2, [ 6 ]),
+
+        function(B, [ 2 ]),
+
+        function(BC1, [ 4 ]),
+
+        function(BC2, [ 8 ]),
+
+        function(C, [ 3 ])
+]).
+
+============================== end of model ==========================
+
+============================== MODEL =================================
+
+interpretation( 10, [number=4, seconds=0], [
+
+        function(A, [ 1 ]),
+
+        function(AB1, [ 5 ]),
+
+        function(AB2, [ 9 ]),
+
+        function(AC1, [ 7 ]),
+
+        function(AC2, [ 6 ]),
+
+        function(B, [ 2 ]),
+
+        function(BC1, [ 8 ]),
+
+        function(BC2, [ 4 ]),
+
+        function(C, [ 3 ])
+]).
+
+============================== end of model ==========================
+
+============================== MODEL =================================
+
+interpretation( 10, [number=5, seconds=0], [
+
+        function(A, [ 1 ]),
+
+        function(AB1, [ 6 ]),
+
+        function(AB2, [ 8 ]),
+
+        function(AC1, [ 4 ]),
+
+        function(AC2, [ 9 ]),
+
+        function(B, [ 2 ]),
+
+        function(BC1, [ 5 ]),
+
+        function(BC2, [ 7 ]),
+
+        function(C, [ 3 ])
+]).
+
+============================== end of model ==========================
+
+============================== MODEL =================================
+
+interpretation( 10, [number=6, seconds=0], [
+
+        function(A, [ 1 ]),
+
+        function(AB1, [ 6 ]),
+
+        function(AB2, [ 8 ]),
+
+        function(AC1, [ 4 ]),
+
+        function(AC2, [ 9 ]),
+
+        function(B, [ 2 ]),
+
+        function(BC1, [ 7 ]),
+
+        function(BC2, [ 5 ]),
+
+        function(C, [ 3 ])
+]).
+
+============================== end of model ==========================
+
+============================== MODEL =================================
+
+interpretation( 10, [number=7, seconds=0], [
+
+        function(A, [ 1 ]),
+
+        function(AB1, [ 6 ]),
+
+        function(AB2, [ 8 ]),
+
+        function(AC1, [ 9 ]),
+
+        function(AC2, [ 4 ]),
+
+        function(B, [ 2 ]),
+
+        function(BC1, [ 5 ]),
+
+        function(BC2, [ 7 ]),
+
+        function(C, [ 3 ])
+]).
+
+============================== end of model ==========================
+
+============================== MODEL =================================
+
+interpretation( 10, [number=8, seconds=0], [
+
+        function(A, [ 1 ]),
+
+        function(AB1, [ 6 ]),
+
+        function(AB2, [ 8 ]),
+
+        function(AC1, [ 9 ]),
+
+        function(AC2, [ 4 ]),
+
+        function(B, [ 2 ]),
+
+        function(BC1, [ 7 ]),
+
+        function(BC2, [ 5 ]),
+
+        function(C, [ 3 ])
+]).
+
+============================== end of model ==========================
+
+============================== MODEL =================================
+
+interpretation( 10, [number=9, seconds=0], [
+
+        function(A, [ 1 ]),
+
+        function(AB1, [ 8 ]),
+
+        function(AB2, [ 6 ]),
+
+        function(AC1, [ 4 ]),
+
+        function(AC2, [ 9 ]),
+
+        function(B, [ 2 ]),
+
+        function(BC1, [ 5 ]),
+
+        function(BC2, [ 7 ]),
+
+        function(C, [ 3 ])
+]).
+
+============================== end of model ==========================
+
+============================== MODEL =================================
+
+interpretation( 10, [number=10, seconds=0], [
+
+        function(A, [ 1 ]),
+
+        function(AB1, [ 8 ]),
+
+        function(AB2, [ 6 ]),
+
+        function(AC1, [ 4 ]),
+
+        function(AC2, [ 9 ]),
+
+        function(B, [ 2 ]),
+
+        function(BC1, [ 7 ]),
+
+        function(BC2, [ 5 ]),
+
+        function(C, [ 3 ])
+]).
+
+============================== end of model ==========================
+
+============================== MODEL =================================
+
+interpretation( 10, [number=11, seconds=0], [
+
+        function(A, [ 1 ]),
+
+        function(AB1, [ 8 ]),
+
+        function(AB2, [ 6 ]),
+
+        function(AC1, [ 9 ]),
+
+        function(AC2, [ 4 ]),
+
+        function(B, [ 2 ]),
+
+        function(BC1, [ 5 ]),
+
+        function(BC2, [ 7 ]),
+
+        function(C, [ 3 ])
+]).
+
+============================== end of model ==========================
+
+============================== MODEL =================================
+
+interpretation( 10, [number=12, seconds=0], [
+
+        function(A, [ 1 ]),
+
+        function(AB1, [ 8 ]),
+
+        function(AB2, [ 6 ]),
+
+        function(AC1, [ 9 ]),
+
+        function(AC2, [ 4 ]),
+
+        function(B, [ 2 ]),
+
+        function(BC1, [ 7 ]),
+
+        function(BC2, [ 5 ]),
+
+        function(C, [ 3 ])
+]).
+
+============================== end of model ==========================
+
+============================== MODEL =================================
+
+interpretation( 10, [number=13, seconds=0], [
+
+        function(A, [ 1 ]),
+
+        function(AB1, [ 9 ]),
+
+        function(AB2, [ 5 ]),
+
+        function(AC1, [ 6 ]),
+
+        function(AC2, [ 7 ]),
+
+        function(B, [ 2 ]),
+
+        function(BC1, [ 4 ]),
+
+        function(BC2, [ 8 ]),
+
+        function(C, [ 3 ])
+]).
+
+============================== end of model ==========================
+
+============================== MODEL =================================
+
+interpretation( 10, [number=14, seconds=0], [
+
+        function(A, [ 1 ]),
+
+        function(AB1, [ 9 ]),
+
+        function(AB2, [ 5 ]),
+
+        function(AC1, [ 6 ]),
+
+        function(AC2, [ 7 ]),
+
+        function(B, [ 2 ]),
+
+        function(BC1, [ 8 ]),
+
+        function(BC2, [ 4 ]),
+
+        function(C, [ 3 ])
+]).
+
+============================== end of model ==========================
+
+============================== MODEL =================================
+
+interpretation( 10, [number=15, seconds=0], [
+
+        function(A, [ 1 ]),
+
+        function(AB1, [ 9 ]),
+
+        function(AB2, [ 5 ]),
+
+        function(AC1, [ 7 ]),
+
+        function(AC2, [ 6 ]),
+
+        function(B, [ 2 ]),
+
+        function(BC1, [ 4 ]),
+
+        function(BC2, [ 8 ]),
+
+        function(C, [ 3 ])
+]).
+
+============================== end of model ==========================
+
+============================== MODEL =================================
+
+interpretation( 10, [number=16, seconds=0], [
+
+        function(A, [ 1 ]),
+
+        function(AB1, [ 9 ]),
+
+        function(AB2, [ 5 ]),
+
+        function(AC1, [ 7 ]),
+
+        function(AC2, [ 6 ]),
+
+        function(B, [ 2 ]),
+
+        function(BC1, [ 8 ]),
+
+        function(BC2, [ 4 ]),
+
+        function(C, [ 3 ])
+]).
+
+============================== end of model ==========================
+
+============================== STATISTICS ============================
+
+For domain size 10.
+
+Current CPU time: 0.00 seconds (total CPU time: 0.02 seconds).
+Ground clauses: seen=51, kept=45.
+Selections=35, assignments=350, propagations=19, current_models=16.
+Rewrite_terms=2419, rewrite_bools=1895, indexes=0.
+Rules_from_neg_clauses=16, cross_offs=334.
+
+============================== end of statistics =====================
+
+User_CPU=0.02, System_CPU=0.01, Wall_clock=0.
+
+Exiting with 16 models.
+
+Process 21384 exit (all_models) Thu Jan 21 09:37:54 2021
+The process finished Thu Jan 21 09:37:54 2021

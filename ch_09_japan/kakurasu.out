@@ -1,0 +1,93 @@
+============================== Mace4 =================================
+Mace4 (64) version 2009-11A, November 2009.
+Process 19779 was started by adrian on adrian,
+Thu Jan 21 08:38:31 2021
+The command was "mace4 -f kakurasu.in".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+% Reading from file kakurasu.in
+
+set(arithmetic).
+    % set(arithmetic) -> clear(lnh).
+    % set(arithmetic) -> assign(selection_order, 0).
+
+    % Declaring Mace4 arithmetic parse types.
+assign(domain_size,4).
+    % assign(domain_size, 4) -> assign(start_size, 4).
+    % assign(domain_size, 4) -> assign(end_size, 4).
+assign(max_models,-1).
+
+formulas(kakurasu).
+(all x all y f(x,y) < 2).
+f(0,0) + f(0,1) * 2 + f(0,2) * 3 + f(0,3) * 4 = 4.
+f(1,0) + f(1,1) * 2 + f(1,2) * 3 + f(1,3) * 4 = 6.
+f(2,0) + f(2,1) * 2 + f(2,2) * 3 + f(2,3) * 4 = 8.
+f(3,0) + f(3,1) * 2 + f(3,2) * 3 + f(3,3) * 4 = 9.
+f(0,0) + f(1,0) * 2 + f(2,0) * 3 + f(3,0) * 4 = 5.
+f(0,1) + f(1,1) * 2 + f(2,1) * 3 + f(3,1) * 4 = 6.
+f(0,2) + f(1,2) * 2 + f(2,2) * 3 + f(3,2) * 4 = 9.
+f(0,3) + f(1,3) * 2 + f(2,3) * 3 + f(3,3) * 4 = 8.
+end_of_list.
+
+============================== end of input ==========================
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+1 (all x all y f(x,y) < 2) # label(non_clause).  [assumption].
+
+============================== end of process non-clausal formulas ===
+
+============================== CLAUSES FOR SEARCH ====================
+
+formulas(mace4_clauses).
+f(x,y) < 2.
+f(0,0) + f(0,1) * 2 + f(0,2) * 3 + f(0,3) * 4 = 4.
+f(1,0) + f(1,1) * 2 + f(1,2) * 3 + f(1,3) * 4 = 6.
+f(2,0) + f(2,1) * 2 + f(2,2) * 3 + f(2,3) * 4 = 8.
+f(3,0) + f(3,1) * 2 + f(3,2) * 3 + f(3,3) * 4 = 9.
+f(0,0) + f(1,0) * 2 + f(2,0) * 3 + f(3,0) * 4 = 5.
+f(0,1) + f(1,1) * 2 + f(2,1) * 3 + f(3,1) * 4 = 6.
+f(0,2) + f(1,2) * 2 + f(2,2) * 3 + f(3,2) * 4 = 9.
+f(0,3) + f(1,3) * 2 + f(2,3) * 3 + f(3,3) * 4 = 8.
+end_of_list.
+
+============================== end of clauses for search =============
+
+% The largest natural number in the input is 9.
+
+============================== DOMAIN SIZE 4 =========================
+
+============================== MODEL =================================
+
+interpretation( 4, [number=1, seconds=0], [
+
+        function(f(_,_), [
+			   0, 0, 0, 1,
+			   1, 1, 1, 0,
+			   1, 0, 1, 1,
+			   0, 1, 1, 1 ])
+]).
+
+============================== end of model ==========================
+
+============================== STATISTICS ============================
+
+For domain size 4.
+
+Current CPU time: 0.00 seconds (total CPU time: 0.00 seconds).
+Ground clauses: seen=24, kept=24.
+Selections=112, assignments=448, propagations=0, current_models=1.
+Rewrite_terms=1086, rewrite_bools=467, indexes=0.
+Rules_from_neg_clauses=0, cross_offs=0.
+
+============================== end of statistics =====================
+
+User_CPU=0.00, System_CPU=0.00, Wall_clock=0.
+
+Exiting with 1 model.
+
+Process 19779 exit (all_models) Thu Jan 21 08:38:31 2021
+The process finished Thu Jan 21 08:38:31 2021

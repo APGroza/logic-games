@@ -1,0 +1,15 @@
+assign(domain_size,13).
+assign(max_models,-1).
+set(arithmetic).
+
+list(distinct).
+  [0,c1,c2,c3,c4,c5,c6,c7,c8,c9,c10,c11,c12].
+end_of_list.
+
+formulas(assumptions).
+  (c1 + c3 + c6  + c8  = 26) & (c2 + c3 + c4  + c5 = 26)  &
+  (c1 + c4 + c7  + c11 = 26) & (c2 + c6 + c9  + c12 = 26) &
+  (c5 + c7 + c10 + c12 = 26) & (c8 + c9 + c10 + c11 = 26).
+  
+  c1=1.   %remove some isomorphism
+end_of_list.

@@ -1,0 +1,14 @@
+set(arithmetic).
+assign(domain_size,10).
+assign(max_models,-1).
+
+list(distinct).
+  [AB1,AB2,AC1,AC2,BC1,BC2,0,1,2,3].   %some values are taken by A, B, C
+end_of_list.
+
+formulas(assumptions).
+  A = 1 & B = 2 & C = 3.               %initial values
+  A + B + AB1 + AB2 = 17.              %values on AB sum to 17
+  A + C + AC1 + AC2 = 17.              %values on AC sum to 17
+  B + C + BC1 + BC2 = 17.              %values on BC sum to 17
+end_of_list.

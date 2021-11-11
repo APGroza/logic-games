@@ -1,0 +1,39 @@
+assign(domain_size,4). 
+assign(max_models,-1).
+set(arithmetic).
+
+formulas(latin_square).
+  all x  all y1 all y2 (f(x,y1) = f(x,y2) -> y1 = y2).
+  all x1 all x2 all y  (f(x1,y) = f(x2,y) -> x1 = x2).
+end_of_list.
+
+formulas(killer_sudoku).
+  same_color(2,3) & same_color(0,1).  %let two sets {0,1} and {2,3}.
+ -same_color(0,2).                    %0 and 2 are not from the same set
+  all x same_color(x,x).                                     %reflexive
+  all x all y (same_color(x,y) -> same_color(y,x)).          %symmetric
+  all x all y all z (same_color(x,y) &                       %transitive
+     same_color(y,z)  -> same_color(x,z)).
+                 
+  all x1 all y1 all x2 all y2 (same_color(x1,x2) &    %Zone 2: up right 
+    same_color(y1,y2) & f(x1,y1) = f(x2,y2) & 
+    x1 + x2 >= 4 & y1 + y2 < 2 -> x1 = x2 & y1 = y2).
+   
+  all x1 all y1 all x2 all y2 (same_color(x1,x2) &  %Zone 3: bottom left   
+    same_color(y1,y2) & f(x1,y1) = f(x2,y2) & 
+    x1 + x2 < 2 & y1 + y2 >= 4 -> x1 = x2 & y1 = y2).
+end_of_list.
+
+formulas(sample_puzzle_with_six_cages).
+ f(0,2) + f(0,3)          = 3.                    %this cage has 2 cells
+ f(0,0) + f(1,0)          = 5.                    %this cage has 2 cells
+ f(0,1) + f(1,1) + f(1,2) = 3.                    %this cage has 3 cells
+ f(1,3) + f(2,3) + f(2,2) = 3.                    %this cage has 3 cells
+ f(2,0) + f(2,1) + f(3,0) = 4.                    %this cage has 3 cells
+ f(3,1) + f(3,2) + f(3,3) = 6.                    %this cage has 3 cells
+end_of_list.
+
+list(distinct).  %The same number cannot appear in a cage more than once
+ [f(0,2),f(0,3)].        [f(0,0),f(1,0)].        [f(0,1),f(1,1),f(1,2)].
+ [f(1,3),f(2,3),f(2,2)]. [f(2,0),f(2,1),f(3,0)]. [f(3,1),f(3,2),f(3,3)].
+end_of_list.

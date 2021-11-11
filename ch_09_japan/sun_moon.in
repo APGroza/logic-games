@@ -1,0 +1,60 @@
+set(arithmetic).
+assign(domain_size,11).          %ten ways to shine a planet + no planet                 
+assign(max_models,-1).
+
+formulas(utils).
+ gs = 5.    %grid size
+ s  = 1.    %star
+ c  = 2.    %cloud
+ light_above(x,y) <-> (p(x,y) = 3 | p(x,y) = 4 | p(x,y) = 6 | p(x,y) = 9).
+ light_below(x,y) <-> (p(x,y) = 1 | p(x,y) = 2 | p(x,y) = 5 | p(x,y) = 9).
+ light_left(x,y)  <-> (p(x,y) = 2 | p(x,y) = 3 | p(x,y) = 8 | p(x,y) = 9).
+ light_right(x,y) <-> (p(x,y) = 1 | p(x,y) = 4 | p(x,y) = 7 | p(x,y) = 9). 
+ 
+ dark_above(x,y) <-> (p(x,y) = 5 | p(x,y) = 10).
+ dark_below(x,y) <-> (p(x,y) = 6 | p(x,y) = 10).
+ dark_left(x,y)  <-> (p(x,y) = 7 | p(x,y) = 10).   
+ dark_right(x,y) <-> (p(x,y) = 8 | p(x,y) = 10).   
+end_of_list.
+
+formulas(sun_and_moon).
+  p(x,y) != 0 -> f(x,y) = 0.  %where is planet, there is no star or cloud   
+  f(x,y) =  0 | f(x,y) = s | f(x,y) = c.
+  all x all y ((x >= gs | y >= gs) -> f(x,y) = 0). 
+  
+  %at least one star and one dark cloud in each row and each column
+  all x ((x < gs) -> ((exists y1 (f(x,y1)=s)) & (exists y2 (f(x,y2)=c)))). 
+  all y ((y < gs) -> ((exists x1 (f(x1,y)=s)) & (exists x2 (f(x2,y)=c)))). 
+ 
+  %at most one star and one dark cloud in each row and each column
+  all x  all y1 all y2 ((f(x,y1) = s & f(x,y2) = s) -> y1 = y2). 
+  all x1 all x2 all y  ((f(x1,y) = s & f(x2,y) = s) -> x1 = x2). 
+  all x  all y1 all y2 ((f(x,y1) = c & f(x,y2) = c) -> y1 = y2). 
+  all x1 all x2 all y  ((f(x1,y) = c & f(x2,y) = c) -> x1 = x2). 
+  
+  (light_above(x,y) & f(x1,y) = s) -> (x1 < x &      
+                           (all x2 ((x2 > x1 & x2 < x) -> f(x2,y) = 0))).   
+  (light_below(x,y) & f(x1,y) = s) -> (x1 > x & 
+                           (all x2 ((x2 < x1 & x2 > x) -> f(x2,y) = 0))).
+  (light_left(x,y) & f(x,y1) = s) -> (y1 < y & 
+                           (all y2 ((y2 > y1 & y2 < y) -> f(x,y2) = 0))).
+  (light_right(x,y) & f(x,y1) = s) -> (y1 > y & 
+                           (all y2 ((y2 < y1 & y2 > y) -> f(x,y2) = 0))).
+
+  (dark_above(x,y) & f(x1,y) = s & f(x2,y) = c) -> (x1 > x | 
+                                                   (x2 < x & x1 < x2)).      
+  (dark_below(x,y) & f(x1,y) = s & f(x2,y) = c) -> (x1 < x | 
+                                                   (x2 > x & x1 > x2)).      
+  (dark_left(x,y)  & f(x,y1) = s & f(x,y2) = c) -> (y1 > y | 
+                                                   (y2 > y1 & y2 < y)).
+  (dark_right(x,y) & f(x,y1) = s & f(x,y2) = c) -> (y1 < y | 
+                                                   (y2 > y & y1 > y2)).              
+end_of_list.
+
+formulas(planet_latin_square).
+  all x all y ((x >= gs | y >= gs) -> p(x,y) = 0). 
+  p(0,4) = 10 & p(1,2) = 3 & p(2,0) = 10 & p(3,1) = 7 & p(4,3) = 6.      
+  all x  all y1 all y2 ((p(x,y1) != 0 & p(x,y2) != 0) -> y1 = y2).
+  all x1 all x2 all y  ((p(x1,y) != 0 & p(x2,y) != 0) -> x1 = x2).
+end_of_list.
+

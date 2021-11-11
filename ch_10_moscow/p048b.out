@@ -1,0 +1,139 @@
+============================== Mace4 =================================
+Mace4 (64) version 2009-11A, November 2009.
+Process 22558 was started by adrian on adrian,
+Thu Jan 21 10:46:33 2021
+The command was "mace4 -f p048b.in".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+% Reading from file p048b.in
+
+set(arithmetic).
+    % set(arithmetic) -> clear(lnh).
+    % set(arithmetic) -> assign(selection_order, 0).
+
+    % Declaring Mace4 arithmetic parse types.
+assign(domain_size,2).
+    % assign(domain_size, 2) -> assign(start_size, 2).
+    % assign(domain_size, 2) -> assign(end_size, 2).
+assign(max_models,-1).
+
+formulas(assumptions).
+1 * 100 * A1 + 1 * 10 * A2 + 1 * 1 * A3 + 3 * 100 * B1 + 3 * 10 * B2 + 3 * 1 * B3 + 5 * 100 * C1 + 5 * 10 * C2 + 5 * 1 * C3 + 7 * 100 * D1 + 7 * 10 * D2 + 7 * 1 * D3 + 9 * 100 * E1 + 9 * 10 * E2 + 9 * 1 * E3 = 1111.
+A1 + A2 + A3 + B1 + B2 + B3 + C1 + C2 + C3 + D1 + D2 + D3 + E1 + E2 + E3 = 5.
+end_of_list.
+
+============================== end of input ==========================
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+
+============================== end of process non-clausal formulas ===
+
+============================== CLAUSES FOR SEARCH ====================
+
+formulas(mace4_clauses).
+1 * 100 * A1 + 1 * 10 * A2 + 1 * 1 * A3 + 3 * 100 * B1 + 3 * 10 * B2 + 3 * 1 * B3 + 5 * 100 * C1 + 5 * 10 * C2 + 5 * 1 * C3 + 7 * 100 * D1 + 7 * 10 * D2 + 7 * 1 * D3 + 9 * 100 * E1 + 9 * 10 * E2 + 9 * 1 * E3 = 1111.
+A1 + A2 + A3 + B1 + B2 + B3 + C1 + C2 + C3 + D1 + D2 + D3 + E1 + E2 + E3 = 5.
+end_of_list.
+
+============================== end of clauses for search =============
+
+% The largest natural number in the input is 1111.
+
+============================== DOMAIN SIZE 2 =========================
+
+============================== MODEL =================================
+
+interpretation( 2, [number=1, seconds=0], [
+
+        function(A1, [ 0 ]),
+
+        function(A2, [ 0 ]),
+
+        function(A3, [ 1 ]),
+
+        function(B1, [ 0 ]),
+
+        function(B2, [ 0 ]),
+
+        function(B3, [ 0 ]),
+
+        function(C1, [ 0 ]),
+
+        function(C2, [ 1 ]),
+
+        function(C3, [ 0 ]),
+
+        function(D1, [ 0 ]),
+
+        function(D2, [ 1 ]),
+
+        function(D3, [ 0 ]),
+
+        function(E1, [ 1 ]),
+
+        function(E2, [ 1 ]),
+
+        function(E3, [ 0 ])
+]).
+
+============================== end of model ==========================
+
+============================== MODEL =================================
+
+interpretation( 2, [number=2, seconds=0], [
+
+        function(A1, [ 1 ]),
+
+        function(A2, [ 1 ]),
+
+        function(A3, [ 1 ]),
+
+        function(B1, [ 1 ]),
+
+        function(B2, [ 0 ]),
+
+        function(B3, [ 0 ]),
+
+        function(C1, [ 0 ]),
+
+        function(C2, [ 0 ]),
+
+        function(C3, [ 0 ]),
+
+        function(D1, [ 1 ]),
+
+        function(D2, [ 0 ]),
+
+        function(D3, [ 0 ]),
+
+        function(E1, [ 0 ]),
+
+        function(E2, [ 0 ]),
+
+        function(E3, [ 0 ])
+]).
+
+============================== end of model ==========================
+
+============================== STATISTICS ============================
+
+For domain size 2.
+
+Current CPU time: 0.00 seconds (total CPU time: 0.08 seconds).
+Ground clauses: seen=2, kept=2.
+Selections=32767, assignments=65534, propagations=0, current_models=2.
+Rewrite_terms=101303, rewrite_bools=35771, indexes=0.
+Rules_from_neg_clauses=0, cross_offs=0.
+
+============================== end of statistics =====================
+
+User_CPU=0.08, System_CPU=0.02, Wall_clock=1.
+
+Exiting with 2 models.
+
+Process 22558 exit (all_models) Thu Jan 21 10:46:34 2021
+The process finished Thu Jan 21 10:46:34 2021

@@ -1,0 +1,14 @@
+set(arithmetic).
+assign(domain_size,7). 
+assign(max_models,-1).
+
+formulas(arranging_flags).
+  a + b + c + d + e + f + g + h = 12.  %maximum 12 flags
+  i = 6.  %i = 5. %i=4                 %number of flags for each side
+
+  a + b + h = i.             b + c + d = i.                        
+  d + e + f = i.             f + g + h = i.
+ 
+  h=b & b=f & f=d.           %each corner has the same number of flags
+  a=c & c=e & e=g.           %each middle has the same number of flags
+end_of_list.

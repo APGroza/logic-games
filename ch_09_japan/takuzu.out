@@ -1,0 +1,145 @@
+============================== Mace4 =================================
+Mace4 (64) version 2009-11A, November 2009.
+Process 19782 was started by adrian on adrian,
+Thu Jan 21 08:38:31 2021
+The command was "mace4 -f takuzu.in".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+% Reading from file takuzu.in
+
+set(arithmetic).
+    % set(arithmetic) -> clear(lnh).
+    % set(arithmetic) -> assign(selection_order, 0).
+
+    % Declaring Mace4 arithmetic parse types.
+assign(domain_size,6).
+    % assign(domain_size, 6) -> assign(start_size, 6).
+    % assign(domain_size, 6) -> assign(end_size, 6).
+assign(max_models,-1).
+
+formulas(utils).
+s(0) = 1.
+s(1) = 2.
+s(2) = 3.
+s(3) = 4.
+s(4) = 5.
+s(5) = 0.
+p(1) = 0.
+p(2) = 1.
+p(3) = 2.
+p(4) = 3.
+p(5) = 4.
+p(0) = 5.
+end_of_list.
+
+formulas(takuzo).
+(all x all y f(x,y) < 2).
+(all x f(x,0) + f(x,1) + f(x,2) + f(x,3) + f(x,4) + f(x,5) = 3).
+(all y f(0,y) + f(1,y) + f(2,y) + f(3,y) + f(4,y) + f(5,y) = 3).
+f(p(x),y) + f(x,y) + f(s(x),y) < 3.
+f(p(x),y) + f(x,y) + f(s(x),y) > 0.
+f(x,p(y)) + f(x,y) + f(x,s(y)) < 3.
+f(x,p(y)) + f(x,y) + f(x,s(y)) > 0.
+end_of_list.
+
+formulas(sample_puzzle).
+f(0,4) = 0.
+f(1,0) = 1.
+f(3,0) = 0.
+f(3,1) = 0.
+f(5,2) = 0.
+f(1,1) = 1.
+f(3,3) = 0.
+f(4,3) = 1.
+f(4,4) = 1.
+end_of_list.
+
+============================== end of input ==========================
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+1 (all x all y f(x,y) < 2) # label(non_clause).  [assumption].
+2 (all x f(x,0) + f(x,1) + f(x,2) + f(x,3) + f(x,4) + f(x,5) = 3) # label(non_clause).  [assumption].
+3 (all y f(0,y) + f(1,y) + f(2,y) + f(3,y) + f(4,y) + f(5,y) = 3) # label(non_clause).  [assumption].
+
+============================== end of process non-clausal formulas ===
+
+============================== CLAUSES FOR SEARCH ====================
+
+formulas(mace4_clauses).
+s(0) = 1.
+s(1) = 2.
+s(2) = 3.
+s(3) = 4.
+s(4) = 5.
+s(5) = 0.
+p(1) = 0.
+p(2) = 1.
+p(3) = 2.
+p(4) = 3.
+p(5) = 4.
+p(0) = 5.
+f(x,y) < 2.
+f(x,0) + f(x,1) + f(x,2) + f(x,3) + f(x,4) + f(x,5) = 3.
+f(0,x) + f(1,x) + f(2,x) + f(3,x) + f(4,x) + f(5,x) = 3.
+f(p(x),y) + f(x,y) + f(s(x),y) < 3.
+f(p(x),y) + f(x,y) + f(s(x),y) > 0.
+f(x,p(y)) + f(x,y) + f(x,s(y)) < 3.
+f(x,p(y)) + f(x,y) + f(x,s(y)) > 0.
+f(0,4) = 0.
+f(1,0) = 1.
+f(3,0) = 0.
+f(3,1) = 0.
+f(5,2) = 0.
+f(1,1) = 1.
+f(3,3) = 0.
+f(4,3) = 1.
+f(4,4) = 1.
+end_of_list.
+
+============================== end of clauses for search =============
+
+% The largest natural number in the input is 5.
+
+============================== DOMAIN SIZE 6 =========================
+
+============================== MODEL =================================
+
+interpretation( 6, [number=1, seconds=0], [
+
+        function(p(_), [ 5, 0, 1, 2, 3, 4 ]),
+
+        function(s(_), [ 1, 2, 3, 4, 5, 0 ]),
+
+        function(f(_,_), [
+			   0, 1, 1, 0, 0, 1,
+			   1, 1, 0, 0, 1, 0,
+			   1, 0, 1, 1, 0, 0,
+			   0, 0, 1, 0, 1, 1,
+			   0, 1, 0, 1, 1, 0,
+			   1, 0, 0, 1, 0, 1 ])
+]).
+
+============================== end of model ==========================
+
+============================== STATISTICS ============================
+
+For domain size 6.
+
+Current CPU time: 0.00 seconds (total CPU time: 0.01 seconds).
+Ground clauses: seen=213, kept=213.
+Selections=355, assignments=2130, propagations=21, current_models=1.
+Rewrite_terms=17314, rewrite_bools=8167, indexes=0.
+Rules_from_neg_clauses=0, cross_offs=0.
+
+============================== end of statistics =====================
+
+User_CPU=0.01, System_CPU=0.00, Wall_clock=0.
+
+Exiting with 1 model.
+
+Process 19782 exit (all_models) Thu Jan 21 08:38:31 2021
+The process finished Thu Jan 21 08:38:31 2021

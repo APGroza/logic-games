@@ -1,0 +1,8 @@
+set(arithmetic).
+assign(domain_size,22).
+assign(max_models,-1).
+
+formulas(assumptions).
+  9 * Sum + Center = 190.
+  Center < 20.
+end_of_list.

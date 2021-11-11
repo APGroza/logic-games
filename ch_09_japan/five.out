@@ -1,0 +1,11 @@
+============================== Mace4 =================================
+Mace4 (64) version 2009-11A, November 2009.
+Process 19775 was started by adrian on adrian,
+Thu Jan 21 08:38:31 2021
+The command was "mace4 -f five.in".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+Fatal error:  read_all_input, file five.in not found
+

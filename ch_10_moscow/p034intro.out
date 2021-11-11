@@ -1,0 +1,98 @@
+============================== Mace4 =================================
+Mace4 (64) version 2009-11A, November 2009.
+Process 22455 was started by adrian on adrian,
+Thu Jan 21 10:43:29 2021
+The command was "mace4 -f p034intro.in".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+% Reading from file p034intro.in
+
+set(arithmetic).
+    % set(arithmetic) -> clear(lnh).
+    % set(arithmetic) -> assign(selection_order, 0).
+
+    % Declaring Mace4 arithmetic parse types.
+assign(domain_size,22).
+    % assign(domain_size, 22) -> assign(start_size, 22).
+    % assign(domain_size, 22) -> assign(end_size, 22).
+assign(max_models,-1).
+
+formulas(assumptions).
+9 * Sum + Center = 190.
+Center < 20.
+end_of_list.
+
+============================== end of input ==========================
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+
+============================== end of process non-clausal formulas ===
+
+============================== CLAUSES FOR SEARCH ====================
+
+formulas(mace4_clauses).
+9 * Sum + Center = 190.
+Center < 20.
+end_of_list.
+
+============================== end of clauses for search =============
+
+% The largest natural number in the input is 190.
+
+============================== DOMAIN SIZE 22 ========================
+
+============================== MODEL =================================
+
+interpretation( 22, [number=1, seconds=0], [
+
+        function(Center, [ 1 ]),
+
+        function(Sum, [21 ])
+]).
+
+============================== end of model ==========================
+
+============================== MODEL =================================
+
+interpretation( 22, [number=2, seconds=0], [
+
+        function(Center, [10 ]),
+
+        function(Sum, [20 ])
+]).
+
+============================== end of model ==========================
+
+============================== MODEL =================================
+
+interpretation( 22, [number=3, seconds=0], [
+
+        function(Center, [19 ]),
+
+        function(Sum, [19 ])
+]).
+
+============================== end of model ==========================
+
+============================== STATISTICS ============================
+
+For domain size 22.
+
+Current CPU time: 0.00 seconds (total CPU time: 0.01 seconds).
+Ground clauses: seen=2, kept=2.
+Selections=21, assignments=462, propagations=0, current_models=3.
+Rewrite_terms=482, rewrite_bools=462, indexes=0.
+Rules_from_neg_clauses=0, cross_offs=0.
+
+============================== end of statistics =====================
+
+User_CPU=0.01, System_CPU=0.01, Wall_clock=0.
+
+Exiting with 3 models.
+
+Process 22455 exit (all_models) Thu Jan 21 10:43:29 2021
+The process finished Thu Jan 21 10:43:29 2021

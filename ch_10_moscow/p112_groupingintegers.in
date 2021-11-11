@@ -1,0 +1,16 @@
+assign(domain_size,16).
+assign(max_models,-1).
+set(arithmetic).
+
+list(distinct).
+  [0,c1,c2,c3,c4,c5,c6,c7,c8,c9,c10,c11,c12,1,8,15].
+  [0,d1,d2,d3,d4,7,8,9,10,11,12,13,14,15].
+end_of_list.
+
+formulas(assumptions).
+  d5 = 7.   c13 = 1.   c14 = 8.  c15 = 15.   %keep the first progression.
+  d1 < d2.  d2 < d3.   d3 < d4.              %avoid isomorphism
+
+  c2 = d1 + c1.     c3 = d1 + c2.     c5  = d2 + c4.      c6  = d2 + c5.
+  c8 = d3 + c7.     c9 = d3 + c8.     c11 = d4 + c10.     c12 = d4 + c11.
+end_of_list.

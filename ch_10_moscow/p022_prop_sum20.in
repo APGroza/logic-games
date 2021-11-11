@@ -1,0 +1,13 @@
+set(arithmetic).
+assign(domain_size,10).
+assign(max_models,-1).
+
+list(distinct).
+  [A,B,C,AB1,AB2,AC1,AC2,BC1,BC2,0].
+end_of_list.
+
+formulas(assumptions).
+    A + B + AB1 + AB2 = 20.
+    A + C + AC1 + AC2 = 20.
+    B + C + BC1 + BC2 = 20.
+end_of_list.

@@ -1,0 +1,13 @@
+set(arithmetic).
+assign(domain_size,14).
+assign(max_models,-1).
+
+formulas(assumptions).
+  A + B + C + D + E + F + G + H = 20.  
+
+  odd(x) <->  x mod 2 = 1.
+  odd(A) & odd(B) & odd(C) & odd(D) & odd(E) & odd(F) & odd(G) & odd(H).  
+   
+  A >= B & B >= C & C >= D & D >= E & E >= F & F >= G & G >= H.
+end_of_list.
+

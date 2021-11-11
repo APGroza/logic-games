@@ -1,0 +1,1428 @@
+============================== Mace4 =================================
+Mace4 (64) version 2009-11A, November 2009.
+Process 23062 was started by adrian on adrian,
+Thu Jan 21 11:02:27 2021
+The command was "mace4 -f p051.in".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+% Reading from file p051.in
+
+set(arithmetic).
+    % set(arithmetic) -> clear(lnh).
+    % set(arithmetic) -> assign(selection_order, 0).
+
+    % Declaring Mace4 arithmetic parse types.
+assign(domain_size,11).
+    % assign(domain_size, 11) -> assign(start_size, 11).
+    % assign(domain_size, 11) -> assign(end_size, 11).
+assign(max_models,-1).
+
+list(distinct).
+[t1,t2,t3,t4,t5,t6,t7,t8,t9,t10,0].
+end_of_list.
+
+formulas(assumptions).
+t1 + t2 = t6 + t7.
+t2 + t3 = t7 + t8.
+t3 + t4 = t8 + t9.
+t4 + t5 = t9 + t10.
+t5 + t6 = t10 + t1.
+t10 = 10.
+end_of_list.
+
+============================== end of input ==========================
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+
+============================== end of process non-clausal formulas ===
+
+============================== CLAUSES FOR SEARCH ====================
+
+formulas(mace4_clauses).
+t1 + t2 = t6 + t7.
+t2 + t3 = t7 + t8.
+t3 + t4 = t8 + t9.
+t4 + t5 = t9 + t10.
+t5 + t6 = t10 + t1.
+t10 = 10.
+t1 != t2.
+t1 != t3.
+t1 != t4.
+t1 != t5.
+t1 != t6.
+t1 != t7.
+t1 != t8.
+t1 != t9.
+t1 != t10.
+t1 != 0.
+t2 != t3.
+t2 != t4.
+t2 != t5.
+t2 != t6.
+t2 != t7.
+t2 != t8.
+t2 != t9.
+t2 != t10.
+t2 != 0.
+t3 != t4.
+t3 != t5.
+t3 != t6.
+t3 != t7.
+t3 != t8.
+t3 != t9.
+t3 != t10.
+t3 != 0.
+t4 != t5.
+t4 != t6.
+t4 != t7.
+t4 != t8.
+t4 != t9.
+t4 != t10.
+t4 != 0.
+t5 != t6.
+t5 != t7.
+t5 != t8.
+t5 != t9.
+t5 != t10.
+t5 != 0.
+t6 != t7.
+t6 != t8.
+t6 != t9.
+t6 != t10.
+t6 != 0.
+t7 != t8.
+t7 != t9.
+t7 != t10.
+t7 != 0.
+t8 != t9.
+t8 != t10.
+t8 != 0.
+t9 != t10.
+t9 != 0.
+t10 != 0.
+end_of_list.
+
+============================== end of clauses for search =============
+
+% The largest natural number in the input is 10.
+
+============================== DOMAIN SIZE 11 ========================
+
+============================== MODEL =================================
+
+interpretation( 11, [number=1, seconds=0], [
+
+        function(t1, [ 1 ]),
+
+        function(t10, [10 ]),
+
+        function(t2, [ 4 ]),
+
+        function(t3, [ 5 ]),
+
+        function(t4, [ 8 ]),
+
+        function(t5, [ 9 ]),
+
+        function(t6, [ 2 ]),
+
+        function(t7, [ 3 ]),
+
+        function(t8, [ 6 ]),
+
+        function(t9, [ 7 ])
+]).
+
+============================== end of model ==========================
+
+============================== MODEL =================================
+
+interpretation( 11, [number=2, seconds=0], [
+
+        function(t1, [ 1 ]),
+
+        function(t10, [10 ]),
+
+        function(t2, [ 4 ]),
+
+        function(t3, [ 7 ]),
+
+        function(t4, [ 6 ]),
+
+        function(t5, [ 9 ]),
+
+        function(t6, [ 2 ]),
+
+        function(t7, [ 3 ]),
+
+        function(t8, [ 8 ]),
+
+        function(t9, [ 5 ])
+]).
+
+============================== end of model ==========================
+
+============================== MODEL =================================
+
+interpretation( 11, [number=3, seconds=0], [
+
+        function(t1, [ 1 ]),
+
+        function(t10, [10 ]),
+
+        function(t2, [ 6 ]),
+
+        function(t3, [ 3 ]),
+
+        function(t4, [ 8 ]),
+
+        function(t5, [ 9 ]),
+
+        function(t6, [ 2 ]),
+
+        function(t7, [ 5 ]),
+
+        function(t8, [ 4 ]),
+
+        function(t9, [ 7 ])
+]).
+
+============================== end of model ==========================
+
+============================== MODEL =================================
+
+interpretation( 11, [number=4, seconds=0], [
+
+        function(t1, [ 1 ]),
+
+        function(t10, [10 ]),
+
+        function(t2, [ 6 ]),
+
+        function(t3, [ 7 ]),
+
+        function(t4, [ 4 ]),
+
+        function(t5, [ 9 ]),
+
+        function(t6, [ 2 ]),
+
+        function(t7, [ 5 ]),
+
+        function(t8, [ 8 ]),
+
+        function(t9, [ 3 ])
+]).
+
+============================== end of model ==========================
+
+============================== MODEL =================================
+
+interpretation( 11, [number=5, seconds=0], [
+
+        function(t1, [ 1 ]),
+
+        function(t10, [10 ]),
+
+        function(t2, [ 7 ]),
+
+        function(t3, [ 3 ]),
+
+        function(t4, [ 9 ]),
+
+        function(t5, [ 5 ]),
+
+        function(t6, [ 6 ]),
+
+        function(t7, [ 2 ]),
+
+        function(t8, [ 8 ]),
+
+        function(t9, [ 4 ])
+]).
+
+============================== end of model ==========================
+
+============================== MODEL =================================
+
+interpretation( 11, [number=6, seconds=0], [
+
+        function(t1, [ 1 ]),
+
+        function(t10, [10 ]),
+
+        function(t2, [ 7 ]),
+
+        function(t3, [ 4 ]),
+
+        function(t4, [ 8 ]),
+
+        function(t5, [ 5 ]),
+
+        function(t6, [ 6 ]),
+
+        function(t7, [ 2 ]),
+
+        function(t8, [ 9 ]),
+
+        function(t9, [ 3 ])
+]).
+
+============================== end of model ==========================
+
+============================== MODEL =================================
+
+interpretation( 11, [number=7, seconds=0], [
+
+        function(t1, [ 1 ]),
+
+        function(t10, [10 ]),
+
+        function(t2, [ 8 ]),
+
+        function(t3, [ 2 ]),
+
+        function(t4, [ 9 ]),
+
+        function(t5, [ 5 ]),
+
+        function(t6, [ 6 ]),
+
+        function(t7, [ 3 ]),
+
+        function(t8, [ 7 ]),
+
+        function(t9, [ 4 ])
+]).
+
+============================== end of model ==========================
+
+============================== MODEL =================================
+
+interpretation( 11, [number=8, seconds=0], [
+
+        function(t1, [ 1 ]),
+
+        function(t10, [10 ]),
+
+        function(t2, [ 8 ]),
+
+        function(t3, [ 3 ]),
+
+        function(t4, [ 6 ]),
+
+        function(t5, [ 9 ]),
+
+        function(t6, [ 2 ]),
+
+        function(t7, [ 7 ]),
+
+        function(t8, [ 4 ]),
+
+        function(t9, [ 5 ])
+]).
+
+============================== end of model ==========================
+
+============================== MODEL =================================
+
+interpretation( 11, [number=9, seconds=0], [
+
+        function(t1, [ 1 ]),
+
+        function(t10, [10 ]),
+
+        function(t2, [ 8 ]),
+
+        function(t3, [ 4 ]),
+
+        function(t4, [ 7 ]),
+
+        function(t5, [ 5 ]),
+
+        function(t6, [ 6 ]),
+
+        function(t7, [ 3 ]),
+
+        function(t8, [ 9 ]),
+
+        function(t9, [ 2 ])
+]).
+
+============================== end of model ==========================
+
+============================== MODEL =================================
+
+interpretation( 11, [number=10, seconds=0], [
+
+        function(t1, [ 1 ]),
+
+        function(t10, [10 ]),
+
+        function(t2, [ 8 ]),
+
+        function(t3, [ 5 ]),
+
+        function(t4, [ 4 ]),
+
+        function(t5, [ 9 ]),
+
+        function(t6, [ 2 ]),
+
+        function(t7, [ 7 ]),
+
+        function(t8, [ 6 ]),
+
+        function(t9, [ 3 ])
+]).
+
+============================== end of model ==========================
+
+============================== MODEL =================================
+
+interpretation( 11, [number=11, seconds=0], [
+
+        function(t1, [ 1 ]),
+
+        function(t10, [10 ]),
+
+        function(t2, [ 9 ]),
+
+        function(t3, [ 2 ]),
+
+        function(t4, [ 8 ]),
+
+        function(t5, [ 5 ]),
+
+        function(t6, [ 6 ]),
+
+        function(t7, [ 4 ]),
+
+        function(t8, [ 7 ]),
+
+        function(t9, [ 3 ])
+]).
+
+============================== end of model ==========================
+
+============================== MODEL =================================
+
+interpretation( 11, [number=12, seconds=0], [
+
+        function(t1, [ 1 ]),
+
+        function(t10, [10 ]),
+
+        function(t2, [ 9 ]),
+
+        function(t3, [ 3 ]),
+
+        function(t4, [ 7 ]),
+
+        function(t5, [ 5 ]),
+
+        function(t6, [ 6 ]),
+
+        function(t7, [ 4 ]),
+
+        function(t8, [ 8 ]),
+
+        function(t9, [ 2 ])
+]).
+
+============================== end of model ==========================
+
+============================== MODEL =================================
+
+interpretation( 11, [number=13, seconds=0], [
+
+        function(t1, [ 2 ]),
+
+        function(t10, [10 ]),
+
+        function(t2, [ 6 ]),
+
+        function(t3, [ 3 ]),
+
+        function(t4, [ 9 ]),
+
+        function(t5, [ 5 ]),
+
+        function(t6, [ 7 ]),
+
+        function(t7, [ 1 ]),
+
+        function(t8, [ 8 ]),
+
+        function(t9, [ 4 ])
+]).
+
+============================== end of model ==========================
+
+============================== MODEL =================================
+
+interpretation( 11, [number=14, seconds=0], [
+
+        function(t1, [ 2 ]),
+
+        function(t10, [10 ]),
+
+        function(t2, [ 6 ]),
+
+        function(t3, [ 4 ]),
+
+        function(t4, [ 8 ]),
+
+        function(t5, [ 5 ]),
+
+        function(t6, [ 7 ]),
+
+        function(t7, [ 1 ]),
+
+        function(t8, [ 9 ]),
+
+        function(t9, [ 3 ])
+]).
+
+============================== end of model ==========================
+
+============================== MODEL =================================
+
+interpretation( 11, [number=15, seconds=0], [
+
+        function(t1, [ 2 ]),
+
+        function(t10, [10 ]),
+
+        function(t2, [ 8 ]),
+
+        function(t3, [ 1 ]),
+
+        function(t4, [ 9 ]),
+
+        function(t5, [ 5 ]),
+
+        function(t6, [ 7 ]),
+
+        function(t7, [ 3 ]),
+
+        function(t8, [ 6 ]),
+
+        function(t9, [ 4 ])
+]).
+
+============================== end of model ==========================
+
+============================== MODEL =================================
+
+interpretation( 11, [number=16, seconds=0], [
+
+        function(t1, [ 2 ]),
+
+        function(t10, [10 ]),
+
+        function(t2, [ 8 ]),
+
+        function(t3, [ 4 ]),
+
+        function(t4, [ 6 ]),
+
+        function(t5, [ 5 ]),
+
+        function(t6, [ 7 ]),
+
+        function(t7, [ 3 ]),
+
+        function(t8, [ 9 ]),
+
+        function(t9, [ 1 ])
+]).
+
+============================== end of model ==========================
+
+============================== MODEL =================================
+
+interpretation( 11, [number=17, seconds=0], [
+
+        function(t1, [ 2 ]),
+
+        function(t10, [10 ]),
+
+        function(t2, [ 9 ]),
+
+        function(t3, [ 1 ]),
+
+        function(t4, [ 8 ]),
+
+        function(t5, [ 5 ]),
+
+        function(t6, [ 7 ]),
+
+        function(t7, [ 4 ]),
+
+        function(t8, [ 6 ]),
+
+        function(t9, [ 3 ])
+]).
+
+============================== end of model ==========================
+
+============================== MODEL =================================
+
+interpretation( 11, [number=18, seconds=0], [
+
+        function(t1, [ 2 ]),
+
+        function(t10, [10 ]),
+
+        function(t2, [ 9 ]),
+
+        function(t3, [ 3 ]),
+
+        function(t4, [ 6 ]),
+
+        function(t5, [ 5 ]),
+
+        function(t6, [ 7 ]),
+
+        function(t7, [ 4 ]),
+
+        function(t8, [ 8 ]),
+
+        function(t9, [ 1 ])
+]).
+
+============================== end of model ==========================
+
+============================== MODEL =================================
+
+interpretation( 11, [number=19, seconds=0], [
+
+        function(t1, [ 3 ]),
+
+        function(t10, [10 ]),
+
+        function(t2, [ 2 ]),
+
+        function(t3, [ 5 ]),
+
+        function(t4, [ 8 ]),
+
+        function(t5, [ 9 ]),
+
+        function(t6, [ 4 ]),
+
+        function(t7, [ 1 ]),
+
+        function(t8, [ 6 ]),
+
+        function(t9, [ 7 ])
+]).
+
+============================== end of model ==========================
+
+============================== MODEL =================================
+
+interpretation( 11, [number=20, seconds=0], [
+
+        function(t1, [ 3 ]),
+
+        function(t10, [10 ]),
+
+        function(t2, [ 2 ]),
+
+        function(t3, [ 7 ]),
+
+        function(t4, [ 6 ]),
+
+        function(t5, [ 9 ]),
+
+        function(t6, [ 4 ]),
+
+        function(t7, [ 1 ]),
+
+        function(t8, [ 8 ]),
+
+        function(t9, [ 5 ])
+]).
+
+============================== end of model ==========================
+
+============================== MODEL =================================
+
+interpretation( 11, [number=21, seconds=0], [
+
+        function(t1, [ 3 ]),
+
+        function(t10, [10 ]),
+
+        function(t2, [ 6 ]),
+
+        function(t3, [ 1 ]),
+
+        function(t4, [ 8 ]),
+
+        function(t5, [ 9 ]),
+
+        function(t6, [ 4 ]),
+
+        function(t7, [ 5 ]),
+
+        function(t8, [ 2 ]),
+
+        function(t9, [ 7 ])
+]).
+
+============================== end of model ==========================
+
+============================== MODEL =================================
+
+interpretation( 11, [number=22, seconds=0], [
+
+        function(t1, [ 3 ]),
+
+        function(t10, [10 ]),
+
+        function(t2, [ 6 ]),
+
+        function(t3, [ 2 ]),
+
+        function(t4, [ 9 ]),
+
+        function(t5, [ 5 ]),
+
+        function(t6, [ 8 ]),
+
+        function(t7, [ 1 ]),
+
+        function(t8, [ 7 ]),
+
+        function(t9, [ 4 ])
+]).
+
+============================== end of model ==========================
+
+============================== MODEL =================================
+
+interpretation( 11, [number=23, seconds=0], [
+
+        function(t1, [ 3 ]),
+
+        function(t10, [10 ]),
+
+        function(t2, [ 6 ]),
+
+        function(t3, [ 4 ]),
+
+        function(t4, [ 7 ]),
+
+        function(t5, [ 5 ]),
+
+        function(t6, [ 8 ]),
+
+        function(t7, [ 1 ]),
+
+        function(t8, [ 9 ]),
+
+        function(t9, [ 2 ])
+]).
+
+============================== end of model ==========================
+
+============================== MODEL =================================
+
+interpretation( 11, [number=24, seconds=0], [
+
+        function(t1, [ 3 ]),
+
+        function(t10, [10 ]),
+
+        function(t2, [ 6 ]),
+
+        function(t3, [ 7 ]),
+
+        function(t4, [ 2 ]),
+
+        function(t5, [ 9 ]),
+
+        function(t6, [ 4 ]),
+
+        function(t7, [ 5 ]),
+
+        function(t8, [ 8 ]),
+
+        function(t9, [ 1 ])
+]).
+
+============================== end of model ==========================
+
+============================== MODEL =================================
+
+interpretation( 11, [number=25, seconds=0], [
+
+        function(t1, [ 3 ]),
+
+        function(t10, [10 ]),
+
+        function(t2, [ 7 ]),
+
+        function(t3, [ 1 ]),
+
+        function(t4, [ 9 ]),
+
+        function(t5, [ 5 ]),
+
+        function(t6, [ 8 ]),
+
+        function(t7, [ 2 ]),
+
+        function(t8, [ 6 ]),
+
+        function(t9, [ 4 ])
+]).
+
+============================== end of model ==========================
+
+============================== MODEL =================================
+
+interpretation( 11, [number=26, seconds=0], [
+
+        function(t1, [ 3 ]),
+
+        function(t10, [10 ]),
+
+        function(t2, [ 7 ]),
+
+        function(t3, [ 4 ]),
+
+        function(t4, [ 6 ]),
+
+        function(t5, [ 5 ]),
+
+        function(t6, [ 8 ]),
+
+        function(t7, [ 2 ]),
+
+        function(t8, [ 9 ]),
+
+        function(t9, [ 1 ])
+]).
+
+============================== end of model ==========================
+
+============================== MODEL =================================
+
+interpretation( 11, [number=27, seconds=0], [
+
+        function(t1, [ 3 ]),
+
+        function(t10, [10 ]),
+
+        function(t2, [ 8 ]),
+
+        function(t3, [ 1 ]),
+
+        function(t4, [ 6 ]),
+
+        function(t5, [ 9 ]),
+
+        function(t6, [ 4 ]),
+
+        function(t7, [ 7 ]),
+
+        function(t8, [ 2 ]),
+
+        function(t9, [ 5 ])
+]).
+
+============================== end of model ==========================
+
+============================== MODEL =================================
+
+interpretation( 11, [number=28, seconds=0], [
+
+        function(t1, [ 3 ]),
+
+        function(t10, [10 ]),
+
+        function(t2, [ 8 ]),
+
+        function(t3, [ 5 ]),
+
+        function(t4, [ 2 ]),
+
+        function(t5, [ 9 ]),
+
+        function(t6, [ 4 ]),
+
+        function(t7, [ 7 ]),
+
+        function(t8, [ 6 ]),
+
+        function(t9, [ 1 ])
+]).
+
+============================== end of model ==========================
+
+============================== MODEL =================================
+
+interpretation( 11, [number=29, seconds=0], [
+
+        function(t1, [ 3 ]),
+
+        function(t10, [10 ]),
+
+        function(t2, [ 9 ]),
+
+        function(t3, [ 1 ]),
+
+        function(t4, [ 7 ]),
+
+        function(t5, [ 5 ]),
+
+        function(t6, [ 8 ]),
+
+        function(t7, [ 4 ]),
+
+        function(t8, [ 6 ]),
+
+        function(t9, [ 2 ])
+]).
+
+============================== end of model ==========================
+
+============================== MODEL =================================
+
+interpretation( 11, [number=30, seconds=0], [
+
+        function(t1, [ 3 ]),
+
+        function(t10, [10 ]),
+
+        function(t2, [ 9 ]),
+
+        function(t3, [ 2 ]),
+
+        function(t4, [ 6 ]),
+
+        function(t5, [ 5 ]),
+
+        function(t6, [ 8 ]),
+
+        function(t7, [ 4 ]),
+
+        function(t8, [ 7 ]),
+
+        function(t9, [ 1 ])
+]).
+
+============================== end of model ==========================
+
+============================== MODEL =================================
+
+interpretation( 11, [number=31, seconds=0], [
+
+        function(t1, [ 4 ]),
+
+        function(t10, [10 ]),
+
+        function(t2, [ 6 ]),
+
+        function(t3, [ 2 ]),
+
+        function(t4, [ 8 ]),
+
+        function(t5, [ 5 ]),
+
+        function(t6, [ 9 ]),
+
+        function(t7, [ 1 ]),
+
+        function(t8, [ 7 ]),
+
+        function(t9, [ 3 ])
+]).
+
+============================== end of model ==========================
+
+============================== MODEL =================================
+
+interpretation( 11, [number=32, seconds=0], [
+
+        function(t1, [ 4 ]),
+
+        function(t10, [10 ]),
+
+        function(t2, [ 6 ]),
+
+        function(t3, [ 3 ]),
+
+        function(t4, [ 7 ]),
+
+        function(t5, [ 5 ]),
+
+        function(t6, [ 9 ]),
+
+        function(t7, [ 1 ]),
+
+        function(t8, [ 8 ]),
+
+        function(t9, [ 2 ])
+]).
+
+============================== end of model ==========================
+
+============================== MODEL =================================
+
+interpretation( 11, [number=33, seconds=0], [
+
+        function(t1, [ 4 ]),
+
+        function(t10, [10 ]),
+
+        function(t2, [ 7 ]),
+
+        function(t3, [ 1 ]),
+
+        function(t4, [ 8 ]),
+
+        function(t5, [ 5 ]),
+
+        function(t6, [ 9 ]),
+
+        function(t7, [ 2 ]),
+
+        function(t8, [ 6 ]),
+
+        function(t9, [ 3 ])
+]).
+
+============================== end of model ==========================
+
+============================== MODEL =================================
+
+interpretation( 11, [number=34, seconds=0], [
+
+        function(t1, [ 4 ]),
+
+        function(t10, [10 ]),
+
+        function(t2, [ 7 ]),
+
+        function(t3, [ 3 ]),
+
+        function(t4, [ 6 ]),
+
+        function(t5, [ 5 ]),
+
+        function(t6, [ 9 ]),
+
+        function(t7, [ 2 ]),
+
+        function(t8, [ 8 ]),
+
+        function(t9, [ 1 ])
+]).
+
+============================== end of model ==========================
+
+============================== MODEL =================================
+
+interpretation( 11, [number=35, seconds=0], [
+
+        function(t1, [ 4 ]),
+
+        function(t10, [10 ]),
+
+        function(t2, [ 8 ]),
+
+        function(t3, [ 1 ]),
+
+        function(t4, [ 7 ]),
+
+        function(t5, [ 5 ]),
+
+        function(t6, [ 9 ]),
+
+        function(t7, [ 3 ]),
+
+        function(t8, [ 6 ]),
+
+        function(t9, [ 2 ])
+]).
+
+============================== end of model ==========================
+
+============================== MODEL =================================
+
+interpretation( 11, [number=36, seconds=0], [
+
+        function(t1, [ 4 ]),
+
+        function(t10, [10 ]),
+
+        function(t2, [ 8 ]),
+
+        function(t3, [ 2 ]),
+
+        function(t4, [ 6 ]),
+
+        function(t5, [ 5 ]),
+
+        function(t6, [ 9 ]),
+
+        function(t7, [ 3 ]),
+
+        function(t8, [ 7 ]),
+
+        function(t9, [ 1 ])
+]).
+
+============================== end of model ==========================
+
+============================== MODEL =================================
+
+interpretation( 11, [number=37, seconds=0], [
+
+        function(t1, [ 5 ]),
+
+        function(t10, [10 ]),
+
+        function(t2, [ 2 ]),
+
+        function(t3, [ 3 ]),
+
+        function(t4, [ 8 ]),
+
+        function(t5, [ 9 ]),
+
+        function(t6, [ 6 ]),
+
+        function(t7, [ 1 ]),
+
+        function(t8, [ 4 ]),
+
+        function(t9, [ 7 ])
+]).
+
+============================== end of model ==========================
+
+============================== MODEL =================================
+
+interpretation( 11, [number=38, seconds=0], [
+
+        function(t1, [ 5 ]),
+
+        function(t10, [10 ]),
+
+        function(t2, [ 2 ]),
+
+        function(t3, [ 7 ]),
+
+        function(t4, [ 4 ]),
+
+        function(t5, [ 9 ]),
+
+        function(t6, [ 6 ]),
+
+        function(t7, [ 1 ]),
+
+        function(t8, [ 8 ]),
+
+        function(t9, [ 3 ])
+]).
+
+============================== end of model ==========================
+
+============================== MODEL =================================
+
+interpretation( 11, [number=39, seconds=0], [
+
+        function(t1, [ 5 ]),
+
+        function(t10, [10 ]),
+
+        function(t2, [ 4 ]),
+
+        function(t3, [ 1 ]),
+
+        function(t4, [ 8 ]),
+
+        function(t5, [ 9 ]),
+
+        function(t6, [ 6 ]),
+
+        function(t7, [ 3 ]),
+
+        function(t8, [ 2 ]),
+
+        function(t9, [ 7 ])
+]).
+
+============================== end of model ==========================
+
+============================== MODEL =================================
+
+interpretation( 11, [number=40, seconds=0], [
+
+        function(t1, [ 5 ]),
+
+        function(t10, [10 ]),
+
+        function(t2, [ 4 ]),
+
+        function(t3, [ 7 ]),
+
+        function(t4, [ 2 ]),
+
+        function(t5, [ 9 ]),
+
+        function(t6, [ 6 ]),
+
+        function(t7, [ 3 ]),
+
+        function(t8, [ 8 ]),
+
+        function(t9, [ 1 ])
+]).
+
+============================== end of model ==========================
+
+============================== MODEL =================================
+
+interpretation( 11, [number=41, seconds=0], [
+
+        function(t1, [ 5 ]),
+
+        function(t10, [10 ]),
+
+        function(t2, [ 8 ]),
+
+        function(t3, [ 1 ]),
+
+        function(t4, [ 4 ]),
+
+        function(t5, [ 9 ]),
+
+        function(t6, [ 6 ]),
+
+        function(t7, [ 7 ]),
+
+        function(t8, [ 2 ]),
+
+        function(t9, [ 3 ])
+]).
+
+============================== end of model ==========================
+
+============================== MODEL =================================
+
+interpretation( 11, [number=42, seconds=0], [
+
+        function(t1, [ 5 ]),
+
+        function(t10, [10 ]),
+
+        function(t2, [ 8 ]),
+
+        function(t3, [ 3 ]),
+
+        function(t4, [ 2 ]),
+
+        function(t5, [ 9 ]),
+
+        function(t6, [ 6 ]),
+
+        function(t7, [ 7 ]),
+
+        function(t8, [ 4 ]),
+
+        function(t9, [ 1 ])
+]).
+
+============================== end of model ==========================
+
+============================== MODEL =================================
+
+interpretation( 11, [number=43, seconds=0], [
+
+        function(t1, [ 7 ]),
+
+        function(t10, [10 ]),
+
+        function(t2, [ 2 ]),
+
+        function(t3, [ 3 ]),
+
+        function(t4, [ 6 ]),
+
+        function(t5, [ 9 ]),
+
+        function(t6, [ 8 ]),
+
+        function(t7, [ 1 ]),
+
+        function(t8, [ 4 ]),
+
+        function(t9, [ 5 ])
+]).
+
+============================== end of model ==========================
+
+============================== MODEL =================================
+
+interpretation( 11, [number=44, seconds=0], [
+
+        function(t1, [ 7 ]),
+
+        function(t10, [10 ]),
+
+        function(t2, [ 2 ]),
+
+        function(t3, [ 5 ]),
+
+        function(t4, [ 4 ]),
+
+        function(t5, [ 9 ]),
+
+        function(t6, [ 8 ]),
+
+        function(t7, [ 1 ]),
+
+        function(t8, [ 6 ]),
+
+        function(t9, [ 3 ])
+]).
+
+============================== end of model ==========================
+
+============================== MODEL =================================
+
+interpretation( 11, [number=45, seconds=0], [
+
+        function(t1, [ 7 ]),
+
+        function(t10, [10 ]),
+
+        function(t2, [ 4 ]),
+
+        function(t3, [ 1 ]),
+
+        function(t4, [ 6 ]),
+
+        function(t5, [ 9 ]),
+
+        function(t6, [ 8 ]),
+
+        function(t7, [ 3 ]),
+
+        function(t8, [ 2 ]),
+
+        function(t9, [ 5 ])
+]).
+
+============================== end of model ==========================
+
+============================== MODEL =================================
+
+interpretation( 11, [number=46, seconds=0], [
+
+        function(t1, [ 7 ]),
+
+        function(t10, [10 ]),
+
+        function(t2, [ 4 ]),
+
+        function(t3, [ 5 ]),
+
+        function(t4, [ 2 ]),
+
+        function(t5, [ 9 ]),
+
+        function(t6, [ 8 ]),
+
+        function(t7, [ 3 ]),
+
+        function(t8, [ 6 ]),
+
+        function(t9, [ 1 ])
+]).
+
+============================== end of model ==========================
+
+============================== MODEL =================================
+
+interpretation( 11, [number=47, seconds=0], [
+
+        function(t1, [ 7 ]),
+
+        function(t10, [10 ]),
+
+        function(t2, [ 6 ]),
+
+        function(t3, [ 1 ]),
+
+        function(t4, [ 4 ]),
+
+        function(t5, [ 9 ]),
+
+        function(t6, [ 8 ]),
+
+        function(t7, [ 5 ]),
+
+        function(t8, [ 2 ]),
+
+        function(t9, [ 3 ])
+]).
+
+============================== end of model ==========================
+
+============================== MODEL =================================
+
+interpretation( 11, [number=48, seconds=0], [
+
+        function(t1, [ 7 ]),
+
+        function(t10, [10 ]),
+
+        function(t2, [ 6 ]),
+
+        function(t3, [ 3 ]),
+
+        function(t4, [ 2 ]),
+
+        function(t5, [ 9 ]),
+
+        function(t6, [ 8 ]),
+
+        function(t7, [ 5 ]),
+
+        function(t8, [ 4 ]),
+
+        function(t9, [ 1 ])
+]).
+
+============================== end of model ==========================
+
+============================== STATISTICS ============================
+
+For domain size 11.
+
+Current CPU time: 0.00 seconds (total CPU time: 0.29 seconds).
+Ground clauses: seen=61, kept=60.
+Selections=23746, assignments=261206, propagations=2353, current_models=48.
+Rewrite_terms=2088291, rewrite_bools=1409104, indexes=0.
+Rules_from_neg_clauses=2352, cross_offs=286050.
+
+============================== end of statistics =====================
+
+User_CPU=0.29, System_CPU=0.02, Wall_clock=0.
+
+Exiting with 48 models.
+
+Process 23062 exit (all_models) Thu Jan 21 11:02:27 2021
+The process finished Thu Jan 21 11:02:27 2021

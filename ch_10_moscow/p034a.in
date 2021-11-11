@@ -1,0 +1,25 @@
+set(arithmetic).
+assign(domain_size,20).
+assign(max_models,1).
+
+formulas(assumptions).
+  %let the position of each circle to be 0 to 18
+  %opposing circles have a difference of 9
+  all x all y (abs(x+ -y) = 9 & x<18 & y<18 <-> opus(x,y) & opus(y,x)).
+
+  %otherwise, the circles are not opposite
+  all x all y (abs(x+ -y) != 9 | x>17 | y>17 <-> -opus(x,y) & -opus(y,x)).
+
+  %sum of two opposite cicles is the same 
+  %for center = 1 the sum is (190-1)/9=21.
+  all x all y (opus(x,y) -> t(x) + t(y) = 21).  
+
+  %each circle contains distinct values
+  all x all y (x!=y & x <= 17 & y <= 17 -> t(x) != t(y)).
+
+  %the value are from 1 to 19, but 1 is already taken by the center
+  all x (x <= 17 -> t(x) > 1).
+
+  t(18)=0.                                           %avoid isomorphisms
+  all x all y (x <= 8 & y > 8) -> t(x) < t(y).       %avoid isomorphisms
+end_of_list.

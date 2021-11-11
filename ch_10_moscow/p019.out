@@ -1,0 +1,108 @@
+============================== Mace4 =================================
+Mace4 (64) version 2009-11A, November 2009.
+Process 21121 was started by adrian on adrian,
+Thu Jan 21 09:28:56 2021
+The command was "mace4 -f p019.in".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+% Reading from file p019.in
+
+set(arithmetic).
+    % set(arithmetic) -> clear(lnh).
+    % set(arithmetic) -> assign(selection_order, 0).
+
+    % Declaring Mace4 arithmetic parse types.
+assign(domain_size,7).
+    % assign(domain_size, 7) -> assign(start_size, 7).
+    % assign(domain_size, 7) -> assign(end_size, 7).
+assign(max_models,-1).
+
+formulas(arranging_flags).
+a + b + c + d + e + f + g + h = 12.
+i = 6.
+a + b + h = i.
+b + c + d = i.
+d + e + f = i.
+f + g + h = i.
+h = b & b = f & f = d.
+a = c & c = e & e = g.
+end_of_list.
+
+============================== end of input ==========================
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+1 h = b & b = f & f = d # label(non_clause).  [assumption].
+2 a = c & c = e & e = g # label(non_clause).  [assumption].
+
+============================== end of process non-clausal formulas ===
+
+============================== CLAUSES FOR SEARCH ====================
+
+formulas(mace4_clauses).
+a + b + c + d + e + f + g + h = 12.
+i = 6.
+a + b + h = i.
+b + c + d = i.
+d + e + f = i.
+f + g + h = i.
+h = b.
+f = b.
+f = d.
+c = a.
+e = c.
+g = e.
+end_of_list.
+
+============================== end of clauses for search =============
+
+% The largest natural number in the input is 12.
+
+============================== DOMAIN SIZE 7 =========================
+
+============================== MODEL =================================
+
+interpretation( 7, [number=1, seconds=0], [
+
+        function(a, [ 0 ]),
+
+        function(b, [ 3 ]),
+
+        function(c, [ 0 ]),
+
+        function(d, [ 3 ]),
+
+        function(e, [ 0 ]),
+
+        function(f, [ 3 ]),
+
+        function(g, [ 0 ]),
+
+        function(h, [ 3 ]),
+
+        function(i, [ 6 ])
+]).
+
+============================== end of model ==========================
+
+============================== STATISTICS ============================
+
+For domain size 7.
+
+Current CPU time: 0.00 seconds (total CPU time: 0.01 seconds).
+Ground clauses: seen=12, kept=12.
+Selections=8, assignments=56, propagations=124, current_models=1.
+Rewrite_terms=531, rewrite_bools=144, indexes=0.
+Rules_from_neg_clauses=0, cross_offs=0.
+
+============================== end of statistics =====================
+
+User_CPU=0.01, System_CPU=0.00, Wall_clock=0.
+
+Exiting with 1 model.
+
+Process 21121 exit (all_models) Thu Jan 21 09:28:56 2021
+The process finished Thu Jan 21 09:28:56 2021

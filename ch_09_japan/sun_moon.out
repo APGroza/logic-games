@@ -1,0 +1,503 @@
+============================== Mace4 =================================
+Mace4 (64) version 2009-11A, November 2009.
+Process 20818 was started by adrian on adrian,
+Thu Jan 21 09:17:41 2021
+The command was "mace4 -m 2 -f sun_moon.in".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+% Reading from file sun_moon.in
+
+set(arithmetic).
+    % set(arithmetic) -> clear(lnh).
+    % set(arithmetic) -> assign(selection_order, 0).
+
+    % Declaring Mace4 arithmetic parse types.
+assign(domain_size,11).
+    % assign(domain_size, 11) -> assign(start_size, 11).
+    % assign(domain_size, 11) -> assign(end_size, 11).
+assign(max_models,-1).
+
+formulas(utils).
+gs = 5.
+s = 1.
+c = 2.
+light_above(x,y) <-> p(x,y) = 3 | p(x,y) = 4 | p(x,y) = 6 | p(x,y) = 9.
+light_below(x,y) <-> p(x,y) = 1 | p(x,y) = 2 | p(x,y) = 5 | p(x,y) = 9.
+light_left(x,y) <-> p(x,y) = 2 | p(x,y) = 3 | p(x,y) = 8 | p(x,y) = 9.
+light_right(x,y) <-> p(x,y) = 1 | p(x,y) = 4 | p(x,y) = 7 | p(x,y) = 9.
+dark_above(x,y) <-> p(x,y) = 5 | p(x,y) = 10.
+dark_below(x,y) <-> p(x,y) = 6 | p(x,y) = 10.
+dark_left(x,y) <-> p(x,y) = 7 | p(x,y) = 10.
+dark_right(x,y) <-> p(x,y) = 8 | p(x,y) = 10.
+end_of_list.
+
+formulas(sun_and_moon).
+p(x,y) != 0 -> f(x,y) = 0.
+f(x,y) = 0 | f(x,y) = s | f(x,y) = c.
+(all x all y (x >= gs | y >= gs -> f(x,y) = 0)).
+(all x (x < gs -> (exists y1 f(x,y1) = s) & (exists y2 f(x,y2) = c))).
+(all y (y < gs -> (exists x1 f(x1,y) = s) & (exists x2 f(x2,y) = c))).
+(all x all y1 all y2 (f(x,y1) = s & f(x,y2) = s -> y1 = y2)).
+(all x1 all x2 all y (f(x1,y) = s & f(x2,y) = s -> x1 = x2)).
+(all x all y1 all y2 (f(x,y1) = c & f(x,y2) = c -> y1 = y2)).
+(all x1 all x2 all y (f(x1,y) = c & f(x2,y) = c -> x1 = x2)).
+light_above(x,y) & f(x1,y) = s -> x1 < x & (all x2 (x2 > x1 & x2 < x -> f(x2,y) = 0)).
+light_below(x,y) & f(x1,y) = s -> x1 > x & (all x2 (x2 < x1 & x2 > x -> f(x2,y) = 0)).
+light_left(x,y) & f(x,y1) = s -> y1 < y & (all y2 (y2 > y1 & y2 < y -> f(x,y2) = 0)).
+light_right(x,y) & f(x,y1) = s -> y1 > y & (all y2 (y2 < y1 & y2 > y -> f(x,y2) = 0)).
+dark_above(x,y) & f(x1,y) = s & f(x2,y) = c -> x1 > x | x2 < x & x1 < x2.
+dark_below(x,y) & f(x1,y) = s & f(x2,y) = c -> x1 < x | x2 > x & x1 > x2.
+dark_left(x,y) & f(x,y1) = s & f(x,y2) = c -> y1 > y | y2 > y1 & y2 < y.
+dark_right(x,y) & f(x,y1) = s & f(x,y2) = c -> y1 < y | y2 > y & y1 > y2.
+end_of_list.
+
+formulas(planet_latin_square).
+(all x all y (x >= gs | y >= gs -> p(x,y) = 0)).
+p(0,4) = 10 & p(1,2) = 3 & p(2,0) = 10 & p(3,1) = 7 & p(4,3) = 6.
+(all x all y1 all y2 (p(x,y1) != 0 & p(x,y2) != 0 -> y1 = y2)).
+(all x1 all x2 all y (p(x1,y) != 0 & p(x2,y) != 0 -> x1 = x2)).
+end_of_list.
+
+% From the command line: assign(max_models, 2).
+
+============================== end of input ==========================
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+1 light_above(x,y) <-> p(x,y) = 3 | p(x,y) = 4 | p(x,y) = 6 | p(x,y) = 9 # label(non_clause).  [assumption].
+2 light_below(x,y) <-> p(x,y) = 1 | p(x,y) = 2 | p(x,y) = 5 | p(x,y) = 9 # label(non_clause).  [assumption].
+3 light_left(x,y) <-> p(x,y) = 2 | p(x,y) = 3 | p(x,y) = 8 | p(x,y) = 9 # label(non_clause).  [assumption].
+4 light_right(x,y) <-> p(x,y) = 1 | p(x,y) = 4 | p(x,y) = 7 | p(x,y) = 9 # label(non_clause).  [assumption].
+5 dark_above(x,y) <-> p(x,y) = 5 | p(x,y) = 10 # label(non_clause).  [assumption].
+6 dark_below(x,y) <-> p(x,y) = 6 | p(x,y) = 10 # label(non_clause).  [assumption].
+7 dark_left(x,y) <-> p(x,y) = 7 | p(x,y) = 10 # label(non_clause).  [assumption].
+8 dark_right(x,y) <-> p(x,y) = 8 | p(x,y) = 10 # label(non_clause).  [assumption].
+9 p(x,y) != 0 -> f(x,y) = 0 # label(non_clause).  [assumption].
+10 (all x all y (x >= gs | y >= gs -> f(x,y) = 0)) # label(non_clause).  [assumption].
+11 (all x (x < gs -> (exists y1 f(x,y1) = s) & (exists y2 f(x,y2) = c))) # label(non_clause).  [assumption].
+12 (all y (y < gs -> (exists x1 f(x1,y) = s) & (exists x2 f(x2,y) = c))) # label(non_clause).  [assumption].
+13 (all x all y1 all y2 (f(x,y1) = s & f(x,y2) = s -> y1 = y2)) # label(non_clause).  [assumption].
+14 (all x1 all x2 all y (f(x1,y) = s & f(x2,y) = s -> x1 = x2)) # label(non_clause).  [assumption].
+15 (all x all y1 all y2 (f(x,y1) = c & f(x,y2) = c -> y1 = y2)) # label(non_clause).  [assumption].
+16 (all x1 all x2 all y (f(x1,y) = c & f(x2,y) = c -> x1 = x2)) # label(non_clause).  [assumption].
+17 light_above(x,y) & f(x1,y) = s -> x1 < x & (all x2 (x2 > x1 & x2 < x -> f(x2,y) = 0)) # label(non_clause).  [assumption].
+18 light_below(x,y) & f(x1,y) = s -> x1 > x & (all x2 (x2 < x1 & x2 > x -> f(x2,y) = 0)) # label(non_clause).  [assumption].
+19 light_left(x,y) & f(x,y1) = s -> y1 < y & (all y2 (y2 > y1 & y2 < y -> f(x,y2) = 0)) # label(non_clause).  [assumption].
+20 light_right(x,y) & f(x,y1) = s -> y1 > y & (all y2 (y2 < y1 & y2 > y -> f(x,y2) = 0)) # label(non_clause).  [assumption].
+21 dark_above(x,y) & f(x1,y) = s & f(x2,y) = c -> x1 > x | x2 < x & x1 < x2 # label(non_clause).  [assumption].
+22 dark_below(x,y) & f(x1,y) = s & f(x2,y) = c -> x1 < x | x2 > x & x1 > x2 # label(non_clause).  [assumption].
+23 dark_left(x,y) & f(x,y1) = s & f(x,y2) = c -> y1 > y | y2 > y1 & y2 < y # label(non_clause).  [assumption].
+24 dark_right(x,y) & f(x,y1) = s & f(x,y2) = c -> y1 < y | y2 > y & y1 > y2 # label(non_clause).  [assumption].
+25 (all x all y (x >= gs | y >= gs -> p(x,y) = 0)) # label(non_clause).  [assumption].
+26 p(0,4) = 10 & p(1,2) = 3 & p(2,0) = 10 & p(3,1) = 7 & p(4,3) = 6 # label(non_clause).  [assumption].
+27 (all x all y1 all y2 (p(x,y1) != 0 & p(x,y2) != 0 -> y1 = y2)) # label(non_clause).  [assumption].
+28 (all x1 all x2 all y (p(x1,y) != 0 & p(x2,y) != 0 -> x1 = x2)) # label(non_clause).  [assumption].
+
+============================== end of process non-clausal formulas ===
+
+============================== CLAUSES FOR SEARCH ====================
+
+formulas(mace4_clauses).
+gs = 5.
+s = 1.
+c = 2.
+-light_above(x,y) | p(x,y) = 3 | p(x,y) = 4 | p(x,y) = 6 | p(x,y) = 9.
+light_above(x,y) | p(x,y) != 3.
+light_above(x,y) | p(x,y) != 4.
+light_above(x,y) | p(x,y) != 6.
+light_above(x,y) | p(x,y) != 9.
+-light_below(x,y) | p(x,y) = 1 | p(x,y) = 2 | p(x,y) = 5 | p(x,y) = 9.
+light_below(x,y) | p(x,y) != 1.
+light_below(x,y) | p(x,y) != 2.
+light_below(x,y) | p(x,y) != 5.
+light_below(x,y) | p(x,y) != 9.
+-light_left(x,y) | p(x,y) = 2 | p(x,y) = 3 | p(x,y) = 8 | p(x,y) = 9.
+light_left(x,y) | p(x,y) != 2.
+light_left(x,y) | p(x,y) != 3.
+light_left(x,y) | p(x,y) != 8.
+light_left(x,y) | p(x,y) != 9.
+-light_right(x,y) | p(x,y) = 1 | p(x,y) = 4 | p(x,y) = 7 | p(x,y) = 9.
+light_right(x,y) | p(x,y) != 1.
+light_right(x,y) | p(x,y) != 4.
+light_right(x,y) | p(x,y) != 7.
+light_right(x,y) | p(x,y) != 9.
+-dark_above(x,y) | p(x,y) = 5 | p(x,y) = 10.
+dark_above(x,y) | p(x,y) != 5.
+dark_above(x,y) | p(x,y) != 10.
+-dark_below(x,y) | p(x,y) = 6 | p(x,y) = 10.
+dark_below(x,y) | p(x,y) != 6.
+dark_below(x,y) | p(x,y) != 10.
+-dark_left(x,y) | p(x,y) = 7 | p(x,y) = 10.
+dark_left(x,y) | p(x,y) != 7.
+dark_left(x,y) | p(x,y) != 10.
+-dark_right(x,y) | p(x,y) = 8 | p(x,y) = 10.
+dark_right(x,y) | p(x,y) != 8.
+dark_right(x,y) | p(x,y) != 10.
+p(x,y) = 0 | f(x,y) = 0.
+f(x,y) = 0 | f(x,y) = s | f(x,y) = c.
+-(x >= gs) | f(x,y) = 0.
+-(x >= gs) | f(y,x) = 0.
+-(x < gs) | f(x,f1(x)) = s.
+-(x < gs) | f(x,f2(x)) = c.
+-(x < gs) | f(f3(x),x) = s.
+-(x < gs) | f(f4(x),x) = c.
+f(x,y) != s | f(x,z) != s | z = y.
+f(x,y) != s | f(z,y) != s | z = x.
+f(x,y) != c | f(x,z) != c | z = y.
+f(x,y) != c | f(z,y) != c | z = x.
+-light_above(x,y) | f(z,y) != s | z < x.
+-light_above(x,y) | f(z,y) != s | -(u > z) | -(u < x) | f(u,y) = 0.
+-light_below(x,y) | f(z,y) != s | z > x.
+-light_below(x,y) | f(z,y) != s | -(u < z) | -(u > x) | f(u,y) = 0.
+-light_left(x,y) | f(x,z) != s | z < y.
+-light_left(x,y) | f(x,z) != s | -(u > z) | -(u < y) | f(x,u) = 0.
+-light_right(x,y) | f(x,z) != s | z > y.
+-light_right(x,y) | f(x,z) != s | -(u < z) | -(u > y) | f(x,u) = 0.
+-dark_above(x,y) | f(z,y) != s | f(u,y) != c | z > x | u < x.
+-dark_above(x,y) | f(z,y) != s | f(u,y) != c | z > x | z < u.
+-dark_below(x,y) | f(z,y) != s | f(u,y) != c | z < x | u > x.
+-dark_below(x,y) | f(z,y) != s | f(u,y) != c | z < x | z > u.
+-dark_left(x,y) | f(x,z) != s | f(x,u) != c | z > y | u > z.
+-dark_left(x,y) | f(x,z) != s | f(x,u) != c | z > y | u < y.
+-dark_right(x,y) | f(x,z) != s | f(x,u) != c | z < y | u > y.
+-dark_right(x,y) | f(x,z) != s | f(x,u) != c | z < y | z > u.
+-(x >= gs) | p(x,y) = 0.
+-(x >= gs) | p(y,x) = 0.
+p(0,4) = 10.
+p(1,2) = 3.
+p(2,0) = 10.
+p(3,1) = 7.
+p(4,3) = 6.
+p(x,y) = 0 | p(x,z) = 0 | z = y.
+p(x,y) = 0 | p(z,y) = 0 | z = x.
+end_of_list.
+
+============================== end of clauses for search =============
+
+% The largest natural number in the input is 10.
+
+============================== DOMAIN SIZE 11 ========================
+
+============================== MODEL =================================
+
+interpretation( 11, [number=1, seconds=0], [
+
+        function(c, [ 2 ]),
+
+        function(gs, [ 5 ]),
+
+        function(s, [ 1 ]),
+
+        function(f1(_), [ 2, 1, 3, 4, 0, 0, 0, 0, 0, 0, 0 ]),
+
+        function(f2(_), [ 3, 4, 1, 0, 2, 0, 0, 0, 0, 0, 0 ]),
+
+        function(f3(_), [ 4, 1, 0, 2, 3, 0, 0, 0, 0, 0, 0 ]),
+
+        function(f4(_), [ 3, 2, 4, 0, 1, 0, 0, 0, 0, 0, 0 ]),
+
+        function(f(_,_), [
+			   0, 0, 1, 2, 0, 0, 0, 0, 0, 0, 0,
+			   0, 1, 0, 0, 2, 0, 0, 0, 0, 0, 0,
+			   0, 2, 0, 1, 0, 0, 0, 0, 0, 0, 0,
+			   2, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0,
+			   1, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]),
+
+        function(p(_,_), [
+			   0, 0, 0, 0,10, 0, 0, 0, 0, 0, 0,
+			   0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0,
+			  10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 6, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]),
+
+        relation(dark_above(_,_), [
+			   0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]),
+
+        relation(dark_below(_,_), [
+			   0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]),
+
+        relation(dark_left(_,_), [
+			   0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]),
+
+        relation(dark_right(_,_), [
+			   0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]),
+
+        relation(light_above(_,_), [
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]),
+
+        relation(light_below(_,_), [
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]),
+
+        relation(light_left(_,_), [
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]),
+
+        relation(light_right(_,_), [
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ])
+]).
+
+============================== end of model ==========================
+
+============================== MODEL =================================
+
+interpretation( 11, [number=2, seconds=0], [
+
+        function(c, [ 2 ]),
+
+        function(gs, [ 5 ]),
+
+        function(s, [ 1 ]),
+
+        function(f1(_), [ 2, 1, 3, 4, 0, 0, 0, 0, 0, 0, 0 ]),
+
+        function(f2(_), [ 3, 4, 1, 0, 2, 0, 0, 0, 0, 0, 0 ]),
+
+        function(f3(_), [ 4, 1, 0, 2, 3, 0, 0, 0, 0, 0, 0 ]),
+
+        function(f4(_), [ 3, 2, 4, 0, 1, 0, 0, 0, 0, 0, 1 ]),
+
+        function(f(_,_), [
+			   0, 0, 1, 2, 0, 0, 0, 0, 0, 0, 0,
+			   0, 1, 0, 0, 2, 0, 0, 0, 0, 0, 0,
+			   0, 2, 0, 1, 0, 0, 0, 0, 0, 0, 0,
+			   2, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0,
+			   1, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]),
+
+        function(p(_,_), [
+			   0, 0, 0, 0,10, 0, 0, 0, 0, 0, 0,
+			   0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0,
+			  10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 6, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]),
+
+        relation(dark_above(_,_), [
+			   0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]),
+
+        relation(dark_below(_,_), [
+			   0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]),
+
+        relation(dark_left(_,_), [
+			   0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]),
+
+        relation(dark_right(_,_), [
+			   0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]),
+
+        relation(light_above(_,_), [
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]),
+
+        relation(light_below(_,_), [
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]),
+
+        relation(light_left(_,_), [
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]),
+
+        relation(light_right(_,_), [
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ])
+]).
+
+============================== end of model ==========================
+
+============================== STATISTICS ============================
+
+For domain size 11.
+
+Current CPU time: 0.00 seconds (total CPU time: 0.35 seconds).
+Ground clauses: seen=193652, kept=8457.
+Selections=35, assignments=41, propagations=1242, current_models=2.
+Rewrite_terms=16905, rewrite_bools=12133, indexes=18.
+Rules_from_neg_clauses=28, cross_offs=288.
+
+============================== end of statistics =====================
+
+User_CPU=0.36, System_CPU=0.06, Wall_clock=1.
+
+Exiting with 2 models.
+
+Process 20818 exit (max_models) Thu Jan 21 09:17:42 2021
+The process finished Thu Jan 21 09:17:42 2021

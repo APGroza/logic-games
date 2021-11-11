@@ -1,0 +1,361 @@
+============================== Mace4 =================================
+Mace4 (64) version 2009-11A, November 2009.
+Process 22955 was started by adrian on adrian,
+Thu Jan 21 10:58:12 2021
+The command was "mace4 -f p049.in".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+% Reading from file p049.in
+
+set(arithmetic).
+    % set(arithmetic) -> clear(lnh).
+    % set(arithmetic) -> assign(selection_order, 0).
+
+    % Declaring Mace4 arithmetic parse types.
+assign(domain_size,14).
+    % assign(domain_size, 14) -> assign(start_size, 14).
+    % assign(domain_size, 14) -> assign(end_size, 14).
+assign(max_models,-1).
+
+formulas(assumptions).
+A + B + C + D + E + F + G + H = 20.
+odd(x) <-> x mod 2 = 1.
+odd(A) & odd(B) & odd(C) & odd(D) & odd(E) & odd(F) & odd(G) & odd(H).
+A >= B & B >= C & C >= D & D >= E & E >= F & F >= G & G >= H.
+end_of_list.
+
+============================== end of input ==========================
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+1 odd(x) <-> x mod 2 = 1 # label(non_clause).  [assumption].
+2 odd(A) & odd(B) & odd(C) & odd(D) & odd(E) & odd(F) & odd(G) & odd(H) # label(non_clause).  [assumption].
+3 A >= B & B >= C & C >= D & D >= E & E >= F & F >= G & G >= H # label(non_clause).  [assumption].
+
+============================== end of process non-clausal formulas ===
+
+============================== CLAUSES FOR SEARCH ====================
+
+formulas(mace4_clauses).
+A + B + C + D + E + F + G + H = 20.
+-odd(x) | x mod 2 = 1.
+odd(x) | x mod 2 != 1.
+odd(A).
+odd(B).
+odd(C).
+odd(D).
+odd(E).
+odd(F).
+odd(G).
+odd(H).
+A >= B.
+B >= C.
+C >= D.
+D >= E.
+E >= F.
+F >= G.
+G >= H.
+end_of_list.
+
+============================== end of clauses for search =============
+
+% The largest natural number in the input is 20.
+
+============================== DOMAIN SIZE 14 ========================
+
+============================== MODEL =================================
+
+interpretation( 14, [number=1, seconds=0], [
+
+        function(A, [ 3 ]),
+
+        function(B, [ 3 ]),
+
+        function(C, [ 3 ]),
+
+        function(D, [ 3 ]),
+
+        function(E, [ 3 ]),
+
+        function(F, [ 3 ]),
+
+        function(G, [ 1 ]),
+
+        function(H, [ 1 ]),
+
+        relation(odd(_), [ 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1 ])
+]).
+
+============================== end of model ==========================
+
+============================== MODEL =================================
+
+interpretation( 14, [number=2, seconds=0], [
+
+        function(A, [ 5 ]),
+
+        function(B, [ 3 ]),
+
+        function(C, [ 3 ]),
+
+        function(D, [ 3 ]),
+
+        function(E, [ 3 ]),
+
+        function(F, [ 1 ]),
+
+        function(G, [ 1 ]),
+
+        function(H, [ 1 ]),
+
+        relation(odd(_), [ 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1 ])
+]).
+
+============================== end of model ==========================
+
+============================== MODEL =================================
+
+interpretation( 14, [number=3, seconds=0], [
+
+        function(A, [ 5 ]),
+
+        function(B, [ 5 ]),
+
+        function(C, [ 3 ]),
+
+        function(D, [ 3 ]),
+
+        function(E, [ 1 ]),
+
+        function(F, [ 1 ]),
+
+        function(G, [ 1 ]),
+
+        function(H, [ 1 ]),
+
+        relation(odd(_), [ 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1 ])
+]).
+
+============================== end of model ==========================
+
+============================== MODEL =================================
+
+interpretation( 14, [number=4, seconds=0], [
+
+        function(A, [ 5 ]),
+
+        function(B, [ 5 ]),
+
+        function(C, [ 5 ]),
+
+        function(D, [ 1 ]),
+
+        function(E, [ 1 ]),
+
+        function(F, [ 1 ]),
+
+        function(G, [ 1 ]),
+
+        function(H, [ 1 ]),
+
+        relation(odd(_), [ 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1 ])
+]).
+
+============================== end of model ==========================
+
+============================== MODEL =================================
+
+interpretation( 14, [number=5, seconds=0], [
+
+        function(A, [ 7 ]),
+
+        function(B, [ 3 ]),
+
+        function(C, [ 3 ]),
+
+        function(D, [ 3 ]),
+
+        function(E, [ 1 ]),
+
+        function(F, [ 1 ]),
+
+        function(G, [ 1 ]),
+
+        function(H, [ 1 ]),
+
+        relation(odd(_), [ 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1 ])
+]).
+
+============================== end of model ==========================
+
+============================== MODEL =================================
+
+interpretation( 14, [number=6, seconds=0], [
+
+        function(A, [ 7 ]),
+
+        function(B, [ 5 ]),
+
+        function(C, [ 3 ]),
+
+        function(D, [ 1 ]),
+
+        function(E, [ 1 ]),
+
+        function(F, [ 1 ]),
+
+        function(G, [ 1 ]),
+
+        function(H, [ 1 ]),
+
+        relation(odd(_), [ 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1 ])
+]).
+
+============================== end of model ==========================
+
+============================== MODEL =================================
+
+interpretation( 14, [number=7, seconds=0], [
+
+        function(A, [ 7 ]),
+
+        function(B, [ 7 ]),
+
+        function(C, [ 1 ]),
+
+        function(D, [ 1 ]),
+
+        function(E, [ 1 ]),
+
+        function(F, [ 1 ]),
+
+        function(G, [ 1 ]),
+
+        function(H, [ 1 ]),
+
+        relation(odd(_), [ 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1 ])
+]).
+
+============================== end of model ==========================
+
+============================== MODEL =================================
+
+interpretation( 14, [number=8, seconds=0], [
+
+        function(A, [ 9 ]),
+
+        function(B, [ 3 ]),
+
+        function(C, [ 3 ]),
+
+        function(D, [ 1 ]),
+
+        function(E, [ 1 ]),
+
+        function(F, [ 1 ]),
+
+        function(G, [ 1 ]),
+
+        function(H, [ 1 ]),
+
+        relation(odd(_), [ 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1 ])
+]).
+
+============================== end of model ==========================
+
+============================== MODEL =================================
+
+interpretation( 14, [number=9, seconds=0], [
+
+        function(A, [ 9 ]),
+
+        function(B, [ 5 ]),
+
+        function(C, [ 1 ]),
+
+        function(D, [ 1 ]),
+
+        function(E, [ 1 ]),
+
+        function(F, [ 1 ]),
+
+        function(G, [ 1 ]),
+
+        function(H, [ 1 ]),
+
+        relation(odd(_), [ 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1 ])
+]).
+
+============================== end of model ==========================
+
+============================== MODEL =================================
+
+interpretation( 14, [number=10, seconds=0], [
+
+        function(A, [11 ]),
+
+        function(B, [ 3 ]),
+
+        function(C, [ 1 ]),
+
+        function(D, [ 1 ]),
+
+        function(E, [ 1 ]),
+
+        function(F, [ 1 ]),
+
+        function(G, [ 1 ]),
+
+        function(H, [ 1 ]),
+
+        relation(odd(_), [ 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1 ])
+]).
+
+============================== end of model ==========================
+
+============================== MODEL =================================
+
+interpretation( 14, [number=11, seconds=0], [
+
+        function(A, [13 ]),
+
+        function(B, [ 1 ]),
+
+        function(C, [ 1 ]),
+
+        function(D, [ 1 ]),
+
+        function(E, [ 1 ]),
+
+        function(F, [ 1 ]),
+
+        function(G, [ 1 ]),
+
+        function(H, [ 1 ]),
+
+        relation(odd(_), [ 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1 ])
+]).
+
+============================== end of model ==========================
+
+============================== STATISTICS ============================
+
+For domain size 14.
+
+Current CPU time: 0.00 seconds (total CPU time: 0.07 seconds).
+Ground clauses: seen=44, kept=30.
+Selections=3432, assignments=48048, propagations=14, current_models=11.
+Rewrite_terms=91360, rewrite_bools=63919, indexes=0.
+Rules_from_neg_clauses=0, cross_offs=56.
+
+============================== end of statistics =====================
+
+User_CPU=0.07, System_CPU=0.01, Wall_clock=0.
+
+Exiting with 11 models.
+
+Process 22955 exit (all_models) Thu Jan 21 10:58:12 2021
+The process finished Thu Jan 21 10:58:12 2021
