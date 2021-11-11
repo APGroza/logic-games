@@ -1,0 +1,187 @@
+\frame{%{Example}
+\begin{columns}
+\begin{column}{0.8\textwidth}
+\begin{block}{Constraints programming}
+Holy Grail of programming: \alert{the user states the problem, the computer solves it}.
+%(Eugene C. Freuder, Inaugural issue of the Constraints Journal, 1997)
+ \end{block}
+\end{column}
+
+\begin{column}{0.2\textwidth}
+\pgfimage[width=2cm]{fig/pocal}  
+\end{column}
+\end{columns}
+
+\only<2->{
+\begin{example}[Place numbers 1 through 8 on nodes]
+\begin{enumerate}
+ \item each number appears exactly once
+\item no connected nodes have consecutive numbers
+\end{enumerate}
+\end{example}}
+
+\begin{columns}
+ \begin{column}{0.5\textwidth}
+\begin{center}
+\only<2->{\pgfimage[width=4.5cm]{fig/ex1} }
+\end{center}
+ \end{column}
+\begin{column}{0.5\textwidth}
+\only<3->{
+\begin{itemize}
+ \item Which nodes are hardest to number? (\mat{Guess a value, but be prepared to backtrack})
+ \item Which are the least constraining values to use? (\mat{Symmetry means we don't need to consider:  8   1})
+\end{itemize}}
+ \end{column}
+\end{columns}
+
+\only<2->{
+\begin{block}{Heuristic Search}
+\textit{"To succeed, try first where you are most likely to fail."}\\
+\textit{"Deal with hard cases first: they can only get more difficult if you put them off."}
+\end{block}}
+}
+
+
+
+\begin{frame}{Inference and constraint propagation I}
+\begin{center}
+\only<1>{\pgfimage[width=5cm]{fig/ex3}}\hfill
+\only<2->{\pgfimage[width=5cm]{fig/ex4}} 
+
+We can now eliminate many values for other nodes
+
+\only<3->{\pgfimage[width=5cm]{fig/ex5} 
+By simmetry}\hfill
+\only<4->{\pgfimage[width=5cm]{fig/ex6}} 
+
+\end{center}
+\end{frame}
+
+\begin{frame}{Inference \& constraint propagation II}
+\begin{center}
+\only<1>{\pgfimage[width=4.5cm]{fig/ex7}By symmetry}\hfill
+\only<2->{\pgfimage[width=5.5cm]{fig/ex8}} 
+
+\only<3->{\pgfimage[width=4.5cm]{fig/ex9}}\hfill
+\only<4->{\pgfimage[width=4.5cm]{fig/ex10} and propagate} 
+
+\end{center}
+\end{frame}
+
+\begin{frame}{Inference \& constraint propagation III}
+\begin{center}
+\only<1>{\pgfimage[width=4.5cm]{fig/ex11}}\hfill
+\only<2->{\pgfimage[width=5cm]{fig/ex12}
+
+Guess a value, but be prepared to backtrack} 
+
+\only<3->{\pgfimage[width=4.5cm]{fig/ex13}More propagation?}\hfill
+\only<4->{\pgfimage[width=4.5cm]{fig/ex14}} 
+
+\end{center}
+\end{frame}
+
+
+\begin{frame}[plain]{Constraint programming methodology}
+ 
+\begin{enumerate}
+ \item Model problem
+\begin{itemize}
+ \item specify in terms of constraints on acceptable solutions: %\alert{constraint satisfaction problem}
+\item define/choose constraint model:  \color{blue}variables, domains, constraints\color{black}
+\end{itemize}
+
+\item Solve model
+\begin{itemize}
+ \item define/choose algorithm
+\item define/choose heuristics
+\end{itemize}
+
+\item Verify and analyze solution
+\end{enumerate}
+\begin{block}{Constraints Properties}
+\alert{A logical relation among several unknowns (variables)}
+
+\begin{itemize}
+ \item May specify \color{blue}partial information\color{black}: $X > 2$, "the circle is inside the square"
+\item \color{blue}Non-directional\color{black}: two variables X, Y can be used to infer a constraint on X given a constraint on Y and vice versa: X=Y+2
+\item \color{blue}Declarative\color{black}: specify what relationship must hold without specifying a computational procedure to enforce that relationship
+\item \color{blue}Additive\color{black}: the order of imposition of constraints does not matter, all that matters, at the end is that the conjunction of constraints is in effect
+\item \color{blue}Rarely independent\color{black}: typically constraints in the constraint store share variables.
+\end{itemize}
+
+\end{block}
+\end{frame}
+
+
+
+\begin{frame}{Constraint satisfaction problem (CSP)}
+ 
+ \begin{block}{A CSP is defined by}
+\begin{itemize}
+ \item a set of variables: $X$, $Y$, $Z$,
+\item a domain of values for each var: $X:\{1,2\}$, $Y:\{1,2\}$, $Z:\{1,2\}$
+\item a set of constraints between variables: $X = Y$, $X \neq Z$, $Y > Z$
+\end{itemize}
+\end{block}
+
+\begin{block}{A solution is an assignment of a value to each variable that}
+satisfies the constraints: \only<2->{$X=2$, $Y=2$, $Z=1$}
+\end{block}
+
+\begin{block}{Given a CSP}
+\begin{itemize}
+\item Determine whether it has a solution or not (satisfiability)
+\item Find any solution
+\item Find all solutions
+\item Find an optimal solution, given some cost function
+\end{itemize}
+\end{block} 
+\end{frame}
+
+
+\subsection{Give me some examples}
+
+\begin{comment}
+\begin{frame}{}
+\begin{itemize}
+ \item Puzzle
+\item Map coloring
+\item N-queen problem
+\item Sudoku
+\item Cryptarithmetic problem
+\end{itemize}
+\pgfimage[width=5cm]{fig/puzzle} 
+\pgfimage[width=5cm]{fig/sudoku}
+
+\end{frame}
+\end{comment}
+
+\begin{frame}[plain]{Constraint model for 8 digit puzzle}
+\begin{enumerate}
+\item each number appears exactly once
+\item no connected nodes have consecutive numbers
+\end{enumerate}
+
+\begin{columns}
+\begin{column}{0.4\textwidth}
+\begin{description}
+\item[Variables:] $a, ..., h$
+\item[Domains:] $\{1,..., 8\}$ 
+\item[Constraints:] 
+$| a - b | \neq 1$ ...\\
+$alldifferent(a,...,h)$ 
+\end{description}
+\pgfimage[width=3.5cm]{fig/sol.png} 
+\end{column}
+
+\begin{column}{0.6\textwidth}
+\pgfimage[width=7.3cm]{fig/con.png} 
+
+\pgfimage[width=6.5cm]{fig/models.png}
+\end{column}
+\end{columns}
+\end{frame}
+
+

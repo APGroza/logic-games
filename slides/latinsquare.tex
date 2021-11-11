@@ -1,0 +1,46 @@
+\begin{frame}[plain]
+
+\arenabox{A short history of Sudoku}{green!40}{green!10}{
+The game has \mat{European origins} that can be traced back to 1779 to the \mat{Euler's \textit{officer problem}}. 
+The problem asks you to arrange 36 officers in $6\times 6$ grid, 
+so that one officer from each of the six regiments appears in each row and column.
+This is a \mat{Latin square} of order 6, whose search for solution led to developments in combinatorics %~\cite{darling2004universal}.  
+In 1979, Howard Garns, a retired architect and puzzles fan, created the current version of the game under the name \textit{Number Place}. 
+The game was introduced in \mat{Japan in 1984} under the name Sudoku. %~\cite{jussien2007z}. %Jussien, Narendra 
+In 1989, the first piece of software able to produce Sudoku grids appeared under the name DigiHunt. 
+Sudoku has been the root of countless variants by adding new constraints, including: uniqueness value on diagonal, 
+common cells between the regions, the digits within a region sum-up to a given value (i.e. \mat{Killer Sudoku}), 
+the sum of digits on columns and lines are restricted to some value (i.e. \mat{Kakuro}). 
+}
+\vspace{-0.2cm}
+\includegraphics[width=3cm]{fig/officers.png}\hfill \includegraphics[width=2.9cm]{fig/officers2.png}\hfill    
+
+
+\end{frame}
+
+\frame[plain]{%\frametitle{Global constraints}
+\begin{example}[Latin square]
+An $n \times n$ array filled with $n$ different values. 
+Each value occurs exactly once in each row and exactly once in each column.
+How many Latin squares are there for $n=3$?
+\end{example}
+\centering
+\includegraphics[width=6cm]{fig/latin1.png}\hfill
+\includegraphics[width=2cm]{fig/latin0.png}
+\only<2->{\begin{example}[Normalised Latin square]
+Both its first row and its first column are in their natural order (i.e. 0, 1, 2). 
+How many normalised Latin squares are for $n=3$? What about $n=4$?
+\end{example}}
+
+\only<4->{\begin{example}[A practical application of Latin squares]
+Albert is a scientist that wants to test four different drugs 
+(called A, B, C, and D) on four volunteers. 
+He decides that every volunteer has to be tested with a different drug each week, 
+but no two volunteers are allowed the same drug at the same time. 
+\end{example}}
+
+\only<3->{\includegraphics[width=5cm]{fig/latin2.png}}\hfill
+\only<4->{\includegraphics[width=5cm]{fig/latin3.png}}
+
+}
+

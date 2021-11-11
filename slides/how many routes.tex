@@ -1,0 +1,24 @@
+\frame{
+\frametitle{Puzzle time - on searching}
+
+\begin{block}{How many routes?}
+In our Mathematics Circle we diagrammed 16 blocks of our city. How many
+different routes can we draw from the bottom-left  corner to the top-right corner moving only upward and to the right?
+Different routes may, of course, have portions that coincide (adapted from Kordemsky - Moscow puzzles)
+\end{block}
+
+\centering
+\includegraphics[width=8cm]{fig/puzzle.png}
+\only<2->{\includegraphics[width=4cm]{fig/puzle_sol.png}}
+
+\note{Observe that any route contains exactly 8 moves: 4 upward moves and 4 right moves. 
+We code the upward move with 1 and the right move with 0. 
+Hence the domain size is 2.
+As there are 4 right moves and 4 left moves, the sum of the moves $m_i$ should be exactly four (see Listing~\ref{lst:routem}) 
+$$m_1 + m_2 + m_3 + m_4 + m_5 + m_6 + m_7 + m_8 = 4$$
+Mace4 outputs 70 models for this equation.}
+
+\only<3->{$$m_1 + m_2 + m_3 + m_4 + m_5 + m_6 + m_7 + m_8 = 4, m_i \in\{0,1\}$$}
+
+}
+

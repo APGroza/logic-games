@@ -1,0 +1,37 @@
+\begin{frame}{Constraint model for graph coloring}
+\begin{columns}
+\begin{column}{0.7\textwidth}
+Given $k=3$ colors, does there exist a coloring of the nodes such that adjacent nodes are assigned different colors?
+
+\only<2->{
+\begin{description}
+\item[Variables:] $v_1, v_2, v_3, v_4, v_5$
+\item[Domains:] $\{yellow,grey, blue\}$ 
+\item[Constraints:] $v_i \neq v_j$ if $v_i$ and $v_j$ are adjacent
+\end{description}
+}
+\begin{example}[Colouring Dracula's land in red]
+Can the following map of Romania be coloured with only 3 colours? What about 4
+colours? Find a solution in which Transylvania, the birth place of Dracula, is coloured
+red. How many solutions exist?
+\end{example}
+\centering
+\only<3->{
+\includegraphics[width=3.5cm]{fig/robot1.png}\hfill  
+\includegraphics[width=3.5cm]{fig/Romania_Regions.png}}  
+
+\end{column}
+
+\begin{column}{0.3\textwidth}
+\pgfimage[width=3cm]{fig/map1} \\
+ \pgfimage[width=3cm]{fig/map2} 
+\end{column}
+\end{columns}
+ 
+\end{frame}
+
+\frame[plain]{
+\centering
+ \pgfimage[width=10cm]{fig/dracula.png} 
+}
+

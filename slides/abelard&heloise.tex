@@ -1,0 +1,160 @@
+\frame{
+\frametitle{Human vs. AI interpretations}
+
+%When reading  a narrative, the human agent has a single interpretation model. % of the story. 
+%That is the preferred model among the models consistent with the information.
+
+\begin{columns}
+ 
+\begin{column}{0.15\textwidth} 
+\includegraphics[scale=0.2]{fig/abelard.jpeg} 
+\end{column}
+
+\begin{column}{0.95\textwidth} 
+
+\begin{tabular}{rl}
+Statement: & {\it Abelard and Heloise are in love}. \\
+Human agent: & 
+\begin{tikzpicture}[modal,node distance = 7mm]
+\node[world] (w1) [label=left:$a$] {0};
+\node[world] (w2) [label=right:$h$,right=of w1] {1};
+
+\path[->] (w1) edge (w2);
+\path[->] (w2) edge (w1);
+%\path[->] (w3) edge[reflexive right] (w3);
+%\path[->] (w4) edge[reflexive below] (w4);
+\end{tikzpicture}\\
+
+AI (after NLP): & {\it Abelard is in love and Heloise is in love}. \\
+AI (after NLP2FOL): &  \alert{$\exists x,\ love(abelard,x) \wedge  \exists x,\ love(heloise,x)$ }\\
+\end{tabular}
+
+
+%With the domain closed to 4 individuals, there are \pause{\alert{278,528} models}
+\end{column} 
+\end{columns}
+
+
+\begin{columns}
+
+\begin{column}{0.5\textwidth}
+
+\begin{block}{How many models (e.g. MACE4)?}
+%\begin{texttt}
+assign(max\_models, -1).\\
+assign(domain\_size, 4).\\
+formulas(assumptions).\\
+\hspace{0.5cm}   exists x love(abelard,x).\\
+\hspace{0.5cm}  exists x love(heloise,x).\\
+end\_of\_list.
+%\end{texttt}
+\end{block}
+\end{column}
+
+
+\begin{column}{0.5\textwidth}
+\only<2->{\includegraphics[width=5cm]{fig/models.jpg}} 
+\end{column}
+
+
+\end{columns}
+\only<3->{
+\begin{tikzpicture}[modal,node distance = 7mm]
+\node[world] (w1) [label=left:$a$] {0};
+\node[world] (w2) [label=right:$h$,right=of w1] {1};
+\node[world] (w3) [label=left:$c_1$,below=of w1] {2};
+\node[world] (w4) [label=right:$c_2$,right=of w3] {3};
+
+\path[->] (w1) edge (w2);
+\path[->] (w2) edge (w1);
+%\path[->] (w3) edge[reflexive right] (w3);
+%\path[->] (w4) edge[reflexive below] (w4);
+\end{tikzpicture}
+\hspace{0.7cm}
+\begin{tikzpicture}[modal,node distance = 7mm]
+\node[world] (w1) [label=left:$a$] {0};
+\node[world] (w2) [label=right:$h$,right=of w1] {1};
+\node[world] (w3) [label=left:$c_1$,below=of w1] {2};
+\node[world] (w4) [label=right:$c_2$,right=of w3] {3};
+
+\path[->] (w1) edge (w3);
+\path[->] (w2) edge (w4);
+%\path[->] (w3) edge[reflexive right] (w3);
+%\path[->] (w4) edge[reflexive below] (w4);
+\end{tikzpicture}
+\hspace{0.7cm}
+\begin{tikzpicture}[modal,node distance = 7mm]
+\node[world] (w1) [label=left:$a$] {0};
+\node[world] (w2) [label=right:$h$,right=of w1] {1};
+\node[world] (w3) [label=left:$c_1$,below=of w1] {2};
+\node[world] (w4) [label=right:$c_2$,right=of w3] {3};
+
+\path[->] (w1) edge (w3);
+\path[->] (w2) edge (w3);
+%\path[->] (w3) edge[reflexive right] (w3);
+%\path[->] (w4) edge[reflexive below] (w4);
+\end{tikzpicture}
+}
+
+
+
+}
+
+\begin{frame}
+\frametitle{Reducing 278,528 models} 
+\begin{tikzpicture}[modal,node distance = 7mm]
+\node[world] (w1) [label=left:$a$] {0};
+\node[world] (w2) [label=right:$h$,right=of w1] {1};
+\node[world] (w3) [label=left:$c_1$,below=of w1] {2};
+\node[world] (w4) [label=right:$c_2$,right=of w3] {3};
+
+\path[->] (w1) edge[reflexive above] (w1);
+\path[->] (w2) edge[reflexive left] (w2);
+\path[->] (w3) edge (w2);
+\path[->] (w4) edge (w3);
+\end{tikzpicture}
+ \hspace{0.7cm}
+\begin{tikzpicture}[modal,node distance = 7mm]
+\node[world] (w1) [label=left:$a$] {0};
+\node[world] (w2) [label=right:$h$,right=of w1] {1};
+\node[world] (w3) [label=left:$c_1$,below=of w1] {2};
+\node[world] (w4) [label=right:$c_2$,right=of w3] {3};
+
+\path[->] (w1) edge (w2);
+\path[->] (w2) edge (w3);
+\path[->] (w1) edge (w3);
+\path[->] (w4) edge (w3);
+\end{tikzpicture}
+\hspace{0.7cm}
+\begin{tikzpicture}[modal,node distance = 7mm]
+\node[world] (w1) [label=left:$a$] {0};
+\node[world] (w2) [label=right:$h$,right=of w1] {0};
+\node[world] (w3) [label=left:$c_1$,below=of w1] {1};
+\node[world] (w4) [label=right:$c_2$,right=of w3] {2};
+
+\path[->] (w1) edge (w2);
+\path[->] (w2) edge (w3);
+\path[->] (w1) edge (w3);
+\path[->] (w4) edge (w3);
+\end{tikzpicture}
+
+\begin{enumerate}
+ \item UNA: \only<2->{$abelard \neq heloise$ \alert{163,840} models}
+ \item Assume love is not narcissistic: \only<3->{$\forall x, \ \neg love(x,x)$. (\alert{5,120})} 
+ \item  Assume someone can love only one person at a time: \only<4->{$love(x,y) \wedge love (x,z) \rightarrow y = z$. 
+ (\alert{80})}
+\item Remove isomorphic interpretations \only<5->{\texttt{isofilter} (\alert{74})} 
+\item 2 Skolem consts: assume no interest in love relations between them (\alert{17})
+\end{enumerate}
+
+\begin{block}{Remarks}
+\begin{enumerate}
+ \item order of reductions is computationally relevant (186,976 models, $\sim$2h)
+\item which domain knowledge to add is subject to interpretation
+\end{enumerate}
+ 
+\end{block}
+
+\end{frame}
+
+

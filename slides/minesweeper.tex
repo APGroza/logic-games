@@ -1,0 +1,22 @@
+\frame{\frametitle{Playing minesweeper}
+\begin{center}
+\pgfimage[width=9cm]{fig/mine.png}  
+\end{center}
+\begin{itemize}
+ \item What domain size you would choose? (number of mines vs. grid size) no \mat{multi-domain logic} in Mace4
+ \item \texttt{assign(domain\_size,9)}
+ \item Functions or predicates? (e.g. \mat{$mine(x,y)$})
+ \item Functions \mat{$f(x,y)$} and \mat{$mine(x,y)$} have the same domain size (plotted on the same grid)
+\end{itemize}
+}
+
+\frame[plain]{
+\centering \pgfimage[width=10cm]{fig/minemace4.png} 
+
+ \begin{itemize}
+\item Note the usage of succesor \mat{$s(x)$} and predecessor \mat{$p(x)$} functions  
+ \item Since \mat{$f(x,y)$} is a function (not a predicate), it can be used arithmetic expressions
+\end{itemize}
+}
+
+

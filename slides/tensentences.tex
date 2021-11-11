@@ -1,0 +1,51 @@
+\frame{\frametitle{}
+\arenabox{Ten sentences}{green!40}{green!10}{
+In a list of 10 statements, the $n^{th}$ statement says there are exactly $n$ false items in the list. 
+Which of the statements, if any, are false?
+\begin{enumerate}
+ \item In this list exactly 1 statement is false.
+ \item In this list exactly 2 statements are false.
+ \item In this list exactly 3 statements are false.
+ \item In this list exactly 4 statements are false.
+ \item In this list exactly 5 statements are false.
+ \item In this list exactly 6 statements are false.
+ \item In this list exactly 7 statements are false.
+ \item In this list exactly 8 statements are false.
+ \item In this list exactly 9 statements are false.
+ \item In this list exactly 10 statements are false.
+\end{enumerate}
+}
+}
+
+
+\frame[plain]{
+\begin{itemize}
+ \item Function $m(x)$ stating if the $x^{th}$ message is true (\mat{$m(x) = 1$}) or false (\mat{$m(x) = 0)$}
+ \item Each $x^{th}$ statement says there are exactly $x$ false items in the list:
+\begin{center}
+ \mat{$m(x) = 1 \leftrightarrow NoFalse = x$}
+\end{center}
+\item Since \mat{$m(x)$} is a function, we can use it in computations
+\end{itemize}
+
+\begin{center}
+\includegraphics[width=8cm]{fig/ten.png} 
+\end{center}
+
+\begin{itemize}
+\item Mace4 finds a single model: 
+\end{itemize}
+
+\begin{center}
+ \mat{\begin{tabular}{llll}
+ function(NoFalse,& 9),& function(NoTrue, & [1]),\\
+ function(NoSentences, & [10]), & function(m(\_),  & [\alert{0}, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0 ])
+ \end{tabular}}
+\end{center}
+
+\arenabox{Ten sentences relaxed}{green!40}{green!10}{
+In a list of 10 statements, the $n^{th}$ statement says there are at least $n$ false items in the list. 
+Which of the statements, if any, are false?
+}
+}
+

@@ -1,0 +1,60 @@
+\frame[plain]{%\frametitle{Golomb ruler}
+\begin{columns}
+ \begin{column}{0.36\textwidth}
+Example of a conference room with proportions of a [0, 2, 7, 8, 11] \mat{Golomb ruler}, making it configurable to 10 different sizes.
+\begin{center}
+  \includegraphics[width=3.8cm]{fig/conference.png} 
+\end{center}
+\only<2->{Highest order for Golomb ruler is 27}
+\end{column}
+
+\begin{column}{0.64\textwidth}
+\arenabox{Golomb ruler}{red!40}{red!10}{
+Define a ruler with $m = 4$ marks (e.g. $a$, $b$, $c$, $d$) so that the distances between any two marks are different. 
+That is, if you can measure an integer distance  with  this  ruler,  there  should be only one way of making this measurement with your ruler.
+Your ruler should be able to measure all the integer distances up to length $L = 6$.%(adapted from~\cite{memarsadeghi2016nasa})
+}
+
+\begin{center}
+  \includegraphics[width=3.5cm]{fig/golomb1.png} 
+\end{center}
+\only<2->{
+  \includegraphics[width=5cm]{fig/g5.png} 
+  
+Applications: radio astronomy (antennas in a [0,1,4,6] Golomb ruler configuration can often be seen cell sites.), X-ray crystallography, 
+information theory
+}
+\end{column}
+\end{columns}
+
+}
+
+
+\frame{\frametitle{}
+\begin{center}
+  \includegraphics[width=9cm]{fig/golomb2.png} 
+\end{center}
+}
+
+ \section[Hardware]{Reasoning on hardware}
+\subsection{}
+
+\frame{\frametitle{Knowledge engineering in FOL}
+\begin{block}{Knowledge engineer} 
+investigates a particular domain, learns what conceptsare important, creates a formal representation of the objects and relations inthe domain 
+\end{block}
+
+\begin{block}{Knowledge engineering steps}
+\begin{enumerate}
+ \item \mat{Identify the task}: list compentency questions that the KB will respond
+\item \mat{Assemble the relevant knowledge}: knowledge acuisition 
+\item \mat{Decide on a vocabulary of predicates, functions, and constants}: translate the important domain-level concepts into logic-level names (i.e. \alert{ontology})
+\item \mat{Encode general knowledge about the domain} axioms for all vocabulary terms
+\item \mat{Encode a description of the specific problem instance} - atomic sentences about instances of concepts in the ontology
+\item \mat{Pose queries to the inference procedure and get answers}
+\item \mat{Debug the knowledge base}
+\end{enumerate}
+\end{block}
+}
+ 
+

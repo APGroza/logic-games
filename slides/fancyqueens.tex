@@ -1,0 +1,44 @@
+\begin{frame}[plain]{Constraint model for N-queens}
+\begin{columns}
+\begin{column}{0.57\textwidth}
+Place n-queens on an $n \times n$ board so that no pair of queens attacks each other
+
+\begin{description}
+\item[Variables:] \only<2->{$x_1, x_2, x_3, x_4$}
+\item[Domains:]  \only<3->{$\{1,2,3,4\}$}
+\item[Constraints:] 
+\only<4->{$x_i  \neq x_j$ \\
+   $| x_i - x_j | \neq | i - j |$} 
+
+\item[A solution:]
+\only<5->{$x_1 \leftarrow 3$, $x_2 \leftarrow 1$, $x_3 \leftarrow 4$, $x_4 \leftarrow 2$}
+\end{description}
+\end{column}
+
+\begin{column}{0.43\textwidth}
+\pgfimage[width=5.5cm]{fig/robot2.png} \\
+ 
+\end{column}
+\end{columns}
+\begin{example}[Fancy queens]
+I have placed a queen in one of the white squares of the board shown. Place 7 more
+queens in white squares so that no 2 of the 8 queens are in line horizontally, vertically,
+or diagonally
+\end{example}
+\pgfimage[width=3cm]{fig/diag.png} 
+\hfill
+\pgfimage[width=3cm]{fig/diag2.png} 
+\end{frame}
+
+\frame[plain]{
+\centering
+ \pgfimage[width=10cm]{fig/fancy.png} 
+
+ \begin{itemize}
+\item \mat{$Q(x,y)$} is a predicate, not a function 
+ \item Note the usage of \texttt{domain\_size}
+ \item Note the usage of modules
+ \item Note the usage of the minus operator
+\end{itemize}
+}
+
