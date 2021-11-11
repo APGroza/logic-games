@@ -1,0 +1,16 @@
+set(arithmetic).
+
+list(distinct).
+  [brother,sister,robinson,mother,0].
+end_of_list.
+
+formulas(assumptions).
+  brother = robinson + 2.
+  sister  = brother  + 4.
+  mother  = robinson + 20.
+  mother  = brother  + 18.
+  mother  = sister   + 14.
+
+  robinson + brother + sister + mother = 39 * 4.  
+end_of_list.
+

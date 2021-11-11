@@ -1,0 +1,7 @@
+interpretation( 20, [number = 1,seconds = 0], [
+    function(b, [7]),
+    function(bafter, [10]),
+    function(g, [19]),
+    function(gafter, [10]),
+    function(sb, [1]),
+    function(sg, [2])]).

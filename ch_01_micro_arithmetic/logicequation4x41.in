@@ -1,0 +1,13 @@
+set(arithmetic).
+%set(trace).
+assign(max_models,-1).
+assign(domain_size,5).
+
+list(distinct).
+  [0,A,B,C,D].
+end_of_list.
+
+formulas(assumptions).
+  2 * C = B.
+  4 * C = D.
+end_of_list.

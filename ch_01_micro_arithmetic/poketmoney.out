@@ -1,0 +1,5 @@
+interpretation( 211, [number = 1,seconds = 3], [
+    function(t0, [210]),
+    function(t1, [100]),
+    function(t2, [40]),
+    function(t3, [5])]).

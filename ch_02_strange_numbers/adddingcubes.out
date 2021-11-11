@@ -1,0 +1,10 @@
+interpretation( 1000, [number = 1,seconds = 0], [
+    function(D0, [1]),
+    function(D1, [7]),
+    function(D2, [3]),
+    function(X, [371])]).
+interpretation( 1000, [number = 2,seconds = 1], [
+    function(D0, [3]),
+    function(D1, [5]),
+    function(D2, [1]),
+    function(X, [153])]).

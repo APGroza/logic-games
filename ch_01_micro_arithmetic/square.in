@@ -1,0 +1,15 @@
+set(arithmetic).
+assign(max_models,-1).
+
+list(distinct).
+  [a,b,c].
+end_of_list.
+
+formulas(assumptions).
+  2 * b = a + c.
+  a = d * d.
+  b = e * e.
+  c = f * f.
+ 
+  %a < c.   %remove isomorphic models
+end_of_list.

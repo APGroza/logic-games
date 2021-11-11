@@ -1,0 +1,22 @@
+assign(domain_size,10).
+assign(max_models,-1).
+set(arithmetic).
+
+list(distinct).
+  [c0,c1,c2,c3,c4,c5,c6,c7,c8,c9].
+  [c0,0].                        %the first digit cannot be zero
+end_of_list.
+
+formulas(assumptions).  
+  c9 = 0.                                  %divisibility with 10
+  
+  %divisibility with 11
+  abs(c0 + c2 + c4 + c6 + c8 + -c1 + -c3 + -c5 + -c7 + -c9) = 11.         
+
+  %we use (A+B)%C = (A%C + B%C)%C 
+
+  (c0 >= 2) & 
+  ((((c9 + c8*10 + c7*100 + c6*1000 + c5*10000 + c4*100000 + c3*1000000 +
+      c2*10000000 + c1*100000000+1000000000) mod 1113840) +
+  ((1000000000 mod 1113840) * (c0 + - 1)) ) mod 1113840 = 0). 
+end_of_list.

@@ -1,0 +1,13 @@
+assign(domain_size,10).
+assign(max_models,-1).
+set(arithmetic).
+
+list(distinct).
+  [0,c1,2,c2,4,c3,6,c4,8,c5].
+end_of_list.
+
+formulas(5cards).
+  (c1*10 + c2) * (c5*10 + c4) + -c3 = d1*1000 + d2*100 + d3*10 + d4.
+  d1 = d2 & d2 = d3 & d3 = d4.
+end_of_list.
+

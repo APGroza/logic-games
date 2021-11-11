@@ -1,0 +1,9 @@
+set(arithmetic).
+assign(domain_size,101).
+assign(max_models,-1).
+
+formulas(dividing_legacy).  
+  (3 * b) + ((-4) * a) = 11 * 12.
+  a + b = 100.
+end_of_list.
+

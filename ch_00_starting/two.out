@@ -1,0 +1,49 @@
+interpretation( 10, [number = 1,seconds = 0], [
+    function(F, [1]),
+    function(O, [4]),
+    function(R, [8]),
+    function(T, [7]),
+    function(U, [6]),
+    function(W, [3])]).
+interpretation( 10, [number = 2,seconds = 0], [
+    function(F, [1]),
+    function(O, [5]),
+    function(R, [0]),
+    function(T, [7]),
+    function(U, [3]),
+    function(W, [6])]).
+interpretation( 10, [number = 3,seconds = 0], [
+    function(F, [1]),
+    function(O, [6]),
+    function(R, [2]),
+    function(T, [8]),
+    function(U, [7]),
+    function(W, [3])]).
+interpretation( 10, [number = 4,seconds = 0], [
+    function(F, [1]),
+    function(O, [6]),
+    function(R, [2]),
+    function(T, [8]),
+    function(U, [9]),
+    function(W, [4])]).
+interpretation( 10, [number = 5,seconds = 0], [
+    function(F, [1]),
+    function(O, [7]),
+    function(R, [4]),
+    function(T, [8]),
+    function(U, [3]),
+    function(W, [6])]).
+interpretation( 10, [number = 6,seconds = 0], [
+    function(F, [1]),
+    function(O, [8]),
+    function(R, [6]),
+    function(T, [9]),
+    function(U, [5]),
+    function(W, [2])]).
+interpretation( 10, [number = 7,seconds = 0], [
+    function(F, [1]),
+    function(O, [8]),
+    function(R, [6]),
+    function(T, [9]),
+    function(U, [7]),
+    function(W, [3])]).

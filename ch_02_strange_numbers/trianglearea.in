@@ -1,0 +1,18 @@
+assign(max_models, 1).
+set(arithmetic).
+
+list(distinct).
+ [0,a,b,c,h].
+end_of_list.
+
+formulas(assumptions).
+  a + b > c & a + c > b & b + c > a.   
+  b = a + 1 & c = b + 1.  
+  a = h + 1 | h = c + 1.
+
+  2 * S = a * h | 2 * S = b * h | 2 * S = c * h.    
+
+  2 * p = a + b + c.
+  S * S = p * (p + -a) * (p + -b) * (p + -c).
+end_of_list.
+

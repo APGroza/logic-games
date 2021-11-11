@@ -1,0 +1,15 @@
+set(arithmetic).
+assign(max_models,-1).
+assign(domain_size,10).
+
+list(distinct).
+  [0,A,B,C,D,E,F,G,H,I].
+end_of_list.
+
+formulas(assumptions).
+  4 * F = E.
+  I = G * H.
+  C + E != 12 -> G = D + E + 2.
+  B = A + H.
+  A + G != C.
+end_of_list.

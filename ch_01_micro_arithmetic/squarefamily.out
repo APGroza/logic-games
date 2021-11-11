@@ -1,0 +1,11 @@
+interpretation( 49, [number = 1,seconds = 1], [
+    function(a1, [2]),
+    function(a2, [5]),
+    function(a3, [8]),
+    function(a4, [11]),
+    function(a5, [14]),
+    function(a6, [17]),
+    function(a7, [20]),
+    function(a8, [23]),
+    function(a9, [26]),
+    function(father, [48])]).

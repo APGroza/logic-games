@@ -1,0 +1,9 @@
+set(arithmetic).
+
+formulas(assumptions). 
+  t3 = 5.		     % after the third transaction
+  t2 = 2 * (t3 + 15).	     % after the second transaction
+  t1 = 2 * (t2 + 10).	     % after the first transaction
+  t0 = 2 * (t1 + 5).	     % initial sum
+end_of_list.  
+

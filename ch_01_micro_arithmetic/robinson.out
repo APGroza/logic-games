@@ -1,0 +1,5 @@
+interpretation( 53, [number = 1,seconds = 0], [
+    function(brother, [34]),
+    function(mother, [52]),
+    function(robinson, [32]),
+    function(sister, [38])]).

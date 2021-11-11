@@ -1,0 +1,13 @@
+set(arithmetic).
+assign(max_models,-1).
+assign(domain_size,6).
+
+list(distinct).
+  [0,A,B,C,D,E].
+end_of_list.
+
+formulas(assumptions).
+  C = A + E.
+  E = B + 2.
+  B * E + 3 * E != B -> (A * A + D > E).
+end_of_list.

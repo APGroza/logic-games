@@ -1,0 +1,8 @@
+assign(max_models,-1).
+assign(domain_size,2).
+
+formulas(assumptions).
+  popcorn | candy.
+end_of_list.
+
+

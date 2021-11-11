@@ -1,0 +1,155 @@
+interpretation( 50, [number = 1,seconds = 1], [
+    function(a, [1]),
+    function(b, [25]),
+    function(c, [49]),
+    function(d, [1]),
+    function(e, [5]),
+    function(f, [7])]).
+interpretation( 50, [number = 2,seconds = 1], [
+    function(a, [49]),
+    function(b, [25]),
+    function(c, [1]),
+    function(d, [7]),
+    function(e, [5]),
+    function(f, [1])]).
+interpretation( 51, [number = 3,seconds = 1], [
+    function(a, [1]),
+    function(b, [25]),
+    function(c, [49]),
+    function(d, [1]),
+    function(e, [5]),
+    function(f, [7])]).
+interpretation( 51, [number = 4,seconds = 1], [
+    function(a, [49]),
+    function(b, [25]),
+    function(c, [1]),
+    function(d, [7]),
+    function(e, [5]),
+    function(f, [1])]).
+interpretation( 52, [number = 5,seconds = 1], [
+    function(a, [1]),
+    function(b, [25]),
+    function(c, [49]),
+    function(d, [1]),
+    function(e, [5]),
+    function(f, [7])]).
+interpretation( 52, [number = 6,seconds = 1], [
+    function(a, [49]),
+    function(b, [25]),
+    function(c, [1]),
+    function(d, [7]),
+    function(e, [5]),
+    function(f, [1])]).
+interpretation( 53, [number = 7,seconds = 1], [
+    function(a, [1]),
+    function(b, [25]),
+    function(c, [49]),
+    function(d, [1]),
+    function(e, [5]),
+    function(f, [7])]).
+interpretation( 53, [number = 8,seconds = 1], [
+    function(a, [49]),
+    function(b, [25]),
+    function(c, [1]),
+    function(d, [7]),
+    function(e, [5]),
+    function(f, [1])]).
+interpretation( 54, [number = 9,seconds = 1], [
+    function(a, [1]),
+    function(b, [25]),
+    function(c, [49]),
+    function(d, [1]),
+    function(e, [5]),
+    function(f, [7])]).
+interpretation( 54, [number = 10,seconds = 1], [
+    function(a, [49]),
+    function(b, [25]),
+    function(c, [1]),
+    function(d, [7]),
+    function(e, [5]),
+    function(f, [1])]).
+interpretation( 55, [number = 11,seconds = 1], [
+    function(a, [1]),
+    function(b, [25]),
+    function(c, [49]),
+    function(d, [1]),
+    function(e, [5]),
+    function(f, [7])]).
+interpretation( 55, [number = 12,seconds = 1], [
+    function(a, [49]),
+    function(b, [25]),
+    function(c, [1]),
+    function(d, [7]),
+    function(e, [5]),
+    function(f, [1])]).
+interpretation( 56, [number = 13,seconds = 1], [
+    function(a, [1]),
+    function(b, [25]),
+    function(c, [49]),
+    function(d, [1]),
+    function(e, [5]),
+    function(f, [7])]).
+interpretation( 56, [number = 14,seconds = 1], [
+    function(a, [49]),
+    function(b, [25]),
+    function(c, [1]),
+    function(d, [7]),
+    function(e, [5]),
+    function(f, [1])]).
+interpretation( 57, [number = 15,seconds = 1], [
+    function(a, [1]),
+    function(b, [25]),
+    function(c, [49]),
+    function(d, [1]),
+    function(e, [5]),
+    function(f, [7])]).
+interpretation( 57, [number = 16,seconds = 1], [
+    function(a, [49]),
+    function(b, [25]),
+    function(c, [1]),
+    function(d, [7]),
+    function(e, [5]),
+    function(f, [1])]).
+interpretation( 58, [number = 17,seconds = 2], [
+    function(a, [1]),
+    function(b, [25]),
+    function(c, [49]),
+    function(d, [1]),
+    function(e, [5]),
+    function(f, [7])]).
+interpretation( 58, [number = 18,seconds = 2], [
+    function(a, [49]),
+    function(b, [25]),
+    function(c, [1]),
+    function(d, [7]),
+    function(e, [5]),
+    function(f, [1])]).
+interpretation( 59, [number = 19,seconds = 2], [
+    function(a, [1]),
+    function(b, [25]),
+    function(c, [49]),
+    function(d, [1]),
+    function(e, [5]),
+    function(f, [7])]).
+interpretation( 59, [number = 20,seconds = 2], [
+    function(a, [49]),
+    function(b, [25]),
+    function(c, [1]),
+    function(d, [7]),
+    function(e, [5]),
+    function(f, [1])]).
+interpretation( 60, [number = 21,seconds = 2], [
+    function(a, [1]),
+    function(b, [25]),
+    function(c, [49]),
+    function(d, [1]),
+    function(e, [5]),
+    function(f, [7])]).
+interpretation( 60, [number = 22,seconds = 2], [
+    function(a, [49]),
+    function(b, [25]),
+    function(c, [1]),
+    function(d, [7]),
+    function(e, [5]),
+    function(f, [1])]).
+interpretation( 61, [number = 23,se

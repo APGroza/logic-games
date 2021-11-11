@@ -1,0 +1,3 @@
+interpretation( 101, [number = 1,seconds = 0], [
+    function(a, [24]),
+    function(b, [76])]).

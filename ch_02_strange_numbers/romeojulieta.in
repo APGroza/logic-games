@@ -1,0 +1,6 @@
+assign(max_models,-1).
+assign(domain_size,4).
+formulas(assumptions).
+   exists x love(romeo,x).
+   exists x love(julieta,x).
+end_of_list.

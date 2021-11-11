@@ -1,0 +1,12 @@
+#mace4 -f logicequation4x41.in | interpformat standard > logicequation4x41.out
+#mace4 -f logicequation4x42.in | interpformat standard > logicequation4x42.out
+#mace4 -f logicequation5x51.in | interpformat standard > logicequation4x51.out
+#mace4 -f logicequation9x9.in | interpformat standard > logicequation9x9.out
+#mace4 -f square.in | interpformat standard > square.out
+#mace4 -f pocketmoney.in | interpformat standard > poketmoney.out
+#mace4 -f dividinglegacy.in | interpformat standard > dividinglegacy.out
+#mace4 -f boysgirls.in | interpformat standard > boysgirls.out
+#mace4 -f robinsonage.in | interpformat standard > robinson.out
+#mace4 -f fivecards.in | interpformat standard > fivecards.out
+#mace4 -f squarefamily.in | interpformat standard > squarefamily.out
+mace4 -f familyages.in | interpformat standard > familyages.out

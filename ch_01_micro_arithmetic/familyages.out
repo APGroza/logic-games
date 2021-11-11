@@ -1,0 +1,6 @@
+interpretation( 91, [number = 1,seconds = 0], [
+    function(Ben, [6]),
+    function(Father, [36]),
+    function(John, [6]),
+    function(Mary, [6]),
+    function(Mother, [36])]).

@@ -1,0 +1,12 @@
+set(arithmetic).
+assign(max_models,-1).
+assign(domain_size,5).
+
+list(distinct).
+  [0,A,B,C,D].
+end_of_list.
+
+formulas(assumptions).
+  B + D = A + 2.
+  A + D = B + 4.
+end_of_list.

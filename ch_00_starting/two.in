@@ -1,0 +1,14 @@
+assign(max_models,-1).
+assign(domain_size,10).
+set(arithmetic).
+
+list(distinct).
+  [T,W,O,F,U,R].
+  [T,F,0].
+end_of_list.
+
+formulas(assumptions).
+  T * 200 + W * 20 + 2 * O  = 1000 * F + 100 * O + 10 * U + R. 
+end_of_list.
+
+

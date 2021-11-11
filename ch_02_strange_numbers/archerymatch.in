@@ -1,0 +1,14 @@
+set(arithmetic).
+assign(domain_size,6).
+assign(max_models,-1).      
+
+formulas(assumptions).  
+  p10 + p20 + p30 = 1.                          %center is hit once
+  p10 + p11 + p12 + p13 + p14 + p15 = 6.        %there are six attempts
+  p20 + p21 + p22 + p23 + p24 + p25 = 6.
+  p30 + p31 + p32 + p33 + p34 + p35 = 6.
+
+  p10*40 + p11*39 + p12*24 + p13*23 + p14*17 + p15*16 = 120. %Dora   120p 
+  p20*40 + p21*39 + p22*24 + p23*23 + p24*17 + p25*16 = 110. %Reggie 110p
+  p30*40 + p31*39 + p32*24 + p33*23 + p34*17 + p35*16 = 100. %Finch  100p
+end_of_list.

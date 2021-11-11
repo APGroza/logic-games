@@ -1,0 +1,175 @@
+============================== Prover9 ===============================
+Prover9 (64) version 2009-11A, November 2009.
+Process 18346 was started by adrian on adrian,
+Sun Jan 17 23:12:17 2021
+The command was "prover9 -f cogito.in".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+% Reading from file cogito.in
+
+assign(max_seconds,5).
+set(binary_resolution).
+set(print_gen).
+
+formulas(assumptions).
+D.
+D -> C.
+C -> S.
+end_of_list.
+
+formulas(goals).
+S.
+end_of_list.
+
+============================== end of input ==========================
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+1 D -> C # label(non_clause).  [assumption].
+2 C -> S # label(non_clause).  [assumption].
+3 S # label(non_clause) # label(goal).  [goal].
+
+============================== end of process non-clausal formulas ===
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+D.  [assumption].
+-D | C.  [clausify(1)].
+-C | S.  [clausify(2)].
+-S.  [deny(3)].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== PREDICATE ELIMINATION =================
+
+No predicates eliminated.
+
+============================== end predicate elimination =============
+
+Auto_denials:  (no changes).
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ C, D, S ]).
+Function symbol precedence:  function_order([ ]).
+After inverse_order:  (no changes).
+Unfolding symbols: (none).
+
+Auto_inference settings:
+  % set(neg_binary_resolution).  % (HNE depth_diff=0)
+  % clear(ordered_res).  % (HNE depth_diff=0)
+  % set(ur_resolution).  % (HNE depth_diff=0)
+    % set(ur_resolution) -> set(pos_ur_resolution).
+    % set(ur_resolution) -> set(neg_ur_resolution).
+
+Auto_process settings:  (no changes).
+
+
+generated: D.  [assumption].
+kept:      4 D.  [assumption].
+
+generated: -D | C.  [clausify(1)].
+kept:      5 -D | C.  [clausify(1)].
+
+generated: -C | S.  [clausify(2)].
+kept:      6 -C | S.  [clausify(2)].
+
+generated: -S.  [deny(3)].
+kept:      7 -S.  [deny(3)].
+
+============================== end of process initial clauses ========
+
+============================== CLAUSES FOR SEARCH ====================
+
+% Clauses after input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+4 D.  [assumption].
+5 -D | C.  [clausify(1)].
+6 -C | S.  [clausify(2)].
+7 -S.  [deny(3)].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== end of clauses for search =============
+
+============================== SEARCH ================================
+
+% Starting search at 0.02 seconds.
+
+given #1 (I,wt=1): 4 D.  [assumption].
+
+given #2 (I,wt=2): 5 -D | C.  [clausify(1)].
+
+generated: C.  [resolve(5,a,4,a)].
+kept:      8 C.  [resolve(5,a,4,a)].
+
+generated: C.  [ur(5,a,4,a)].
+subsumed by 8.
+
+given #3 (I,wt=2): 6 -C | S.  [clausify(2)].
+
+given #4 (I,wt=1): 7 -S.  [deny(3)].
+
+generated: -C.  [resolve(7,a,6,b)].
+kept:      9 -C.  [resolve(7,a,6,b)].
+
+============================== PROOF =================================
+
+% Proof 1 at 0.02 (+ 0.01) seconds.
+% Length of proof is 10.
+% Level of proof is 3.
+% Maximum clause weight is 2.000.
+% Given clauses 4.
+
+1 D -> C # label(non_clause).  [assumption].
+2 C -> S # label(non_clause).  [assumption].
+3 S # label(non_clause) # label(goal).  [goal].
+4 D.  [assumption].
+5 -D | C.  [clausify(1)].
+6 -C | S.  [clausify(2)].
+7 -S.  [deny(3)].
+8 C.  [resolve(5,a,4,a)].
+9 -C.  [resolve(7,a,6,b)].
+10 $F.  [resolve(9,a,8,a)].
+
+============================== end of proof ==========================
+
+============================== STATISTICS ============================
+
+Given=4. Generated=7. Kept=6. proofs=1.
+Usable=3. Sos=1. Demods=0. Limbo=0, Disabled=5. Hints=0.
+Kept_by_rule=0, Deleted_by_rule=0.
+Forward_subsumed=1. Back_subsumed=1.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=0 (0 lex), Back_demodulated=0. Back_unit_deleted=0.
+Demod_attempts=0. Demod_rewrites=0.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=3.
+Megabytes=0.03.
+User_CPU=0.02, System_CPU=0.01, Wall_clock=0.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+THEOREM PROVED
+
+Exiting with 1 proof.
+
+Process 18346 exit (max_proofs) Sun Jan 17 23:12:17 2021

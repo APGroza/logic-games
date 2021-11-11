@@ -1,0 +1,13 @@
+assign(domain_size,91).
+assign(max_models,-1).
+set(arithmetic).
+
+formulas(assumptions).
+  Father != 0.	Mother != 0. John != 0.	Ben != 0. Mary != 0.
+
+  abs(Father + -Mother) = abs(John + -Ben).
+  abs(Father + -Mother) = abs(Ben + -Mary).
+  John * Ben = Father.
+  Mary * Ben = Mother.
+  Father + Mother + John + Ben + Mary = 90. 
+end_of_list.
