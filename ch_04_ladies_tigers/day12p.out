@@ -1,0 +1,1045 @@
+============================== Prover9 ===============================
+Prover9 (64) version 2009-11A, November 2009.
+Process 13264 was started by adrian on adrian,
+Sat Jan 23 17:31:58 2021
+The command was "prover9 -f day12p.in".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+% Reading from file day12p.in
+
+
+formulas(assumptions).
+L1 | L2 | L3 | L4 | L5 | L6 | L7 | L8 | L9.
+L1 -> -(L2 | L3 | L4 | L5 | L6 | L7 | L8 | L9).
+L2 -> -(L1 | L3 | L4 | L5 | L6 | L7 | L8 | L9).
+L3 -> -(L2 | L1 | L4 | L5 | L6 | L7 | L8 | L9).
+L4 -> -(L2 | L3 | L1 | L5 | L6 | L7 | L8 | L9).
+L5 -> -(L2 | L3 | L4 | L1 | L6 | L7 | L8 | L9).
+L6 -> -(L2 | L3 | L4 | L5 | L1 | L7 | L8 | L9).
+L7 -> -(L2 | L3 | L4 | L5 | L6 | L1 | L8 | L9).
+L8 -> -(L2 | L3 | L4 | L5 | L6 | L7 | L1 | L9).
+L9 -> -(L2 | L3 | L4 | L5 | L6 | L7 | L8 | L1).
+(L1 -> R1) & (L2 -> R2) & (L3 -> R3) & (L4 -> R4) & (L5 -> R5).
+(L6 -> R6) & (L7 -> R7) & (L8 -> R8) & (L9 -> R9).
+(T1 -> -R1) & (T2 -> -R2) & (T3 -> -R3) & (T4 -> -R4) & (T5 -> -R5).
+(T6 -> -R6) & (T7 -> -R7) & (T8 -> -R8) & (T9 -> -R9).
+(L1 | T1 | E1) & (L2 | T2 | E2) & (L3 | T3 | E3) & (L4 | T4 | E4) & (L5 | T5 | E5) & (L6 | T6 | E6) & (L7 | T7 | E7) & (L8 | T8 | E8) & (L9 | T9 | E9).
+(L1 -> -T1 & -E1) & (L2 -> -T2 & -E2) & (L3 -> -T3 & -E3).
+(L4 -> -T4 & -E4) & (L5 -> -T5 & -E5) & (L6 -> -T6 & -E6).
+(L7 -> -T7 & -E7) & (L8 -> -T8 & -E8) & (L9 -> -T9 & -E9).
+(T1 -> -L1 & -E1) & (T2 -> -L2 & -E2) & (T3 -> -L3 & -E3).
+(T4 -> -L4 & -E4) & (T5 -> -L5 & -E5) & (T6 -> -L6 & -E6).
+(T7 -> -L7 & -E7) & (T8 -> -L8 & -E8) & (T9 -> -L9 & -E9).
+(E1 -> -L1 & -T1) & (E2 -> -L2 & -T2) & (E3 -> -L3 & -T3).
+(E4 -> -L4 & -T4) & (E5 -> -L5 & -T5) & (E6 -> -L6 & -T6).
+(E7 -> -L7 & -T7) & (E8 -> -L8 & -T8) & (E9 -> -L9 & -T9).
+R1 <-> L1 | L3 | L5 | L7 | L9.
+R2 <-> E2.
+R3 <-> R5 | -R7.
+R4 <-> -R1.
+R5 <-> R2 | R4.
+R6 <-> -R3.
+R7 <-> -L1.
+R8 <-> T8 & E9.
+R9 <-> T9 & -R6.
+-E8.
+end_of_list.
+
+formulas(goals).
+L7.
+end_of_list.
+
+============================== end of input ==========================
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+1 L1 -> -(L2 | L3 | L4 | L5 | L6 | L7 | L8 | L9) # label(non_clause).  [assumption].
+2 L2 -> -(L1 | L3 | L4 | L5 | L6 | L7 | L8 | L9) # label(non_clause).  [assumption].
+3 L3 -> -(L2 | L1 | L4 | L5 | L6 | L7 | L8 | L9) # label(non_clause).  [assumption].
+4 L4 -> -(L2 | L3 | L1 | L5 | L6 | L7 | L8 | L9) # label(non_clause).  [assumption].
+5 L5 -> -(L2 | L3 | L4 | L1 | L6 | L7 | L8 | L9) # label(non_clause).  [assumption].
+6 L6 -> -(L2 | L3 | L4 | L5 | L1 | L7 | L8 | L9) # label(non_clause).  [assumption].
+7 L7 -> -(L2 | L3 | L4 | L5 | L6 | L1 | L8 | L9) # label(non_clause).  [assumption].
+8 L8 -> -(L2 | L3 | L4 | L5 | L6 | L7 | L1 | L9) # label(non_clause).  [assumption].
+9 L9 -> -(L2 | L3 | L4 | L5 | L6 | L7 | L8 | L1) # label(non_clause).  [assumption].
+10 (L1 -> R1) & (L2 -> R2) & (L3 -> R3) & (L4 -> R4) & (L5 -> R5) # label(non_clause).  [assumption].
+11 (L6 -> R6) & (L7 -> R7) & (L8 -> R8) & (L9 -> R9) # label(non_clause).  [assumption].
+12 (T1 -> -R1) & (T2 -> -R2) & (T3 -> -R3) & (T4 -> -R4) & (T5 -> -R5) # label(non_clause).  [assumption].
+13 (T6 -> -R6) & (T7 -> -R7) & (T8 -> -R8) & (T9 -> -R9) # label(non_clause).  [assumption].
+14 (L1 | T1 | E1) & (L2 | T2 | E2) & (L3 | T3 | E3) & (L4 | T4 | E4) & (L5 | T5 | E5) & (L6 | T6 | E6) & (L7 | T7 | E7) & (L8 | T8 | E8) & (L9 | T9 | E9) # label(non_clause).  [assumption].
+15 (L1 -> -T1 & -E1) & (L2 -> -T2 & -E2) & (L3 -> -T3 & -E3) # label(non_clause).  [assumption].
+16 (L4 -> -T4 & -E4) & (L5 -> -T5 & -E5) & (L6 -> -T6 & -E6) # label(non_clause).  [assumption].
+17 (L7 -> -T7 & -E7) & (L8 -> -T8 & -E8) & (L9 -> -T9 & -E9) # label(non_clause).  [assumption].
+18 (T1 -> -L1 & -E1) & (T2 -> -L2 & -E2) & (T3 -> -L3 & -E3) # label(non_clause).  [assumption].
+19 (T4 -> -L4 & -E4) & (T5 -> -L5 & -E5) & (T6 -> -L6 & -E6) # label(non_clause).  [assumption].
+20 (T7 -> -L7 & -E7) & (T8 -> -L8 & -E8) & (T9 -> -L9 & -E9) # label(non_clause).  [assumption].
+21 (E1 -> -L1 & -T1) & (E2 -> -L2 & -T2) & (E3 -> -L3 & -T3) # label(non_clause).  [assumption].
+22 (E4 -> -L4 & -T4) & (E5 -> -L5 & -T5) & (E6 -> -L6 & -T6) # label(non_clause).  [assumption].
+23 (E7 -> -L7 & -T7) & (E8 -> -L8 & -T8) & (E9 -> -L9 & -T9) # label(non_clause).  [assumption].
+24 R1 <-> L1 | L3 | L5 | L7 | L9 # label(non_clause).  [assumption].
+25 R2 <-> E2 # label(non_clause).  [assumption].
+26 R3 <-> R5 | -R7 # label(non_clause).  [assumption].
+27 R4 <-> -R1 # label(non_clause).  [assumption].
+28 R5 <-> R2 | R4 # label(non_clause).  [assumption].
+29 R6 <-> -R3 # label(non_clause).  [assumption].
+30 R7 <-> -L1 # label(non_clause).  [assumption].
+31 R8 <-> T8 & E9 # label(non_clause).  [assumption].
+32 R9 <-> T9 & -R6 # label(non_clause).  [assumption].
+33 L7 # label(non_clause) # label(goal).  [goal].
+
+============================== end of process non-clausal formulas ===
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+L1 | L2 | L3 | L4 | L5 | L6 | L7 | L8 | L9.  [assumption].
+-L1 | -L2.  [clausify(1)].
+-L1 | -L3.  [clausify(1)].
+-L1 | -L4.  [clausify(1)].
+-L1 | -L5.  [clausify(1)].
+-L1 | -L6.  [clausify(1)].
+-L1 | -L7.  [clausify(1)].
+-L1 | -L8.  [clausify(1)].
+-L1 | -L9.  [clausify(1)].
+-L2 | -L1.  [clausify(2)].
+-L2 | -L3.  [clausify(2)].
+-L2 | -L4.  [clausify(2)].
+-L2 | -L5.  [clausify(2)].
+-L2 | -L6.  [clausify(2)].
+-L2 | -L7.  [clausify(2)].
+-L2 | -L8.  [clausify(2)].
+-L2 | -L9.  [clausify(2)].
+-L3 | -L2.  [clausify(3)].
+-L3 | -L1.  [clausify(3)].
+-L3 | -L4.  [clausify(3)].
+-L3 | -L5.  [clausify(3)].
+-L3 | -L6.  [clausify(3)].
+-L3 | -L7.  [clausify(3)].
+-L3 | -L8.  [clausify(3)].
+-L3 | -L9.  [clausify(3)].
+-L4 | -L2.  [clausify(4)].
+-L4 | -L3.  [clausify(4)].
+-L4 | -L1.  [clausify(4)].
+-L4 | -L5.  [clausify(4)].
+-L4 | -L6.  [clausify(4)].
+-L4 | -L7.  [clausify(4)].
+-L4 | -L8.  [clausify(4)].
+-L4 | -L9.  [clausify(4)].
+-L5 | -L2.  [clausify(5)].
+-L5 | -L3.  [clausify(5)].
+-L5 | -L4.  [clausify(5)].
+-L5 | -L1.  [clausify(5)].
+-L5 | -L6.  [clausify(5)].
+-L5 | -L7.  [clausify(5)].
+-L5 | -L8.  [clausify(5)].
+-L5 | -L9.  [clausify(5)].
+-L6 | -L2.  [clausify(6)].
+-L6 | -L3.  [clausify(6)].
+-L6 | -L4.  [clausify(6)].
+-L6 | -L5.  [clausify(6)].
+-L6 | -L1.  [clausify(6)].
+-L6 | -L7.  [clausify(6)].
+-L6 | -L8.  [clausify(6)].
+-L6 | -L9.  [clausify(6)].
+-L7 | -L2.  [clausify(7)].
+-L7 | -L3.  [clausify(7)].
+-L7 | -L4.  [clausify(7)].
+-L7 | -L5.  [clausify(7)].
+-L7 | -L6.  [clausify(7)].
+-L7 | -L1.  [clausify(7)].
+-L7 | -L8.  [clausify(7)].
+-L7 | -L9.  [clausify(7)].
+-L8 | -L2.  [clausify(8)].
+-L8 | -L3.  [clausify(8)].
+-L8 | -L4.  [clausify(8)].
+-L8 | -L5.  [clausify(8)].
+-L8 | -L6.  [clausify(8)].
+-L8 | -L7.  [clausify(8)].
+-L8 | -L1.  [clausify(8)].
+-L8 | -L9.  [clausify(8)].
+-L9 | -L2.  [clausify(9)].
+-L9 | -L3.  [clausify(9)].
+-L9 | -L4.  [clausify(9)].
+-L9 | -L5.  [clausify(9)].
+-L9 | -L6.  [clausify(9)].
+-L9 | -L7.  [clausify(9)].
+-L9 | -L8.  [clausify(9)].
+-L9 | -L1.  [clausify(9)].
+-L1 | R1.  [clausify(10)].
+-L2 | R2.  [clausify(10)].
+-L3 | R3.  [clausify(10)].
+-L4 | R4.  [clausify(10)].
+-L5 | R5.  [clausify(10)].
+-L6 | R6.  [clausify(11)].
+-L7 | R7.  [clausify(11)].
+-L8 | R8.  [clausify(11)].
+-L9 | R9.  [clausify(11)].
+-T1 | -R1.  [clausify(12)].
+-T2 | -R2.  [clausify(12)].
+-T3 | -R3.  [clausify(12)].
+-T4 | -R4.  [clausify(12)].
+-T5 | -R5.  [clausify(12)].
+-T6 | -R6.  [clausify(13)].
+-T7 | -R7.  [clausify(13)].
+-T8 | -R8.  [clausify(13)].
+-T9 | -R9.  [clausify(13)].
+L1 | T1 | E1.  [clausify(14)].
+L2 | T2 | E2.  [clausify(14)].
+L3 | T3 | E3.  [clausify(14)].
+L4 | T4 | E4.  [clausify(14)].
+L5 | T5 | E5.  [clausify(14)].
+L6 | T6 | E6.  [clausify(14)].
+L7 | T7 | E7.  [clausify(14)].
+L8 | T8 | E8.  [clausify(14)].
+L9 | T9 | E9.  [clausify(14)].
+-L1 | -T1.  [clausify(15)].
+-L1 | -E1.  [clausify(15)].
+-L2 | -T2.  [clausify(15)].
+-L2 | -E2.  [clausify(15)].
+-L3 | -T3.  [clausify(15)].
+-L3 | -E3.  [clausify(15)].
+-L4 | -T4.  [clausify(16)].
+-L4 | -E4.  [clausify(16)].
+-L5 | -T5.  [clausify(16)].
+-L5 | -E5.  [clausify(16)].
+-L6 | -T6.  [clausify(16)].
+-L6 | -E6.  [clausify(16)].
+-L7 | -T7.  [clausify(17)].
+-L7 | -E7.  [clausify(17)].
+-L8 | -T8.  [clausify(17)].
+-L8 | -E8.  [clausify(17)].
+-L9 | -T9.  [clausify(17)].
+-L9 | -E9.  [clausify(17)].
+-T1 | -L1.  [clausify(18)].
+-T1 | -E1.  [clausify(18)].
+-T2 | -L2.  [clausify(18)].
+-T2 | -E2.  [clausify(18)].
+-T3 | -L3.  [clausify(18)].
+-T3 | -E3.  [clausify(18)].
+-T4 | -L4.  [clausify(19)].
+-T4 | -E4.  [clausify(19)].
+-T5 | -L5.  [clausify(19)].
+-T5 | -E5.  [clausify(19)].
+-T6 | -L6.  [clausify(19)].
+-T6 | -E6.  [clausify(19)].
+-T7 | -L7.  [clausify(20)].
+-T7 | -E7.  [clausify(20)].
+-T8 | -L8.  [clausify(20)].
+-T8 | -E8.  [clausify(20)].
+-T9 | -L9.  [clausify(20)].
+-T9 | -E9.  [clausify(20)].
+-E1 | -L1.  [clausify(21)].
+-E1 | -T1.  [clausify(21)].
+-E2 | -L2.  [clausify(21)].
+-E2 | -T2.  [clausify(21)].
+-E3 | -L3.  [clausify(21)].
+-E3 | -T3.  [clausify(21)].
+-E4 | -L4.  [clausify(22)].
+-E4 | -T4.  [clausify(22)].
+-E5 | -L5.  [clausify(22)].
+-E5 | -T5.  [clausify(22)].
+-E6 | -L6.  [clausify(22)].
+-E6 | -T6.  [clausify(22)].
+-E7 | -L7.  [clausify(23)].
+-E7 | -T7.  [clausify(23)].
+-E8 | -L8.  [clausify(23)].
+-E8 | -T8.  [clausify(23)].
+-E9 | -L9.  [clausify(23)].
+-E9 | -T9.  [clausify(23)].
+-R1 | L1 | L3 | L5 | L7 | L9.  [clausify(24)].
+R1 | -L1.  [clausify(24)].
+R1 | -L3.  [clausify(24)].
+R1 | -L5.  [clausify(24)].
+R1 | -L7.  [clausify(24)].
+R1 | -L9.  [clausify(24)].
+-R2 | E2.  [clausify(25)].
+R2 | -E2.  [clausify(25)].
+-R3 | R5 | -R7.  [clausify(26)].
+R3 | -R5.  [clausify(26)].
+R3 | R7.  [clausify(26)].
+-R4 | -R1.  [clausify(27)].
+R4 | R1.  [clausify(27)].
+-R5 | R2 | R4.  [clausify(28)].
+R5 | -R2.  [clausify(28)].
+R5 | -R4.  [clausify(28)].
+-R6 | -R3.  [clausify(29)].
+R6 | R3.  [clausify(29)].
+-R7 | -L1.  [clausify(30)].
+R7 | L1.  [clausify(30)].
+-R8 | T8.  [clausify(31)].
+-R8 | E9.  [clausify(31)].
+R8 | -T8 | -E9.  [clausify(31)].
+-R9 | T9.  [clausify(32)].
+-R9 | -R6.  [clausify(32)].
+R9 | -T9 | R6.  [clausify(32)].
+-E8.  [assumption].
+-L7.  [deny(33)].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== PREDICATE ELIMINATION =================
+
+No predicates eliminated.
+
+============================== end predicate elimination =============
+
+Auto_denials:  (non-Horn, no changes).
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ R1, L1, R5, L3, L5, L7, L9, R2, R3, R4, R7, R8, E2, E9, L2, L4, L6, L8, R6, R9, T8, T9, E1, E3, E4, E5, E6, E7, E8, T1, T2, T3, T4, T5, T6, T7 ]).
+Function symbol precedence:  function_order([ ]).
+After inverse_order:  (no changes).
+Unfolding symbols: (none).
+
+Auto_inference settings:
+  % set(binary_resolution).  % (non-Horn)
+
+Auto_process settings:
+  % set(factor).  % (non-Horn)
+  % set(unit_deletion).  % (non-Horn)
+
+kept:      34 L1 | L2 | L3 | L4 | L5 | L6 | L7 | L8 | L9.  [assumption].
+kept:      35 -L1 | -L2.  [clausify(1)].
+kept:      36 -L1 | -L3.  [clausify(1)].
+kept:      37 -L1 | -L4.  [clausify(1)].
+kept:      38 -L1 | -L5.  [clausify(1)].
+kept:      39 -L1 | -L6.  [clausify(1)].
+kept:      40 -L1 | -L7.  [clausify(1)].
+kept:      41 -L1 | -L8.  [clausify(1)].
+kept:      42 -L1 | -L9.  [clausify(1)].
+kept:      43 -L2 | -L3.  [clausify(2)].
+kept:      44 -L2 | -L4.  [clausify(2)].
+kept:      45 -L2 | -L5.  [clausify(2)].
+kept:      46 -L2 | -L6.  [clausify(2)].
+kept:      47 -L2 | -L7.  [clausify(2)].
+kept:      48 -L2 | -L8.  [clausify(2)].
+kept:      49 -L2 | -L9.  [clausify(2)].
+kept:      50 -L3 | -L4.  [clausify(3)].
+kept:      51 -L3 | -L5.  [clausify(3)].
+kept:      52 -L3 | -L6.  [clausify(3)].
+kept:      53 -L3 | -L7.  [clausify(3)].
+kept:      54 -L3 | -L8.  [clausify(3)].
+kept:      55 -L3 | -L9.  [clausify(3)].
+kept:      56 -L4 | -L5.  [clausify(4)].
+kept:      57 -L4 | -L6.  [clausify(4)].
+kept:      58 -L4 | -L7.  [clausify(4)].
+kept:      59 -L4 | -L8.  [clausify(4)].
+kept:      60 -L4 | -L9.  [clausify(4)].
+kept:      61 -L5 | -L6.  [clausify(5)].
+kept:      62 -L5 | -L7.  [clausify(5)].
+kept:      63 -L5 | -L8.  [clausify(5)].
+kept:      64 -L5 | -L9.  [clausify(5)].
+kept:      65 -L6 | -L7.  [clausify(6)].
+kept:      66 -L6 | -L8.  [clausify(6)].
+kept:      67 -L6 | -L9.  [clausify(6)].
+kept:      68 -L7 | -L8.  [clausify(7)].
+kept:      69 -L7 | -L9.  [clausify(7)].
+kept:      70 -L8 | -L9.  [clausify(8)].
+kept:      71 -L1 | R1.  [clausify(10)].
+kept:      72 -L2 | R2.  [clausify(10)].
+kept:      73 -L3 | R3.  [clausify(10)].
+kept:      74 -L4 | R4.  [clausify(10)].
+kept:      75 -L5 | R5.  [clausify(10)].
+kept:      76 -L6 | R6.  [clausify(11)].
+kept:      77 -L7 | R7.  [clausify(11)].
+kept:      78 -L8 | R8.  [clausify(11)].
+kept:      79 -L9 | R9.  [clausify(11)].
+kept:      80 -T1 | -R1.  [clausify(12)].
+kept:      81 -T2 | -R2.  [clausify(12)].
+kept:      82 -T3 | -R3.  [clausify(12)].
+kept:      83 -T4 | -R4.  [clausify(12)].
+kept:      84 -T5 | -R5.  [clausify(12)].
+kept:      85 -T6 | -R6.  [clausify(13)].
+kept:      86 -T7 | -R7.  [clausify(13)].
+kept:      87 -T8 | -R8.  [clausify(13)].
+kept:      88 -T9 | -R9.  [clausify(13)].
+kept:      89 L1 | T1 | E1.  [clausify(14)].
+kept:      90 L2 | T2 | E2.  [clausify(14)].
+kept:      91 L3 | T3 | E3.  [clausify(14)].
+kept:      92 L4 | T4 | E4.  [clausify(14)].
+kept:      93 L5 | T5 | E5.  [clausify(14)].
+kept:      94 L6 | T6 | E6.  [clausify(14)].
+kept:      95 L7 | T7 | E7.  [clausify(14)].
+kept:      96 L8 | T8 | E8.  [clausify(14)].
+kept:      97 L9 | T9 | E9.  [clausify(14)].
+kept:      98 -L1 | -T1.  [clausify(15)].
+kept:      99 -L1 | -E1.  [clausify(15)].
+kept:      100 -L2 | -T2.  [clausify(15)].
+kept:      101 -L2 | -E2.  [clausify(15)].
+kept:      102 -L3 | -T3.  [clausify(15)].
+kept:      103 -L3 | -E3.  [clausify(15)].
+kept:      104 -L4 | -T4.  [clausify(16)].
+kept:      105 -L4 | -E4.  [clausify(16)].
+kept:      106 -L5 | -T5.  [clausify(16)].
+kept:      107 -L5 | -E5.  [clausify(16)].
+kept:      108 -L6 | -T6.  [clausify(16)].
+kept:      109 -L6 | -E6.  [clausify(16)].
+kept:      110 -L7 | -T7.  [clausify(17)].
+kept:      111 -L7 | -E7.  [clausify(17)].
+kept:      112 -L8 | -T8.  [clausify(17)].
+kept:      113 -L8 | -E8.  [clausify(17)].
+kept:      114 -L9 | -T9.  [clausify(17)].
+kept:      115 -L9 | -E9.  [clausify(17)].
+kept:      116 -T1 | -E1.  [clausify(18)].
+kept:      117 -T2 | -E2.  [clausify(18)].
+kept:      118 -T3 | -E3.  [clausify(18)].
+kept:      119 -T4 | -E4.  [clausify(19)].
+kept:      120 -T5 | -E5.  [clausify(19)].
+kept:      121 -T6 | -E6.  [clausify(19)].
+kept:      122 -T7 | -E7.  [clausify(20)].
+kept:      123 -T8 | -E8.  [clausify(20)].
+kept:      124 -T9 | -E9.  [clausify(20)].
+kept:      125 -R1 | L1 | L3 | L5 | L7 | L9.  [clausify(24)].
+kept:      126 R1 | -L3.  [clausify(24)].
+kept:      127 R1 | -L5.  [clausify(24)].
+kept:      128 R1 | -L7.  [clausify(24)].
+kept:      129 R1 | -L9.  [clausify(24)].
+kept:      130 -R2 | E2.  [clausify(25)].
+kept:      131 R2 | -E2.  [clausify(25)].
+kept:      132 -R3 | R5 | -R7.  [clausify(26)].
+kept:      133 R3 | -R5.  [clausify(26)].
+kept:      134 R3 | R7.  [clausify(26)].
+kept:      135 -R4 | -R1.  [clausify(27)].
+kept:      136 R4 | R1.  [clausify(27)].
+kept:      137 -R5 | R2 | R4.  [clausify(28)].
+kept:      138 R5 | -R2.  [clausify(28)].
+kept:      139 R5 | -R4.  [clausify(28)].
+kept:      140 -R6 | -R3.  [clausify(29)].
+kept:      141 R6 | R3.  [clausify(29)].
+kept:      142 -R7 | -L1.  [clausify(30)].
+kept:      143 R7 | L1.  [clausify(30)].
+kept:      144 -R8 | T8.  [clausify(31)].
+kept:      145 -R8 | E9.  [clausify(31)].
+kept:      146 R8 | -T8 | -E9.  [clausify(31)].
+kept:      147 -R9 | T9.  [clausify(32)].
+kept:      148 -R9 | -R6.  [clausify(32)].
+kept:      149 R9 | -T9 | R6.  [clausify(32)].
+kept:      150 -E8.  [assumption].
+kept:      151 -L7.  [deny(33)].
+kept:      152 L8 | T8.  [back_unit_del(96),unit_del(c,150)].
+kept:      153 -R1 | L1 | L3 | L5 | L9.  [back_unit_del(125),unit_del(e,151)].
+kept:      154 T7 | E7.  [back_unit_del(95),unit_del(a,151)].
+kept:      155 L1 | L2 | L3 | L4 | L5 | L6 | L8 | L9.  [back_unit_del(34),unit_del(g,151)].
+
+============================== end of process initial clauses ========
+
+============================== CLAUSES FOR SEARCH ====================
+
+% Clauses after input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+35 -L1 | -L2.  [clausify(1)].
+36 -L1 | -L3.  [clausify(1)].
+37 -L1 | -L4.  [clausify(1)].
+38 -L1 | -L5.  [clausify(1)].
+39 -L1 | -L6.  [clausify(1)].
+41 -L1 | -L8.  [clausify(1)].
+42 -L1 | -L9.  [clausify(1)].
+43 -L2 | -L3.  [clausify(2)].
+44 -L2 | -L4.  [clausify(2)].
+45 -L2 | -L5.  [clausify(2)].
+46 -L2 | -L6.  [clausify(2)].
+48 -L2 | -L8.  [clausify(2)].
+49 -L2 | -L9.  [clausify(2)].
+50 -L3 | -L4.  [clausify(3)].
+51 -L3 | -L5.  [clausify(3)].
+52 -L3 | -L6.  [clausify(3)].
+54 -L3 | -L8.  [clausify(3)].
+55 -L3 | -L9.  [clausify(3)].
+56 -L4 | -L5.  [clausify(4)].
+57 -L4 | -L6.  [clausify(4)].
+59 -L4 | -L8.  [clausify(4)].
+60 -L4 | -L9.  [clausify(4)].
+61 -L5 | -L6.  [clausify(5)].
+63 -L5 | -L8.  [clausify(5)].
+64 -L5 | -L9.  [clausify(5)].
+66 -L6 | -L8.  [clausify(6)].
+67 -L6 | -L9.  [clausify(6)].
+70 -L8 | -L9.  [clausify(8)].
+71 -L1 | R1.  [clausify(10)].
+72 -L2 | R2.  [clausify(10)].
+73 -L3 | R3.  [clausify(10)].
+74 -L4 | R4.  [clausify(10)].
+75 -L5 | R5.  [clausify(10)].
+76 -L6 | R6.  [clausify(11)].
+78 -L8 | R8.  [clausify(11)].
+79 -L9 | R9.  [clausify(11)].
+80 -T1 | -R1.  [clausify(12)].
+81 -T2 | -R2.  [clausify(12)].
+82 -T3 | -R3.  [clausify(12)].
+83 -T4 | -R4.  [clausify(12)].
+84 -T5 | -R5.  [clausify(12)].
+85 -T6 | -R6.  [clausify(13)].
+86 -T7 | -R7.  [clausify(13)].
+87 -T8 | -R8.  [clausify(13)].
+88 -T9 | -R9.  [clausify(13)].
+89 L1 | T1 | E1.  [clausify(14)].
+90 L2 | T2 | E2.  [clausify(14)].
+91 L3 | T3 | E3.  [clausify(14)].
+92 L4 | T4 | E4.  [clausify(14)].
+93 L5 | T5 | E5.  [clausify(14)].
+94 L6 | T6 | E6.  [clausify(14)].
+97 L9 | T9 | E9.  [clausify(14)].
+98 -L1 | -T1.  [clausify(15)].
+99 -L1 | -E1.  [clausify(15)].
+100 -L2 | -T2.  [clausify(15)].
+101 -L2 | -E2.  [clausify(15)].
+102 -L3 | -T3.  [clausify(15)].
+103 -L3 | -E3.  [clausify(15)].
+104 -L4 | -T4.  [clausify(16)].
+105 -L4 | -E4.  [clausify(16)].
+106 -L5 | -T5.  [clausify(16)].
+107 -L5 | -E5.  [clausify(16)].
+108 -L6 | -T6.  [clausify(16)].
+109 -L6 | -E6.  [clausify(16)].
+112 -L8 | -T8.  [clausify(17)].
+114 -L9 | -T9.  [clausify(17)].
+115 -L9 | -E9.  [clausify(17)].
+116 -T1 | -E1.  [clausify(18)].
+117 -T2 | -E2.  [clausify(18)].
+118 -T3 | -E3.  [clausify(18)].
+119 -T4 | -E4.  [clausify(19)].
+120 -T5 | -E5.  [clausify(19)].
+121 -T6 | -E6.  [clausify(19)].
+122 -T7 | -E7.  [clausify(20)].
+124 -T9 | -E9.  [clausify(20)].
+126 R1 | -L3.  [clausify(24)].
+127 R1 | -L5.  [clausify(24)].
+129 R1 | -L9.  [clausify(24)].
+130 -R2 | E2.  [clausify(25)].
+131 R2 | -E2.  [clausify(25)].
+132 -R3 | R5 | -R7.  [clausify(26)].
+133 R3 | -R5.  [clausify(26)].
+134 R3 | R7.  [clausify(26)].
+135 -R4 | -R1.  [clausify(27)].
+136 R4 | R1.  [clausify(27)].
+137 -R5 | R2 | R4.  [clausify(28)].
+138 R5 | -R2.  [clausify(28)].
+139 R5 | -R4.  [clausify(28)].
+140 -R6 | -R3.  [clausify(29)].
+141 R6 | R3.  [clausify(29)].
+142 -R7 | -L1.  [clausify(30)].
+143 R7 | L1.  [clausify(30)].
+144 -R8 | T8.  [clausify(31)].
+145 -R8 | E9.  [clausify(31)].
+146 R8 | -T8 | -E9.  [clausify(31)].
+147 -R9 | T9.  [clausify(32)].
+148 -R9 | -R6.  [clausify(32)].
+149 R9 | -T9 | R6.  [clausify(32)].
+150 -E8.  [assumption].
+151 -L7.  [deny(33)].
+152 L8 | T8.  [back_unit_del(96),unit_del(c,150)].
+153 -R1 | L1 | L3 | L5 | L9.  [back_unit_del(125),unit_del(e,151)].
+154 T7 | E7.  [back_unit_del(95),unit_del(a,151)].
+155 L1 | L2 | L3 | L4 | L5 | L6 | L8 | L9.  [back_unit_del(34),unit_del(g,151)].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== end of clauses for search =============
+
+============================== SEARCH ================================
+
+% Starting search at 0.04 seconds.
+
+given #1 (I,wt=2): 35 -L1 | -L2.  [clausify(1)].
+
+given #2 (I,wt=2): 36 -L1 | -L3.  [clausify(1)].
+
+given #3 (I,wt=2): 37 -L1 | -L4.  [clausify(1)].
+
+given #4 (I,wt=2): 38 -L1 | -L5.  [clausify(1)].
+
+given #5 (I,wt=2): 39 -L1 | -L6.  [clausify(1)].
+
+given #6 (I,wt=2): 41 -L1 | -L8.  [clausify(1)].
+
+given #7 (I,wt=2): 42 -L1 | -L9.  [clausify(1)].
+
+given #8 (I,wt=2): 43 -L2 | -L3.  [clausify(2)].
+
+given #9 (I,wt=2): 44 -L2 | -L4.  [clausify(2)].
+
+given #10 (I,wt=2): 45 -L2 | -L5.  [clausify(2)].
+
+given #11 (I,wt=2): 46 -L2 | -L6.  [clausify(2)].
+
+given #12 (I,wt=2): 48 -L2 | -L8.  [clausify(2)].
+
+given #13 (I,wt=2): 49 -L2 | -L9.  [clausify(2)].
+
+given #14 (I,wt=2): 50 -L3 | -L4.  [clausify(3)].
+
+given #15 (I,wt=2): 51 -L3 | -L5.  [clausify(3)].
+
+given #16 (I,wt=2): 52 -L3 | -L6.  [clausify(3)].
+
+given #17 (I,wt=2): 54 -L3 | -L8.  [clausify(3)].
+
+given #18 (I,wt=2): 55 -L3 | -L9.  [clausify(3)].
+
+given #19 (I,wt=2): 56 -L4 | -L5.  [clausify(4)].
+
+given #20 (I,wt=2): 57 -L4 | -L6.  [clausify(4)].
+
+given #21 (I,wt=2): 59 -L4 | -L8.  [clausify(4)].
+
+given #22 (I,wt=2): 60 -L4 | -L9.  [clausify(4)].
+
+given #23 (I,wt=2): 61 -L5 | -L6.  [clausify(5)].
+
+given #24 (I,wt=2): 63 -L5 | -L8.  [clausify(5)].
+
+given #25 (I,wt=2): 64 -L5 | -L9.  [clausify(5)].
+
+given #26 (I,wt=2): 66 -L6 | -L8.  [clausify(6)].
+
+given #27 (I,wt=2): 67 -L6 | -L9.  [clausify(6)].
+
+given #28 (I,wt=2): 70 -L8 | -L9.  [clausify(8)].
+
+given #29 (I,wt=2): 71 -L1 | R1.  [clausify(10)].
+
+given #30 (I,wt=2): 72 -L2 | R2.  [clausify(10)].
+
+given #31 (I,wt=2): 73 -L3 | R3.  [clausify(10)].
+
+given #32 (I,wt=2): 74 -L4 | R4.  [clausify(10)].
+
+given #33 (I,wt=2): 75 -L5 | R5.  [clausify(10)].
+
+given #34 (I,wt=2): 76 -L6 | R6.  [clausify(11)].
+
+given #35 (I,wt=2): 78 -L8 | R8.  [clausify(11)].
+
+given #36 (I,wt=2): 79 -L9 | R9.  [clausify(11)].
+
+given #37 (I,wt=2): 80 -T1 | -R1.  [clausify(12)].
+
+given #38 (I,wt=2): 81 -T2 | -R2.  [clausify(12)].
+
+given #39 (I,wt=2): 82 -T3 | -R3.  [clausify(12)].
+
+given #40 (I,wt=2): 83 -T4 | -R4.  [clausify(12)].
+
+given #41 (I,wt=2): 84 -T5 | -R5.  [clausify(12)].
+
+given #42 (I,wt=2): 85 -T6 | -R6.  [clausify(13)].
+
+given #43 (I,wt=2): 86 -T7 | -R7.  [clausify(13)].
+
+given #44 (I,wt=2): 87 -T8 | -R8.  [clausify(13)].
+
+given #45 (I,wt=2): 88 -T9 | -R9.  [clausify(13)].
+
+given #46 (I,wt=3): 89 L1 | T1 | E1.  [clausify(14)].
+
+given #47 (I,wt=3): 90 L2 | T2 | E2.  [clausify(14)].
+
+given #48 (I,wt=3): 91 L3 | T3 | E3.  [clausify(14)].
+
+given #49 (I,wt=3): 92 L4 | T4 | E4.  [clausify(14)].
+
+given #50 (I,wt=3): 93 L5 | T5 | E5.  [clausify(14)].
+
+given #51 (I,wt=3): 94 L6 | T6 | E6.  [clausify(14)].
+
+given #52 (I,wt=3): 97 L9 | T9 | E9.  [clausify(14)].
+
+given #53 (I,wt=2): 98 -L1 | -T1.  [clausify(15)].
+
+given #54 (I,wt=2): 99 -L1 | -E1.  [clausify(15)].
+
+given #55 (I,wt=2): 100 -L2 | -T2.  [clausify(15)].
+
+given #56 (I,wt=2): 101 -L2 | -E2.  [clausify(15)].
+
+given #57 (I,wt=2): 102 -L3 | -T3.  [clausify(15)].
+
+given #58 (I,wt=2): 103 -L3 | -E3.  [clausify(15)].
+
+given #59 (I,wt=2): 104 -L4 | -T4.  [clausify(16)].
+
+given #60 (I,wt=2): 105 -L4 | -E4.  [clausify(16)].
+
+given #61 (I,wt=2): 106 -L5 | -T5.  [clausify(16)].
+
+given #62 (I,wt=2): 107 -L5 | -E5.  [clausify(16)].
+
+given #63 (I,wt=2): 108 -L6 | -T6.  [clausify(16)].
+
+given #64 (I,wt=2): 109 -L6 | -E6.  [clausify(16)].
+
+given #65 (I,wt=2): 112 -L8 | -T8.  [clausify(17)].
+
+given #66 (I,wt=2): 114 -L9 | -T9.  [clausify(17)].
+
+given #67 (I,wt=2): 115 -L9 | -E9.  [clausify(17)].
+
+given #68 (I,wt=2): 116 -T1 | -E1.  [clausify(18)].
+
+given #69 (I,wt=2): 117 -T2 | -E2.  [clausify(18)].
+
+given #70 (I,wt=2): 118 -T3 | -E3.  [clausify(18)].
+
+given #71 (I,wt=2): 119 -T4 | -E4.  [clausify(19)].
+
+given #72 (I,wt=2): 120 -T5 | -E5.  [clausify(19)].
+
+given #73 (I,wt=2): 121 -T6 | -E6.  [clausify(19)].
+
+given #74 (I,wt=2): 122 -T7 | -E7.  [clausify(20)].
+
+given #75 (I,wt=2): 124 -T9 | -E9.  [clausify(20)].
+
+given #76 (I,wt=2): 126 R1 | -L3.  [clausify(24)].
+
+given #77 (I,wt=2): 127 R1 | -L5.  [clausify(24)].
+
+given #78 (I,wt=2): 129 R1 | -L9.  [clausify(24)].
+
+given #79 (I,wt=2): 130 -R2 | E2.  [clausify(25)].
+
+given #80 (I,wt=2): 131 R2 | -E2.  [clausify(25)].
+
+given #81 (I,wt=3): 132 -R3 | R5 | -R7.  [clausify(26)].
+
+given #82 (I,wt=2): 133 R3 | -R5.  [clausify(26)].
+
+given #83 (I,wt=2): 134 R3 | R7.  [clausify(26)].
+
+given #84 (I,wt=2): 135 -R4 | -R1.  [clausify(27)].
+
+given #85 (I,wt=2): 136 R4 | R1.  [clausify(27)].
+
+given #86 (I,wt=3): 137 -R5 | R2 | R4.  [clausify(28)].
+
+given #87 (I,wt=2): 138 R5 | -R2.  [clausify(28)].
+
+given #88 (I,wt=2): 139 R5 | -R4.  [clausify(28)].
+
+given #89 (I,wt=2): 140 -R6 | -R3.  [clausify(29)].
+
+given #90 (I,wt=2): 141 R6 | R3.  [clausify(29)].
+
+given #91 (I,wt=2): 142 -R7 | -L1.  [clausify(30)].
+
+given #92 (I,wt=2): 143 R7 | L1.  [clausify(30)].
+
+given #93 (I,wt=2): 144 -R8 | T8.  [clausify(31)].
+
+given #94 (I,wt=2): 145 -R8 | E9.  [clausify(31)].
+
+given #95 (I,wt=3): 146 R8 | -T8 | -E9.  [clausify(31)].
+
+given #96 (I,wt=2): 147 -R9 | T9.  [clausify(32)].
+
+given #97 (I,wt=2): 148 -R9 | -R6.  [clausify(32)].
+
+given #98 (I,wt=3): 149 R9 | -T9 | R6.  [clausify(32)].
+
+given #99 (I,wt=1): 150 -E8.  [assumption].
+
+given #100 (I,wt=1): 151 -L7.  [deny(33)].
+
+given #101 (I,wt=2): 152 L8 | T8.  [back_unit_del(96),unit_del(c,150)].
+
+given #102 (I,wt=5): 153 -R1 | L1 | L3 | L5 | L9.  [back_unit_del(125),unit_del(e,151)].
+
+given #103 (I,wt=2): 154 T7 | E7.  [back_unit_del(95),unit_del(a,151)].
+
+given #104 (I,wt=8): 155 L1 | L2 | L3 | L4 | L5 | L6 | L8 | L9.  [back_unit_del(34),unit_del(g,151)].
+
+given #105 (A,wt=3): 156 L1 | E1 | -R1.  [resolve(89,b,80,a)].
+
+given #106 (T,wt=2): 162 R5 | R1.  [resolve(139,b,136,a)].
+
+given #107 (T,wt=2): 163 -L1 | R3.  [resolve(142,a,134,b)].
+
+given #108 (T,wt=2): 167 L8 | -R8.  [resolve(152,b,87,a)].
+
+given #109 (T,wt=2): 168 E7 | -R7.  [resolve(154,a,86,a)].
+
+given #110 (A,wt=3): 157 L3 | E3 | -R3.  [resolve(91,b,82,a)].
+
+given #111 (T,wt=2): 170 R1 | R3.  [resolve(162,a,133,b)].
+
+given #112 (T,wt=2): 171 E7 | L1.  [resolve(168,b,143,a)].
+
+given #113 (T,wt=2): 172 E7 | R3.  [resolve(168,b,134,b)].
+
+given #114 (T,wt=3): 158 L4 | E4 | -R4.  [resolve(92,b,83,a)].
+
+given #115 (A,wt=3): 159 L5 | E5 | -R5.  [resolve(93,b,84,a)].
+
+given #116 (T,wt=3): 160 L6 | E6 | -R6.  [resolve(94,b,85,a)].
+
+given #117 (T,wt=3): 161 L9 | E9 | -R9.  [resolve(97,b,88,a)].
+
+given #118 (T,wt=3): 164 L1 | -R3 | R5.  [resolve(143,a,132,c)].
+
+given #119 (T,wt=3): 166 L8 | R8 | -E9.  [resolve(152,b,146,b)].
+
+given #120 (A,wt=4): 165 R9 | R6 | L9 | E9.  [resolve(149,b,97,b)].
+
+given #121 (T,wt=3): 173 R1 | L3 | E3.  [resolve(170,b,157,c)].
+
+given #122 (T,wt=3): 174 L4 | E4 | R1.  [resolve(158,c,136,a)].
+
+given #123 (T,wt=3): 175 L5 | E5 | R1.  [resolve(159,c,162,a)].
+
+given #124 (T,wt=3): 176 L6 | E6 | R3.  [resolve(160,c,141,a)].
+
+given #125 (A,wt=8): 169 L1 | L2 | L3 | L4 | L5 | L6 | L9 | R8.  [resolve(155,g,78,a)].
+
+given #126 (T,wt=3): 177 R6 | L9 | E9.  [resolve(165,a,161,c),merge(d),merge(e)].
+
+given #127 (T,wt=3): 180 L9 | E9 | -R3.  [resolve(177,a,140,a)].
+
+given #128 (T,wt=3): 181 L9 | E9 | R1.  [resolve(180,c,170,b)].
+
+given #129 (T,wt=4): 179 L9 | E9 | L6 | E6.  [resolve(177,a,160,c)].
+
+given #130 (A,wt=8): 178 L1 | L2 | L3 | L4 | L5 | L9 | R8 | R6.  [resolve(169,f,76,a)].
+
+given #131 (T,wt=4): 182 L9 | R1 | L8 | R8.  [resolve(181,b,166,c)].
+
+given #132 (T,wt=3): 184 L9 | R1 | R8.  [resolve(182,c,78,a),merge(d)].
+
+given #133 (T,wt=3): 185 L9 | R1 | L8.  [resolve(184,c,167,b)].
+
+given #134 (T,wt=3): 186 L9 | R1 | T8.  [resolve(184,c,144,a)].
+
+given #135 (A,wt=8): 183 L1 | L2 | L3 | L4 | L5 | L9 | R8 | -R3.  [resolve(178,h,140,a)].
+
+given #136 (T,wt=3): 187 L9 | R1 | -L6.  [resolve(185,c,66,b)].
+
+given #137 (T,wt=3): 188 L9 | R1 | -L4.  [resolve(185,c,59,b)].
+
+given #138 (T,wt=3): 189 L9 | R1 | -L2.  [resolve(185,c,48,b)].
+
+given #139 (T,wt=3): 190 L9 | R1 | -L8.  [resolve(186,c,112,b)].
+
+given #140 (A,wt=2): 192 L9 | R1.  [resolve(190,c,185,c),merge(c),merge(d)].
+
+given #141 (F,wt=1): 196 -R4.  [back_unit_del(135),unit_del(b,193)].
+
+given #142 (F,wt=1): 197 -T1.  [back_unit_del(80),unit_del(b,193)].
+
+given #143 (F,wt=1): 199 -L4.  [back_unit_del(74),unit_del(b,196)].
+
+given #144 (T,wt=1): 193 R1.  [resolve(192,a,129,b),merge(b)].
+
+given #145 (T,wt=2): 194 L1 | E1.  [back_unit_del(156),unit_del(c,193)].
+
+given #146 (T,wt=2): 198 -R5 | R2.  [back_unit_del(137),unit_del(c,196)].
+
+given #147 (T,wt=2): 200 T4 | E4.  [back_unit_del(92),unit_del(a,199)].
+
+given #148 (A,wt=4): 195 L1 | L3 | L5 | L9.  [back_unit_del(153),unit_del(a,193)].
+
+given #149 (T,wt=4): 201 L1 | L3 | L5 | R9.  [resolve(195,d,79,a)].
+
+given #150 (T,wt=4): 202 L1 | L3 | L5 | -R6.  [resolve(201,d,148,a)].
+
+given #151 (T,wt=4): 203 L1 | L3 | L5 | T9.  [resolve(201,d,147,a)].
+
+given #152 (T,wt=4): 204 L1 | L3 | L5 | R3.  [resolve(202,d,141,a)].
+
+given #153 (A,wt=4): 205 L1 | L3 | L5 | -E9.  [resolve(203,d,124,a)].
+
+given #154 (T,wt=4): 206 L1 | L3 | L5 | -L9.  [resolve(203,d,114,b)].
+
+given #155 (T,wt=3): 210 L1 | L3 | L5.  [resolve(206,d,195,d),merge(d),merge(e),merge(f)].
+
+given #156 (T,wt=3): 211 L1 | L3 | R5.  [resolve(210,c,75,a)].
+
+given #157 (T,wt=3): 212 L1 | R5 | R3.  [resolve(211,b,73,a)].
+
+given #158 (A,wt=2): 214 L1 | R5.  [resolve(212,c,164,b),merge(c),merge(d)].
+
+given #159 (T,wt=2): 215 L1 | R2.  [resolve(214,b,198,a)].
+
+given #160 (T,wt=2): 217 L1 | R3.  [resolve(214,b,133,b)].
+
+given #161 (T,wt=2): 218 L1 | E2.  [resolve(215,b,130,a)].
+
+given #162 (T,wt=3): 216 L1 | L5 | E5.  [resolve(214,b,159,c)].
+
+given #163 (A,wt=3): 219 L1 | L9 | E9.  [resolve(217,b,180,c)].
+
+given #164 (T,wt=3): 220 L1 | L3 | E3.  [resolve(217,b,157,c)].
+
+given #165 (T,wt=4): 221 L1 | L9 | L8 | R8.  [resolve(219,c,166,c)].
+
+given #166 (T,wt=3): 222 L1 | L9 | R8.  [resolve(221,c,78,a),merge(d)].
+
+given #167 (T,wt=3): 223 L1 | L9 | L8.  [resolve(222,c,167,b)].
+
+given #168 (A,wt=3): 224 L1 | L9 | T8.  [resolve(222,c,144,a)].
+
+given #169 (T,wt=3): 225 L1 | L9 | -L6.  [resolve(223,c,66,b)].
+
+given #170 (T,wt=3): 226 L1 | L9 | -L5.  [resolve(223,c,63,b)].
+
+given #171 (T,wt=3): 227 L1 | L9 | -L3.  [resolve(223,c,54,b)].
+
+given #172 (T,wt=3): 228 L1 | L9 | -L2.  [resolve(223,c,48,b)].
+
+given #173 (A,wt=3): 229 L1 | L9 | -L8.  [resolve(224,c,112,b)].
+
+given #174 (T,wt=2): 232 L1 | L9.  [resolve(229,c,223,c),merge(c),merge(d)].
+
+given #175 (T,wt=2): 233 L1 | R9.  [resolve(232,b,79,a)].
+
+given #176 (T,wt=2): 234 L1 | -L5.  [resolve(232,b,64,b)].
+
+given #177 (T,wt=2): 235 L1 | -L3.  [resolve(232,b,55,b)].
+
+given #178 (A,wt=2): 236 L1 | -R6.  [resolve(233,b,148,a)].
+
+given #179 (T,wt=2): 237 L1 | T9.  [resolve(233,b,147,a)].
+
+given #180 (T,wt=2): 238 L1 | L3.  [resolve(234,b,210,c),merge(b)].
+
+============================== PROOF =================================
+
+% Proof 1 at 0.05 (+ 0.01) seconds.
+% Length of proof is 93.
+% Level of proof is 32.
+% Maximum clause weight is 6.000.
+% Given clauses 180.
+
+1 L1 -> -(L2 | L3 | L4 | L5 | L6 | L7 | L8 | L9) # label(non_clause).  [assumption].
+3 L3 -> -(L2 | L1 | L4 | L5 | L6 | L7 | L8 | L9) # label(non_clause).  [assumption].
+5 L5 -> -(L2 | L3 | L4 | L1 | L6 | L7 | L8 | L9) # label(non_clause).  [assumption].
+10 (L1 -> R1) & (L2 -> R2) & (L3 -> R3) & (L4 -> R4) & (L5 -> R5) # label(non_clause).  [assumption].
+11 (L6 -> R6) & (L7 -> R7) & (L8 -> R8) & (L9 -> R9) # label(non_clause).  [assumption].
+13 (T6 -> -R6) & (T7 -> -R7) & (T8 -> -R8) & (T9 -> -R9) # label(non_clause).  [assumption].
+14 (L1 | T1 | E1) & (L2 | T2 | E2) & (L3 | T3 | E3) & (L4 | T4 | E4) & (L5 | T5 | E5) & (L6 | T6 | E6) & (L7 | T7 | E7) & (L8 | T8 | E8) & (L9 | T9 | E9) # label(non_clause).  [assumption].
+17 (L7 -> -T7 & -E7) & (L8 -> -T8 & -E8) & (L9 -> -T9 & -E9) # label(non_clause).  [assumption].
+24 R1 <-> L1 | L3 | L5 | L7 | L9 # label(non_clause).  [assumption].
+26 R3 <-> R5 | -R7 # label(non_clause).  [assumption].
+27 R4 <-> -R1 # label(non_clause).  [assumption].
+28 R5 <-> R2 | R4 # label(non_clause).  [assumption].
+29 R6 <-> -R3 # label(non_clause).  [assumption].
+30 R7 <-> -L1 # label(non_clause).  [assumption].
+31 R8 <-> T8 & E9 # label(non_clause).  [assumption].
+32 R9 <-> T9 & -R6 # label(non_clause).  [assumption].
+33 L7 # label(non_clause) # label(goal).  [goal].
+41 -L1 | -L8.  [clausify(1)].
+42 -L1 | -L9.  [clausify(1)].
+55 -L3 | -L9.  [clausify(3)].
+64 -L5 | -L9.  [clausify(5)].
+73 -L3 | R3.  [clausify(10)].
+75 -L5 | R5.  [clausify(10)].
+78 -L8 | R8.  [clausify(11)].
+79 -L9 | R9.  [clausify(11)].
+87 -T8 | -R8.  [clausify(13)].
+88 -T9 | -R9.  [clausify(13)].
+96 L8 | T8 | E8.  [clausify(14)].
+97 L9 | T9 | E9.  [clausify(14)].
+112 -L8 | -T8.  [clausify(17)].
+114 -L9 | -T9.  [clausify(17)].
+125 -R1 | L1 | L3 | L5 | L7 | L9.  [clausify(24)].
+129 R1 | -L9.  [clausify(24)].
+132 -R3 | R5 | -R7.  [clausify(26)].
+133 R3 | -R5.  [clausify(26)].
+134 R3 | R7.  [clausify(26)].
+136 R4 | R1.  [clausify(27)].
+139 R5 | -R4.  [clausify(28)].
+140 -R6 | -R3.  [clausify(29)].
+142 -R7 | -L1.  [clausify(30)].
+143 R7 | L1.  [clausify(30)].
+144 -R8 | T8.  [clausify(31)].
+146 R8 | -T8 | -E9.  [clausify(31)].
+147 -R9 | T9.  [clausify(32)].
+149 R9 | -T9 | R6.  [clausify(32)].
+150 -E8.  [assumption].
+151 -L7.  [deny(33)].
+152 L8 | T8.  [back_unit_del(96),unit_del(c,150)].
+153 -R1 | L1 | L3 | L5 | L9.  [back_unit_del(125),unit_del(e,151)].
+161 L9 | E9 | -R9.  [resolve(97,b,88,a)].
+162 R5 | R1.  [resolve(139,b,136,a)].
+163 -L1 | R3.  [resolve(142,a,134,b)].
+164 L1 | -R3 | R5.  [resolve(143,a,132,c)].
+165 R9 | R6 | L9 | E9.  [resolve(149,b,97,b)].
+166 L8 | R8 | -E9.  [resolve(152,b,146,b)].
+167 L8 | -R8.  [resolve(152,b,87,a)].
+170 R1 | R3.  [resolve(162,a,133,b)].
+177 R6 | L9 | E9.  [resolve(165,a,161,c),merge(d),merge(e)].
+180 L9 | E9 | -R3.  [resolve(177,a,140,a)].
+181 L9 | E9 | R1.  [resolve(180,c,170,b)].
+182 L9 | R1 | L8 | R8.  [resolve(181,b,166,c)].
+184 L9 | R1 | R8.  [resolve(182,c,78,a),merge(d)].
+185 L9 | R1 | L8.  [resolve(184,c,167,b)].
+186 L9 | R1 | T8.  [resolve(184,c,144,a)].
+190 L9 | R1 | -L8.  [resolve(186,c,112,b)].
+192 L9 | R1.  [resolve(190,c,185,c),merge(c),merge(d)].
+193 R1.  [resolve(192,a,129,b),merge(b)].
+195 L1 | L3 | L5 | L9.  [back_unit_del(153),unit_del(a,193)].
+201 L1 | L3 | L5 | R9.  [resolve(195,d,79,a)].
+203 L1 | L3 | L5 | T9.  [resolve(201,d,147,a)].
+206 L1 | L3 | L5 | -L9.  [resolve(203,d,114,b)].
+210 L1 | L3 | L5.  [resolve(206,d,195,d),merge(d),merge(e),merge(f)].
+211 L1 | L3 | R5.  [resolve(210,c,75,a)].
+212 L1 | R5 | R3.  [resolve(211,b,73,a)].
+214 L1 | R5.  [resolve(212,c,164,b),merge(c),merge(d)].
+217 L1 | R3.  [resolve(214,b,133,b)].
+219 L1 | L9 | E9.  [resolve(217,b,180,c)].
+221 L1 | L9 | L8 | R8.  [resolve(219,c,166,c)].
+222 L1 | L9 | R8.  [resolve(221,c,78,a),merge(d)].
+223 L1 | L9 | L8.  [resolve(222,c,167,b)].
+224 L1 | L9 | T8.  [resolve(222,c,144,a)].
+229 L1 | L9 | -L8.  [resolve(224,c,112,b)].
+232 L1 | L9.  [resolve(229,c,223,c),merge(c),merge(d)].
+234 L1 | -L5.  [resolve(232,b,64,b)].
+235 L1 | -L3.  [resolve(232,b,55,b)].
+238 L1 | L3.  [resolve(234,b,210,c),merge(b)].
+242 L1.  [resolve(238,b,235,b),merge(b)].
+243 R3.  [back_unit_del(163),unit_del(a,242)].
+246 -L9.  [back_unit_del(42),unit_del(a,242)].
+247 -L8.  [back_unit_del(41),unit_del(a,242)].
+252 E9.  [back_unit_del(180),unit_del(a,246),unit_del(c,243)].
+256 -R8.  [back_unit_del(167),unit_del(a,247)].
+257 $F.  [back_unit_del(166),unit_del(a,247),unit_del(b,256),unit_del(c,252)].
+
+============================== end of proof ==========================
+
+============================== STATISTICS ============================
+
+Given=180. Generated=395. Kept=223. proofs=1.
+Usable=54. Sos=5. Demods=0. Limbo=10, Disabled=336. Hints=0.
+Kept_by_rule=0, Deleted_by_rule=0.
+Forward_subsumed=171. Back_subsumed=123.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=0 (0 lex), Back_demodulated=0. Back_unit_deleted=31.
+Demod_attempts=0. Demod_rewrites=0.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=102. Nonunit_bsub_feature_tests=325.
+Megabytes=0.44.
+User_CPU=0.05, System_CPU=0.01, Wall_clock=0.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+THEOREM PROVED
+
+Exiting with 1 proof.
+
+Process 13264 exit (max_proofs) Sat Jan 23 17:31:58 2021
