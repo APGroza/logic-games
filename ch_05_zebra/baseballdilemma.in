@@ -1,0 +1,48 @@
+set(arithmetic).
+assign(domain_size,7).
+assign(max_models,-1).
+
+list(distinct).
+  [A,B,C,J,M,P,R].              [p_cf,p_rf,p_fb,p_tb,p_sb,p_lf,p_ss].
+  [g8,g9,g10,g11,g12,g13,g14].  [n35,n28,n3,n29,n32,n7,n21].
+end_of_list.
+
+formulas(clues).
+  A = 0 & B = 1 & C = 2 & J = 3 & M = 4 & P = 5 & R = 6. %-isomorphisms 
+
+  C != n28 & ((C = g13 & n28 = g8) | (C = g14 & n28 = g9)).     %Clue 1
+  J = n3.                                                       %Clue 2
+  M != p_ss & ((M=g11 & p_ss = n21) | (M = n21 & p_ss = g11)).  %Clue 3
+ (A = n32) | (A = n21).                                         %Clue 4
+ (J = g13) | (J = p_fb).                                        %Clue 5
+  g13 != n29.                                                   %Clue 6
+  A != p_ss.                                                    %Clue 7
+                                                            
+ (p_cf = g8  & p_rf = g9)  | (p_cf = g9  & p_rf = g10) |        %Clue 8 
+ (p_cf = g10 & p_rf = g11) | (p_cf = g11 & p_rf = g12) | 
+ (p_cf = g12 & p_rf = g13) | (p_cf = g13 & p_rf = g14).
+
+  M != g8 & P != g14.                                           %Clue 9
+ (M = g14 & (P = g13 | P = g12 | P = g11 | P = g10 | P = g9  | P = g8))|
+ (M = g13 & (P = g12 | P = g11 | P = g10 | P = g9  | P = g8))|
+ (M = g12 & (P = g11 | P = g10 | P = g9  | P = g8))|
+ (M = g11 & (P = g10 | P = g9  | P = g8))|
+ (M = g10 & (P = g9  | P = g8))|
+ (M = g9  &  P = g8).
+  
+ (g13 != n21) & (R != n21) & (R != g13).                        %Clue 10 
+  B != p_sb.                                                    %Clue 11
+ (R = p_rf) | (R = g12).                                        %Clue 12
+ 
+ (n28=g14 & (n35=g13 | n35=g12 | n35=g11 | n35=g10 | n35=g9  | n35=g8))|
+ (n28=g13 & (n35=g12 | n35=g11 | n35=g10 | n35=g9  | n35=g8))|
+ (n28=g12 & (n35=g11 | n35=g10 | n35=g9  | n35=g8))|
+ (n28=g11 & (n35=g10 | n35=g9  | n35=g8))|
+ (n28=g10 & (n35=g9  | n35=g8))|
+ (n28=g9  & (n35=g9  | n35=g8)).                                %Clue 13
+
+ (A != n3) & (A != g13) & n3 != g13.                            %Clue 14
+  g8 != p_tb.                                                   %Clue 15
+ (n29 = g8 & n29 != p_tb) | (n29 = p_tb & (n29 != g8)).
+  A != g10.                                                     %Clue 16
+end_of_list.

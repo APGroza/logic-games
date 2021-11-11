@@ -1,0 +1,37 @@
+set(arithmetic).  
+assign(domain_size,5).  
+assign(max_models,-1).
+
+list(distinct).     
+   [Greek,English,French,Brazilian,Spanish].
+   [Black,Blue,Green,Red,White]. 
+   [Nine,Five,Seven,Eight,Six].  
+   [Hamburg,Genoa,Marseille,Manila,Port_Said]. 
+   [Tea,Coffee,Cocoa,Rice,Corn].  
+end_of_list.
+
+formulas(utils).
+   right_neighbor(x,y) <-> x + 1 = y.
+   left_neighbor(x,y)  <-> x = y + 1.
+   neighbor(x,y) <-> right_neighbor(x,y) | left_neighbor(x,y). 
+   middle(x) <-> x = 2.
+   border(x) <-> x = 4 | x = 0.
+end_of_list.
+
+formulas(ships). 
+   Greek = Six & Greek = Coffee                          #label(Clue1).
+   middle(Black)                                         #label(Clue2).
+   English = Nine                                        #label(Clue3).
+   French = Blue & left_neighbor(Coffee,French)          #label(Clue4).
+   right_neighbor(Cocoa,Marseille)                       #label(Clue5).
+   Brazilian = Manila                                    #label(Clue6).
+   neighbor(Rice,Green)                                  #label(Clue7).
+   Genoa = Five                                          #label(Clue8).
+   Spanish = Seven & right_neighbor(Marseille,Spanish)   #label(Clue9).
+   Hamburg = Red                                         #label(Clue10).
+   neighbor(Seven,White)                                 #label(Clue11).
+   border(Corn)                                          #label(Clue12).
+   Black = Eight                                         #label(Clue13).
+   neighbor(Corn,Rice)                                   #label(Clue14).
+   Hamburg = Six                                         #label(Clue15).
+end_of_list.

@@ -1,0 +1,27 @@
+set(arithmetic).  
+assign(domain_size,4). 
+assign(max_models,-1). 
+
+list(distinct).
+  [Green, Black, Red, Blue].
+  [Joshua, Ryan, Nicholas, Daniel].
+  [Thriller, Horror, Comedy, Action].
+  [Popcorn, Chips, Crackers, Cookies].
+  [14years, 13years, 12years, 11years].
+end_of_list.
+
+formulas(assumptions).
+  Joshua = 0 | Joshua = 3.                 %Clue 1
+  Black < 11years.                         %Clue 2 
+  Joshua = Horror.                         %Clue 3
+  14years = 2.                             %Clue 4
+  Red > 13years & Red < Action.            %Clue 5
+  Daniel = Thriller.                       %Clue 6
+  Cookies = 0 | Cookies = 3.               %Clue 7
+  Black+1 = Thriller.                      %Clue 8
+  Crackers =  Comedy + 1.                  %Clue 9
+  Popcorn < Red & Red < Nicholas.          %Clue 10
+  Thriller = 0 | Thriller = 3.             %Clue 11
+  Joshua < Nicholas & Nicholas < Daniel.   %Clue 12
+  Green = 0.                               %Clue 13
+end_of_list.

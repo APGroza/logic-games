@@ -1,0 +1,36 @@
+assign(domain_size,6).
+assign(max_models,-1).
+
+list(distinct).
+  [Audrey,Elaine,Betty,Freda,Cynthia,Doris].
+end_of_list.
+
+formulas(assumptions).
+  all x (serve(x) <-> captain(x) | vice(x) | treasurer(x)).
+
+  all x (captain(x)   -> -vice(x)    & -treasurer(x)).
+  all x (vice(x)      -> -captain(x) & -treasurer(x)).
+  all x (treasurer(x) -> -captain(x) & -vice(x)).
+ 
+  all x all y (captain(x)   & captain(y)   -> x=y).
+  all x all y (vice(x)      & vice(y)      -> x=y).
+  all x all y (treasurer(x) & treasurer(y) -> x=y).
+   
+  all x all y (outranks(x,y) <-> captain(x) | (vice(x) & treasurer(y))). 
+
+  exists x (captain(x)) & exists x (vice(x)) & exists x (treasurer(x)).
+end_of_list.
+
+formulas(puzzle_clues). 
+ -serve(Audrey) <- (captain(Elaine) | treasurer(Freda))   #label(Clue1).
+ -treasurer(Betty) <- serve(Cynthia)                      #label(Clue2).
+ -serve(Audrey) <- serve(Betty) & serve(Elaine)           #label(Clue3).
+ -serve(Freda) <- serve(Elaine)                           #label(Clue4).
+ -vice(Betty) 						  #label(Clue5).
+  outranks(Freda,Audrey) -> -serve(Freda)                 #label(Clue6).
+  (serve(Audrey) | serve(Betty)) & -captain(Cynthia) 
+     -> -serve(Cynthia)                                   #label(Clue7).
+ -captain(Betty) -> -serve(Doris)                         #label(Clue8).
+ -serve(Elaine) -> -(serve(Betty) & serve(Doris))         #label(Clue9). 
+ -(captain(Elaine) | captain(Audrey)) -> -serve(Elaine)   #label(Clue10).
+end_of_list.

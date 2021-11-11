@@ -1,0 +1,31 @@
+assign(domain_size,6).
+assign(max_models,-1).
+
+list(distinct).
+  [Annie,Brian,Celia,Don,Erica,Frank].
+end_of_list.
+
+formulas(assumptions).
+  Teacher = 0.   Engineer   = 1.   Programmer  = 2. %remove isomorphisms   
+  Doctor  = 3.   Accountant = 4.   Solicitator = 5.
+         
+  Frank != Teacher.    	           %Clue 1
+  Don   != Engineer.   	           %Clue 2
+  Frank != Engineer.  	           %Clue 1 and 2
+  Don   != Teacher.                %Clue 1 and 2  
+  Annie != Programmer.             %Clue 3
+  Frank != Programmer.             %Clue 3 and 1
+  Don   != Programmer.             %Clue 3 and 2
+  Annie != Teacher.                %Clue 3 and 1
+  Annie != Engineer.               %Clue 3 and 2
+  Erica != Programmer.             %Clue 4
+  Celia != Programmer.             %Clue 4
+  Frank != Accountant.             %Clue 5
+  Annie != Solicitator.            %Clue 6
+  Celia != Teacher.                %Clue 7
+  Annie != Accountant.             %Clue 8
+  Celia != Accountant.             %Clue 8 and 7 
+  Annie != Teacher.                %Clue 8 and 7
+end_of_list.
+
+
