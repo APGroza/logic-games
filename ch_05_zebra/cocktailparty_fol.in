@@ -1,0 +1,44 @@
+assign(domain_size,6).
+assign(max_models,-1).
+
+list(distinct).
+  [Annie,Brian,Celia,Don,Erica,Frank].
+end_of_list.
+
+formulas(assumptions).
+  all x all y all z (f(x,y) & f(x,z) -> y = z).  %at most one profession
+  all x all y all z (f(x,z) & f(y,z) -> x = y).  %at most one person
+  %exists x f(x,Teacher).      exists x f(x,Accountant). %at least one job
+  %exists x f(x,Engineer).     exists x f(x,Doctor).  
+  %exists x f(x,Programmer).   exists x f(x,Solicitator).
+  all x (f(x,Teacher) <-> x=Annie | x=Brian | x=Celia | x=Don |x=Erica | x=Frank).
+  f(x,Engineer) -> x=Annie | x=Brian | x=Celia | x=Don |x=Erica | x=Frank.
+  f(x,Programmer) -> x=Annie | x=Brian | x=Celia | x=Don |x=Erica | x=Frank.
+  f(x,Accountant) -> x=Annie | x=Brian | x=Celia | x=Don |x=Erica | x=Frank.
+  f(x,Doctor) -> x=Annie | x=Brian | x=Celia | x=Don |x=Erica | x=Frank.
+  f(x,Solicitator) -> x=Annie | x=Brian | x=Celia | x=Don |x=Erica | x=Frank.
+
+  -f(Frank,Teacher).          %Clue 1
+  -f(Don,Engineer).           %Clue 2
+  -f(Frank,Engineer).         %Clue 1 and 2
+  -f(Don,Teacher).            %Clue 1 and 2  
+  -f(Annie,Programmer).       %Clue 3
+  -f(Frank,Programmer).       %Clue 3 and 1
+  -f(Don,Programmer).         %Clue 3 and 2
+  -f(Annie,Teacher).          %Clue 3 and 1
+  -f(Annie,Engineer).         %Clue 3 and 2
+  -f(Celia,Programmer).       %Clue 4
+  -f(Erica,Programmer).       %Clue 4
+  -f(Frank,Accountant).       %Clue 5
+  -f(Annie,Solicitator).      %Clue 6
+  -f(Celia,Teacher).          %Clue 7
+  -f(Annie,Accountant).       %Clue 8.
+  -f(Celia,Accountant).       %Clue 8 and 7 
+  -f(Annie,Teacher).          %Clue 8 and 7
+
+   Teacher=0. Engineer=1.   Programmer=2.              %remove isomorphic
+   Doctor=3.  Accountant=4. Solicitator=5.             %remove isomorphic
+   %Annie !=0. Brian != 1. %Celia=2. Don=3. Erica=4. Frank=5.  %check the model
+end_of_list.
+
+

@@ -1,0 +1,13 @@
+interpretation( 6, [number = 1,seconds = 0], [
+    function(Accountant, [4]),
+    function(Annie, [3]),
+    function(Celia, [1]),
+    function(Doctor, [3]),
+    function(Don, [4]),
+    function(Engineer, [1]),
+    function(Erica, [0]),
+    function(Frank, [5]),
+    function(Programmer, [2]),
+    function(Solicitator, [5]),
+    function(Teacher, [0]),
+    function(Brian, [2])]).

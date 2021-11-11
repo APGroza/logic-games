@@ -1,0 +1,16 @@
+set(arithmetic). 
+assign(domain_size,11). 
+assign(max_models,-1).
+
+list(distinct).     
+  [0,E1,E2,S1,S2,W1,W2,I,S,A,F].
+end_of_list.
+
+formulas(bench).
+  right_neighbor(x,y) <-> x+1 = y.
+  neighbors(x,y) <-> right_neighbor(x,y) | right_neighbor(y,x).  
+
+  %-neighbors(E1,E2).    -neighbors(S1,S2).    -neighbors(W1,W2).
+  %neighbors(E1,E2) & neighbors(S1,S2) & neighbors(W1,W2). 
+  neighbours(E1,E2) & neighbors(S1,S2).
+end_of_list.

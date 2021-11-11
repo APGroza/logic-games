@@ -1,0 +1,35 @@
+assign(domain_size,4).
+assign(max_models,-1).
+set(arithmetic).
+
+list(distinct).
+  [Aprily,Grooves,Honshu,Yamada].
+  [Anne,Greta,Harold,Yoshi].
+  [Blue,Green,White,Yellow].
+end_of_list.
+
+formulas(bikers).
+ S = 0 & M = 1 & L = 2 & XL = 3.                      %avoid isomorphisms
+ 
+ Anne = Aprily | Greta = Grooves | Harold = Honshu | Yoshi = Yamada. 
+ 
+ Anne = Aprily -> (Greta != Grooves & Harold != Honshu & Yoshi != Yamada).
+ Greta = Grooves -> (Anne != Aprily & Harold != Honshu & Yoshi != Yamada).
+ Harold = Honshu -> (Anne != Aprily & Greta != Grooves & Yoshi != Yamada).
+ Yoshi = Yamada -> (Anne != Aprily & Greta != Grooves & Harold != Honshu).
+  
+ Yellow = Harold -> Harold != Honshu.  
+ Yellow = Yoshi -> Yoshi != Yamada.
+ Harold = Yellow | Yoshi = Yellow.  
+
+ Grooves = Anne  | Grooves = Greta.                               %Clue2
+ Harold = Yamada | Harold = XL.                                   %Clue3
+ (Anne != White & Yoshi != White) & (Yoshi + -1 = Anne).          %Clue4
+ Greta + -1 = Harold | Greta + -1 = Yoshi.                        %Clue5
+ Greta +  1 = Harold | Greta +  1 = Yoshi.
+ (Blue = S | Blue = L) & (Blue != Aprily).                        %Clue6
+ Harold = XL | Harold = White.                                    %Clue7
+ Honshu = M | Honshu = L.                                         %Clue8
+ (Green = L -> White = Grooves) & (Green != Aprily).              %Clue9
+end_of_list.
+

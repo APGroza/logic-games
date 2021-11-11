@@ -1,0 +1,41 @@
+set(arithmetic).
+assign(domain_size,4).
+assign(max_models,-1).
+
+list(distinct).
+  [Janet,Anthony,Mark,Meredith].
+  [Fantasy,Romance,Thriller,History].
+  [April,May,June,July].
+  [p250,p300,p350,p400].
+end_of_list.
+
+formulas(utils).
+  p250 = 0 & p300 = 1 & p350 = 2 & p400 = 3.          %avoid isomorphisms
+ -50plus(x,y) <-> x != y + 1. 
+  next(x,y) <-> next(y,x).             
+ -next(x,x).
+  next(April,May)  &  next(May,June)   &  next(June,July).
+ -next(April,June) & -next(April,July) & -next(May,July).
+end_of_list.
+
+formulas(clues).
+  (Janet = History) -> Fantasy = p350.                            %Clue 1
+  50plus(Thriller,May) & 50plus(Anthony,Thriller).                %Clue 2 
+  Janet = May & Meredith = History.                               %Clue 3
+  Janet != p250.                                                  %Clue 4
+  Janet = June                                                    %Clue 5
+   <-> (Janet != July & Meredith != May & Mark != May & Anthony != April).
+  Janet = July    
+   <-> (Janet != June & Meredith != May & Mark != May & Anthony != April).
+  Meredith = May  
+   <-> (Janet != June & Janet != July & Mark != May & Anthony != April).
+  Mark = May  <-> (Janet != June & 
+       Janet != July & Meredith != May & Anthony != April).
+  Anthony = April <-> (Janet != June & 
+         Janet != July & Meredith != May & Mark != May).
+  50plus(Fantasy, Mark).                                          %Clue 6
+  June != Fantasy & June != Romance.                              %Clue 7
+  next(p400,Romance).                                             %Clue 8
+  (Mark = April) -> Fantasy = p400.                               %Clue 9
+end_of_list.
+
