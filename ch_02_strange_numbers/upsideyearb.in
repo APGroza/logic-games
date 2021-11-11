@@ -1,0 +1,20 @@
+set(arithmetic).
+assign(domain_size, 10).
+assign(max_models, -1).
+
+formulas(assumptions). 
+    eq(x,y) <->  (x = 0 & y = 0) |
+                 (x = 1 & y = 1) |
+                 (x = 6 & y = 9) |
+                 (x = 8 & y = 8) |
+                 (x = 9 & y = 6).
+
+    1000 * a + 100 * b + 10 * c + d < 2020.
+    
+    n = 1 | n = 2 | n = 3 | n = 4.
+
+    (n = 4) -> a!= 0 & d!= 0         & eq(a,d) & eq(b,c). 
+    (n = 3) -> a = 0 & b!= 0 & d!= 0 & eq(b,d) & eq(c,c). 
+    (n = 2) -> a = 0 & b = 0 & c!= 0 & d != 0 & eq(c,d).  
+    (n = 1) -> a = 0 & b = 0 & c = 0 & eq(d,d).            
+end_of_list.

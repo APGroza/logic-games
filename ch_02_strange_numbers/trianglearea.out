@@ -1,0 +1,7 @@
+interpretation( 85, [number = 1,seconds = 1], [
+    function(S, [84]),
+    function(a, [13]),
+    function(b, [14]),
+    function(c, [15]),
+    function(h, [12]),
+    function(p, [21])]).
