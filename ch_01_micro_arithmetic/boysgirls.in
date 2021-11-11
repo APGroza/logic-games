@@ -1,0 +1,17 @@
+assign(max_models,1).
+set(arithmetic).
+
+formulas(boys_and_girls).
+  b != g & b != 0 & g != 0.      % we assume different init values
+  
+  sb > 0.                        % sum given by the boys 
+  sg > 0.                        % sum given by the girls
+
+  b > 3 * sb.                    % boys have more money than given
+  g > 9 * sg.                    % girls have more money than given
+
+  bafter = b + -3 * sb + 3 * sg. % boys sum after transaction
+  gafter = g + -9 * sg + 9 * sb. % girls sum after transaction
+  bafter = gafter.
+end_of_list.
+
