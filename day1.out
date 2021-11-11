@@ -1,7 +1,0 @@
-interpretation( 2, [number = 1,seconds = 0], [
-    relation(L1, [0]),
-    relation(L2, [1]),
-    relation(R1, [0]),
-    relation(R2, [1]),
-    relation(T1, [1]),
-    relation(T2, [0])]).
