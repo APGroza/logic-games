@@ -1,0 +1,26 @@
+set(arithmetic).
+assign(domain_size,7).
+assign(max_models,-1).
+    
+formulas(assumptions).  
+  a < b & b < c & c < d.              %the marks are distinct 
+  a = 0.                                 %ruler starts with 0
+
+  abs(a + (-b)) = 1 | abs(b + (-c)) = 1 | abs(c + (-d)) = 1 |
+  abs(a + (-c)) = 1 | abs(a + (-d)) = 1 | abs(b + (-d)) = 1. 
+
+  abs(a + (-b)) = 2 | abs(b + (-c)) = 2 | abs(c + (-d)) = 2 | 
+  abs(a + (-c)) = 2 | abs(a + (-d)) = 2 | abs(b + (-d)) = 2.
+
+  abs(a + (-b)) = 3 | abs(b + (-c)) = 3 | abs(c + (-d)) = 3 | 
+  abs(a + (-c)) = 3 | abs(a + (-d)) = 3 | abs(b + (-d)) = 3.
+
+  abs(a + (-b)) = 4 | abs(b + (-c)) = 4 | abs(c + (-d)) = 4 | 
+  abs(a + (-c)) = 4 | abs(a + (-d)) = 4 | abs(b + (-d)) = 4.
+
+  abs(a + (-b)) = 5 | abs(b + (-c)) = 5 | abs(c + (-d)) = 5 | 
+  abs(a + (-c)) = 5 | abs(a + (-d)) = 5 | abs(b + (-d)) = 5.
+
+  abs(a + (-b)) = 6 | abs(b + (-c)) = 6 | abs(c + (-d)) = 6 | 
+  abs(a + (-c)) = 6 | abs(a + (-d)) = 6 | abs(b + (-d)) = 6.
+end_of_list.

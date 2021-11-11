@@ -1,0 +1,7 @@
+set(arithmetic).
+assign(domain_size,2).
+assign(max_models,-1).
+
+formulas(assumptions).
+  m1 + m2 + m3 + m4 + m5 + m6 + m7 + m8 = 4.
+end_of_list.

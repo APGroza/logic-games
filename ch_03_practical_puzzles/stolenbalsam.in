@@ -1,0 +1,47 @@
+set(production).
+
+formulas(usable).
+ all x all y all z all t (J(x,y,z,t) & x+y<=24 -> J(x+y,0,z,t)).%emp(2,1)
+ all x all y all z all t (J(x,y,z,t) & x+z<=24 -> J(x+z,y,0,t)).%emp(3,1)
+ all x all y all z all t (J(x,y,z,t) & x+t<=24 -> J(x+t,y,z,0)).%emp(4,1)
+
+ all x all y all z all t (J(x,y,z,t) & x+y<=11 -> J(0,y+x,z,t)).%emp(1,2)
+ all x all y all z all t (J(x,y,z,t) & y+z<=11 -> J(x,y+z,0,t)).%emp(3,2)
+ all x all y all z all t (J(x,y,z,t) & y+t<=11 -> J(x,y+t,z,0)).%emp(4,2)
+
+ all x all y all z all t (J(x,y,z,t) & z+x<=13 -> J(0,y,z+x,t)).%emp(1,3)
+ all x all y all z all t (J(x,y,z,t) & y+z<=13 -> J(x,0,z+y,t)).%emp(2,3)
+ all x all y all z all t (J(x,y,z,t) & z+t<=13 -> J(x,y,z+t,0)).%emp(4,3)
+
+ all x all y all z all t (J(x,y,z,t) & t+x<=5 -> J(0,y,z,t+x)). %emp(1,4)
+ all x all y all z all t (J(x,y,z,t) & t+y<=5 -> J(x,0,z,t+y)). %emp(2,4)
+ all x all y all z all t (J(x,y,z,t) & z+t<=5 -> J(x,y,0,t+z)). %emp(3,4)
+ 
+ %from 2 fill 1;  from 3 fill 1; from 4 fill 1  
+ all x all y all z all t (J(x,y,z,t) & x+y>24 -> J(24,y+ -(24+ -x),z,t)).
+ all x all y all z all t (J(x,y,z,t) & x+z>24 -> J(24,y,z+ -(24+ -x),t)).
+ all x all y all z all t (J(x,y,z,t) & x+t>24 -> J(24,y,z,t+ -(24+ -x))).
+
+ %from 1 fill 2;  from 3 fill 2;  from 4 fill 2  
+ all x all y all z all t (J(x,y,z,t) & y+x>11 -> J(x+ -(11+ -y),11,z,t)).
+ all x all y all z all t (J(x,y,z,t) & y+z>11 -> J(x,11,z+ -(11+ -y),t)).
+ all x all y all z all t (J(x,y,z,t) & y+t>11 -> J(x,11,z,t+ -(11+ -y))).
+
+ %from 1 fill 3;  from 2 fill 3;  from 4 fill 3 
+ all x all y all z all t (J(x,y,z,t) & z+x>13 -> J(x+ -(13+ -z),y,13,t)).
+ all x all y all z all t (J(x,y,z,t) & z+y>13 -> J(x,y+ -(13+ -z),13,t)).
+ all x all y all z all t (J(x,y,z,t) & z+t>13 -> J(x,y,13,t+ -(13+ -z))).
+
+ %from 1 fill 4;  from 2 fill 4;  from 3 fill 4 
+ all x all y all z all t (J(x,y,z,t) & t+x>5 -> J(x+ -(5+ -t),y,z,5)).
+ all x all y all z all t (J(x,y,z,t) & t+y>5 -> J(x,y+ -(5+ -t),z,5)).
+ all x all y all z all t (J(x,y,z,t) & t+z>5 -> J(x,y,z+ -(5+ -t),5)).
+end_of_list.
+
+formulas(assumptions).
+  J(24,0,0,0).
+end_of_list.
+
+formulas(goals).
+ exists x (J(8,8,8,x)).
+end_of_list.

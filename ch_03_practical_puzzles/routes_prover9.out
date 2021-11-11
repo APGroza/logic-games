@@ -1,0 +1,210 @@
+============================== Prover9 ===============================
+Prover9 (64) version 2009-11A, November 2009.
+Process 7461 was started by adrian on adrian,
+Mon Jan 18 16:50:51 2021
+The command was "prover9 -f routes_prover9.in".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+% Reading from file routes_prover9.in
+
+set(production).
+    % set(production) -> set(raw).
+    % set(raw) -> clear(auto).
+    % clear(auto) -> clear(auto_inference).
+    % clear(auto) -> clear(auto_setup).
+    % clear(auto_setup) -> clear(predicate_elim).
+    % clear(auto_setup) -> assign(eq_defs, pass).
+    % clear(auto) -> clear(auto_limits).
+    % clear(auto_limits) -> assign(max_weight, "1000000000000.000").
+    % clear(auto_limits) -> assign(sos_limit, -1).
+    % clear(auto) -> clear(auto_denials).
+    % clear(auto) -> clear(auto_process).
+    % set(raw) -> clear(ordered_res).
+    % set(raw) -> clear(ordered_para).
+    % set(raw) -> set(para_into_vars).
+    % set(raw) -> set(para_from_small).
+    % set(raw) -> clear(ordered_para).
+    % set(raw) -> clear(back_demod).
+    % set(raw) -> clear(cac_redundancy).
+    % set(raw) -> assign(backsub_check, 2147483647).
+    % set(raw) -> set(lightest_first).
+    % set(lightest_first) -> assign(weight_part, 1).
+    % set(lightest_first) -> assign(age_part, 0).
+    % set(lightest_first) -> assign(false_part, 0).
+    % set(lightest_first) -> assign(true_part, 0).
+    % set(lightest_first) -> assign(random_part, 0).
+    % set(raw) -> assign(literal_selection, none).
+    % set(production) -> set(eval_rewrite).
+    % set(production) -> set(hyper_resolution).
+    % set(hyper_resolution) -> set(pos_hyper_resolution).
+    % set(production) -> clear(back_subsume).
+
+formulas(usable).
+J(x,y) & y < 4 -> J(x,y + 1) # answer("up").
+J(x,y) & x < 4 -> J(x + 1,y) # answer("right").
+end_of_list.
+
+formulas(assumptions).
+J(0,0) # answer("Init state: J(0,0)").
+end_of_list.
+
+formulas(goals).
+J(3,4).
+end_of_list.
+
+============================== end of input ==========================
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+1 J(x,y) & y < 4 -> J(x,y + 1) # answer("up") # label(non_clause).  [assumption].
+2 J(x,y) & x < 4 -> J(x + 1,y) # answer("right") # label(non_clause).  [assumption].
+3 J(3,4) # label(non_clause) # label(goal).  [goal].
+
+============================== end of process non-clausal formulas ===
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+-J(x,y) | -(y < 4) | J(x,y + 1) # answer("up").  [clausify(1)].
+-J(x,y) | -(x < 4) | J(x + 1,y) # answer("right").  [clausify(2)].
+end_of_list.
+
+formulas(sos).
+J(0,0) # answer("Init state: J(0,0)").  [assumption].
+-J(3,4).  [deny(3)].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ J, < ]).
+Function symbol precedence:  function_order([ 0, 1, 4, 3, + ]).
+After inverse_order:  (no changes).
+
+kept:      6 J(0,0) # answer("Init state: J(0,0)").  [assumption].
+kept:      7 -J(3,4).  [deny(3)].
+
+============================== end of process initial clauses ========
+
+============================== CLAUSES FOR SEARCH ====================
+
+% Clauses after input processing:
+
+formulas(usable).
+4 -J(x,y) | -(y < 4) | J(x,y + 1) # answer("up").  [clausify(1)].
+5 -J(x,y) | -(x < 4) | J(x + 1,y) # answer("right").  [clausify(2)].
+end_of_list.
+
+formulas(sos).
+6 J(0,0) # answer("Init state: J(0,0)").  [assumption].
+7 -J(3,4).  [deny(3)].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== end of clauses for search =============
+
+============================== SEARCH ================================
+
+% Starting search at 0.01 seconds.
+
+given #1 (I,wt=3): 6 J(0,0) # answer("Init state: J(0,0)").  [assumption].
+
+given #2 (I,wt=3): 7 -J(3,4).  [deny(3)].
+
+given #3 (W,wt=3): 8 J(1,0) # answer("right") # answer("Init state: J(0,0)").  [hyper(5,a,6,a),eval(2)].
+
+given #4 (W,wt=3): 9 J(0,1) # answer("up") # answer("Init state: J(0,0)").  [hyper(4,a,6,a),eval(2)].
+
+given #5 (W,wt=3): 10 J(2,0) # answer("right") # answer("right") # answer("Init state: J(0,0)").  [hyper(5,a,8,a),eval(2)].
+
+given #6 (W,wt=3): 11 J(1,1) # answer("up") # answer("right") # answer("Init state: J(0,0)").  [hyper(4,a,8,a),eval(2)].
+
+given #7 (W,wt=3): 12 J(0,2) # answer("up") # answer("up") # answer("Init state: J(0,0)").  [hyper(4,a,9,a),eval(2)].
+
+given #8 (W,wt=3): 13 J(3,0) # answer("right") # answer("right") # answer("right") # answer("Init state: J(0,0)").  [hyper(5,a,10,a),eval(2)].
+
+given #9 (W,wt=3): 14 J(2,1) # answer("up") # answer("right") # answer("right") # answer("Init state: J(0,0)").  [hyper(4,a,10,a),eval(2)].
+
+given #10 (W,wt=3): 15 J(1,2) # answer("up") # answer("up") # answer("right") # answer("Init state: J(0,0)").  [hyper(4,a,11,a),eval(2)].
+
+given #11 (W,wt=3): 16 J(0,3) # answer("up") # answer("up") # answer("up") # answer("Init state: J(0,0)").  [hyper(4,a,12,a),eval(2)].
+
+given #12 (W,wt=3): 17 J(4,0) # answer("right") # answer("right") # answer("right") # answer("right") # answer("Init state: J(0,0)").  [hyper(5,a,13,a),eval(2)].
+
+given #13 (W,wt=3): 18 J(3,1) # answer("up") # answer("right") # answer("right") # answer("right") # answer("Init state: J(0,0)").  [hyper(4,a,13,a),eval(2)].
+
+given #14 (W,wt=3): 19 J(2,2) # answer("up") # answer("up") # answer("right") # answer("right") # answer("Init state: J(0,0)").  [hyper(4,a,14,a),eval(2)].
+
+given #15 (W,wt=3): 20 J(1,3) # answer("up") # answer("up") # answer("up") # answer("right") # answer("Init state: J(0,0)").  [hyper(4,a,15,a),eval(2)].
+
+given #16 (W,wt=3): 21 J(0,4) # answer("up") # answer("up") # answer("up") # answer("up") # answer("Init state: J(0,0)").  [hyper(4,a,16,a),eval(2)].
+
+given #17 (W,wt=3): 22 J(4,1) # answer("up") # answer("right") # answer("right") # answer("right") # answer("right") # answer("Init state: J(0,0)").  [hyper(4,a,17,a),eval(2)].
+
+given #18 (W,wt=3): 23 J(3,2) # answer("up") # answer("up") # answer("right") # answer("right") # answer("right") # answer("Init state: J(0,0)").  [hyper(4,a,18,a),eval(2)].
+
+given #19 (W,wt=3): 24 J(2,3) # answer("up") # answer("up") # answer("up") # answer("right") # answer("right") # answer("Init state: J(0,0)").  [hyper(4,a,19,a),eval(2)].
+
+given #20 (W,wt=3): 25 J(1,4) # answer("up") # answer("up") # answer("up") # answer("up") # answer("right") # answer("Init state: J(0,0)").  [hyper(4,a,20,a),eval(2)].
+
+given #21 (W,wt=3): 26 J(4,2) # answer("up") # answer("up") # answer("right") # answer("right") # answer("right") # answer("right") # answer("Init state: J(0,0)").  [hyper(4,a,22,a),eval(2)].
+
+given #22 (W,wt=3): 27 J(3,3) # answer("up") # answer("up") # answer("up") # answer("right") # answer("right") # answer("right") # answer("Init state: J(0,0)").  [hyper(4,a,23,a),eval(2)].
+
+============================== PROOF =================================
+
+% Proof 1 at 0.01 (+ 0.00) seconds: "up" # "up" # "up" # "up" # "right" # "right" # "right" # "Init state: J(0,0)".
+% Length of proof is 15.
+% Level of proof is 9.
+% Maximum clause weight is 3.000.
+% Given clauses 22.
+
+1 J(x,y) & y < 4 -> J(x,y + 1) # answer("up") # label(non_clause).  [assumption].
+2 J(x,y) & x < 4 -> J(x + 1,y) # answer("right") # label(non_clause).  [assumption].
+3 J(3,4) # label(non_clause) # label(goal).  [goal].
+4 -J(x,y) | -(y < 4) | J(x,y + 1) # answer("up").  [clausify(1)].
+5 -J(x,y) | -(x < 4) | J(x + 1,y) # answer("right").  [clausify(2)].
+6 J(0,0) # answer("Init state: J(0,0)").  [assumption].
+7 -J(3,4).  [deny(3)].
+8 J(1,0) # answer("right") # answer("Init state: J(0,0)").  [hyper(5,a,6,a),eval(2)].
+10 J(2,0) # answer("right") # answer("right") # answer("Init state: J(0,0)").  [hyper(5,a,8,a),eval(2)].
+13 J(3,0) # answer("right") # answer("right") # answer("right") # answer("Init state: J(0,0)").  [hyper(5,a,10,a),eval(2)].
+18 J(3,1) # answer("up") # answer("right") # answer("right") # answer("right") # answer("Init state: J(0,0)").  [hyper(4,a,13,a),eval(2)].
+23 J(3,2) # answer("up") # answer("up") # answer("right") # answer("right") # answer("right") # answer("Init state: J(0,0)").  [hyper(4,a,18,a),eval(2)].
+27 J(3,3) # answer("up") # answer("up") # answer("up") # answer("right") # answer("right") # answer("right") # answer("Init state: J(0,0)").  [hyper(4,a,23,a),eval(2)].
+30 J(3,4) # answer("up") # answer("up") # answer("up") # answer("up") # answer("right") # answer("right") # answer("right") # answer("Init state: J(0,0)").  [hyper(4,a,27,a),eval(2)].
+31 $F # answer("up") # answer("up") # answer("up") # answer("up") # answer("right") # answer("right") # answer("right") # answer("Init state: J(0,0)").  [resolve(30,a,7,a)].
+
+============================== end of proof ==========================
+
+============================== STATISTICS ============================
+
+Given=22. Generated=44. Kept=25. proofs=1.
+Usable=24. Sos=2. Demods=0. Limbo=0, Disabled=2. Hints=0.
+Kept_by_rule=0, Deleted_by_rule=0.
+Forward_subsumed=19. Back_subsumed=0.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=0 (0 lex), Back_demodulated=0. Back_unit_deleted=0.
+Demod_attempts=0. Demod_rewrites=0.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=0.
+Megabytes=0.06.
+User_CPU=0.01, System_CPU=0.00, Wall_clock=0.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+THEOREM PROVED
+
+Exiting with 1 proof.
+
+Process 7461 exit (max_proofs) Mon Jan 18 16:50:51 2021

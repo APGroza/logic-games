@@ -1,0 +1,11 @@
+assign(domain_size,13).         %ambigous date has day less than 13
+assign(max_models,-1).
+set(arithmetic).
+
+formulas(ambigous_dates).
+  day   != 0.                   %day in [1..12]
+  month != 0.                   %month in [1..12]
+  day != month.                 %if day = month there is no ambiguity
+  month = 12. 
+end_of_list.
+

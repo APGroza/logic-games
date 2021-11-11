@@ -1,0 +1,248 @@
+============================== Prover9 ===============================
+Prover9 (64) version 2009-11A, November 2009.
+Process 8219 was started by adrian on adrian,
+Mon Jan 18 17:17:16 2021
+The command was "prover9 -f waterjugs.in".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+% Reading from file waterjugs.in
+
+set(production).
+    % set(production) -> set(raw).
+    % set(raw) -> clear(auto).
+    % clear(auto) -> clear(auto_inference).
+    % clear(auto) -> clear(auto_setup).
+    % clear(auto_setup) -> clear(predicate_elim).
+    % clear(auto_setup) -> assign(eq_defs, pass).
+    % clear(auto) -> clear(auto_limits).
+    % clear(auto_limits) -> assign(max_weight, "1000000000000.000").
+    % clear(auto_limits) -> assign(sos_limit, -1).
+    % clear(auto) -> clear(auto_denials).
+    % clear(auto) -> clear(auto_process).
+    % set(raw) -> clear(ordered_res).
+    % set(raw) -> clear(ordered_para).
+    % set(raw) -> set(para_into_vars).
+    % set(raw) -> set(para_from_small).
+    % set(raw) -> clear(ordered_para).
+    % set(raw) -> clear(back_demod).
+    % set(raw) -> clear(cac_redundancy).
+    % set(raw) -> assign(backsub_check, 2147483647).
+    % set(raw) -> set(lightest_first).
+    % set(lightest_first) -> assign(weight_part, 1).
+    % set(lightest_first) -> assign(age_part, 0).
+    % set(lightest_first) -> assign(false_part, 0).
+    % set(lightest_first) -> assign(true_part, 0).
+    % set(lightest_first) -> assign(random_part, 0).
+    % set(raw) -> assign(literal_selection, none).
+    % set(production) -> set(eval_rewrite).
+    % set(production) -> set(hyper_resolution).
+    % set(hyper_resolution) -> set(pos_hyper_resolution).
+    % set(production) -> clear(back_subsume).
+
+formulas(demodulators).
+j1 = 4.
+j2 = 9.
+i = 2.
+end_of_list.
+
+formulas(usable).
+-J(x,y) | J(j1,y) # answer("fill the small jug") # answer(J($j1,y)).
+-J(x,y) | J(0,y) # answer("empty the small jug") # answer(J(0,y)).
+-J(x,y) | J(x,j2) # answer("fill the big jug") # answer(J(x,$j2)).
+-J(x,y) | J(x,0) # answer("empty the big jug") # answer(J(x,0)).
+-J(x,y) | -(x + y <= j2) | J(0,y + x) # answer("empty the small jug into the big jug") # answer(J(0,x + y)).
+-J(x,y) | -(x + y > j2) | J(x + -(j2 + -y),j2) # answer("small into big, until full") # answer(J(x + -(j2 + -y),$j2)).
+-J(x,y) | -(x + y <= j1) | J(x + y,0) # answer("empty the big jug into the small jug") # answer(J(x + y,0)).
+-J(x,y) | -(x + y > j1) | J(j1,y + -(j1 + -x)) # answer("big into small, until full") # answer(J($j1,y + -($j1 + -x))).
+end_of_list.
+
+formulas(assumptions).
+J(0,0) # answer("Init state: J(0,0)").
+end_of_list.
+
+formulas(goals).
+(exists x J(x,i)) | (exists y J(i,y)).
+end_of_list.
+
+============================== end of input ==========================
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+1 (exists x J(x,i)) | (exists y J(i,y)) # label(non_clause) # label(goal).  [goal].
+
+============================== end of process non-clausal formulas ===
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+-J(x,y) | J(j1,y) # answer("fill the small jug") # answer(J($j1,y)).  [assumption].
+-J(x,y) | J(0,y) # answer("empty the small jug") # answer(J(0,y)).  [assumption].
+-J(x,y) | J(x,j2) # answer("fill the big jug") # answer(J(x,$j2)).  [assumption].
+-J(x,y) | J(x,0) # answer("empty the big jug") # answer(J(x,0)).  [assumption].
+-J(x,y) | -(x + y <= j2) | J(0,y + x) # answer("empty the small jug into the big jug") # answer(J(0,x + y)).  [assumption].
+-J(x,y) | -(x + y > j2) | J(x + -(j2 + -y),j2) # answer("small into big, until full") # answer(J(x + -(j2 + -y),$j2)).  [assumption].
+-J(x,y) | -(x + y <= j1) | J(x + y,0) # answer("empty the big jug into the small jug") # answer(J(x + y,0)).  [assumption].
+-J(x,y) | -(x + y > j1) | J(j1,y + -(j1 + -x)) # answer("big into small, until full") # answer(J($j1,y + -($j1 + -x))).  [assumption].
+end_of_list.
+
+formulas(sos).
+J(0,0) # answer("Init state: J(0,0)").  [assumption].
+-J(x,i).  [deny(1)].
+-J(i,x).  [deny(1)].
+end_of_list.
+
+formulas(demodulators).
+j1 = 4.  [assumption].
+j2 = 9.  [assumption].
+i = 2.  [assumption].
+end_of_list.
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ =, J, <=, > ]).
+Function symbol precedence:  function_order([ 0, j1, j2, 2, 4, 9, i, +, - ]).
+After inverse_order:  (no changes).
+
+kept:      13 J(0,0) # answer("Init state: J(0,0)").  [assumption].
+           14 -J(x,i).  [deny(1)].
+kept:      15 -J(x,2).  [copy(14),rewrite([12])].
+           16 -J(i,x).  [deny(1)].
+kept:      17 -J(2,x).  [copy(16),rewrite([12])].
+
+============================== end of process initial clauses ========
+
+============================== CLAUSES FOR SEARCH ====================
+
+% Clauses after input processing:
+
+formulas(usable).
+2 -J(x,y) | J(j1,y) # answer("fill the small jug") # answer(J($j1,y)).  [assumption].
+3 -J(x,y) | J(0,y) # answer("empty the small jug") # answer(J(0,y)).  [assumption].
+4 -J(x,y) | J(x,j2) # answer("fill the big jug") # answer(J(x,$j2)).  [assumption].
+5 -J(x,y) | J(x,0) # answer("empty the big jug") # answer(J(x,0)).  [assumption].
+6 -J(x,y) | -(x + y <= j2) | J(0,y + x) # answer("empty the small jug into the big jug") # answer(J(0,x + y)).  [assumption].
+7 -J(x,y) | -(x + y > j2) | J(x + -(j2 + -y),j2) # answer("small into big, until full") # answer(J(x + -(j2 + -y),$j2)).  [assumption].
+8 -J(x,y) | -(x + y <= j1) | J(x + y,0) # answer("empty the big jug into the small jug") # answer(J(x + y,0)).  [assumption].
+9 -J(x,y) | -(x + y > j1) | J(j1,y + -(j1 + -x)) # answer("big into small, until full") # answer(J($j1,y + -($j1 + -x))).  [assumption].
+end_of_list.
+
+formulas(sos).
+13 J(0,0) # answer("Init state: J(0,0)").  [assumption].
+15 -J(x,2).  [copy(14),rewrite([12])].
+17 -J(2,x).  [copy(16),rewrite([12])].
+end_of_list.
+
+formulas(demodulators).
+10 j1 = 4.  [assumption].
+11 j2 = 9.  [assumption].
+12 i = 2.  [assumption].
+end_of_list.
+
+============================== end of clauses for search =============
+
+============================== SEARCH ================================
+
+% Starting search at 0.02 seconds.
+
+given #1 (I,wt=3): 13 J(0,0) # answer("Init state: J(0,0)").  [assumption].
+
+given #2 (I,wt=3): 15 -J(x,2).  [copy(14),rewrite([12])].
+
+given #3 (I,wt=3): 17 -J(2,x).  [copy(16),rewrite([12])].
+
+given #4 (W,wt=3): 18 J(0,9) # answer("fill the big jug") # answer(J(0,$j2)) # answer("Init state: J(0,0)").  [hyper(4,a,13,a),rewrite([11])].
+
+given #5 (W,wt=3): 19 J(4,0) # answer("fill the small jug") # answer(J($j1,0)) # answer("Init state: J(0,0)").  [hyper(2,a,13,a),rewrite([10])].
+
+given #6 (W,wt=3): 20 J(4,5) # answer("big into small, until full") # answer(J($j1,9 + -($j1 + -0))) # answer("fill the big jug") # answer(J(0,$j2)) # answer("Init state: J(0,0)").  [hyper(9,a,18,a),rewrite([10]),eval(6)].
+
+given #7 (W,wt=3): 21 J(4,9) # answer("fill the small jug") # answer(J($j1,9)) # answer("fill the big jug") # answer(J(0,$j2)) # answer("Init state: J(0,0)").  [hyper(2,a,18,a),rewrite([10])].
+
+given #8 (W,wt=3): 22 J(0,4) # answer("empty the small jug into the big jug") # answer(J(0,4 + 0)) # answer("fill the small jug") # answer(J($j1,0)) # answer("Init state: J(0,0)").  [hyper(6,a,19,a),rewrite([11]),eval(3)].
+
+given #9 (W,wt=3): 23 J(0,5) # answer("empty the small jug") # answer(J(0,5)) # answer("big into small, until full") # answer(J($j1,9 + -($j1 + -0))) # answer("fill the big jug") # answer(J(0,$j2)) # answer("Init state: J(0,0)").  [hyper(3,a,20,a)].
+
+given #10 (W,wt=3): 24 J(4,4) # answer("fill the small jug") # answer(J($j1,4)) # answer("empty the small jug into the big jug") # answer(J(0,4 + 0)) # answer("fill the small jug") # answer(J($j1,0)) # answer("Init state: J(0,0)").  [hyper(2,a,22,a),rewrite([10])].
+
+given #11 (W,wt=3): 25 J(4,1) # answer("big into small, until full") # answer(J($j1,5 + -($j1 + -0))) # answer("empty the small jug") # answer(J(0,5)) # answer("big into small, until full") # answer(J($j1,9 + -($j1 + -0))) # answer("fill the big jug") # answer(J(0,$j2)) # answer("Init state: J(0,0)").  [hyper(9,a,23,a),rewrite([10]),eval(6)].
+
+given #12 (W,wt=3): 26 J(0,8) # answer("empty the small jug into the big jug") # answer(J(0,4 + 4)) # answer("fill the small jug") # answer(J($j1,4)) # answer("empty the small jug into the big jug") # answer(J(0,4 + 0)) # answer("fill the small jug") # answer(J($j1,0)) # answer("Init state: J(0,0)").  [hyper(6,a,24,a),rewrite([11]),eval(3)].
+
+given #13 (W,wt=3): 27 J(0,1) # answer("empty the small jug") # answer(J(0,1)) # answer("big into small, until full") # answer(J($j1,5 + -($j1 + -0))) # answer("empty the small jug") # answer(J(0,5)) # answer("big into small, until full") # answer(J($j1,9 + -($j1 + -0))) # answer("fill the big jug") # answer(J(0,$j2)) # answer("Init state: J(0,0)").  [hyper(3,a,25,a)].
+
+given #14 (W,wt=3): 28 J(4,8) # answer("fill the small jug") # answer(J($j1,8)) # answer("empty the small jug into the big jug") # answer(J(0,4 + 4)) # answer("fill the small jug") # answer(J($j1,4)) # answer("empty the small jug into the big jug") # answer(J(0,4 + 0)) # answer("fill the small jug") # answer(J($j1,0)) # answer("Init state: J(0,0)").  [hyper(2,a,26,a),rewrite([10])].
+
+given #15 (W,wt=3): 29 J(1,0) # answer("empty the big jug into the small jug") # answer(J(0 + 1,0)) # answer("empty the small jug") # answer(J(0,1)) # answer("big into small, until full") # answer(J($j1,5 + -($j1 + -0))) # answer("empty the small jug") # answer(J(0,5)) # answer("big into small, until full") # answer(J($j1,9 + -($j1 + -0))) # answer("fill the big jug") # answer(J(0,$j2)) # answer("Init state: J(0,0)").  [hyper(8,a,27,a),rewrite([10]),eval(3)].
+
+given #16 (W,wt=3): 30 J(3,9) # answer("small into big, until full") # answer(J(4 + -(j2 + -8),$j2)) # answer("fill the small jug") # answer(J($j1,8)) # answer("empty the small jug into the big jug") # answer(J(0,4 + 4)) # answer("fill the small jug") # answer(J($j1,4)) # answer("empty the small jug into the big jug") # answer(J(0,4 + 0)) # answer("fill the small jug") # answer(J($j1,0)) # answer("Init state: J(0,0)").  [hyper(7,a,28,a),rewrite([11]),eval(6)].
+
+given #17 (W,wt=3): 31 J(1,9) # answer("fill the big jug") # answer(J(1,$j2)) # answer("empty the big jug into the small jug") # answer(J(0 + 1,0)) # answer("empty the small jug") # answer(J(0,1)) # answer("big into small, until full") # answer(J($j1,5 + -($j1 + -0))) # answer("empty the small jug") # answer(J(0,5)) # answer("big into small, until full") # answer(J($j1,9 + -($j1 + -0))) # answer("fill the big jug") # answer(J(0,$j2)) # answer("Init state: J(0,0)").  [hyper(4,a,29,a),rewrite([11])].
+
+given #18 (W,wt=3): 32 J(3,0) # answer("empty the big jug") # answer(J(3,0)) # answer("small into big, until full") # answer(J(4 + -(j2 + -8),$j2)) # answer("fill the small jug") # answer(J($j1,8)) # answer("empty the small jug into the big jug") # answer(J(0,4 + 4)) # answer("fill the small jug") # answer(J($j1,4)) # answer("empty the small jug into the big jug") # answer(J(0,4 + 0)) # answer("fill the small jug") # answer(J($j1,0)) # answer("Init state: J(0,0)").  [hyper(5,a,30,a)].
+
+given #19 (W,wt=3): 33 J(4,6) # answer("big into small, until full") # answer(J($j1,9 + -($j1 + -1))) # answer("fill the big jug") # answer(J(1,$j2)) # answer("empty the big jug into the small jug") # answer(J(0 + 1,0)) # answer("empty the small jug") # answer(J(0,1)) # answer("big into small, until full") # answer(J($j1,5 + -($j1 + -0))) # answer("empty the small jug") # answer(J(0,5)) # answer("big into small, until full") # answer(J($j1,9 + -($j1 + -0))) # answer("fill the big jug") # answer(J(0,$j2)) # answer("Init state: J(0,0)").  [hyper(9,a,31,a),rewrite([10]),eval(6)].
+
+given #20 (W,wt=3): 34 J(0,3) # answer("empty the small jug into the big jug") # answer(J(0,3 + 0)) # answer("empty the big jug") # answer(J(3,0)) # answer("small into big, until full") # answer(J(4 + -(j2 + -8),$j2)) # answer("fill the small jug") # answer(J($j1,8)) # answer("empty the small jug into the big jug") # answer(J(0,4 + 4)) # answer("fill the small jug") # answer(J($j1,4)) # answer("empty the small jug into the big jug") # answer(J(0,4 + 0)) # answer("fill the small jug") # answer(J($j1,0)) # answer("Init state: J(0,0)").  [hyper(6,a,32,a),rewrite([11]),eval(3)].
+
+given #21 (W,wt=3): 35 J(0,6) # answer("empty the small jug") # answer(J(0,6)) # answer("big into small, until full") # answer(J($j1,9 + -($j1 + -1))) # answer("fill the big jug") # answer(J(1,$j2)) # answer("empty the big jug into the small jug") # answer(J(0 + 1,0)) # answer("empty the small jug") # answer(J(0,1)) # answer("big into small, until full") # answer(J($j1,5 + -($j1 + -0))) # answer("empty the small jug") # answer(J(0,5)) # answer("big into small, until full") # answer(J($j1,9 + -($j1 + -0))) # answer("fill the big jug") # answer(J(0,$j2)) # answer("Init state: J(0,0)").  [hyper(3,a,33,a)].
+
+============================== PROOF =================================
+
+% Proof 1 at 0.02 (+ 0.01) seconds: "big into small, until full" # J($j1,6 + - ($j1 + - 0)) # "empty the small jug" # J(0,6) # "big into small, until full" # J($j1,9 + - ($j1 + - 1)) # "fill the big jug" # J(1,$j2) # "empty the big jug into the small jug" # J(0 + 1,0) # "empty the small jug" # J(0,1) # "big into small, until full" # J($j1,5 + - ($j1 + - 0)) # "empty the small jug" # J(0,5) # "big into small, until full" # J($j1,9 + - ($j1 + - 0)) # "fill the big jug" # J(0,$j2) # "Init state: J(0,0)".
+% Length of proof is 22.
+% Level of proof is 11.
+% Maximum clause weight is 3.000.
+% Given clauses 21.
+
+1 (exists x J(x,i)) | (exists y J(i,y)) # label(non_clause) # label(goal).  [goal].
+3 -J(x,y) | J(0,y) # answer("empty the small jug") # answer(J(0,y)).  [assumption].
+4 -J(x,y) | J(x,j2) # answer("fill the big jug") # answer(J(x,$j2)).  [assumption].
+8 -J(x,y) | -(x + y <= j1) | J(x + y,0) # answer("empty the big jug into the small jug") # answer(J(x + y,0)).  [assumption].
+9 -J(x,y) | -(x + y > j1) | J(j1,y + -(j1 + -x)) # answer("big into small, until full") # answer(J($j1,y + -($j1 + -x))).  [assumption].
+10 j1 = 4.  [assumption].
+11 j2 = 9.  [assumption].
+12 i = 2.  [assumption].
+13 J(0,0) # answer("Init state: J(0,0)").  [assumption].
+14 -J(x,i).  [deny(1)].
+15 -J(x,2).  [copy(14),rewrite([12])].
+18 J(0,9) # answer("fill the big jug") # answer(J(0,$j2)) # answer("Init state: J(0,0)").  [hyper(4,a,13,a),rewrite([11])].
+20 J(4,5) # answer("big into small, until full") # answer(J($j1,9 + -($j1 + -0))) # answer("fill the big jug") # answer(J(0,$j2)) # answer("Init state: J(0,0)").  [hyper(9,a,18,a),rewrite([10]),eval(6)].
+23 J(0,5) # answer("empty the small jug") # answer(J(0,5)) # answer("big into small, until full") # answer(J($j1,9 + -($j1 + -0))) # answer("fill the big jug") # answer(J(0,$j2)) # answer("Init state: J(0,0)").  [hyper(3,a,20,a)].
+25 J(4,1) # answer("big into small, until full") # answer(J($j1,5 + -($j1 + -0))) # answer("empty the small jug") # answer(J(0,5)) # answer("big into small, until full") # answer(J($j1,9 + -($j1 + -0))) # answer("fill the big jug") # answer(J(0,$j2)) # answer("Init state: J(0,0)").  [hyper(9,a,23,a),rewrite([10]),eval(6)].
+27 J(0,1) # answer("empty the small jug") # answer(J(0,1)) # answer("big into small, until full") # answer(J($j1,5 + -($j1 + -0))) # answer("empty the small jug") # answer(J(0,5)) # answer("big into small, until full") # answer(J($j1,9 + -($j1 + -0))) # answer("fill the big jug") # answer(J(0,$j2)) # answer("Init state: J(0,0)").  [hyper(3,a,25,a)].
+29 J(1,0) # answer("empty the big jug into the small jug") # answer(J(0 + 1,0)) # answer("empty the small jug") # answer(J(0,1)) # answer("big into small, until full") # answer(J($j1,5 + -($j1 + -0))) # answer("empty the small jug") # answer(J(0,5)) # answer("big into small, until full") # answer(J($j1,9 + -($j1 + -0))) # answer("fill the big jug") # answer(J(0,$j2)) # answer("Init state: J(0,0)").  [hyper(8,a,27,a),rewrite([10]),eval(3)].
+31 J(1,9) # answer("fill the big jug") # answer(J(1,$j2)) # answer("empty the big jug into the small jug") # answer(J(0 + 1,0)) # answer("empty the small jug") # answer(J(0,1)) # answer("big into small, until full") # answer(J($j1,5 + -($j1 + -0))) # answer("empty the small jug") # answer(J(0,5)) # answer("big into small, until full") # answer(J($j1,9 + -($j1 + -0))) # answer("fill the big jug") # answer(J(0,$j2)) # answer("Init state: J(0,0)").  [hyper(4,a,29,a),rewrite([11])].
+33 J(4,6) # answer("big into small, until full") # answer(J($j1,9 + -($j1 + -1))) # answer("fill the big jug") # answer(J(1,$j2)) # answer("empty the big jug into the small jug") # answer(J(0 + 1,0)) # answer("empty the small jug") # answer(J(0,1)) # answer("big into small, until full") # answer(J($j1,5 + -($j1 + -0))) # answer("empty the small jug") # answer(J(0,5)) # answer("big into small, until full") # answer(J($j1,9 + -($j1 + -0))) # answer("fill the big jug") # answer(J(0,$j2)) # answer("Init state: J(0,0)").  [hyper(9,a,31,a),rewrite([10]),eval(6)].
+35 J(0,6) # answer("empty the small jug") # answer(J(0,6)) # answer("big into small, until full") # answer(J($j1,9 + -($j1 + -1))) # answer("fill the big jug") # answer(J(1,$j2)) # answer("empty the big jug into the small jug") # answer(J(0 + 1,0)) # answer("empty the small jug") # answer(J(0,1)) # answer("big into small, until full") # answer(J($j1,5 + -($j1 + -0))) # answer("empty the small jug") # answer(J(0,5)) # answer("big into small, until full") # answer(J($j1,9 + -($j1 + -0))) # answer("fill the big jug") # answer(J(0,$j2)) # answer("Init state: J(0,0)").  [hyper(3,a,33,a)].
+37 J(4,2) # answer("big into small, until full") # answer(J($j1,6 + -($j1 + -0))) # answer("empty the small jug") # answer(J(0,6)) # answer("big into small, until full") # answer(J($j1,9 + -($j1 + -1))) # answer("fill the big jug") # answer(J(1,$j2)) # answer("empty the big jug into the small jug") # answer(J(0 + 1,0)) # answer("empty the small jug") # answer(J(0,1)) # answer("big into small, until full") # answer(J($j1,5 + -($j1 + -0))) # answer("empty the small jug") # answer(J(0,5)) # answer("big into small, until full") # answer(J($j1,9 + -($j1 + -0))) # answer("fill the big jug") # answer(J(0,$j2)) # answer("Init state: J(0,0)").  [hyper(9,a,35,a),rewrite([10]),eval(6)].
+38 $F # answer("big into small, until full") # answer(J($j1,6 + -($j1 + -0))) # answer("empty the small jug") # answer(J(0,6)) # answer("big into small, until full") # answer(J($j1,9 + -($j1 + -1))) # answer("fill the big jug") # answer(J(1,$j2)) # answer("empty the big jug into the small jug") # answer(J(0 + 1,0)) # answer("empty the small jug") # answer(J(0,1)) # answer("big into small, until full") # answer(J($j1,5 + -($j1 + -0))) # answer("empty the small jug") # answer(J(0,5)) # answer("big into small, until full") # answer(J($j1,9 + -($j1 + -0))) # answer("fill the big jug") # answer(J(0,$j2)) # answer("Init state: J(0,0)").  [resolve(37,a,15,a)].
+
+============================== end of proof ==========================
+
+============================== STATISTICS ============================
+
+Given=21. Generated=148. Kept=23. proofs=1.
+Usable=29. Sos=1. Demods=3. Limbo=0, Disabled=3. Hints=0.
+Kept_by_rule=0, Deleted_by_rule=0.
+Forward_subsumed=125. Back_subsumed=0.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=0 (0 lex), Back_demodulated=0. Back_unit_deleted=0.
+Demod_attempts=0. Demod_rewrites=0.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=0.
+Megabytes=0.11.
+User_CPU=0.02, System_CPU=0.01, Wall_clock=0.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+THEOREM PROVED
+
+Exiting with 1 proof.
+
+Process 8219 exit (max_proofs) Mon Jan 18 17:17:16 2021

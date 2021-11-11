@@ -1,0 +1,20 @@
+set(production).
+
+formulas(demodulators).
+ n = 4.   %rows
+ m = 3.   %columns
+end_of_list.
+
+formulas(usable).
+ J(x, y) & y < n         -> J(x, y+1)   #answer("E").                       
+ J(x, y) & x < m         -> J(x+1, y)   #answer("N").
+ J(x, y) & x < n & y < m -> J(x+1, y+1) #answer("NE").
+end_of_list.
+
+formulas(assumptions).
+  J(0, 0)               #answer("Init state: J(0,0)"). 
+end_of_list.
+
+formulas(goals).
+   J(n,m).
+end_of_list.

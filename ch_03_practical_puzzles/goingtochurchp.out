@@ -1,0 +1,204 @@
+============================== Prover9 ===============================
+Prover9 (64) version 2009-11A, November 2009.
+Process 7822 was started by adrian on adrian,
+Mon Jan 18 17:05:24 2021
+The command was "prover9 -f goingtochurchp.in".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+% Reading from file goingtochurchp.in
+
+set(production).
+    % set(production) -> set(raw).
+    % set(raw) -> clear(auto).
+    % clear(auto) -> clear(auto_inference).
+    % clear(auto) -> clear(auto_setup).
+    % clear(auto_setup) -> clear(predicate_elim).
+    % clear(auto_setup) -> assign(eq_defs, pass).
+    % clear(auto) -> clear(auto_limits).
+    % clear(auto_limits) -> assign(max_weight, "1000000000000.000").
+    % clear(auto_limits) -> assign(sos_limit, -1).
+    % clear(auto) -> clear(auto_denials).
+    % clear(auto) -> clear(auto_process).
+    % set(raw) -> clear(ordered_res).
+    % set(raw) -> clear(ordered_para).
+    % set(raw) -> set(para_into_vars).
+    % set(raw) -> set(para_from_small).
+    % set(raw) -> clear(ordered_para).
+    % set(raw) -> clear(back_demod).
+    % set(raw) -> clear(cac_redundancy).
+    % set(raw) -> assign(backsub_check, 2147483647).
+    % set(raw) -> set(lightest_first).
+    % set(lightest_first) -> assign(weight_part, 1).
+    % set(lightest_first) -> assign(age_part, 0).
+    % set(lightest_first) -> assign(false_part, 0).
+    % set(lightest_first) -> assign(true_part, 0).
+    % set(lightest_first) -> assign(random_part, 0).
+    % set(raw) -> assign(literal_selection, none).
+    % set(production) -> set(eval_rewrite).
+    % set(production) -> set(hyper_resolution).
+    % set(hyper_resolution) -> set(pos_hyper_resolution).
+    % set(production) -> clear(back_subsume).
+
+formulas(demodulators).
+n = 4.
+m = 3.
+end_of_list.
+
+formulas(usable).
+J(x,y) & y < n -> J(x,y + 1) # answer("E").
+J(x,y) & x < m -> J(x + 1,y) # answer("N").
+J(x,y) & x < n & y < m -> J(x + 1,y + 1) # answer("NE").
+end_of_list.
+
+formulas(assumptions).
+J(0,0) # answer("Init state: J(0,0)").
+end_of_list.
+
+formulas(goals).
+J(n,m).
+end_of_list.
+
+============================== end of input ==========================
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+1 J(x,y) & y < n -> J(x,y + 1) # answer("E") # label(non_clause).  [assumption].
+2 J(x,y) & x < m -> J(x + 1,y) # answer("N") # label(non_clause).  [assumption].
+3 J(x,y) & x < n & y < m -> J(x + 1,y + 1) # answer("NE") # label(non_clause).  [assumption].
+4 J(n,m) # label(non_clause) # label(goal).  [goal].
+
+============================== end of process non-clausal formulas ===
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+-J(x,y) | -(y < n) | J(x,y + 1) # answer("E").  [clausify(1)].
+-J(x,y) | -(x < m) | J(x + 1,y) # answer("N").  [clausify(2)].
+-J(x,y) | -(x < n) | -(y < m) | J(x + 1,y + 1) # answer("NE").  [clausify(3)].
+end_of_list.
+
+formulas(sos).
+J(0,0) # answer("Init state: J(0,0)").  [assumption].
+-J(n,m).  [deny(4)].
+end_of_list.
+
+formulas(demodulators).
+n = 4.  [assumption].
+m = 3.  [assumption].
+end_of_list.
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ =, J, < ]).
+Function symbol precedence:  function_order([ 1, m, n, 0, 3, 4, + ]).
+After inverse_order:  (no changes).
+
+kept:      10 J(0,0) # answer("Init state: J(0,0)").  [assumption].
+           11 -J(n,m).  [deny(4)].
+kept:      12 -J(4,3).  [copy(11),rewrite([8,9])].
+
+============================== end of process initial clauses ========
+
+============================== CLAUSES FOR SEARCH ====================
+
+% Clauses after input processing:
+
+formulas(usable).
+5 -J(x,y) | -(y < n) | J(x,y + 1) # answer("E").  [clausify(1)].
+6 -J(x,y) | -(x < m) | J(x + 1,y) # answer("N").  [clausify(2)].
+7 -J(x,y) | -(x < n) | -(y < m) | J(x + 1,y + 1) # answer("NE").  [clausify(3)].
+end_of_list.
+
+formulas(sos).
+10 J(0,0) # answer("Init state: J(0,0)").  [assumption].
+12 -J(4,3).  [copy(11),rewrite([8,9])].
+end_of_list.
+
+formulas(demodulators).
+8 n = 4.  [assumption].
+9 m = 3.  [assumption].
+end_of_list.
+
+============================== end of clauses for search =============
+
+============================== SEARCH ================================
+
+% Starting search at 0.01 seconds.
+
+given #1 (I,wt=3): 10 J(0,0) # answer("Init state: J(0,0)").  [assumption].
+
+given #2 (I,wt=3): 12 -J(4,3).  [copy(11),rewrite([8,9])].
+
+given #3 (W,wt=3): 13 J(1,1) # answer("NE") # answer("Init state: J(0,0)").  [hyper(7,a,10,a),rewrite([8,9]),eval(4)].
+
+given #4 (W,wt=3): 14 J(1,0) # answer("N") # answer("Init state: J(0,0)").  [hyper(6,a,10,a),rewrite([9]),eval(2)].
+
+given #5 (W,wt=3): 15 J(0,1) # answer("E") # answer("Init state: J(0,0)").  [hyper(5,a,10,a),rewrite([8]),eval(2)].
+
+given #6 (W,wt=3): 16 J(2,2) # answer("NE") # answer("NE") # answer("Init state: J(0,0)").  [hyper(7,a,13,a),rewrite([8,9]),eval(4)].
+
+given #7 (W,wt=3): 17 J(2,1) # answer("N") # answer("NE") # answer("Init state: J(0,0)").  [hyper(6,a,13,a),rewrite([9]),eval(2)].
+
+given #8 (W,wt=3): 18 J(1,2) # answer("E") # answer("NE") # answer("Init state: J(0,0)").  [hyper(5,a,13,a),rewrite([8]),eval(2)].
+
+given #9 (W,wt=3): 19 J(2,0) # answer("N") # answer("N") # answer("Init state: J(0,0)").  [hyper(6,a,14,a),rewrite([9]),eval(2)].
+
+given #10 (W,wt=3): 20 J(0,2) # answer("E") # answer("E") # answer("Init state: J(0,0)").  [hyper(5,a,15,a),rewrite([8]),eval(2)].
+
+given #11 (W,wt=3): 21 J(3,3) # answer("NE") # answer("NE") # answer("NE") # answer("Init state: J(0,0)").  [hyper(7,a,16,a),rewrite([8,9]),eval(4)].
+
+given #12 (W,wt=3): 22 J(3,2) # answer("N") # answer("NE") # answer("NE") # answer("Init state: J(0,0)").  [hyper(6,a,16,a),rewrite([9]),eval(2)].
+
+============================== PROOF =================================
+
+% Proof 1 at 0.01 (+ 0.00) seconds: "NE" # "N" # "NE" # "NE" # "Init state: J(0,0)".
+% Length of proof is 15.
+% Level of proof is 6.
+% Maximum clause weight is 3.000.
+% Given clauses 12.
+
+2 J(x,y) & x < m -> J(x + 1,y) # answer("N") # label(non_clause).  [assumption].
+3 J(x,y) & x < n & y < m -> J(x + 1,y + 1) # answer("NE") # label(non_clause).  [assumption].
+4 J(n,m) # label(non_clause) # label(goal).  [goal].
+6 -J(x,y) | -(x < m) | J(x + 1,y) # answer("N").  [clausify(2)].
+7 -J(x,y) | -(x < n) | -(y < m) | J(x + 1,y + 1) # answer("NE").  [clausify(3)].
+8 n = 4.  [assumption].
+9 m = 3.  [assumption].
+10 J(0,0) # answer("Init state: J(0,0)").  [assumption].
+11 -J(n,m).  [deny(4)].
+12 -J(4,3).  [copy(11),rewrite([8,9])].
+13 J(1,1) # answer("NE") # answer("Init state: J(0,0)").  [hyper(7,a,10,a),rewrite([8,9]),eval(4)].
+16 J(2,2) # answer("NE") # answer("NE") # answer("Init state: J(0,0)").  [hyper(7,a,13,a),rewrite([8,9]),eval(4)].
+22 J(3,2) # answer("N") # answer("NE") # answer("NE") # answer("Init state: J(0,0)").  [hyper(6,a,16,a),rewrite([9]),eval(2)].
+29 J(4,3) # answer("NE") # answer("N") # answer("NE") # answer("NE") # answer("Init state: J(0,0)").  [hyper(7,a,22,a),rewrite([8,9]),eval(4)].
+30 $F # answer("NE") # answer("N") # answer("NE") # answer("NE") # answer("Init state: J(0,0)").  [resolve(29,a,12,a)].
+
+============================== end of proof ==========================
+
+============================== STATISTICS ============================
+
+Given=12. Generated=33. Kept=19. proofs=1.
+Usable=15. Sos=6. Demods=2. Limbo=0, Disabled=2. Hints=0.
+Kept_by_rule=0, Deleted_by_rule=0.
+Forward_subsumed=14. Back_subsumed=0.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=0 (0 lex), Back_demodulated=0. Back_unit_deleted=0.
+Demod_attempts=0. Demod_rewrites=0.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=0.
+Megabytes=0.06.
+User_CPU=0.01, System_CPU=0.00, Wall_clock=0.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+THEOREM PROVED
+
+Exiting with 1 proof.
+
+Process 7822 exit (max_proofs) Mon Jan 18 17:05:24 2021

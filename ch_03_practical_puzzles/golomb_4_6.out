@@ -1,0 +1,10 @@
+interpretation( 7, [number = 1,seconds = 0], [
+    function(a, [0]),
+    function(b, [1]),
+    function(c, [4]),
+    function(d, [6])]).
+interpretation( 7, [number = 2,seconds = 0], [
+    function(a, [0]),
+    function(b, [2]),
+    function(c, [5]),
+    function(d, [6])]).

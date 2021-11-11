@@ -1,0 +1,75 @@
+set(arithmetic).
+assign(domain_size,11).             % there are 11 edges   
+assign(max_models,-1). 
+
+formulas(demodulators).
+  A=0.    B=1.      C=2.     D=3.       E=4.
+  n(10)=E.                          %last node is E
+  f(10)=10.                         %E is reached only from D (edge 10)  
+  g(x) = f(s(x)).                   % next edge of edge x 
+end_of_list.
+
+formulas(railway_routes).
+  x < 10 -> s(x) = x + 1.   s(10) = 0.    %succ
+  x >= 1 -> p(x) = x + -1.  p(0) = 0.     %pred
+  
+  all x1 all x2 ((f(x1) = f(x2) & f(x1) != 0) -> x1 = x2).
+  
+  all x (n(x)=A | n(x)=B | n(x)=C | n(x)=D | n(x)=E).    %only 5 nodes
+
+  (n(p(x))=A & f(x)=1) -> n(x) = B.                      %A->B (1)
+  
+  (n(p(x))=B & (f(x)=5 | f(x)=7 | f(x)=3)) -> n(x)=C.    %B->C (5,7,3) 
+  
+  (n(p(x))=B & (f(x)=2 | f(x)=9)) -> n(x)=D.   %B->D (2,9) 
+
+  (n(p(x))=C & (f(x)=7 | f(x)=5 | f(x)=3)) -> n(x)=B.    %C->B (7,5,3)
+  
+  (n(p(x))=C & (f(x)=8 | f(x)=6 | f(x)=4)) -> n(x)=D.    %C->D (8,6,4)
+
+  (n(p(x))=D & (f(x)=9 | f(x)=2)) -> n(x)=B.             %D->B (8,9)
+  
+  (n(p(x))=D & (f(x)=8 | f(x)=6 | f(x)=4)) -> n(x)=C.    %D-> C (8,6,4) 
+ 
+  (n(p(x))=D & f(x)=10) -> n(x)=E.                       %D->E (10) 
+
+  %xeros of f and n are states not reacheable from any edge
+  %if after using x we get into the 0 edge then current node is A
+  f(x) = 0 -> n(x) = A.
+
+  %zeros of f and n are only in the init state
+  f(x) = 0 -> -(exists y (f(y) != 0 & y < x)).
+
+  %after using edge 1 we cannot use (4,6,8,10)
+  f(x)=1 -> (g(x)!=4 & g(x)!=6 & g(x)!=8 & g(x)!=10).
+
+  %after using edge 2 from D we cannot use (4,6,8,10)
+  (f(x)=2 & n(p(x))=D) -> (g(x)!=10 & g(x)!=6 & g(x)!=8 & g(x)!=4).
+
+  %after using edge 2 from B we cannot use (3,5,7)
+  (f(x)=2 & n(p(x))=B) -> (g(x)!=7 & g(x)!=3 & g(x)!=5).
+
+  %after using edge 1 from B we cannot use (2,9,10)  
+  (f(x)=3 & n(p(x))=B) -> (g(x)!=10 & g(x)!=2 & g(x)!=9).
+
+  %after using edge 3 from C we cannot use (4,6,8,10)
+  (f(x)=3 & n(p(x))=C) -> (g(x)!=4 & g(x)!=8 & g(x)!=6 & g(x)!=10).
+
+  %similar as before
+  (f(x)=4 & n(p(x))=D) -> (g(x)!=1  & g(x)!=9 & g(x)!=2  & g(x)!=10).
+  (f(x)=4 & n(p(x))=C) -> (g(x)!=3  & g(x)!=5 & g(x)!=7).
+  (f(x)=5 & n(p(x))=B) -> (g(x)!=9  & g(x)!=2 & g(x)!=1  & g(x)!=10).
+  (f(x)=5 & n(p(x))=C) -> (g(x)!=8  & g(x)!=4 & g(x)!=6  & g(x)!=10).
+  (f(x)=6 & n(p(x))=C) -> (g(x)!=7  & g(x)!=5 & g(x)!=3  & g(x)!=1).
+  (f(x)=6 & n(p(x))=D) -> (g(x)!=9  & g(x)!=2 & g(x)!=10).
+  (f(x)=7 & n(p(x))=B) -> (g(x)!=10 & g(x)!=9 & g(x)!=2  & g(x)!=1).
+  (f(x)=7 & n(p(x))=C) -> (g(x)!=10 & g(x)!=8 & g(x)!=6  & g(x)!=4).
+  (f(x)=8 & n(p(x))=C) -> (g(x)!=1  & g(x)!=7 & g(x)!=5  & g(x)!=3).
+  (f(x)=8 & n(p(x))=D) -> (g(x)!=9  & g(x)!=2 & g(x)!=1  & g(x)!=10).
+  (f(x)=9 & n(p(x))=B) -> (g(x)!=7  & g(x)!=3 & g(x)!=5).
+  (f(x)=9 & n(p(x))=D) -> (g(x)!=8  & g(x)!=4 & g(x)!=10 & g(x)!=6).
+
+  exists y (y > 0 & y < 9 & (n(y) = 1 & f(y) = 1 & 
+           (all x ((x < y) -> f(x) = 0)))). % way of 11-y lines
+end_of_list.
+

@@ -1,0 +1,9 @@
+set(arithmetic).
+assign(max_models,-1).
+assign(domain_size,100).
+
+formulas(assumptions).
+  m + f + c = 100.
+  3 * m + 2 * f + c/2 = 100.
+  c = 2 * n.
+end_of_list.

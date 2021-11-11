@@ -1,0 +1,8 @@
+interpretation( 9, [number = 1,seconds = 0], [
+    function(f0, [0]),
+    function(f1, [1]),
+    function(f2, [2]),
+    function(g0, [0]),
+    function(g1, [6]),
+    function(g2, [7]),
+    function(g3, [8])]).

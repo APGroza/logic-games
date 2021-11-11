@@ -1,0 +1,35 @@
+set(arithmetic).
+assign(max_models,-1).
+assign(domain_size,9). % 9 regions
+
+formulas(remove_isomorphic).
+  Red=0. Yellow=1. Blue=2. Green=3.
+  
+  T < Maramures.         Maramures < Bucovina.     Bucovina < Moldova.
+  Moldova < Dobrogea.    Dobrogea < Muntenia.      Muntenia < Oltenia.
+  Oltenia < Banat.       Banat < Crisana.
+end_of_list.
+
+formulas(assumptions).
+  n(x,y) -> color(x) != color(y).  % neighbors have different colors 
+  n(x,y) <-> n(y,x).
+
+  n(T,Crisana).           n(T,Maramures).         n(T,Bucovina).   
+  n(T,Moldova).           n(T,Muntenia).          n(T,Oltenia).
+  n(T,Banat).             n(Crisana,Maramures).   n(Crisana,Banat).
+  n(Oltenia,Banat).       n(Oltenia,Muntenia).    n(Maramures,Bucovina).
+  n(Bucovina,Moldova).    n(Moldova,Dobrogea).    n(Moldova,Muntenia). 
+  n(Dobrogea,Muntenia).
+
+ -n(T,Dobrogea).         -n(Maramures,Banat).    -n(Maramures,Oltenia).  
+ -n(Maramures,Muntenia). -n(Maramures,Moldova).  -n(Maramures,Dobrogea).
+ -n(Bucovina,Crisana).   -n(Bucovina,Banat).     -n(Bucovina,Oltenia).
+ -n(Bucovina,Muntenia).  -n(Bucovina,Dobrogea).  -n(Moldova,Oltenia).
+ -n(Moldova,Banat).      -n(Moldova,Crisana).    -n(Dobrogea,Crisana). 
+ -n(Dobrogea,Banat).     -n(Dobrogea,Oltenia).   -n(Muntenia,Banat).
+ -n(Muntenia,Crisana).   -n(Oltenia,Crisana).
+
+  color(T) = Red.                 %Dracula's birth place should be red
+end_of_list.
+
+

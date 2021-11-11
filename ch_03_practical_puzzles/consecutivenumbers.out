@@ -1,0 +1,36 @@
+interpretation( 9, [number = 1,seconds = 0], [
+    function(a, [2]),
+    function(b, [5]),
+    function(c, [3]),
+    function(d, [7]),
+    function(e, [4]),
+    function(f, [6]),
+    function(g, [8]),
+    function(h, [1])]).
+interpretation( 9, [number = 2,seconds = 0], [
+    function(a, [2]),
+    function(b, [6]),
+    function(c, [4]),
+    function(d, [7]),
+    function(e, [3]),
+    function(f, [5]),
+    function(g, [8]),
+    function(h, [1])]).
+interpretation( 9, [number = 3,seconds = 0], [
+    function(a, [7]),
+    function(b, [3]),
+    function(c, [5]),
+    function(d, [2]),
+    function(e, [6]),
+    function(f, [4]),
+    function(g, [1]),
+    function(h, [8])]).
+interpretation( 9, [number = 4,seconds = 0], [
+    function(a, [7]),
+    function(b, [4]),
+    function(c, [6]),
+    function(d, [2]),
+    function(e, [5]),
+    function(f, [3]),
+    function(g, [1]),
+    function(h, [8])]).

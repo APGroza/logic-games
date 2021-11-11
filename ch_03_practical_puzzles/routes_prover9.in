@@ -1,0 +1,14 @@
+set(production).
+
+formulas(usable).
+  J(x,y) & y < 4 -> J(x,y+1)   #answer("up").                       
+  J(x,y) & x < 4 -> J(x+1,y)   #answer("right").
+end_of_list.
+
+formulas(assumptions).
+  J(0,0)                        #answer("Init state: J(0,0)"). 
+end_of_list.
+
+formulas(goals).
+  J(3,4).
+end_of_list.

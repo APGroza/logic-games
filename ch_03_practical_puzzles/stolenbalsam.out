@@ -1,0 +1,415 @@
+============================== Prover9 ===============================
+Prover9 (64) version 2009-11A, November 2009.
+Process 9905 was started by adrian on adrian,
+Mon Jan 18 18:27:07 2021
+The command was "prover9 -f stolenbalsam.in".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+% Reading from file stolenbalsam.in
+
+set(production).
+    % set(production) -> set(raw).
+    % set(raw) -> clear(auto).
+    % clear(auto) -> clear(auto_inference).
+    % clear(auto) -> clear(auto_setup).
+    % clear(auto_setup) -> clear(predicate_elim).
+    % clear(auto_setup) -> assign(eq_defs, pass).
+    % clear(auto) -> clear(auto_limits).
+    % clear(auto_limits) -> assign(max_weight, "1000000000000.000").
+    % clear(auto_limits) -> assign(sos_limit, -1).
+    % clear(auto) -> clear(auto_denials).
+    % clear(auto) -> clear(auto_process).
+    % set(raw) -> clear(ordered_res).
+    % set(raw) -> clear(ordered_para).
+    % set(raw) -> set(para_into_vars).
+    % set(raw) -> set(para_from_small).
+    % set(raw) -> clear(ordered_para).
+    % set(raw) -> clear(back_demod).
+    % set(raw) -> clear(cac_redundancy).
+    % set(raw) -> assign(backsub_check, 2147483647).
+    % set(raw) -> set(lightest_first).
+    % set(lightest_first) -> assign(weight_part, 1).
+    % set(lightest_first) -> assign(age_part, 0).
+    % set(lightest_first) -> assign(false_part, 0).
+    % set(lightest_first) -> assign(true_part, 0).
+    % set(lightest_first) -> assign(random_part, 0).
+    % set(raw) -> assign(literal_selection, none).
+    % set(production) -> set(eval_rewrite).
+    % set(production) -> set(hyper_resolution).
+    % set(hyper_resolution) -> set(pos_hyper_resolution).
+    % set(production) -> clear(back_subsume).
+
+formulas(usable).
+(all x all y all z all t (J(x,y,z,t) & x + y <= 24 -> J(x + y,0,z,t))).
+(all x all y all z all t (J(x,y,z,t) & x + z <= 24 -> J(x + z,y,0,t))).
+(all x all y all z all t (J(x,y,z,t) & x + t <= 24 -> J(x + t,y,z,0))).
+(all x all y all z all t (J(x,y,z,t) & x + y <= 11 -> J(0,y + x,z,t))).
+(all x all y all z all t (J(x,y,z,t) & y + z <= 11 -> J(x,y + z,0,t))).
+(all x all y all z all t (J(x,y,z,t) & y + t <= 11 -> J(x,y + t,z,0))).
+(all x all y all z all t (J(x,y,z,t) & z + x <= 13 -> J(0,y,z + x,t))).
+(all x all y all z all t (J(x,y,z,t) & y + z <= 13 -> J(x,0,z + y,t))).
+(all x all y all z all t (J(x,y,z,t) & z + t <= 13 -> J(x,y,z + t,0))).
+(all x all y all z all t (J(x,y,z,t) & t + x <= 5 -> J(0,y,z,t + x))).
+(all x all y all z all t (J(x,y,z,t) & t + y <= 5 -> J(x,0,z,t + y))).
+(all x all y all z all t (J(x,y,z,t) & z + t <= 5 -> J(x,y,0,t + z))).
+(all x all y all z all t (J(x,y,z,t) & x + y > 24 -> J(24,y + -(24 + -x),z,t))).
+(all x all y all z all t (J(x,y,z,t) & x + z > 24 -> J(24,y,z + -(24 + -x),t))).
+(all x all y all z all t (J(x,y,z,t) & x + t > 24 -> J(24,y,z,t + -(24 + -x)))).
+(all x all y all z all t (J(x,y,z,t) & y + x > 11 -> J(x + -(11 + -y),11,z,t))).
+(all x all y all z all t (J(x,y,z,t) & y + z > 11 -> J(x,11,z + -(11 + -y),t))).
+(all x all y all z all t (J(x,y,z,t) & y + t > 11 -> J(x,11,z,t + -(11 + -y)))).
+(all x all y all z all t (J(x,y,z,t) & z + x > 13 -> J(x + -(13 + -z),y,13,t))).
+(all x all y all z all t (J(x,y,z,t) & z + y > 13 -> J(x,y + -(13 + -z),13,t))).
+(all x all y all z all t (J(x,y,z,t) & z + t > 13 -> J(x,y,13,t + -(13 + -z)))).
+(all x all y all z all t (J(x,y,z,t) & t + x > 5 -> J(x + -(5 + -t),y,z,5))).
+(all x all y all z all t (J(x,y,z,t) & t + y > 5 -> J(x,y + -(5 + -t),z,5))).
+(all x all y all z all t (J(x,y,z,t) & t + z > 5 -> J(x,y,z + -(5 + -t),5))).
+end_of_list.
+
+formulas(assumptions).
+J(24,0,0,0).
+end_of_list.
+
+formulas(goals).
+(exists x J(8,8,8,x)).
+end_of_list.
+
+============================== end of input ==========================
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+1 (all x all y all z all t (J(x,y,z,t) & x + y <= 24 -> J(x + y,0,z,t))) # label(non_clause).  [assumption].
+2 (all x all y all z all t (J(x,y,z,t) & x + z <= 24 -> J(x + z,y,0,t))) # label(non_clause).  [assumption].
+3 (all x all y all z all t (J(x,y,z,t) & x + t <= 24 -> J(x + t,y,z,0))) # label(non_clause).  [assumption].
+4 (all x all y all z all t (J(x,y,z,t) & x + y <= 11 -> J(0,y + x,z,t))) # label(non_clause).  [assumption].
+5 (all x all y all z all t (J(x,y,z,t) & y + z <= 11 -> J(x,y + z,0,t))) # label(non_clause).  [assumption].
+6 (all x all y all z all t (J(x,y,z,t) & y + t <= 11 -> J(x,y + t,z,0))) # label(non_clause).  [assumption].
+7 (all x all y all z all t (J(x,y,z,t) & z + x <= 13 -> J(0,y,z + x,t))) # label(non_clause).  [assumption].
+8 (all x all y all z all t (J(x,y,z,t) & y + z <= 13 -> J(x,0,z + y,t))) # label(non_clause).  [assumption].
+9 (all x all y all z all t (J(x,y,z,t) & z + t <= 13 -> J(x,y,z + t,0))) # label(non_clause).  [assumption].
+10 (all x all y all z all t (J(x,y,z,t) & t + x <= 5 -> J(0,y,z,t + x))) # label(non_clause).  [assumption].
+11 (all x all y all z all t (J(x,y,z,t) & t + y <= 5 -> J(x,0,z,t + y))) # label(non_clause).  [assumption].
+12 (all x all y all z all t (J(x,y,z,t) & z + t <= 5 -> J(x,y,0,t + z))) # label(non_clause).  [assumption].
+13 (all x all y all z all t (J(x,y,z,t) & x + y > 24 -> J(24,y + -(24 + -x),z,t))) # label(non_clause).  [assumption].
+14 (all x all y all z all t (J(x,y,z,t) & x + z > 24 -> J(24,y,z + -(24 + -x),t))) # label(non_clause).  [assumption].
+15 (all x all y all z all t (J(x,y,z,t) & x + t > 24 -> J(24,y,z,t + -(24 + -x)))) # label(non_clause).  [assumption].
+16 (all x all y all z all t (J(x,y,z,t) & y + x > 11 -> J(x + -(11 + -y),11,z,t))) # label(non_clause).  [assumption].
+17 (all x all y all z all t (J(x,y,z,t) & y + z > 11 -> J(x,11,z + -(11 + -y),t))) # label(non_clause).  [assumption].
+18 (all x all y all z all t (J(x,y,z,t) & y + t > 11 -> J(x,11,z,t + -(11 + -y)))) # label(non_clause).  [assumption].
+19 (all x all y all z all t (J(x,y,z,t) & z + x > 13 -> J(x + -(13 + -z),y,13,t))) # label(non_clause).  [assumption].
+20 (all x all y all z all t (J(x,y,z,t) & z + y > 13 -> J(x,y + -(13 + -z),13,t))) # label(non_clause).  [assumption].
+21 (all x all y all z all t (J(x,y,z,t) & z + t > 13 -> J(x,y,13,t + -(13 + -z)))) # label(non_clause).  [assumption].
+22 (all x all y all z all t (J(x,y,z,t) & t + x > 5 -> J(x + -(5 + -t),y,z,5))) # label(non_clause).  [assumption].
+23 (all x all y all z all t (J(x,y,z,t) & t + y > 5 -> J(x,y + -(5 + -t),z,5))) # label(non_clause).  [assumption].
+24 (all x all y all z all t (J(x,y,z,t) & t + z > 5 -> J(x,y,z + -(5 + -t),5))) # label(non_clause).  [assumption].
+25 (exists x J(8,8,8,x)) # label(non_clause) # label(goal).  [goal].
+
+============================== end of process non-clausal formulas ===
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+-J(x,y,z,u) | -(x + y <= 24) | J(x + y,0,z,u).  [clausify(1)].
+-J(x,y,z,u) | -(x + z <= 24) | J(x + z,y,0,u).  [clausify(2)].
+-J(x,y,z,u) | -(x + u <= 24) | J(x + u,y,z,0).  [clausify(3)].
+-J(x,y,z,u) | -(x + y <= 11) | J(0,y + x,z,u).  [clausify(4)].
+-J(x,y,z,u) | -(y + z <= 11) | J(x,y + z,0,u).  [clausify(5)].
+-J(x,y,z,u) | -(y + u <= 11) | J(x,y + u,z,0).  [clausify(6)].
+-J(x,y,z,u) | -(z + x <= 13) | J(0,y,z + x,u).  [clausify(7)].
+-J(x,y,z,u) | -(y + z <= 13) | J(x,0,z + y,u).  [clausify(8)].
+-J(x,y,z,u) | -(z + u <= 13) | J(x,y,z + u,0).  [clausify(9)].
+-J(x,y,z,u) | -(u + x <= 5) | J(0,y,z,u + x).  [clausify(10)].
+-J(x,y,z,u) | -(u + y <= 5) | J(x,0,z,u + y).  [clausify(11)].
+-J(x,y,z,u) | -(z + u <= 5) | J(x,y,0,u + z).  [clausify(12)].
+-J(x,y,z,u) | -(x + y > 24) | J(24,y + -(24 + -x),z,u).  [clausify(13)].
+-J(x,y,z,u) | -(x + z > 24) | J(24,y,z + -(24 + -x),u).  [clausify(14)].
+-J(x,y,z,u) | -(x + u > 24) | J(24,y,z,u + -(24 + -x)).  [clausify(15)].
+-J(x,y,z,u) | -(y + x > 11) | J(x + -(11 + -y),11,z,u).  [clausify(16)].
+-J(x,y,z,u) | -(y + z > 11) | J(x,11,z + -(11 + -y),u).  [clausify(17)].
+-J(x,y,z,u) | -(y + u > 11) | J(x,11,z,u + -(11 + -y)).  [clausify(18)].
+-J(x,y,z,u) | -(z + x > 13) | J(x + -(13 + -z),y,13,u).  [clausify(19)].
+-J(x,y,z,u) | -(z + y > 13) | J(x,y + -(13 + -z),13,u).  [clausify(20)].
+-J(x,y,z,u) | -(z + u > 13) | J(x,y,13,u + -(13 + -z)).  [clausify(21)].
+-J(x,y,z,u) | -(u + x > 5) | J(x + -(5 + -u),y,z,5).  [clausify(22)].
+-J(x,y,z,u) | -(u + y > 5) | J(x,y + -(5 + -u),z,5).  [clausify(23)].
+-J(x,y,z,u) | -(u + z > 5) | J(x,y,z + -(5 + -u),5).  [clausify(24)].
+end_of_list.
+
+formulas(sos).
+J(24,0,0,0).  [assumption].
+-J(8,8,8,x).  [deny(25)].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ <=, >, J ]).
+Function symbol precedence:  function_order([ 0, 24, 11, 13, 5, 8, +, - ]).
+After inverse_order:  (no changes).
+
+kept:      50 J(24,0,0,0).  [assumption].
+kept:      51 -J(8,8,8,x).  [deny(25)].
+
+============================== end of process initial clauses ========
+
+============================== CLAUSES FOR SEARCH ====================
+
+% Clauses after input processing:
+
+formulas(usable).
+26 -J(x,y,z,u) | -(x + y <= 24) | J(x + y,0,z,u).  [clausify(1)].
+27 -J(x,y,z,u) | -(x + z <= 24) | J(x + z,y,0,u).  [clausify(2)].
+28 -J(x,y,z,u) | -(x + u <= 24) | J(x + u,y,z,0).  [clausify(3)].
+29 -J(x,y,z,u) | -(x + y <= 11) | J(0,y + x,z,u).  [clausify(4)].
+30 -J(x,y,z,u) | -(y + z <= 11) | J(x,y + z,0,u).  [clausify(5)].
+31 -J(x,y,z,u) | -(y + u <= 11) | J(x,y + u,z,0).  [clausify(6)].
+32 -J(x,y,z,u) | -(z + x <= 13) | J(0,y,z + x,u).  [clausify(7)].
+33 -J(x,y,z,u) | -(y + z <= 13) | J(x,0,z + y,u).  [clausify(8)].
+34 -J(x,y,z,u) | -(z + u <= 13) | J(x,y,z + u,0).  [clausify(9)].
+35 -J(x,y,z,u) | -(u + x <= 5) | J(0,y,z,u + x).  [clausify(10)].
+36 -J(x,y,z,u) | -(u + y <= 5) | J(x,0,z,u + y).  [clausify(11)].
+37 -J(x,y,z,u) | -(z + u <= 5) | J(x,y,0,u + z).  [clausify(12)].
+38 -J(x,y,z,u) | -(x + y > 24) | J(24,y + -(24 + -x),z,u).  [clausify(13)].
+39 -J(x,y,z,u) | -(x + z > 24) | J(24,y,z + -(24 + -x),u).  [clausify(14)].
+40 -J(x,y,z,u) | -(x + u > 24) | J(24,y,z,u + -(24 + -x)).  [clausify(15)].
+41 -J(x,y,z,u) | -(y + x > 11) | J(x + -(11 + -y),11,z,u).  [clausify(16)].
+42 -J(x,y,z,u) | -(y + z > 11) | J(x,11,z + -(11 + -y),u).  [clausify(17)].
+43 -J(x,y,z,u) | -(y + u > 11) | J(x,11,z,u + -(11 + -y)).  [clausify(18)].
+44 -J(x,y,z,u) | -(z + x > 13) | J(x + -(13 + -z),y,13,u).  [clausify(19)].
+45 -J(x,y,z,u) | -(z + y > 13) | J(x,y + -(13 + -z),13,u).  [clausify(20)].
+46 -J(x,y,z,u) | -(z + u > 13) | J(x,y,13,u + -(13 + -z)).  [clausify(21)].
+47 -J(x,y,z,u) | -(u + x > 5) | J(x + -(5 + -u),y,z,5).  [clausify(22)].
+48 -J(x,y,z,u) | -(u + y > 5) | J(x,y + -(5 + -u),z,5).  [clausify(23)].
+49 -J(x,y,z,u) | -(u + z > 5) | J(x,y,z + -(5 + -u),5).  [clausify(24)].
+end_of_list.
+
+formulas(sos).
+50 J(24,0,0,0).  [assumption].
+51 -J(8,8,8,x).  [deny(25)].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== end of clauses for search =============
+
+============================== SEARCH ================================
+
+% Starting search at 0.03 seconds.
+
+given #1 (I,wt=5): 50 J(24,0,0,0).  [assumption].
+
+given #2 (I,wt=5): 51 -J(8,8,8,x).  [deny(25)].
+
+given #3 (W,wt=5): 52 J(19,0,0,5).  [hyper(47,a,50,a),eval(6)].
+
+given #4 (W,wt=5): 53 J(11,0,13,0).  [hyper(44,a,50,a),eval(6)].
+
+given #5 (W,wt=5): 54 J(13,11,0,0).  [hyper(41,a,50,a),eval(6)].
+
+given #6 (W,wt=5): 55 J(6,0,13,5).  [hyper(44,a,52,a),eval(6)].
+
+given #7 (W,wt=5): 56 J(8,11,0,5).  [hyper(41,a,52,a),eval(6)].
+
+given #8 (W,wt=5): 57 J(19,0,5,0).  [hyper(34,a,52,a),eval(3)].
+
+given #9 (W,wt=5): 58 J(19,5,0,0).  [hyper(31,a,52,a),eval(3)].
+
+given #10 (W,wt=5): 59 J(11,0,8,5).  [hyper(49,a,53,a),eval(6)].
+
+given #11 (W,wt=5): 60 J(11,11,2,0).  [hyper(42,a,53,a),eval(6)].
+
+given #12 (W,wt=5): 61 J(0,11,13,0).  [hyper(29,a,53,a),eval(3)].
+
+given #13 (W,wt=5): 62 J(13,6,0,5).  [hyper(48,a,54,a),eval(6)].
+
+given #14 (W,wt=5): 63 J(13,0,11,0).  [hyper(33,a,54,a),eval(3)].
+
+given #15 (W,wt=5): 64 J(6,11,2,5).  [hyper(42,a,55,a),eval(6)].
+
+given #16 (W,wt=5): 65 J(6,5,13,0).  [hyper(31,a,55,a),eval(3)].
+
+given #17 (W,wt=5): 66 J(0,6,13,5).  [hyper(29,a,55,a),eval(3)].
+
+given #18 (W,wt=5): 67 J(8,11,5,0).  [hyper(34,a,56,a),eval(3)].
+
+given #19 (W,wt=5): 68 J(8,0,11,5).  [hyper(33,a,56,a),eval(3)].
+
+given #20 (W,wt=5): 69 J(0,11,8,5).  [hyper(32,a,56,a),eval(3)].
+
+given #21 (W,wt=5): 70 J(14,0,5,5).  [hyper(47,a,57,a),eval(6)].
+
+given #22 (W,wt=5): 71 J(14,5,0,5).  [hyper(47,a,58,a),eval(6)].
+
+given #23 (W,wt=5): 72 J(11,5,8,0).  [hyper(31,a,59,a),eval(3)].
+
+given #24 (W,wt=5): 73 J(11,8,0,5).  [hyper(30,a,59,a),eval(3)].
+
+given #25 (W,wt=5): 74 J(16,0,8,0).  [hyper(28,a,59,a),eval(3)].
+
+given #26 (W,wt=5): 75 J(11,6,2,5).  [hyper(48,a,60,a),eval(6)].
+
+given #27 (W,wt=5): 76 J(11,11,0,2).  [hyper(37,a,60,a),eval(3)].
+
+given #28 (W,wt=5): 77 J(22,0,2,0).  [hyper(26,a,60,a),eval(3)].
+
+given #29 (W,wt=5): 78 J(13,6,5,0).  [hyper(34,a,62,a),eval(3)].
+
+given #30 (W,wt=5): 79 J(13,0,6,5).  [hyper(33,a,62,a),eval(3)].
+
+given #31 (W,wt=5): 80 J(18,6,0,0).  [hyper(28,a,62,a),eval(3)].
+
+given #32 (W,wt=5): 81 J(2,11,11,0).  [hyper(41,a,63,a),eval(6)].
+
+given #33 (W,wt=5): 82 J(6,11,7,0).  [hyper(34,a,64,a),eval(3)].
+
+given #34 (W,wt=5): 83 J(17,0,2,5).  [hyper(26,a,64,a),eval(3)].
+
+given #35 (W,wt=5): 84 J(6,5,8,5).  [hyper(49,a,65,a),eval(6)].
+
+given #36 (W,wt=5): 85 J(1,5,13,5).  [hyper(47,a,65,a),eval(6)].
+
+given #37 (W,wt=5): 86 J(5,6,13,0).  [hyper(28,a,66,a),eval(3)].
+
+given #38 (W,wt=5): 87 J(8,6,5,5).  [hyper(48,a,67,a),eval(6)].
+
+given #39 (W,wt=5): 88 J(3,11,5,5).  [hyper(47,a,67,a),eval(6)].
+
+given #40 (W,wt=5): 89 J(8,3,13,0).  [hyper(45,a,67,a),eval(6)].
+
+given #41 (W,wt=5): 90 J(8,0,13,3).  [hyper(46,a,68,a),eval(6)].
+
+given #42 (W,wt=5): 91 J(8,5,11,0).  [hyper(31,a,68,a),eval(3)].
+
+given #43 (W,wt=5): 92 J(0,8,11,5).  [hyper(29,a,68,a),eval(3)].
+
+given #44 (W,wt=5): 93 J(5,11,8,0).  [hyper(28,a,69,a),eval(3)].
+
+given #45 (W,wt=5): 94 J(14,0,10,0).  [hyper(34,a,70,a),eval(3)].
+
+given #46 (W,wt=5): 95 J(14,5,5,0).  [hyper(31,a,70,a),eval(3)].
+
+given #47 (W,wt=5): 96 J(14,10,0,0).  [hyper(31,a,71,a),eval(3)].
+
+given #48 (W,wt=5): 97 J(11,5,3,5).  [hyper(49,a,72,a),eval(6)].
+
+given #49 (W,wt=5): 98 J(11,8,5,0).  [hyper(34,a,73,a),eval(3)].
+
+given #50 (W,wt=5): 99 J(16,8,0,0).  [hyper(28,a,73,a),eval(3)].
+
+given #51 (W,wt=5): 100 J(16,0,3,5).  [hyper(49,a,74,a),eval(6)].
+
+given #52 (W,wt=5): 101 J(11,6,7,0).  [hyper(34,a,75,a),eval(3)].
+
+given #53 (W,wt=5): 102 J(16,6,2,0).  [hyper(28,a,75,a),eval(3)].
+
+given #54 (W,wt=5): 103 J(11,0,11,2).  [hyper(33,a,76,a),eval(3)].
+
+given #55 (W,wt=5): 104 J(0,11,11,2).  [hyper(32,a,76,a),eval(3)].
+
+given #56 (W,wt=5): 105 J(22,0,0,2).  [hyper(26,a,76,a),eval(3)].
+
+given #57 (W,wt=5): 106 J(22,2,0,0).  [hyper(30,a,77,a),eval(3)].
+
+given #58 (W,wt=5): 107 J(13,1,5,5).  [hyper(48,a,78,a),eval(6)].
+
+given #59 (W,wt=5): 108 J(2,11,6,5).  [hyper(41,a,79,a),eval(6)].
+
+given #60 (W,wt=5): 109 J(13,5,6,0).  [hyper(31,a,79,a),eval(3)].
+
+given #61 (W,wt=5): 110 J(18,0,6,0).  [hyper(28,a,79,a),eval(3)].
+
+given #62 (W,wt=5): 111 J(18,1,0,5).  [hyper(48,a,80,a),eval(6)].
+
+given #63 (W,wt=5): 112 J(2,6,11,5).  [hyper(48,a,81,a),eval(6)].
+
+given #64 (W,wt=5): 113 J(2,9,13,0).  [hyper(45,a,81,a),eval(6)].
+
+given #65 (W,wt=5): 114 J(6,6,7,5).  [hyper(48,a,82,a),eval(6)].
+
+given #66 (W,wt=5): 115 J(1,11,7,5).  [hyper(47,a,82,a),eval(6)].
+
+given #67 (W,wt=5): 116 J(17,0,7,0).  [hyper(26,a,82,a),eval(3)].
+
+given #68 (W,wt=5): 117 J(17,5,2,0).  [hyper(31,a,83,a),eval(3)].
+
+given #69 (W,wt=5): 118 J(17,2,0,5).  [hyper(30,a,83,a),eval(3)].
+
+given #70 (W,wt=5): 119 J(6,10,8,0).  [hyper(31,a,84,a),eval(3)].
+
+given #71 (W,wt=5): 120 J(1,10,13,0).  [hyper(31,a,85,a),eval(3)].
+
+given #72 (W,wt=5): 121 J(5,6,8,5).  [hyper(49,a,86,a),eval(6)].
+
+given #73 (W,wt=5): 122 J(5,1,13,5).  [hyper(48,a,86,a),eval(6)].
+
+given #74 (W,wt=5): 123 J(8,6,10,0).  [hyper(34,a,87,a),eval(3)].
+
+given #75 (W,wt=5): 124 J(3,3,13,5).  [hyper(45,a,88,a),eval(6)].
+
+given #76 (W,wt=5): 125 J(3,11,10,0).  [hyper(34,a,88,a),eval(3)].
+
+given #77 (W,wt=5): 126 J(8,3,8,5).  [hyper(49,a,89,a),eval(6)].
+
+============================== PROOF =================================
+
+% Proof 1 at 0.06 (+ 0.01) seconds.
+% Length of proof is 22.
+% Level of proof is 8.
+% Maximum clause weight is 5.000.
+% Given clauses 77.
+
+6 (all x all y all z all t (J(x,y,z,t) & y + t <= 11 -> J(x,y + t,z,0))) # label(non_clause).  [assumption].
+9 (all x all y all z all t (J(x,y,z,t) & z + t <= 13 -> J(x,y,z + t,0))) # label(non_clause).  [assumption].
+16 (all x all y all z all t (J(x,y,z,t) & y + x > 11 -> J(x + -(11 + -y),11,z,t))) # label(non_clause).  [assumption].
+20 (all x all y all z all t (J(x,y,z,t) & z + y > 13 -> J(x,y + -(13 + -z),13,t))) # label(non_clause).  [assumption].
+22 (all x all y all z all t (J(x,y,z,t) & t + x > 5 -> J(x + -(5 + -t),y,z,5))) # label(non_clause).  [assumption].
+24 (all x all y all z all t (J(x,y,z,t) & t + z > 5 -> J(x,y,z + -(5 + -t),5))) # label(non_clause).  [assumption].
+25 (exists x J(8,8,8,x)) # label(non_clause) # label(goal).  [goal].
+31 -J(x,y,z,u) | -(y + u <= 11) | J(x,y + u,z,0).  [clausify(6)].
+34 -J(x,y,z,u) | -(z + u <= 13) | J(x,y,z + u,0).  [clausify(9)].
+41 -J(x,y,z,u) | -(y + x > 11) | J(x + -(11 + -y),11,z,u).  [clausify(16)].
+45 -J(x,y,z,u) | -(z + y > 13) | J(x,y + -(13 + -z),13,u).  [clausify(20)].
+47 -J(x,y,z,u) | -(u + x > 5) | J(x + -(5 + -u),y,z,5).  [clausify(22)].
+49 -J(x,y,z,u) | -(u + z > 5) | J(x,y,z + -(5 + -u),5).  [clausify(24)].
+50 J(24,0,0,0).  [assumption].
+51 -J(8,8,8,x).  [deny(25)].
+52 J(19,0,0,5).  [hyper(47,a,50,a),eval(6)].
+56 J(8,11,0,5).  [hyper(41,a,52,a),eval(6)].
+67 J(8,11,5,0).  [hyper(34,a,56,a),eval(3)].
+89 J(8,3,13,0).  [hyper(45,a,67,a),eval(6)].
+126 J(8,3,8,5).  [hyper(49,a,89,a),eval(6)].
+179 J(8,8,8,0).  [hyper(31,a,126,a),eval(3)].
+180 $F.  [resolve(179,a,51,a)].
+
+============================== end of proof ==========================
+
+============================== STATISTICS ============================
+
+Given=77. Generated=1821. Kept=130. proofs=1.
+Usable=101. Sos=52. Demods=0. Limbo=0, Disabled=2. Hints=0.
+Kept_by_rule=0, Deleted_by_rule=0.
+Forward_subsumed=1691. Back_subsumed=0.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=0 (0 lex), Back_demodulated=0. Back_unit_deleted=0.
+Demod_attempts=0. Demod_rewrites=0.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=0.
+Megabytes=0.24.
+User_CPU=0.06, System_CPU=0.01, Wall_clock=0.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+THEOREM PROVED
+
+Exiting with 1 proof.
+
+Process 9905 exit (max_proofs) Mon Jan 18 18:27:07 2021

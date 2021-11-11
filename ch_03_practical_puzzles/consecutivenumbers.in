@@ -1,0 +1,17 @@
+set(arithmetic).
+assign(domain_size,9).
+assign(max_models,-1).
+ 
+list(distinct).
+ [0,a,b,c,d,e,f,g,h].
+end_of_list.
+
+formulas(assumptions).  
+  abs(a + (-b)) != 1.   abs(a + (-g)) != 1.     abs(a + (-f)) != 1.
+  abs(b + (-c)) != 1.   abs(b + (-h)) != 1.     abs(b + (-g)) != 1.
+  abs(c + (-d)) != 1.   abs(c + (-h)) != 1.     abs(c + (-g)) != 1.
+  abs(d + (-h)) != 1.   abs(d + (-e)) != 1.
+  abs(e + (-f)) != 1.   abs(e + (-g)) != 1.     abs(e + (-h)) != 1.
+  abs(f + (-g)) != 1.   abs(f + (-h)) != 1.
+  abs(g + (-h)) != 1.
+end_of_list.

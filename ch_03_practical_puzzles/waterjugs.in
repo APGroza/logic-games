@@ -1,0 +1,29 @@
+set(production).
+
+formulas(demodulators).
+  j1 = 4.      j2 = 9.                    %small jug and large jug
+  i  = 2.                                %value to measure i=[1..9]
+end_of_list.
+
+formulas(usable).
+  -J(x,y) | J(j1,y) #answer("fill the small jug")  #answer(J($j1,y)).           
+  -J(x,y) | J(0,y)  #answer("empty the small jug") #answer(J(0,y)).           
+  -J(x,y) | J(x,j2) #answer("fill the big jug")    #answer(J(x,$j2)).         
+  -J(x,y) | J(x,0)  #answer("empty the big jug")   #answer(J(x,0)).           
+  -J(x,y) | -(x+y <= j2) | J(0,y+x) 
+    #answer("empty the small jug into the big jug") #answer(J(0,x+y)).         
+   -J(x,y) | -(x+y > j2) | J(x+ -(j2+ -y),j2) 
+    #answer("small into big, until full") #answer(J(x+ -(j2+ -y),$j2)). 
+  -J(x,y) | -(x+y <= j1) | J(x+y,0) 
+    #answer("empty the big jug into the small jug") #answer(J(x+y, 0)).          
+  -J(x,y) | -(x+y >  j1) | J(j1,y + -(j1+ -x)) 
+    #answer("big into small, until full") #answer(J($j1,y+ -($j1+ -x))).  
+end_of_list.
+
+formulas(assumptions).
+  J(0,0)                               #answer("Init state: J(0,0)"). 
+end_of_list.
+
+formulas(goals).
+  exists x J(x,i) | exists y J(i,y). 
+end_of_list.

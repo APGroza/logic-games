@@ -1,0 +1,630 @@
+interpretation( 2, [number = 1,seconds = 0], [
+    function(m1, [0]),
+    function(m2, [0]),
+    function(m3, [0]),
+    function(m4, [0]),
+    function(m5, [1]),
+    function(m6, [1]),
+    function(m7, [1]),
+    function(m8, [1])]).
+interpretation( 2, [number = 2,seconds = 0], [
+    function(m1, [0]),
+    function(m2, [0]),
+    function(m3, [0]),
+    function(m4, [1]),
+    function(m5, [0]),
+    function(m6, [1]),
+    function(m7, [1]),
+    function(m8, [1])]).
+interpretation( 2, [number = 3,seconds = 0], [
+    function(m1, [0]),
+    function(m2, [0]),
+    function(m3, [0]),
+    function(m4, [1]),
+    function(m5, [1]),
+    function(m6, [0]),
+    function(m7, [1]),
+    function(m8, [1])]).
+interpretation( 2, [number = 4,seconds = 0], [
+    function(m1, [0]),
+    function(m2, [0]),
+    function(m3, [0]),
+    function(m4, [1]),
+    function(m5, [1]),
+    function(m6, [1]),
+    function(m7, [0]),
+    function(m8, [1])]).
+interpretation( 2, [number = 5,seconds = 0], [
+    function(m1, [0]),
+    function(m2, [0]),
+    function(m3, [0]),
+    function(m4, [1]),
+    function(m5, [1]),
+    function(m6, [1]),
+    function(m7, [1]),
+    function(m8, [0])]).
+interpretation( 2, [number = 6,seconds = 0], [
+    function(m1, [0]),
+    function(m2, [0]),
+    function(m3, [1]),
+    function(m4, [0]),
+    function(m5, [0]),
+    function(m6, [1]),
+    function(m7, [1]),
+    function(m8, [1])]).
+interpretation( 2, [number = 7,seconds = 0], [
+    function(m1, [0]),
+    function(m2, [0]),
+    function(m3, [1]),
+    function(m4, [0]),
+    function(m5, [1]),
+    function(m6, [0]),
+    function(m7, [1]),
+    function(m8, [1])]).
+interpretation( 2, [number = 8,seconds = 0], [
+    function(m1, [0]),
+    function(m2, [0]),
+    function(m3, [1]),
+    function(m4, [0]),
+    function(m5, [1]),
+    function(m6, [1]),
+    function(m7, [0]),
+    function(m8, [1])]).
+interpretation( 2, [number = 9,seconds = 0], [
+    function(m1, [0]),
+    function(m2, [0]),
+    function(m3, [1]),
+    function(m4, [0]),
+    function(m5, [1]),
+    function(m6, [1]),
+    function(m7, [1]),
+    function(m8, [0])]).
+interpretation( 2, [number = 10,seconds = 0], [
+    function(m1, [0]),
+    function(m2, [0]),
+    function(m3, [1]),
+    function(m4, [1]),
+    function(m5, [0]),
+    function(m6, [0]),
+    function(m7, [1]),
+    function(m8, [1])]).
+interpretation( 2, [number = 11,seconds = 0], [
+    function(m1, [0]),
+    function(m2, [0]),
+    function(m3, [1]),
+    function(m4, [1]),
+    function(m5, [0]),
+    function(m6, [1]),
+    function(m7, [0]),
+    function(m8, [1])]).
+interpretation( 2, [number = 12,seconds = 0], [
+    function(m1, [0]),
+    function(m2, [0]),
+    function(m3, [1]),
+    function(m4, [1]),
+    function(m5, [0]),
+    function(m6, [1]),
+    function(m7, [1]),
+    function(m8, [0])]).
+interpretation( 2, [number = 13,seconds = 0], [
+    function(m1, [0]),
+    function(m2, [0]),
+    function(m3, [1]),
+    function(m4, [1]),
+    function(m5, [1]),
+    function(m6, [0]),
+    function(m7, [0]),
+    function(m8, [1])]).
+interpretation( 2, [number = 14,seconds = 0], [
+    function(m1, [0]),
+    function(m2, [0]),
+    function(m3, [1]),
+    function(m4, [1]),
+    function(m5, [1]),
+    function(m6, [0]),
+    function(m7, [1]),
+    function(m8, [0])]).
+interpretation( 2, [number = 15,seconds = 0], [
+    function(m1, [0]),
+    function(m2, [0]),
+    function(m3, [1]),
+    function(m4, [1]),
+    function(m5, [1]),
+    function(m6, [1]),
+    function(m7, [0]),
+    function(m8, [0])]).
+interpretation( 2, [number = 16,seconds = 0], [
+    function(m1, [0]),
+    function(m2, [1]),
+    function(m3, [0]),
+    function(m4, [0]),
+    function(m5, [0]),
+    function(m6, [1]),
+    function(m7, [1]),
+    function(m8, [1])]).
+interpretation( 2, [number = 17,seconds = 0], [
+    function(m1, [0]),
+    function(m2, [1]),
+    function(m3, [0]),
+    function(m4, [0]),
+    function(m5, [1]),
+    function(m6, [0]),
+    function(m7, [1]),
+    function(m8, [1])]).
+interpretation( 2, [number = 18,seconds = 0], [
+    function(m1, [0]),
+    function(m2, [1]),
+    function(m3, [0]),
+    function(m4, [0]),
+    function(m5, [1]),
+    function(m6, [1]),
+    function(m7, [0]),
+    function(m8, [1])]).
+interpretation( 2, [number = 19,seconds = 0], [
+    function(m1, [0]),
+    function(m2, [1]),
+    function(m3, [0]),
+    function(m4, [0]),
+    function(m5, [1]),
+    function(m6, [1]),
+    function(m7, [1]),
+    function(m8, [0])]).
+interpretation( 2, [number = 20,seconds = 0], [
+    function(m1, [0]),
+    function(m2, [1]),
+    function(m3, [0]),
+    function(m4, [1]),
+    function(m5, [0]),
+    function(m6, [0]),
+    function(m7, [1]),
+    function(m8, [1])]).
+interpretation( 2, [number = 21,seconds = 0], [
+    function(m1, [0]),
+    function(m2, [1]),
+    function(m3, [0]),
+    function(m4, [1]),
+    function(m5, [0]),
+    function(m6, [1]),
+    function(m7, [0]),
+    function(m8, [1])]).
+interpretation( 2, [number = 22,seconds = 0], [
+    function(m1, [0]),
+    function(m2, [1]),
+    function(m3, [0]),
+    function(m4, [1]),
+    function(m5, [0]),
+    function(m6, [1]),
+    function(m7, [1]),
+    function(m8, [0])]).
+interpretation( 2, [number = 23,seconds = 0], [
+    function(m1, [0]),
+    function(m2, [1]),
+    function(m3, [0]),
+    function(m4, [1]),
+    function(m5, [1]),
+    function(m6, [0]),
+    function(m7, [0]),
+    function(m8, [1])]).
+interpretation( 2, [number = 24,seconds = 0], [
+    function(m1, [0]),
+    function(m2, [1]),
+    function(m3, [0]),
+    function(m4, [1]),
+    function(m5, [1]),
+    function(m6, [0]),
+    function(m7, [1]),
+    function(m8, [0])]).
+interpretation( 2, [number = 25,seconds = 0], [
+    function(m1, [0]),
+    function(m2, [1]),
+    function(m3, [0]),
+    function(m4, [1]),
+    function(m5, [1]),
+    function(m6, [1]),
+    function(m7, [0]),
+    function(m8, [0])]).
+interpretation( 2, [number = 26,seconds = 0], [
+    function(m1, [0]),
+    function(m2, [1]),
+    function(m3, [1]),
+    function(m4, [0]),
+    function(m5, [0]),
+    function(m6, [0]),
+    function(m7, [1]),
+    function(m8, [1])]).
+interpretation( 2, [number = 27,seconds = 0], [
+    function(m1, [0]),
+    function(m2, [1]),
+    function(m3, [1]),
+    function(m4, [0]),
+    function(m5, [0]),
+    function(m6, [1]),
+    function(m7, [0]),
+    function(m8, [1])]).
+interpretation( 2, [number = 28,seconds = 0], [
+    function(m1, [0]),
+    function(m2, [1]),
+    function(m3, [1]),
+    function(m4, [0]),
+    function(m5, [0]),
+    function(m6, [1]),
+    function(m7, [1]),
+    function(m8, [0])]).
+interpretation( 2, [number = 29,seconds = 0], [
+    function(m1, [0]),
+    function(m2, [1]),
+    function(m3, [1]),
+    function(m4, [0]),
+    function(m5, [1]),
+    function(m6, [0]),
+    function(m7, [0]),
+    function(m8, [1])]).
+interpretation( 2, [number = 30,seconds = 0], [
+    function(m1, [0]),
+    function(m2, [1]),
+    function(m3, [1]),
+    function(m4, [0]),
+    function(m5, [1]),
+    function(m6, [0]),
+    function(m7, [1]),
+    function(m8, [0])]).
+interpretation( 2, [number = 31,seconds = 0], [
+    function(m1, [0]),
+    function(m2, [1]),
+    function(m3, [1]),
+    function(m4, [0]),
+    function(m5, [1]),
+    function(m6, [1]),
+    function(m7, [0]),
+    function(m8, [0])]).
+interpretation( 2, [number = 32,seconds = 0], [
+    function(m1, [0]),
+    function(m2, [1]),
+    function(m3, [1]),
+    function(m4, [1]),
+    function(m5, [0]),
+    function(m6, [0]),
+    function(m7, [0]),
+    function(m8, [1])]).
+interpretation( 2, [number = 33,seconds = 0], [
+    function(m1, [0]),
+    function(m2, [1]),
+    function(m3, [1]),
+    function(m4, [1]),
+    function(m5, [0]),
+    function(m6, [0]),
+    function(m7, [1]),
+    function(m8, [0])]).
+interpretation( 2, [number = 34,seconds = 0], [
+    function(m1, [0]),
+    function(m2, [1]),
+    function(m3, [1]),
+    function(m4, [1]),
+    function(m5, [0]),
+    function(m6, [1]),
+    function(m7, [0]),
+    function(m8, [0])]).
+interpretation( 2, [number = 35,seconds = 0], [
+    function(m1, [0]),
+    function(m2, [1]),
+    function(m3, [1]),
+    function(m4, [1]),
+    function(m5, [1]),
+    function(m6, [0]),
+    function(m7, [0]),
+    function(m8, [0])]).
+interpretation( 2, [number = 36,seconds = 0], [
+    function(m1, [1]),
+    function(m2, [0]),
+    function(m3, [0]),
+    function(m4, [0]),
+    function(m5, [0]),
+    function(m6, [1]),
+    function(m7, [1]),
+    function(m8, [1])]).
+interpretation( 2, [number = 37,seconds = 0], [
+    function(m1, [1]),
+    function(m2, [0]),
+    function(m3, [0]),
+    function(m4, [0]),
+    function(m5, [1]),
+    function(m6, [0]),
+    function(m7, [1]),
+    function(m8, [1])]).
+interpretation( 2, [number = 38,seconds = 0], [
+    function(m1, [1]),
+    function(m2, [0]),
+    function(m3, [0]),
+    function(m4, [0]),
+    function(m5, [1]),
+    function(m6, [1]),
+    function(m7, [0]),
+    function(m8, [1])]).
+interpretation( 2, [number = 39,seconds = 0], [
+    function(m1, [1]),
+    function(m2, [0]),
+    function(m3, [0]),
+    function(m4, [0]),
+    function(m5, [1]),
+    function(m6, [1]),
+    function(m7, [1]),
+    function(m8, [0])]).
+interpretation( 2, [number = 40,seconds = 0], [
+    function(m1, [1]),
+    function(m2, [0]),
+    function(m3, [0]),
+    function(m4, [1]),
+    function(m5, [0]),
+    function(m6, [0]),
+    function(m7, [1]),
+    function(m8, [1])]).
+interpretation( 2, [number = 41,seconds = 0], [
+    function(m1, [1]),
+    function(m2, [0]),
+    function(m3, [0]),
+    function(m4, [1]),
+    function(m5, [0]),
+    function(m6, [1]),
+    function(m7, [0]),
+    function(m8, [1])]).
+interpretation( 2, [number = 42,seconds = 0], [
+    function(m1, [1]),
+    function(m2, [0]),
+    function(m3, [0]),
+    function(m4, [1]),
+    function(m5, [0]),
+    function(m6, [1]),
+    function(m7, [1]),
+    function(m8, [0])]).
+interpretation( 2, [number = 43,seconds = 0], [
+    function(m1, [1]),
+    function(m2, [0]),
+    function(m3, [0]),
+    function(m4, [1]),
+    function(m5, [1]),
+    function(m6, [0]),
+    function(m7, [0]),
+    function(m8, [1])]).
+interpretation( 2, [number = 44,seconds = 0], [
+    function(m1, [1]),
+    function(m2, [0]),
+    function(m3, [0]),
+    function(m4, [1]),
+    function(m5, [1]),
+    function(m6, [0]),
+    function(m7, [1]),
+    function(m8, [0])]).
+interpretation( 2, [number = 45,seconds = 0], [
+    function(m1, [1]),
+    function(m2, [0]),
+    function(m3, [0]),
+    function(m4, [1]),
+    function(m5, [1]),
+    function(m6, [1]),
+    function(m7, [0]),
+    function(m8, [0])]).
+interpretation( 2, [number = 46,seconds = 0], [
+    function(m1, [1]),
+    function(m2, [0]),
+    function(m3, [1]),
+    function(m4, [0]),
+    function(m5, [0]),
+    function(m6, [0]),
+    function(m7, [1]),
+    function(m8, [1])]).
+interpretation( 2, [number = 47,seconds = 0], [
+    function(m1, [1]),
+    function(m2, [0]),
+    function(m3, [1]),
+    function(m4, [0]),
+    function(m5, [0]),
+    function(m6, [1]),
+    function(m7, [0]),
+    function(m8, [1])]).
+interpretation( 2, [number = 48,seconds = 0], [
+    function(m1, [1]),
+    function(m2, [0]),
+    function(m3, [1]),
+    function(m4, [0]),
+    function(m5, [0]),
+    function(m6, [1]),
+    function(m7, [1]),
+    function(m8, [0])]).
+interpretation( 2, [number = 49,seconds = 0], [
+    function(m1, [1]),
+    function(m2, [0]),
+    function(m3, [1]),
+    function(m4, [0]),
+    function(m5, [1]),
+    function(m6, [0]),
+    function(m7, [0]),
+    function(m8, [1])]).
+interpretation( 2, [number = 50,seconds = 0], [
+    function(m1, [1]),
+    function(m2, [0]),
+    function(m3, [1]),
+    function(m4, [0]),
+    function(m5, [1]),
+    function(m6, [0]),
+    function(m7, [1]),
+    function(m8, [0])]).
+interpretation( 2, [number = 51,seconds = 0], [
+    function(m1, [1]),
+    function(m2, [0]),
+    function(m3, [1]),
+    function(m4, [0]),
+    function(m5, [1]),
+    function(m6, [1]),
+    function(m7, [0]),
+    function(m8, [0])]).
+interpretation( 2, [number = 52,seconds = 0], [
+    function(m1, [1]),
+    function(m2, [0]),
+    function(m3, [1]),
+    function(m4, [1]),
+    function(m5, [0]),
+    function(m6, [0]),
+    function(m7, [0]),
+    function(m8, [1])]).
+interpretation( 2, [number = 53,seconds = 0], [
+    function(m1, [1]),
+    function(m2, [0]),
+    function(m3, [1]),
+    function(m4, [1]),
+    function(m5, [0]),
+    function(m6, [0]),
+    function(m7, [1]),
+    function(m8, [0])]).
+interpretation( 2, [number = 54,seconds = 0], [
+    function(m1, [1]),
+    function(m2, [0]),
+    function(m3, [1]),
+    function(m4, [1]),
+    function(m5, [0]),
+    function(m6, [1]),
+    function(m7, [0]),
+    function(m8, [0])]).
+interpretation( 2, [number = 55,seconds = 0], [
+    function(m1, [1]),
+    function(m2, [0]),
+    function(m3, [1]),
+    function(m4, [1]),
+    function(m5, [1]),
+    function(m6, [0]),
+    function(m7, [0]),
+    function(m8, [0])]).
+interpretation( 2, [number = 56,seconds = 0], [
+    function(m1, [1]),
+    function(m2, [1]),
+    function(m3, [0]),
+    function(m4, [0]),
+    function(m5, [0]),
+    function(m6, [0]),
+    function(m7, [1]),
+    function(m8, [1])]).
+interpretation( 2, [number = 57,seconds = 0], [
+    function(m1, [1]),
+    function(m2, [1]),
+    function(m3, [0]),
+    function(m4, [0]),
+    function(m5, [0]),
+    function(m6, [1]),
+    function(m7, [0]),
+    function(m8, [1])]).
+interpretation( 2, [number = 58,seconds = 0], [
+    function(m1, [1]),
+    function(m2, [1]),
+    function(m3, [0]),
+    function(m4, [0]),
+    function(m5, [0]),
+    function(m6, [1]),
+    function(m7, [1]),
+    function(m8, [0])]).
+interpretation( 2, [number = 59,seconds = 0], [
+    function(m1, [1]),
+    function(m2, [1]),
+    function(m3, [0]),
+    function(m4, [0]),
+    function(m5, [1]),
+    function(m6, [0]),
+    function(m7, [0]),
+    function(m8, [1])]).
+interpretation( 2, [number = 60,seconds = 0], [
+    function(m1, [1]),
+    function(m2, [1]),
+    function(m3, [0]),
+    function(m4, [0]),
+    function(m5, [1]),
+    function(m6, [0]),
+    function(m7, [1]),
+    function(m8, [0])]).
+interpretation( 2, [number = 61,seconds = 0], [
+    function(m1, [1]),
+    function(m2, [1]),
+    function(m3, [0]),
+    function(m4, [0]),
+    function(m5, [1]),
+    function(m6, [1]),
+    function(m7, [0]),
+    function(m8, [0])]).
+interpretation( 2, [number = 62,seconds = 0], [
+    function(m1, [1]),
+    function(m2, [1]),
+    function(m3, [0]),
+    function(m4, [1]),
+    function(m5, [0]),
+    function(m6, [0]),
+    function(m7, [0]),
+    function(m8, [1])]).
+interpretation( 2, [number = 63,seconds = 0], [
+    function(m1, [1]),
+    function(m2, [1]),
+    function(m3, [0]),
+    function(m4, [1]),
+    function(m5, [0]),
+    function(m6, [0]),
+    function(m7, [1]),
+    function(m8, [0])]).
+interpretation( 2, [number = 64,seconds = 0], [
+    function(m1, [1]),
+    function(m2, [1]),
+    function(m3, [0]),
+    function(m4, [1]),
+    function(m5, [0]),
+    function(m6, [1]),
+    function(m7, [0]),
+    function(m8, [0])]).
+interpretation( 2, [number = 65,seconds = 0], [
+    function(m1, [1]),
+    function(m2, [1]),
+    function(m3, [0]),
+    function(m4, [1]),
+    function(m5, [1]),
+    function(m6, [0]),
+    function(m7, [0]),
+    function(m8, [0])]).
+interpretation( 2, [number = 66,seconds = 0], [
+    function(m1, [1]),
+    function(m2, [1]),
+    function(m3, [1]),
+    function(m4, [0]),
+    function(m5, [0]),
+    function(m6, [0]),
+    function(m7, [0]),
+    function(m8, [1])]).
+interpretation( 2, [number = 67,seconds = 0], [
+    function(m1, [1]),
+    function(m2, [1]),
+    function(m3, [1]),
+    function(m4, [0]),
+    function(m5, [0]),
+    function(m6, [0]),
+    function(m7, [1]),
+    function(m8, [0])]).
+interpretation( 2, [number = 68,seconds = 0], [
+    function(m1, [1]),
+    function(m2, [1]),
+    function(m3, [1]),
+    function(m4, [0]),
+    function(m5, [0]),
+    function(m6, [1]),
+    function(m7, [0]),
+    function(m8, [0])]).
+interpretation( 2, [number = 69,seconds = 0], [
+    function(m1, [1]),
+    function(m2, [1]),
+    function(m3, [1]),
+    function(m4, [0]),
+    function(m5, [1]),
+    function(m6, [0]),
+    function(m7, [0]),
+    function(m8, [0])]).
+interpretation( 2, [number = 70,seconds = 0], [
+    function(m1, [1]),
+    function(m2, [1]),
+    function(m3, [1]),
+    function(m4, [1]),
+    function(m5, [0]),
+    function(m6, [0]),
+    function(m7, [0]),
+    function(m8, [0])]).

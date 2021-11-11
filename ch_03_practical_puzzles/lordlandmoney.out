@@ -1,0 +1,35 @@
+interpretation( 100, [number = 1,seconds = 0], [
+    function(c, [68]),
+    function(f, [30]),
+    function(m, [2]),
+    function(n, [34])]).
+interpretation( 100, [number = 2,seconds = 0], [
+    function(c, [70]),
+    function(f, [25]),
+    function(m, [5]),
+    function(n, [35])]).
+interpretation( 100, [number = 3,seconds = 0], [
+    function(c, [72]),
+    function(f, [20]),
+    function(m, [8]),
+    function(n, [36])]).
+interpretation( 100, [number = 4,seconds = 0], [
+    function(c, [74]),
+    function(f, [15]),
+    function(m, [11]),
+    function(n, [37])]).
+interpretation( 100, [number = 5,seconds = 0], [
+    function(c, [76]),
+    function(f, [10]),
+    function(m, [14]),
+    function(n, [38])]).
+interpretation( 100, [number = 6,seconds = 0], [
+    function(c, [78]),
+    function(f, [5]),
+    function(m, [17]),
+    function(n, [39])]).
+interpretation( 100, [number = 7,seconds = 0], [
+    function(c, [80]),
+    function(f, [0]),
+    function(m, [20]),
+    function(n, [40])]).
