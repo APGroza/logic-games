@@ -1,0 +1,1840 @@
+============================== Prover9 ===============================
+Prover9 (64) version 2009-11A, November 2009.
+Process 2568 was started by adrian on adrian,
+Thu Jan 21 20:32:32 2021
+The command was "prover9 -f atthebrook.in".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+% Reading from file atthebrook.in
+
+set(production).
+    % set(production) -> set(raw).
+    % set(raw) -> clear(auto).
+    % clear(auto) -> clear(auto_inference).
+    % clear(auto) -> clear(auto_setup).
+    % clear(auto_setup) -> clear(predicate_elim).
+    % clear(auto_setup) -> assign(eq_defs, pass).
+    % clear(auto) -> clear(auto_limits).
+    % clear(auto_limits) -> assign(max_weight, "1000000000000.000").
+    % clear(auto_limits) -> assign(sos_limit, -1).
+    % clear(auto) -> clear(auto_denials).
+    % clear(auto) -> clear(auto_process).
+    % set(raw) -> clear(ordered_res).
+    % set(raw) -> clear(ordered_para).
+    % set(raw) -> set(para_into_vars).
+    % set(raw) -> set(para_from_small).
+    % set(raw) -> clear(ordered_para).
+    % set(raw) -> clear(back_demod).
+    % set(raw) -> clear(cac_redundancy).
+    % set(raw) -> assign(backsub_check, 2147483647).
+    % set(raw) -> set(lightest_first).
+    % set(lightest_first) -> assign(weight_part, 1).
+    % set(lightest_first) -> assign(age_part, 0).
+    % set(lightest_first) -> assign(false_part, 0).
+    % set(lightest_first) -> assign(true_part, 0).
+    % set(lightest_first) -> assign(random_part, 0).
+    % set(raw) -> assign(literal_selection, none).
+    % set(production) -> set(eval_rewrite).
+    % set(production) -> set(hyper_resolution).
+    % set(hyper_resolution) -> set(pos_hyper_resolution).
+    % set(production) -> clear(back_subsume).
+
+formulas(usable).
+(all x all y all t (J(x,y,t) -> J(15,y,t + 1))).
+(all x all y all t (J(x,y,t) -> J(0,y,t + 1))).
+(all x all y all t (J(x,y,t) -> J(x,16,t + 1))).
+(all x all y all t (J(x,y,t) -> J(x,0,t + 1))).
+(all x all y all t (J(x,y,t) & x + y <= 16 -> J(0,y + x,t + 1))).
+(all x all y all t (J(x,y,t) & x + y > 16 -> J(x + -(16 + -y),16,t + 1))).
+(all x all y all t (J(x,y,t) & x + y <= 15 -> J(x + y,0,t + 1))).
+(all x all y all t (J(x,y,t) & x + y > 15 -> J(15,y + -(15 + -x),t + 1))).
+end_of_list.
+
+formulas(assumptions).
+J(15,16,0).
+end_of_list.
+
+formulas(goals).
+(exists x exists t (J(8,x,t) | J(x,8,t))).
+end_of_list.
+
+============================== end of input ==========================
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+1 (all x all y all t (J(x,y,t) -> J(15,y,t + 1))) # label(non_clause).  [assumption].
+2 (all x all y all t (J(x,y,t) -> J(0,y,t + 1))) # label(non_clause).  [assumption].
+3 (all x all y all t (J(x,y,t) -> J(x,16,t + 1))) # label(non_clause).  [assumption].
+4 (all x all y all t (J(x,y,t) -> J(x,0,t + 1))) # label(non_clause).  [assumption].
+5 (all x all y all t (J(x,y,t) & x + y <= 16 -> J(0,y + x,t + 1))) # label(non_clause).  [assumption].
+6 (all x all y all t (J(x,y,t) & x + y > 16 -> J(x + -(16 + -y),16,t + 1))) # label(non_clause).  [assumption].
+7 (all x all y all t (J(x,y,t) & x + y <= 15 -> J(x + y,0,t + 1))) # label(non_clause).  [assumption].
+8 (all x all y all t (J(x,y,t) & x + y > 15 -> J(15,y + -(15 + -x),t + 1))) # label(non_clause).  [assumption].
+9 (exists x exists t (J(8,x,t) | J(x,8,t))) # label(non_clause) # label(goal).  [goal].
+
+============================== end of process non-clausal formulas ===
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+-J(x,y,z) | J(15,y,z + 1).  [clausify(1)].
+-J(x,y,z) | J(0,y,z + 1).  [clausify(2)].
+-J(x,y,z) | J(x,16,z + 1).  [clausify(3)].
+-J(x,y,z) | J(x,0,z + 1).  [clausify(4)].
+-J(x,y,z) | -(x + y <= 16) | J(0,y + x,z + 1).  [clausify(5)].
+-J(x,y,z) | -(x + y > 16) | J(x + -(16 + -y),16,z + 1).  [clausify(6)].
+-J(x,y,z) | -(x + y <= 15) | J(x + y,0,z + 1).  [clausify(7)].
+-J(x,y,z) | -(x + y > 15) | J(15,y + -(15 + -x),z + 1).  [clausify(8)].
+end_of_list.
+
+formulas(sos).
+J(15,16,0).  [assumption].
+-J(8,x,y).  [deny(9)].
+-J(x,8,y).  [deny(9)].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ <=, >, J ]).
+Function symbol precedence:  function_order([ 1, 15, 16, 0, 8, +, - ]).
+After inverse_order:  (no changes).
+
+kept:      18 J(15,16,0).  [assumption].
+kept:      19 -J(8,x,y).  [deny(9)].
+kept:      20 -J(x,8,y).  [deny(9)].
+
+============================== end of process initial clauses ========
+
+============================== CLAUSES FOR SEARCH ====================
+
+% Clauses after input processing:
+
+formulas(usable).
+10 -J(x,y,z) | J(15,y,z + 1).  [clausify(1)].
+11 -J(x,y,z) | J(0,y,z + 1).  [clausify(2)].
+12 -J(x,y,z) | J(x,16,z + 1).  [clausify(3)].
+13 -J(x,y,z) | J(x,0,z + 1).  [clausify(4)].
+14 -J(x,y,z) | -(x + y <= 16) | J(0,y + x,z + 1).  [clausify(5)].
+15 -J(x,y,z) | -(x + y > 16) | J(x + -(16 + -y),16,z + 1).  [clausify(6)].
+16 -J(x,y,z) | -(x + y <= 15) | J(x + y,0,z + 1).  [clausify(7)].
+17 -J(x,y,z) | -(x + y > 15) | J(15,y + -(15 + -x),z + 1).  [clausify(8)].
+end_of_list.
+
+formulas(sos).
+18 J(15,16,0).  [assumption].
+19 -J(8,x,y).  [deny(9)].
+20 -J(x,8,y).  [deny(9)].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== end of clauses for search =============
+
+============================== SEARCH ================================
+
+% Starting search at 0.01 seconds.
+
+given #1 (I,wt=4): 18 J(15,16,0).  [assumption].
+
+given #2 (I,wt=4): 19 -J(8,x,y).  [deny(9)].
+
+given #3 (I,wt=4): 20 -J(x,8,y).  [deny(9)].
+
+given #4 (W,wt=4): 21 J(15,16,1).  [hyper(17,a,18,a),eval(7)].
+
+given #5 (W,wt=4): 22 J(15,0,1).  [hyper(13,a,18,a),eval(1)].
+
+given #6 (W,wt=4): 23 J(0,16,1).  [hyper(11,a,18,a),eval(1)].
+
+given #7 (W,wt=4): 24 J(15,16,2).  [hyper(17,a,21,a),eval(7)].
+
+given #8 (W,wt=4): 25 J(15,0,2).  [hyper(13,a,21,a),eval(1)].
+
+given #9 (W,wt=4): 26 J(0,16,2).  [hyper(11,a,21,a),eval(1)].
+
+given #10 (W,wt=4): 27 J(0,15,2).  [hyper(14,a,22,a),eval(4)].
+
+given #11 (W,wt=4): 28 J(0,0,2).  [hyper(11,a,22,a),eval(1)].
+
+given #12 (W,wt=4): 29 J(15,1,2).  [hyper(17,a,23,a),eval(7)].
+
+given #13 (W,wt=4): 30 J(15,16,3).  [hyper(17,a,24,a),eval(7)].
+
+given #14 (W,wt=4): 31 J(15,0,3).  [hyper(13,a,24,a),eval(1)].
+
+given #15 (W,wt=4): 32 J(0,16,3).  [hyper(11,a,24,a),eval(1)].
+
+given #16 (W,wt=4): 33 J(0,15,3).  [hyper(14,a,25,a),eval(4)].
+
+given #17 (W,wt=4): 34 J(0,0,3).  [hyper(11,a,25,a),eval(1)].
+
+given #18 (W,wt=4): 35 J(15,1,3).  [hyper(17,a,26,a),eval(7)].
+
+given #19 (W,wt=4): 36 J(15,15,3).  [hyper(10,a,27,a),eval(1)].
+
+given #20 (W,wt=4): 37 J(0,1,3).  [hyper(11,a,29,a),eval(1)].
+
+given #21 (W,wt=4): 38 J(15,16,4).  [hyper(17,a,30,a),eval(7)].
+
+given #22 (W,wt=4): 39 J(15,0,4).  [hyper(13,a,30,a),eval(1)].
+
+given #23 (W,wt=4): 40 J(0,16,4).  [hyper(11,a,30,a),eval(1)].
+
+given #24 (W,wt=4): 41 J(0,15,4).  [hyper(14,a,31,a),eval(4)].
+
+given #25 (W,wt=4): 42 J(0,0,4).  [hyper(11,a,31,a),eval(1)].
+
+given #26 (W,wt=4): 43 J(15,1,4).  [hyper(17,a,32,a),eval(7)].
+
+given #27 (W,wt=4): 44 J(15,15,4).  [hyper(10,a,33,a),eval(1)].
+
+given #28 (W,wt=4): 45 J(0,1,4).  [hyper(11,a,35,a),eval(1)].
+
+given #29 (W,wt=4): 46 J(14,16,4).  [hyper(15,a,36,a),eval(7)].
+
+given #30 (W,wt=4): 47 J(1,0,4).  [hyper(16,a,37,a),eval(4)].
+
+given #31 (W,wt=4): 48 J(15,16,5).  [hyper(17,a,38,a),eval(7)].
+
+given #32 (W,wt=4): 49 J(15,0,5).  [hyper(13,a,38,a),eval(1)].
+
+given #33 (W,wt=4): 50 J(0,16,5).  [hyper(11,a,38,a),eval(1)].
+
+given #34 (W,wt=4): 51 J(0,15,5).  [hyper(14,a,39,a),eval(4)].
+
+given #35 (W,wt=4): 52 J(0,0,5).  [hyper(11,a,39,a),eval(1)].
+
+given #36 (W,wt=4): 53 J(15,1,5).  [hyper(17,a,40,a),eval(7)].
+
+given #37 (W,wt=4): 54 J(15,15,5).  [hyper(10,a,41,a),eval(1)].
+
+given #38 (W,wt=4): 55 J(0,1,5).  [hyper(11,a,43,a),eval(1)].
+
+given #39 (W,wt=4): 56 J(14,16,5).  [hyper(15,a,44,a),eval(7)].
+
+given #40 (W,wt=4): 57 J(1,0,5).  [hyper(16,a,45,a),eval(4)].
+
+given #41 (W,wt=4): 58 J(14,0,5).  [hyper(13,a,46,a),eval(1)].
+
+given #42 (W,wt=4): 59 J(1,16,5).  [hyper(12,a,47,a),eval(1)].
+
+given #43 (W,wt=4): 60 J(15,16,6).  [hyper(17,a,48,a),eval(7)].
+
+given #44 (W,wt=4): 61 J(15,0,6).  [hyper(13,a,48,a),eval(1)].
+
+given #45 (W,wt=4): 62 J(0,16,6).  [hyper(11,a,48,a),eval(1)].
+
+given #46 (W,wt=4): 63 J(0,15,6).  [hyper(14,a,49,a),eval(4)].
+
+given #47 (W,wt=4): 64 J(0,0,6).  [hyper(11,a,49,a),eval(1)].
+
+given #48 (W,wt=4): 65 J(15,1,6).  [hyper(17,a,50,a),eval(7)].
+
+given #49 (W,wt=4): 66 J(15,15,6).  [hyper(10,a,51,a),eval(1)].
+
+given #50 (W,wt=4): 67 J(0,1,6).  [hyper(11,a,53,a),eval(1)].
+
+given #51 (W,wt=4): 68 J(14,16,6).  [hyper(15,a,54,a),eval(7)].
+
+given #52 (W,wt=4): 69 J(1,0,6).  [hyper(16,a,55,a),eval(4)].
+
+given #53 (W,wt=4): 70 J(14,0,6).  [hyper(13,a,56,a),eval(1)].
+
+given #54 (W,wt=4): 71 J(1,16,6).  [hyper(12,a,57,a),eval(1)].
+
+given #55 (W,wt=4): 72 J(0,14,6).  [hyper(14,a,58,a),eval(4)].
+
+given #56 (W,wt=4): 73 J(15,2,6).  [hyper(17,a,59,a),eval(7)].
+
+given #57 (W,wt=4): 74 J(15,16,7).  [hyper(17,a,60,a),eval(7)].
+
+given #58 (W,wt=4): 75 J(15,0,7).  [hyper(13,a,60,a),eval(1)].
+
+given #59 (W,wt=4): 76 J(0,16,7).  [hyper(11,a,60,a),eval(1)].
+
+given #60 (W,wt=4): 77 J(0,15,7).  [hyper(14,a,61,a),eval(4)].
+
+given #61 (W,wt=4): 78 J(0,0,7).  [hyper(11,a,61,a),eval(1)].
+
+given #62 (W,wt=4): 79 J(15,1,7).  [hyper(17,a,62,a),eval(7)].
+
+given #63 (W,wt=4): 80 J(15,15,7).  [hyper(10,a,63,a),eval(1)].
+
+given #64 (W,wt=4): 81 J(0,1,7).  [hyper(11,a,65,a),eval(1)].
+
+given #65 (W,wt=4): 82 J(14,16,7).  [hyper(15,a,66,a),eval(7)].
+
+given #66 (W,wt=4): 83 J(1,0,7).  [hyper(16,a,67,a),eval(4)].
+
+given #67 (W,wt=4): 84 J(14,0,7).  [hyper(13,a,68,a),eval(1)].
+
+given #68 (W,wt=4): 85 J(1,16,7).  [hyper(12,a,69,a),eval(1)].
+
+given #69 (W,wt=4): 86 J(0,14,7).  [hyper(14,a,70,a),eval(4)].
+
+given #70 (W,wt=4): 87 J(15,2,7).  [hyper(17,a,71,a),eval(7)].
+
+given #71 (W,wt=4): 88 J(15,14,7).  [hyper(10,a,72,a),eval(1)].
+
+given #72 (W,wt=4): 89 J(0,2,7).  [hyper(11,a,73,a),eval(1)].
+
+given #73 (W,wt=4): 90 J(15,16,8).  [hyper(17,a,74,a),eval(7)].
+
+given #74 (W,wt=4): 91 J(15,0,8).  [hyper(13,a,74,a),eval(1)].
+
+given #75 (W,wt=4): 92 J(0,16,8).  [hyper(11,a,74,a),eval(1)].
+
+given #76 (W,wt=4): 93 J(0,15,8).  [hyper(14,a,75,a),eval(4)].
+
+given #77 (W,wt=4): 94 J(0,0,8).  [hyper(11,a,75,a),eval(1)].
+
+given #78 (W,wt=4): 95 J(15,1,8).  [hyper(17,a,76,a),eval(7)].
+
+given #79 (W,wt=4): 96 J(15,15,8).  [hyper(10,a,77,a),eval(1)].
+
+given #80 (W,wt=4): 97 J(0,1,8).  [hyper(11,a,79,a),eval(1)].
+
+given #81 (W,wt=4): 98 J(14,16,8).  [hyper(15,a,80,a),eval(7)].
+
+given #82 (W,wt=4): 99 J(1,0,8).  [hyper(16,a,81,a),eval(4)].
+
+given #83 (W,wt=4): 100 J(14,0,8).  [hyper(13,a,82,a),eval(1)].
+
+given #84 (W,wt=4): 101 J(1,16,8).  [hyper(12,a,83,a),eval(1)].
+
+given #85 (W,wt=4): 102 J(0,14,8).  [hyper(14,a,84,a),eval(4)].
+
+given #86 (W,wt=4): 103 J(15,2,8).  [hyper(17,a,85,a),eval(7)].
+
+given #87 (W,wt=4): 104 J(15,14,8).  [hyper(10,a,86,a),eval(1)].
+
+given #88 (W,wt=4): 105 J(0,2,8).  [hyper(11,a,87,a),eval(1)].
+
+given #89 (W,wt=4): 106 J(13,16,8).  [hyper(15,a,88,a),eval(7)].
+
+given #90 (W,wt=4): 107 J(2,0,8).  [hyper(16,a,89,a),eval(4)].
+
+given #91 (W,wt=4): 108 J(15,16,9).  [hyper(17,a,90,a),eval(7)].
+
+given #92 (W,wt=4): 109 J(15,0,9).  [hyper(13,a,90,a),eval(1)].
+
+given #93 (W,wt=4): 110 J(0,16,9).  [hyper(11,a,90,a),eval(1)].
+
+given #94 (W,wt=4): 111 J(0,15,9).  [hyper(14,a,91,a),eval(4)].
+
+given #95 (W,wt=4): 112 J(0,0,9).  [hyper(11,a,91,a),eval(1)].
+
+given #96 (W,wt=4): 113 J(15,1,9).  [hyper(17,a,92,a),eval(7)].
+
+given #97 (W,wt=4): 114 J(15,15,9).  [hyper(10,a,93,a),eval(1)].
+
+given #98 (W,wt=4): 115 J(0,1,9).  [hyper(11,a,95,a),eval(1)].
+
+given #99 (W,wt=4): 116 J(14,16,9).  [hyper(15,a,96,a),eval(7)].
+
+given #100 (W,wt=4): 117 J(1,0,9).  [hyper(16,a,97,a),eval(4)].
+
+given #101 (W,wt=4): 118 J(14,0,9).  [hyper(13,a,98,a),eval(1)].
+
+given #102 (W,wt=4): 119 J(1,16,9).  [hyper(12,a,99,a),eval(1)].
+
+given #103 (W,wt=4): 120 J(0,14,9).  [hyper(14,a,100,a),eval(4)].
+
+given #104 (W,wt=4): 121 J(15,2,9).  [hyper(17,a,101,a),eval(7)].
+
+given #105 (W,wt=4): 122 J(15,14,9).  [hyper(10,a,102,a),eval(1)].
+
+given #106 (W,wt=4): 123 J(0,2,9).  [hyper(11,a,103,a),eval(1)].
+
+given #107 (W,wt=4): 124 J(13,16,9).  [hyper(15,a,104,a),eval(7)].
+
+given #108 (W,wt=4): 125 J(2,0,9).  [hyper(16,a,105,a),eval(4)].
+
+given #109 (W,wt=4): 126 J(13,0,9).  [hyper(13,a,106,a),eval(1)].
+
+given #110 (W,wt=4): 127 J(2,16,9).  [hyper(12,a,107,a),eval(1)].
+
+given #111 (W,wt=4): 128 J(15,16,10).  [hyper(17,a,108,a),eval(7)].
+
+given #112 (W,wt=4): 129 J(15,0,10).  [hyper(13,a,108,a),eval(1)].
+
+given #113 (W,wt=4): 130 J(0,16,10).  [hyper(11,a,108,a),eval(1)].
+
+given #114 (W,wt=4): 131 J(0,15,10).  [hyper(14,a,109,a),eval(4)].
+
+given #115 (W,wt=4): 132 J(0,0,10).  [hyper(11,a,109,a),eval(1)].
+
+given #116 (W,wt=4): 133 J(15,1,10).  [hyper(17,a,110,a),eval(7)].
+
+given #117 (W,wt=4): 134 J(15,15,10).  [hyper(10,a,111,a),eval(1)].
+
+given #118 (W,wt=4): 135 J(0,1,10).  [hyper(11,a,113,a),eval(1)].
+
+given #119 (W,wt=4): 136 J(14,16,10).  [hyper(15,a,114,a),eval(7)].
+
+given #120 (W,wt=4): 137 J(1,0,10).  [hyper(16,a,115,a),eval(4)].
+
+given #121 (W,wt=4): 138 J(14,0,10).  [hyper(13,a,116,a),eval(1)].
+
+given #122 (W,wt=4): 139 J(1,16,10).  [hyper(12,a,117,a),eval(1)].
+
+given #123 (W,wt=4): 140 J(0,14,10).  [hyper(14,a,118,a),eval(4)].
+
+given #124 (W,wt=4): 141 J(15,2,10).  [hyper(17,a,119,a),eval(7)].
+
+given #125 (W,wt=4): 142 J(15,14,10).  [hyper(10,a,120,a),eval(1)].
+
+given #126 (W,wt=4): 143 J(0,2,10).  [hyper(11,a,121,a),eval(1)].
+
+given #127 (W,wt=4): 144 J(13,16,10).  [hyper(15,a,122,a),eval(7)].
+
+given #128 (W,wt=4): 145 J(2,0,10).  [hyper(16,a,123,a),eval(4)].
+
+given #129 (W,wt=4): 146 J(13,0,10).  [hyper(13,a,124,a),eval(1)].
+
+given #130 (W,wt=4): 147 J(2,16,10).  [hyper(12,a,125,a),eval(1)].
+
+given #131 (W,wt=4): 148 J(0,13,10).  [hyper(14,a,126,a),eval(4)].
+
+given #132 (W,wt=4): 149 J(15,3,10).  [hyper(17,a,127,a),eval(7)].
+
+given #133 (W,wt=4): 150 J(15,16,11).  [hyper(17,a,128,a),eval(7)].
+
+given #134 (W,wt=4): 151 J(15,0,11).  [hyper(13,a,128,a),eval(1)].
+
+given #135 (W,wt=4): 152 J(0,16,11).  [hyper(11,a,128,a),eval(1)].
+
+given #136 (W,wt=4): 153 J(0,15,11).  [hyper(14,a,129,a),eval(4)].
+
+given #137 (W,wt=4): 154 J(0,0,11).  [hyper(11,a,129,a),eval(1)].
+
+given #138 (W,wt=4): 155 J(15,1,11).  [hyper(17,a,130,a),eval(7)].
+
+given #139 (W,wt=4): 156 J(15,15,11).  [hyper(10,a,131,a),eval(1)].
+
+given #140 (W,wt=4): 157 J(0,1,11).  [hyper(11,a,133,a),eval(1)].
+
+given #141 (W,wt=4): 158 J(14,16,11).  [hyper(15,a,134,a),eval(7)].
+
+given #142 (W,wt=4): 159 J(1,0,11).  [hyper(16,a,135,a),eval(4)].
+
+given #143 (W,wt=4): 160 J(14,0,11).  [hyper(13,a,136,a),eval(1)].
+
+given #144 (W,wt=4): 161 J(1,16,11).  [hyper(12,a,137,a),eval(1)].
+
+given #145 (W,wt=4): 162 J(0,14,11).  [hyper(14,a,138,a),eval(4)].
+
+given #146 (W,wt=4): 163 J(15,2,11).  [hyper(17,a,139,a),eval(7)].
+
+given #147 (W,wt=4): 164 J(15,14,11).  [hyper(10,a,140,a),eval(1)].
+
+given #148 (W,wt=4): 165 J(0,2,11).  [hyper(11,a,141,a),eval(1)].
+
+given #149 (W,wt=4): 166 J(13,16,11).  [hyper(15,a,142,a),eval(7)].
+
+given #150 (W,wt=4): 167 J(2,0,11).  [hyper(16,a,143,a),eval(4)].
+
+given #151 (W,wt=4): 168 J(13,0,11).  [hyper(13,a,144,a),eval(1)].
+
+given #152 (W,wt=4): 169 J(2,16,11).  [hyper(12,a,145,a),eval(1)].
+
+given #153 (W,wt=4): 170 J(0,13,11).  [hyper(14,a,146,a),eval(4)].
+
+given #154 (W,wt=4): 171 J(15,3,11).  [hyper(17,a,147,a),eval(7)].
+
+given #155 (W,wt=4): 172 J(15,13,11).  [hyper(10,a,148,a),eval(1)].
+
+given #156 (W,wt=4): 173 J(0,3,11).  [hyper(11,a,149,a),eval(1)].
+
+given #157 (W,wt=4): 174 J(15,16,12).  [hyper(17,a,150,a),eval(7)].
+
+given #158 (W,wt=4): 175 J(15,0,12).  [hyper(13,a,150,a),eval(1)].
+
+given #159 (W,wt=4): 176 J(0,16,12).  [hyper(11,a,150,a),eval(1)].
+
+given #160 (W,wt=4): 177 J(0,15,12).  [hyper(14,a,151,a),eval(4)].
+
+given #161 (W,wt=4): 178 J(0,0,12).  [hyper(11,a,151,a),eval(1)].
+
+given #162 (W,wt=4): 179 J(15,1,12).  [hyper(17,a,152,a),eval(7)].
+
+given #163 (W,wt=4): 180 J(15,15,12).  [hyper(10,a,153,a),eval(1)].
+
+given #164 (W,wt=4): 181 J(0,1,12).  [hyper(11,a,155,a),eval(1)].
+
+given #165 (W,wt=4): 182 J(14,16,12).  [hyper(15,a,156,a),eval(7)].
+
+given #166 (W,wt=4): 183 J(1,0,12).  [hyper(16,a,157,a),eval(4)].
+
+given #167 (W,wt=4): 184 J(14,0,12).  [hyper(13,a,158,a),eval(1)].
+
+given #168 (W,wt=4): 185 J(1,16,12).  [hyper(12,a,159,a),eval(1)].
+
+given #169 (W,wt=4): 186 J(0,14,12).  [hyper(14,a,160,a),eval(4)].
+
+given #170 (W,wt=4): 187 J(15,2,12).  [hyper(17,a,161,a),eval(7)].
+
+given #171 (W,wt=4): 188 J(15,14,12).  [hyper(10,a,162,a),eval(1)].
+
+given #172 (W,wt=4): 189 J(0,2,12).  [hyper(11,a,163,a),eval(1)].
+
+given #173 (W,wt=4): 190 J(13,16,12).  [hyper(15,a,164,a),eval(7)].
+
+given #174 (W,wt=4): 191 J(2,0,12).  [hyper(16,a,165,a),eval(4)].
+
+given #175 (W,wt=4): 192 J(13,0,12).  [hyper(13,a,166,a),eval(1)].
+
+given #176 (W,wt=4): 193 J(2,16,12).  [hyper(12,a,167,a),eval(1)].
+
+given #177 (W,wt=4): 194 J(0,13,12).  [hyper(14,a,168,a),eval(4)].
+
+given #178 (W,wt=4): 195 J(15,3,12).  [hyper(17,a,169,a),eval(7)].
+
+given #179 (W,wt=4): 196 J(15,13,12).  [hyper(10,a,170,a),eval(1)].
+
+given #180 (W,wt=4): 197 J(0,3,12).  [hyper(11,a,171,a),eval(1)].
+
+given #181 (W,wt=4): 198 J(12,16,12).  [hyper(15,a,172,a),eval(7)].
+
+given #182 (W,wt=4): 199 J(3,0,12).  [hyper(16,a,173,a),eval(4)].
+
+given #183 (W,wt=4): 200 J(15,16,13).  [hyper(17,a,174,a),eval(7)].
+
+given #184 (W,wt=4): 201 J(15,0,13).  [hyper(13,a,174,a),eval(1)].
+
+given #185 (W,wt=4): 202 J(0,16,13).  [hyper(11,a,174,a),eval(1)].
+
+given #186 (W,wt=4): 203 J(0,15,13).  [hyper(14,a,175,a),eval(4)].
+
+given #187 (W,wt=4): 204 J(0,0,13).  [hyper(11,a,175,a),eval(1)].
+
+given #188 (W,wt=4): 205 J(15,1,13).  [hyper(17,a,176,a),eval(7)].
+
+given #189 (W,wt=4): 206 J(15,15,13).  [hyper(10,a,177,a),eval(1)].
+
+given #190 (W,wt=4): 207 J(0,1,13).  [hyper(11,a,179,a),eval(1)].
+
+given #191 (W,wt=4): 208 J(14,16,13).  [hyper(15,a,180,a),eval(7)].
+
+given #192 (W,wt=4): 209 J(1,0,13).  [hyper(16,a,181,a),eval(4)].
+
+given #193 (W,wt=4): 210 J(14,0,13).  [hyper(13,a,182,a),eval(1)].
+
+given #194 (W,wt=4): 211 J(1,16,13).  [hyper(12,a,183,a),eval(1)].
+
+given #195 (W,wt=4): 212 J(0,14,13).  [hyper(14,a,184,a),eval(4)].
+
+given #196 (W,wt=4): 213 J(15,2,13).  [hyper(17,a,185,a),eval(7)].
+
+given #197 (W,wt=4): 214 J(15,14,13).  [hyper(10,a,186,a),eval(1)].
+
+given #198 (W,wt=4): 215 J(0,2,13).  [hyper(11,a,187,a),eval(1)].
+
+given #199 (W,wt=4): 216 J(13,16,13).  [hyper(15,a,188,a),eval(7)].
+
+given #200 (W,wt=4): 217 J(2,0,13).  [hyper(16,a,189,a),eval(4)].
+
+given #201 (W,wt=4): 218 J(13,0,13).  [hyper(13,a,190,a),eval(1)].
+
+given #202 (W,wt=4): 219 J(2,16,13).  [hyper(12,a,191,a),eval(1)].
+
+given #203 (W,wt=4): 220 J(0,13,13).  [hyper(14,a,192,a),eval(4)].
+
+given #204 (W,wt=4): 221 J(15,3,13).  [hyper(17,a,193,a),eval(7)].
+
+given #205 (W,wt=4): 222 J(15,13,13).  [hyper(10,a,194,a),eval(1)].
+
+given #206 (W,wt=4): 223 J(0,3,13).  [hyper(11,a,195,a),eval(1)].
+
+given #207 (W,wt=4): 224 J(12,16,13).  [hyper(15,a,196,a),eval(7)].
+
+given #208 (W,wt=4): 225 J(3,0,13).  [hyper(16,a,197,a),eval(4)].
+
+given #209 (W,wt=4): 226 J(12,0,13).  [hyper(13,a,198,a),eval(1)].
+
+given #210 (W,wt=4): 227 J(3,16,13).  [hyper(12,a,199,a),eval(1)].
+
+given #211 (W,wt=4): 228 J(15,16,14).  [hyper(17,a,200,a),eval(7)].
+
+given #212 (W,wt=4): 229 J(15,0,14).  [hyper(13,a,200,a),eval(1)].
+
+given #213 (W,wt=4): 230 J(0,16,14).  [hyper(11,a,200,a),eval(1)].
+
+given #214 (W,wt=4): 231 J(0,15,14).  [hyper(14,a,201,a),eval(4)].
+
+given #215 (W,wt=4): 232 J(0,0,14).  [hyper(11,a,201,a),eval(1)].
+
+given #216 (W,wt=4): 233 J(15,1,14).  [hyper(17,a,202,a),eval(7)].
+
+given #217 (W,wt=4): 234 J(15,15,14).  [hyper(10,a,203,a),eval(1)].
+
+given #218 (W,wt=4): 235 J(0,1,14).  [hyper(11,a,205,a),eval(1)].
+
+given #219 (W,wt=4): 236 J(14,16,14).  [hyper(15,a,206,a),eval(7)].
+
+given #220 (W,wt=4): 237 J(1,0,14).  [hyper(16,a,207,a),eval(4)].
+
+given #221 (W,wt=4): 238 J(14,0,14).  [hyper(13,a,208,a),eval(1)].
+
+given #222 (W,wt=4): 239 J(1,16,14).  [hyper(12,a,209,a),eval(1)].
+
+given #223 (W,wt=4): 240 J(0,14,14).  [hyper(14,a,210,a),eval(4)].
+
+given #224 (W,wt=4): 241 J(15,2,14).  [hyper(17,a,211,a),eval(7)].
+
+given #225 (W,wt=4): 242 J(15,14,14).  [hyper(10,a,212,a),eval(1)].
+
+given #226 (W,wt=4): 243 J(0,2,14).  [hyper(11,a,213,a),eval(1)].
+
+given #227 (W,wt=4): 244 J(13,16,14).  [hyper(15,a,214,a),eval(7)].
+
+given #228 (W,wt=4): 245 J(2,0,14).  [hyper(16,a,215,a),eval(4)].
+
+given #229 (W,wt=4): 246 J(13,0,14).  [hyper(13,a,216,a),eval(1)].
+
+given #230 (W,wt=4): 247 J(2,16,14).  [hyper(12,a,217,a),eval(1)].
+
+given #231 (W,wt=4): 248 J(0,13,14).  [hyper(14,a,218,a),eval(4)].
+
+given #232 (W,wt=4): 249 J(15,3,14).  [hyper(17,a,219,a),eval(7)].
+
+given #233 (W,wt=4): 250 J(15,13,14).  [hyper(10,a,220,a),eval(1)].
+
+given #234 (W,wt=4): 251 J(0,3,14).  [hyper(11,a,221,a),eval(1)].
+
+given #235 (W,wt=4): 252 J(12,16,14).  [hyper(15,a,222,a),eval(7)].
+
+given #236 (W,wt=4): 253 J(3,0,14).  [hyper(16,a,223,a),eval(4)].
+
+given #237 (W,wt=4): 254 J(12,0,14).  [hyper(13,a,224,a),eval(1)].
+
+given #238 (W,wt=4): 255 J(3,16,14).  [hyper(12,a,225,a),eval(1)].
+
+given #239 (W,wt=4): 256 J(0,12,14).  [hyper(14,a,226,a),eval(4)].
+
+given #240 (W,wt=4): 257 J(15,4,14).  [hyper(17,a,227,a),eval(7)].
+
+given #241 (W,wt=4): 258 J(15,16,15).  [hyper(17,a,228,a),eval(7)].
+
+given #242 (W,wt=4): 259 J(15,0,15).  [hyper(13,a,228,a),eval(1)].
+
+given #243 (W,wt=4): 260 J(0,16,15).  [hyper(11,a,228,a),eval(1)].
+
+given #244 (W,wt=4): 261 J(0,15,15).  [hyper(14,a,229,a),eval(4)].
+
+given #245 (W,wt=4): 262 J(0,0,15).  [hyper(11,a,229,a),eval(1)].
+
+given #246 (W,wt=4): 263 J(15,1,15).  [hyper(17,a,230,a),eval(7)].
+
+given #247 (W,wt=4): 264 J(15,15,15).  [hyper(10,a,231,a),eval(1)].
+
+given #248 (W,wt=4): 265 J(0,1,15).  [hyper(11,a,233,a),eval(1)].
+
+given #249 (W,wt=4): 266 J(14,16,15).  [hyper(15,a,234,a),eval(7)].
+
+given #250 (W,wt=4): 267 J(1,0,15).  [hyper(16,a,235,a),eval(4)].
+
+given #251 (W,wt=4): 268 J(14,0,15).  [hyper(13,a,236,a),eval(1)].
+
+given #252 (W,wt=4): 269 J(1,16,15).  [hyper(12,a,237,a),eval(1)].
+
+given #253 (W,wt=4): 270 J(0,14,15).  [hyper(14,a,238,a),eval(4)].
+
+given #254 (W,wt=4): 271 J(15,2,15).  [hyper(17,a,239,a),eval(7)].
+
+given #255 (W,wt=4): 272 J(15,14,15).  [hyper(10,a,240,a),eval(1)].
+
+given #256 (W,wt=4): 273 J(0,2,15).  [hyper(11,a,241,a),eval(1)].
+
+given #257 (W,wt=4): 274 J(13,16,15).  [hyper(15,a,242,a),eval(7)].
+
+given #258 (W,wt=4): 275 J(2,0,15).  [hyper(16,a,243,a),eval(4)].
+
+given #259 (W,wt=4): 276 J(13,0,15).  [hyper(13,a,244,a),eval(1)].
+
+given #260 (W,wt=4): 277 J(2,16,15).  [hyper(12,a,245,a),eval(1)].
+
+given #261 (W,wt=4): 278 J(0,13,15).  [hyper(14,a,246,a),eval(4)].
+
+given #262 (W,wt=4): 279 J(15,3,15).  [hyper(17,a,247,a),eval(7)].
+
+given #263 (W,wt=4): 280 J(15,13,15).  [hyper(10,a,248,a),eval(1)].
+
+given #264 (W,wt=4): 281 J(0,3,15).  [hyper(11,a,249,a),eval(1)].
+
+given #265 (W,wt=4): 282 J(12,16,15).  [hyper(15,a,250,a),eval(7)].
+
+given #266 (W,wt=4): 283 J(3,0,15).  [hyper(16,a,251,a),eval(4)].
+
+given #267 (W,wt=4): 284 J(12,0,15).  [hyper(13,a,252,a),eval(1)].
+
+given #268 (W,wt=4): 285 J(3,16,15).  [hyper(12,a,253,a),eval(1)].
+
+given #269 (W,wt=4): 286 J(0,12,15).  [hyper(14,a,254,a),eval(4)].
+
+given #270 (W,wt=4): 287 J(15,4,15).  [hyper(17,a,255,a),eval(7)].
+
+given #271 (W,wt=4): 288 J(15,12,15).  [hyper(10,a,256,a),eval(1)].
+
+given #272 (W,wt=4): 289 J(0,4,15).  [hyper(11,a,257,a),eval(1)].
+
+given #273 (W,wt=4): 290 J(15,16,16).  [hyper(17,a,258,a),eval(7)].
+
+given #274 (W,wt=4): 291 J(15,0,16).  [hyper(13,a,258,a),eval(1)].
+
+given #275 (W,wt=4): 292 J(0,16,16).  [hyper(11,a,258,a),eval(1)].
+
+given #276 (W,wt=4): 293 J(0,15,16).  [hyper(14,a,259,a),eval(4)].
+
+given #277 (W,wt=4): 294 J(0,0,16).  [hyper(11,a,259,a),eval(1)].
+
+given #278 (W,wt=4): 295 J(15,1,16).  [hyper(17,a,260,a),eval(7)].
+
+given #279 (W,wt=4): 296 J(15,15,16).  [hyper(10,a,261,a),eval(1)].
+
+given #280 (W,wt=4): 297 J(0,1,16).  [hyper(11,a,263,a),eval(1)].
+
+given #281 (W,wt=4): 298 J(14,16,16).  [hyper(15,a,264,a),eval(7)].
+
+given #282 (W,wt=4): 299 J(1,0,16).  [hyper(16,a,265,a),eval(4)].
+
+given #283 (W,wt=4): 300 J(14,0,16).  [hyper(13,a,266,a),eval(1)].
+
+given #284 (W,wt=4): 301 J(1,16,16).  [hyper(12,a,267,a),eval(1)].
+
+given #285 (W,wt=4): 302 J(0,14,16).  [hyper(14,a,268,a),eval(4)].
+
+given #286 (W,wt=4): 303 J(15,2,16).  [hyper(17,a,269,a),eval(7)].
+
+given #287 (W,wt=4): 304 J(15,14,16).  [hyper(10,a,270,a),eval(1)].
+
+given #288 (W,wt=4): 305 J(0,2,16).  [hyper(11,a,271,a),eval(1)].
+
+given #289 (W,wt=4): 306 J(13,16,16).  [hyper(15,a,272,a),eval(7)].
+
+given #290 (W,wt=4): 307 J(2,0,16).  [hyper(16,a,273,a),eval(4)].
+
+given #291 (W,wt=4): 308 J(13,0,16).  [hyper(13,a,274,a),eval(1)].
+
+given #292 (W,wt=4): 309 J(2,16,16).  [hyper(12,a,275,a),eval(1)].
+
+given #293 (W,wt=4): 310 J(0,13,16).  [hyper(14,a,276,a),eval(4)].
+
+given #294 (W,wt=4): 311 J(15,3,16).  [hyper(17,a,277,a),eval(7)].
+
+given #295 (W,wt=4): 312 J(15,13,16).  [hyper(10,a,278,a),eval(1)].
+
+given #296 (W,wt=4): 313 J(0,3,16).  [hyper(11,a,279,a),eval(1)].
+
+given #297 (W,wt=4): 314 J(12,16,16).  [hyper(15,a,280,a),eval(7)].
+
+given #298 (W,wt=4): 315 J(3,0,16).  [hyper(16,a,281,a),eval(4)].
+
+given #299 (W,wt=4): 316 J(12,0,16).  [hyper(13,a,282,a),eval(1)].
+
+given #300 (W,wt=4): 317 J(3,16,16).  [hyper(12,a,283,a),eval(1)].
+
+given #301 (W,wt=4): 318 J(0,12,16).  [hyper(14,a,284,a),eval(4)].
+
+given #302 (W,wt=4): 319 J(15,4,16).  [hyper(17,a,285,a),eval(7)].
+
+given #303 (W,wt=4): 320 J(15,12,16).  [hyper(10,a,286,a),eval(1)].
+
+given #304 (W,wt=4): 321 J(0,4,16).  [hyper(11,a,287,a),eval(1)].
+
+given #305 (W,wt=4): 322 J(11,16,16).  [hyper(15,a,288,a),eval(7)].
+
+given #306 (W,wt=4): 323 J(4,0,16).  [hyper(16,a,289,a),eval(4)].
+
+given #307 (W,wt=4): 324 J(15,16,17).  [hyper(17,a,290,a),eval(7)].
+
+given #308 (W,wt=4): 325 J(15,0,17).  [hyper(13,a,290,a),eval(1)].
+
+given #309 (W,wt=4): 326 J(0,16,17).  [hyper(11,a,290,a),eval(1)].
+
+given #310 (W,wt=4): 327 J(0,15,17).  [hyper(14,a,291,a),eval(4)].
+
+given #311 (W,wt=4): 328 J(0,0,17).  [hyper(11,a,291,a),eval(1)].
+
+given #312 (W,wt=4): 329 J(15,1,17).  [hyper(17,a,292,a),eval(7)].
+
+given #313 (W,wt=4): 330 J(15,15,17).  [hyper(10,a,293,a),eval(1)].
+
+given #314 (W,wt=4): 331 J(0,1,17).  [hyper(11,a,295,a),eval(1)].
+
+given #315 (W,wt=4): 332 J(14,16,17).  [hyper(15,a,296,a),eval(7)].
+
+given #316 (W,wt=4): 333 J(1,0,17).  [hyper(16,a,297,a),eval(4)].
+
+given #317 (W,wt=4): 334 J(14,0,17).  [hyper(13,a,298,a),eval(1)].
+
+given #318 (W,wt=4): 335 J(1,16,17).  [hyper(12,a,299,a),eval(1)].
+
+given #319 (W,wt=4): 336 J(0,14,17).  [hyper(14,a,300,a),eval(4)].
+
+given #320 (W,wt=4): 337 J(15,2,17).  [hyper(17,a,301,a),eval(7)].
+
+given #321 (W,wt=4): 338 J(15,14,17).  [hyper(10,a,302,a),eval(1)].
+
+given #322 (W,wt=4): 339 J(0,2,17).  [hyper(11,a,303,a),eval(1)].
+
+given #323 (W,wt=4): 340 J(13,16,17).  [hyper(15,a,304,a),eval(7)].
+
+given #324 (W,wt=4): 341 J(2,0,17).  [hyper(16,a,305,a),eval(4)].
+
+given #325 (W,wt=4): 342 J(13,0,17).  [hyper(13,a,306,a),eval(1)].
+
+given #326 (W,wt=4): 343 J(2,16,17).  [hyper(12,a,307,a),eval(1)].
+
+given #327 (W,wt=4): 344 J(0,13,17).  [hyper(14,a,308,a),eval(4)].
+
+given #328 (W,wt=4): 345 J(15,3,17).  [hyper(17,a,309,a),eval(7)].
+
+given #329 (W,wt=4): 346 J(15,13,17).  [hyper(10,a,310,a),eval(1)].
+
+given #330 (W,wt=4): 347 J(0,3,17).  [hyper(11,a,311,a),eval(1)].
+
+given #331 (W,wt=4): 348 J(12,16,17).  [hyper(15,a,312,a),eval(7)].
+
+given #332 (W,wt=4): 349 J(3,0,17).  [hyper(16,a,313,a),eval(4)].
+
+given #333 (W,wt=4): 350 J(12,0,17).  [hyper(13,a,314,a),eval(1)].
+
+given #334 (W,wt=4): 351 J(3,16,17).  [hyper(12,a,315,a),eval(1)].
+
+given #335 (W,wt=4): 352 J(0,12,17).  [hyper(14,a,316,a),eval(4)].
+
+given #336 (W,wt=4): 353 J(15,4,17).  [hyper(17,a,317,a),eval(7)].
+
+given #337 (W,wt=4): 354 J(15,12,17).  [hyper(10,a,318,a),eval(1)].
+
+given #338 (W,wt=4): 355 J(0,4,17).  [hyper(11,a,319,a),eval(1)].
+
+given #339 (W,wt=4): 356 J(11,16,17).  [hyper(15,a,320,a),eval(7)].
+
+given #340 (W,wt=4): 357 J(4,0,17).  [hyper(16,a,321,a),eval(4)].
+
+given #341 (W,wt=4): 358 J(11,0,17).  [hyper(13,a,322,a),eval(1)].
+
+given #342 (W,wt=4): 359 J(4,16,17).  [hyper(12,a,323,a),eval(1)].
+
+given #343 (W,wt=4): 360 J(15,16,18).  [hyper(17,a,324,a),eval(7)].
+
+given #344 (W,wt=4): 361 J(15,0,18).  [hyper(13,a,324,a),eval(1)].
+
+given #345 (W,wt=4): 362 J(0,16,18).  [hyper(11,a,324,a),eval(1)].
+
+given #346 (W,wt=4): 363 J(0,15,18).  [hyper(14,a,325,a),eval(4)].
+
+given #347 (W,wt=4): 364 J(0,0,18).  [hyper(11,a,325,a),eval(1)].
+
+given #348 (W,wt=4): 365 J(15,1,18).  [hyper(17,a,326,a),eval(7)].
+
+given #349 (W,wt=4): 366 J(15,15,18).  [hyper(10,a,327,a),eval(1)].
+
+given #350 (W,wt=4): 367 J(0,1,18).  [hyper(11,a,329,a),eval(1)].
+
+given #351 (W,wt=4): 368 J(14,16,18).  [hyper(15,a,330,a),eval(7)].
+
+given #352 (W,wt=4): 369 J(1,0,18).  [hyper(16,a,331,a),eval(4)].
+
+given #353 (W,wt=4): 370 J(14,0,18).  [hyper(13,a,332,a),eval(1)].
+
+given #354 (W,wt=4): 371 J(1,16,18).  [hyper(12,a,333,a),eval(1)].
+
+given #355 (W,wt=4): 372 J(0,14,18).  [hyper(14,a,334,a),eval(4)].
+
+given #356 (W,wt=4): 373 J(15,2,18).  [hyper(17,a,335,a),eval(7)].
+
+given #357 (W,wt=4): 374 J(15,14,18).  [hyper(10,a,336,a),eval(1)].
+
+given #358 (W,wt=4): 375 J(0,2,18).  [hyper(11,a,337,a),eval(1)].
+
+given #359 (W,wt=4): 376 J(13,16,18).  [hyper(15,a,338,a),eval(7)].
+
+given #360 (W,wt=4): 377 J(2,0,18).  [hyper(16,a,339,a),eval(4)].
+
+given #361 (W,wt=4): 378 J(13,0,18).  [hyper(13,a,340,a),eval(1)].
+
+given #362 (W,wt=4): 379 J(2,16,18).  [hyper(12,a,341,a),eval(1)].
+
+given #363 (W,wt=4): 380 J(0,13,18).  [hyper(14,a,342,a),eval(4)].
+
+given #364 (W,wt=4): 381 J(15,3,18).  [hyper(17,a,343,a),eval(7)].
+
+given #365 (W,wt=4): 382 J(15,13,18).  [hyper(10,a,344,a),eval(1)].
+
+given #366 (W,wt=4): 383 J(0,3,18).  [hyper(11,a,345,a),eval(1)].
+
+given #367 (W,wt=4): 384 J(12,16,18).  [hyper(15,a,346,a),eval(7)].
+
+given #368 (W,wt=4): 385 J(3,0,18).  [hyper(16,a,347,a),eval(4)].
+
+given #369 (W,wt=4): 386 J(12,0,18).  [hyper(13,a,348,a),eval(1)].
+
+given #370 (W,wt=4): 387 J(3,16,18).  [hyper(12,a,349,a),eval(1)].
+
+given #371 (W,wt=4): 388 J(0,12,18).  [hyper(14,a,350,a),eval(4)].
+
+given #372 (W,wt=4): 389 J(15,4,18).  [hyper(17,a,351,a),eval(7)].
+
+given #373 (W,wt=4): 390 J(15,12,18).  [hyper(10,a,352,a),eval(1)].
+
+given #374 (W,wt=4): 391 J(0,4,18).  [hyper(11,a,353,a),eval(1)].
+
+given #375 (W,wt=4): 392 J(11,16,18).  [hyper(15,a,354,a),eval(7)].
+
+given #376 (W,wt=4): 393 J(4,0,18).  [hyper(16,a,355,a),eval(4)].
+
+given #377 (W,wt=4): 394 J(11,0,18).  [hyper(13,a,356,a),eval(1)].
+
+given #378 (W,wt=4): 395 J(4,16,18).  [hyper(12,a,357,a),eval(1)].
+
+given #379 (W,wt=4): 396 J(0,11,18).  [hyper(14,a,358,a),eval(4)].
+
+given #380 (W,wt=4): 397 J(15,5,18).  [hyper(17,a,359,a),eval(7)].
+
+given #381 (W,wt=4): 398 J(15,16,19).  [hyper(17,a,360,a),eval(7)].
+
+given #382 (W,wt=4): 399 J(15,0,19).  [hyper(13,a,360,a),eval(1)].
+
+given #383 (W,wt=4): 400 J(0,16,19).  [hyper(11,a,360,a),eval(1)].
+
+given #384 (W,wt=4): 401 J(0,15,19).  [hyper(14,a,361,a),eval(4)].
+
+given #385 (W,wt=4): 402 J(0,0,19).  [hyper(11,a,361,a),eval(1)].
+
+given #386 (W,wt=4): 403 J(15,1,19).  [hyper(17,a,362,a),eval(7)].
+
+given #387 (W,wt=4): 404 J(15,15,19).  [hyper(10,a,363,a),eval(1)].
+
+given #388 (W,wt=4): 405 J(0,1,19).  [hyper(11,a,365,a),eval(1)].
+
+given #389 (W,wt=4): 406 J(14,16,19).  [hyper(15,a,366,a),eval(7)].
+
+given #390 (W,wt=4): 407 J(1,0,19).  [hyper(16,a,367,a),eval(4)].
+
+given #391 (W,wt=4): 408 J(14,0,19).  [hyper(13,a,368,a),eval(1)].
+
+given #392 (W,wt=4): 409 J(1,16,19).  [hyper(12,a,369,a),eval(1)].
+
+given #393 (W,wt=4): 410 J(0,14,19).  [hyper(14,a,370,a),eval(4)].
+
+given #394 (W,wt=4): 411 J(15,2,19).  [hyper(17,a,371,a),eval(7)].
+
+given #395 (W,wt=4): 412 J(15,14,19).  [hyper(10,a,372,a),eval(1)].
+
+given #396 (W,wt=4): 413 J(0,2,19).  [hyper(11,a,373,a),eval(1)].
+
+given #397 (W,wt=4): 414 J(13,16,19).  [hyper(15,a,374,a),eval(7)].
+
+given #398 (W,wt=4): 415 J(2,0,19).  [hyper(16,a,375,a),eval(4)].
+
+given #399 (W,wt=4): 416 J(13,0,19).  [hyper(13,a,376,a),eval(1)].
+
+given #400 (W,wt=4): 417 J(2,16,19).  [hyper(12,a,377,a),eval(1)].
+
+given #401 (W,wt=4): 418 J(0,13,19).  [hyper(14,a,378,a),eval(4)].
+
+given #402 (W,wt=4): 419 J(15,3,19).  [hyper(17,a,379,a),eval(7)].
+
+given #403 (W,wt=4): 420 J(15,13,19).  [hyper(10,a,380,a),eval(1)].
+
+given #404 (W,wt=4): 421 J(0,3,19).  [hyper(11,a,381,a),eval(1)].
+
+given #405 (W,wt=4): 422 J(12,16,19).  [hyper(15,a,382,a),eval(7)].
+
+given #406 (W,wt=4): 423 J(3,0,19).  [hyper(16,a,383,a),eval(4)].
+
+given #407 (W,wt=4): 424 J(12,0,19).  [hyper(13,a,384,a),eval(1)].
+
+given #408 (W,wt=4): 425 J(3,16,19).  [hyper(12,a,385,a),eval(1)].
+
+given #409 (W,wt=4): 426 J(0,12,19).  [hyper(14,a,386,a),eval(4)].
+
+given #410 (W,wt=4): 427 J(15,4,19).  [hyper(17,a,387,a),eval(7)].
+
+given #411 (W,wt=4): 428 J(15,12,19).  [hyper(10,a,388,a),eval(1)].
+
+given #412 (W,wt=4): 429 J(0,4,19).  [hyper(11,a,389,a),eval(1)].
+
+given #413 (W,wt=4): 430 J(11,16,19).  [hyper(15,a,390,a),eval(7)].
+
+given #414 (W,wt=4): 431 J(4,0,19).  [hyper(16,a,391,a),eval(4)].
+
+given #415 (W,wt=4): 432 J(11,0,19).  [hyper(13,a,392,a),eval(1)].
+
+given #416 (W,wt=4): 433 J(4,16,19).  [hyper(12,a,393,a),eval(1)].
+
+given #417 (W,wt=4): 434 J(0,11,19).  [hyper(14,a,394,a),eval(4)].
+
+given #418 (W,wt=4): 435 J(15,5,19).  [hyper(17,a,395,a),eval(7)].
+
+given #419 (W,wt=4): 436 J(15,11,19).  [hyper(10,a,396,a),eval(1)].
+
+given #420 (W,wt=4): 437 J(0,5,19).  [hyper(11,a,397,a),eval(1)].
+
+given #421 (W,wt=4): 438 J(15,16,20).  [hyper(17,a,398,a),eval(7)].
+
+given #422 (W,wt=4): 439 J(15,0,20).  [hyper(13,a,398,a),eval(1)].
+
+given #423 (W,wt=4): 440 J(0,16,20).  [hyper(11,a,398,a),eval(1)].
+
+given #424 (W,wt=4): 441 J(0,15,20).  [hyper(14,a,399,a),eval(4)].
+
+given #425 (W,wt=4): 442 J(0,0,20).  [hyper(11,a,399,a),eval(1)].
+
+given #426 (W,wt=4): 443 J(15,1,20).  [hyper(17,a,400,a),eval(7)].
+
+given #427 (W,wt=4): 444 J(15,15,20).  [hyper(10,a,401,a),eval(1)].
+
+given #428 (W,wt=4): 445 J(0,1,20).  [hyper(11,a,403,a),eval(1)].
+
+given #429 (W,wt=4): 446 J(14,16,20).  [hyper(15,a,404,a),eval(7)].
+
+given #430 (W,wt=4): 447 J(1,0,20).  [hyper(16,a,405,a),eval(4)].
+
+given #431 (W,wt=4): 448 J(14,0,20).  [hyper(13,a,406,a),eval(1)].
+
+given #432 (W,wt=4): 449 J(1,16,20).  [hyper(12,a,407,a),eval(1)].
+
+given #433 (W,wt=4): 450 J(0,14,20).  [hyper(14,a,408,a),eval(4)].
+
+given #434 (W,wt=4): 451 J(15,2,20).  [hyper(17,a,409,a),eval(7)].
+
+given #435 (W,wt=4): 452 J(15,14,20).  [hyper(10,a,410,a),eval(1)].
+
+given #436 (W,wt=4): 453 J(0,2,20).  [hyper(11,a,411,a),eval(1)].
+
+given #437 (W,wt=4): 454 J(13,16,20).  [hyper(15,a,412,a),eval(7)].
+
+given #438 (W,wt=4): 455 J(2,0,20).  [hyper(16,a,413,a),eval(4)].
+
+given #439 (W,wt=4): 456 J(13,0,20).  [hyper(13,a,414,a),eval(1)].
+
+given #440 (W,wt=4): 457 J(2,16,20).  [hyper(12,a,415,a),eval(1)].
+
+given #441 (W,wt=4): 458 J(0,13,20).  [hyper(14,a,416,a),eval(4)].
+
+given #442 (W,wt=4): 459 J(15,3,20).  [hyper(17,a,417,a),eval(7)].
+
+given #443 (W,wt=4): 460 J(15,13,20).  [hyper(10,a,418,a),eval(1)].
+
+given #444 (W,wt=4): 461 J(0,3,20).  [hyper(11,a,419,a),eval(1)].
+
+given #445 (W,wt=4): 462 J(12,16,20).  [hyper(15,a,420,a),eval(7)].
+
+given #446 (W,wt=4): 463 J(3,0,20).  [hyper(16,a,421,a),eval(4)].
+
+given #447 (W,wt=4): 464 J(12,0,20).  [hyper(13,a,422,a),eval(1)].
+
+given #448 (W,wt=4): 465 J(3,16,20).  [hyper(12,a,423,a),eval(1)].
+
+given #449 (W,wt=4): 466 J(0,12,20).  [hyper(14,a,424,a),eval(4)].
+
+given #450 (W,wt=4): 467 J(15,4,20).  [hyper(17,a,425,a),eval(7)].
+
+given #451 (W,wt=4): 468 J(15,12,20).  [hyper(10,a,426,a),eval(1)].
+
+given #452 (W,wt=4): 469 J(0,4,20).  [hyper(11,a,427,a),eval(1)].
+
+given #453 (W,wt=4): 470 J(11,16,20).  [hyper(15,a,428,a),eval(7)].
+
+given #454 (W,wt=4): 471 J(4,0,20).  [hyper(16,a,429,a),eval(4)].
+
+given #455 (W,wt=4): 472 J(11,0,20).  [hyper(13,a,430,a),eval(1)].
+
+given #456 (W,wt=4): 473 J(4,16,20).  [hyper(12,a,431,a),eval(1)].
+
+given #457 (W,wt=4): 474 J(0,11,20).  [hyper(14,a,432,a),eval(4)].
+
+given #458 (W,wt=4): 475 J(15,5,20).  [hyper(17,a,433,a),eval(7)].
+
+given #459 (W,wt=4): 476 J(15,11,20).  [hyper(10,a,434,a),eval(1)].
+
+given #460 (W,wt=4): 477 J(0,5,20).  [hyper(11,a,435,a),eval(1)].
+
+given #461 (W,wt=4): 478 J(10,16,20).  [hyper(15,a,436,a),eval(7)].
+
+given #462 (W,wt=4): 479 J(5,0,20).  [hyper(16,a,437,a),eval(4)].
+
+given #463 (W,wt=4): 480 J(15,16,21).  [hyper(17,a,438,a),eval(7)].
+
+given #464 (W,wt=4): 481 J(15,0,21).  [hyper(13,a,438,a),eval(1)].
+
+given #465 (W,wt=4): 482 J(0,16,21).  [hyper(11,a,438,a),eval(1)].
+
+given #466 (W,wt=4): 483 J(0,15,21).  [hyper(14,a,439,a),eval(4)].
+
+given #467 (W,wt=4): 484 J(0,0,21).  [hyper(11,a,439,a),eval(1)].
+
+given #468 (W,wt=4): 485 J(15,1,21).  [hyper(17,a,440,a),eval(7)].
+
+given #469 (W,wt=4): 486 J(15,15,21).  [hyper(10,a,441,a),eval(1)].
+
+given #470 (W,wt=4): 487 J(0,1,21).  [hyper(11,a,443,a),eval(1)].
+
+given #471 (W,wt=4): 488 J(14,16,21).  [hyper(15,a,444,a),eval(7)].
+
+given #472 (W,wt=4): 489 J(1,0,21).  [hyper(16,a,445,a),eval(4)].
+
+given #473 (W,wt=4): 490 J(14,0,21).  [hyper(13,a,446,a),eval(1)].
+
+given #474 (W,wt=4): 491 J(1,16,21).  [hyper(12,a,447,a),eval(1)].
+
+given #475 (W,wt=4): 492 J(0,14,21).  [hyper(14,a,448,a),eval(4)].
+
+given #476 (W,wt=4): 493 J(15,2,21).  [hyper(17,a,449,a),eval(7)].
+
+given #477 (W,wt=4): 494 J(15,14,21).  [hyper(10,a,450,a),eval(1)].
+
+given #478 (W,wt=4): 495 J(0,2,21).  [hyper(11,a,451,a),eval(1)].
+
+given #479 (W,wt=4): 496 J(13,16,21).  [hyper(15,a,452,a),eval(7)].
+
+given #480 (W,wt=4): 497 J(2,0,21).  [hyper(16,a,453,a),eval(4)].
+
+given #481 (W,wt=4): 498 J(13,0,21).  [hyper(13,a,454,a),eval(1)].
+
+given #482 (W,wt=4): 499 J(2,16,21).  [hyper(12,a,455,a),eval(1)].
+
+given #483 (W,wt=4): 500 J(0,13,21).  [hyper(14,a,456,a),eval(4)].
+
+given #484 (W,wt=4): 501 J(15,3,21).  [hyper(17,a,457,a),eval(7)].
+
+given #485 (W,wt=4): 502 J(15,13,21).  [hyper(10,a,458,a),eval(1)].
+
+given #486 (W,wt=4): 503 J(0,3,21).  [hyper(11,a,459,a),eval(1)].
+
+given #487 (W,wt=4): 504 J(12,16,21).  [hyper(15,a,460,a),eval(7)].
+
+given #488 (W,wt=4): 505 J(3,0,21).  [hyper(16,a,461,a),eval(4)].
+
+given #489 (W,wt=4): 506 J(12,0,21).  [hyper(13,a,462,a),eval(1)].
+
+given #490 (W,wt=4): 507 J(3,16,21).  [hyper(12,a,463,a),eval(1)].
+
+given #491 (W,wt=4): 508 J(0,12,21).  [hyper(14,a,464,a),eval(4)].
+
+given #492 (W,wt=4): 509 J(15,4,21).  [hyper(17,a,465,a),eval(7)].
+
+given #493 (W,wt=4): 510 J(15,12,21).  [hyper(10,a,466,a),eval(1)].
+
+given #494 (W,wt=4): 511 J(0,4,21).  [hyper(11,a,467,a),eval(1)].
+
+given #495 (W,wt=4): 512 J(11,16,21).  [hyper(15,a,468,a),eval(7)].
+
+given #496 (W,wt=4): 513 J(4,0,21).  [hyper(16,a,469,a),eval(4)].
+
+given #497 (W,wt=4): 514 J(11,0,21).  [hyper(13,a,470,a),eval(1)].
+
+given #498 (W,wt=4): 515 J(4,16,21).  [hyper(12,a,471,a),eval(1)].
+
+given #499 (W,wt=4): 516 J(0,11,21).  [hyper(14,a,472,a),eval(4)].
+
+given #500 (W,wt=4): 517 J(15,5,21).  [hyper(17,a,473,a),eval(7)].
+
+given #501 (W,wt=4): 518 J(15,11,21).  [hyper(10,a,474,a),eval(1)].
+
+given #502 (W,wt=4): 519 J(0,5,21).  [hyper(11,a,475,a),eval(1)].
+
+given #503 (W,wt=4): 520 J(10,16,21).  [hyper(15,a,476,a),eval(7)].
+
+given #504 (W,wt=4): 521 J(5,0,21).  [hyper(16,a,477,a),eval(4)].
+
+given #505 (W,wt=4): 522 J(10,0,21).  [hyper(13,a,478,a),eval(1)].
+
+given #506 (W,wt=4): 523 J(5,16,21).  [hyper(12,a,479,a),eval(1)].
+
+given #507 (W,wt=4): 524 J(15,16,22).  [hyper(17,a,480,a),eval(7)].
+
+given #508 (W,wt=4): 525 J(15,0,22).  [hyper(13,a,480,a),eval(1)].
+
+given #509 (W,wt=4): 526 J(0,16,22).  [hyper(11,a,480,a),eval(1)].
+
+given #510 (W,wt=4): 527 J(0,15,22).  [hyper(14,a,481,a),eval(4)].
+
+given #511 (W,wt=4): 528 J(0,0,22).  [hyper(11,a,481,a),eval(1)].
+
+given #512 (W,wt=4): 529 J(15,1,22).  [hyper(17,a,482,a),eval(7)].
+
+given #513 (W,wt=4): 530 J(15,15,22).  [hyper(10,a,483,a),eval(1)].
+
+given #514 (W,wt=4): 531 J(0,1,22).  [hyper(11,a,485,a),eval(1)].
+
+given #515 (W,wt=4): 532 J(14,16,22).  [hyper(15,a,486,a),eval(7)].
+
+given #516 (W,wt=4): 533 J(1,0,22).  [hyper(16,a,487,a),eval(4)].
+
+given #517 (W,wt=4): 534 J(14,0,22).  [hyper(13,a,488,a),eval(1)].
+
+given #518 (W,wt=4): 535 J(1,16,22).  [hyper(12,a,489,a),eval(1)].
+
+given #519 (W,wt=4): 536 J(0,14,22).  [hyper(14,a,490,a),eval(4)].
+
+given #520 (W,wt=4): 537 J(15,2,22).  [hyper(17,a,491,a),eval(7)].
+
+given #521 (W,wt=4): 538 J(15,14,22).  [hyper(10,a,492,a),eval(1)].
+
+given #522 (W,wt=4): 539 J(0,2,22).  [hyper(11,a,493,a),eval(1)].
+
+given #523 (W,wt=4): 540 J(13,16,22).  [hyper(15,a,494,a),eval(7)].
+
+given #524 (W,wt=4): 541 J(2,0,22).  [hyper(16,a,495,a),eval(4)].
+
+given #525 (W,wt=4): 542 J(13,0,22).  [hyper(13,a,496,a),eval(1)].
+
+given #526 (W,wt=4): 543 J(2,16,22).  [hyper(12,a,497,a),eval(1)].
+
+given #527 (W,wt=4): 544 J(0,13,22).  [hyper(14,a,498,a),eval(4)].
+
+given #528 (W,wt=4): 545 J(15,3,22).  [hyper(17,a,499,a),eval(7)].
+
+given #529 (W,wt=4): 546 J(15,13,22).  [hyper(10,a,500,a),eval(1)].
+
+given #530 (W,wt=4): 547 J(0,3,22).  [hyper(11,a,501,a),eval(1)].
+
+given #531 (W,wt=4): 548 J(12,16,22).  [hyper(15,a,502,a),eval(7)].
+
+given #532 (W,wt=4): 549 J(3,0,22).  [hyper(16,a,503,a),eval(4)].
+
+given #533 (W,wt=4): 550 J(12,0,22).  [hyper(13,a,504,a),eval(1)].
+
+given #534 (W,wt=4): 551 J(3,16,22).  [hyper(12,a,505,a),eval(1)].
+
+given #535 (W,wt=4): 552 J(0,12,22).  [hyper(14,a,506,a),eval(4)].
+
+given #536 (W,wt=4): 553 J(15,4,22).  [hyper(17,a,507,a),eval(7)].
+
+given #537 (W,wt=4): 554 J(15,12,22).  [hyper(10,a,508,a),eval(1)].
+
+given #538 (W,wt=4): 555 J(0,4,22).  [hyper(11,a,509,a),eval(1)].
+
+given #539 (W,wt=4): 556 J(11,16,22).  [hyper(15,a,510,a),eval(7)].
+
+given #540 (W,wt=4): 557 J(4,0,22).  [hyper(16,a,511,a),eval(4)].
+
+given #541 (W,wt=4): 558 J(11,0,22).  [hyper(13,a,512,a),eval(1)].
+
+given #542 (W,wt=4): 559 J(4,16,22).  [hyper(12,a,513,a),eval(1)].
+
+given #543 (W,wt=4): 560 J(0,11,22).  [hyper(14,a,514,a),eval(4)].
+
+given #544 (W,wt=4): 561 J(15,5,22).  [hyper(17,a,515,a),eval(7)].
+
+given #545 (W,wt=4): 562 J(15,11,22).  [hyper(10,a,516,a),eval(1)].
+
+given #546 (W,wt=4): 563 J(0,5,22).  [hyper(11,a,517,a),eval(1)].
+
+given #547 (W,wt=4): 564 J(10,16,22).  [hyper(15,a,518,a),eval(7)].
+
+given #548 (W,wt=4): 565 J(5,0,22).  [hyper(16,a,519,a),eval(4)].
+
+given #549 (W,wt=4): 566 J(10,0,22).  [hyper(13,a,520,a),eval(1)].
+
+given #550 (W,wt=4): 567 J(5,16,22).  [hyper(12,a,521,a),eval(1)].
+
+given #551 (W,wt=4): 568 J(0,10,22).  [hyper(14,a,522,a),eval(4)].
+
+given #552 (W,wt=4): 569 J(15,6,22).  [hyper(17,a,523,a),eval(7)].
+
+given #553 (W,wt=4): 570 J(15,16,23).  [hyper(17,a,524,a),eval(7)].
+
+given #554 (W,wt=4): 571 J(15,0,23).  [hyper(13,a,524,a),eval(1)].
+
+given #555 (W,wt=4): 572 J(0,16,23).  [hyper(11,a,524,a),eval(1)].
+
+given #556 (W,wt=4): 573 J(0,15,23).  [hyper(14,a,525,a),eval(4)].
+
+given #557 (W,wt=4): 574 J(0,0,23).  [hyper(11,a,525,a),eval(1)].
+
+given #558 (W,wt=4): 575 J(15,1,23).  [hyper(17,a,526,a),eval(7)].
+
+given #559 (W,wt=4): 576 J(15,15,23).  [hyper(10,a,527,a),eval(1)].
+
+given #560 (W,wt=4): 577 J(0,1,23).  [hyper(11,a,529,a),eval(1)].
+
+given #561 (W,wt=4): 578 J(14,16,23).  [hyper(15,a,530,a),eval(7)].
+
+given #562 (W,wt=4): 579 J(1,0,23).  [hyper(16,a,531,a),eval(4)].
+
+given #563 (W,wt=4): 580 J(14,0,23).  [hyper(13,a,532,a),eval(1)].
+
+given #564 (W,wt=4): 581 J(1,16,23).  [hyper(12,a,533,a),eval(1)].
+
+given #565 (W,wt=4): 582 J(0,14,23).  [hyper(14,a,534,a),eval(4)].
+
+given #566 (W,wt=4): 583 J(15,2,23).  [hyper(17,a,535,a),eval(7)].
+
+given #567 (W,wt=4): 584 J(15,14,23).  [hyper(10,a,536,a),eval(1)].
+
+given #568 (W,wt=4): 585 J(0,2,23).  [hyper(11,a,537,a),eval(1)].
+
+given #569 (W,wt=4): 586 J(13,16,23).  [hyper(15,a,538,a),eval(7)].
+
+given #570 (W,wt=4): 587 J(2,0,23).  [hyper(16,a,539,a),eval(4)].
+
+given #571 (W,wt=4): 588 J(13,0,23).  [hyper(13,a,540,a),eval(1)].
+
+given #572 (W,wt=4): 589 J(2,16,23).  [hyper(12,a,541,a),eval(1)].
+
+given #573 (W,wt=4): 590 J(0,13,23).  [hyper(14,a,542,a),eval(4)].
+
+given #574 (W,wt=4): 591 J(15,3,23).  [hyper(17,a,543,a),eval(7)].
+
+given #575 (W,wt=4): 592 J(15,13,23).  [hyper(10,a,544,a),eval(1)].
+
+given #576 (W,wt=4): 593 J(0,3,23).  [hyper(11,a,545,a),eval(1)].
+
+given #577 (W,wt=4): 594 J(12,16,23).  [hyper(15,a,546,a),eval(7)].
+
+given #578 (W,wt=4): 595 J(3,0,23).  [hyper(16,a,547,a),eval(4)].
+
+given #579 (W,wt=4): 596 J(12,0,23).  [hyper(13,a,548,a),eval(1)].
+
+given #580 (W,wt=4): 597 J(3,16,23).  [hyper(12,a,549,a),eval(1)].
+
+given #581 (W,wt=4): 598 J(0,12,23).  [hyper(14,a,550,a),eval(4)].
+
+given #582 (W,wt=4): 599 J(15,4,23).  [hyper(17,a,551,a),eval(7)].
+
+given #583 (W,wt=4): 600 J(15,12,23).  [hyper(10,a,552,a),eval(1)].
+
+given #584 (W,wt=4): 601 J(0,4,23).  [hyper(11,a,553,a),eval(1)].
+
+given #585 (W,wt=4): 602 J(11,16,23).  [hyper(15,a,554,a),eval(7)].
+
+given #586 (W,wt=4): 603 J(4,0,23).  [hyper(16,a,555,a),eval(4)].
+
+given #587 (W,wt=4): 604 J(11,0,23).  [hyper(13,a,556,a),eval(1)].
+
+given #588 (W,wt=4): 605 J(4,16,23).  [hyper(12,a,557,a),eval(1)].
+
+given #589 (W,wt=4): 606 J(0,11,23).  [hyper(14,a,558,a),eval(4)].
+
+given #590 (W,wt=4): 607 J(15,5,23).  [hyper(17,a,559,a),eval(7)].
+
+given #591 (W,wt=4): 608 J(15,11,23).  [hyper(10,a,560,a),eval(1)].
+
+given #592 (W,wt=4): 609 J(0,5,23).  [hyper(11,a,561,a),eval(1)].
+
+given #593 (W,wt=4): 610 J(10,16,23).  [hyper(15,a,562,a),eval(7)].
+
+given #594 (W,wt=4): 611 J(5,0,23).  [hyper(16,a,563,a),eval(4)].
+
+given #595 (W,wt=4): 612 J(10,0,23).  [hyper(13,a,564,a),eval(1)].
+
+given #596 (W,wt=4): 613 J(5,16,23).  [hyper(12,a,565,a),eval(1)].
+
+given #597 (W,wt=4): 614 J(0,10,23).  [hyper(14,a,566,a),eval(4)].
+
+given #598 (W,wt=4): 615 J(15,6,23).  [hyper(17,a,567,a),eval(7)].
+
+given #599 (W,wt=4): 616 J(15,10,23).  [hyper(10,a,568,a),eval(1)].
+
+given #600 (W,wt=4): 617 J(0,6,23).  [hyper(11,a,569,a),eval(1)].
+
+given #601 (W,wt=4): 618 J(15,16,24).  [hyper(17,a,570,a),eval(7)].
+
+given #602 (W,wt=4): 619 J(15,0,24).  [hyper(13,a,570,a),eval(1)].
+
+given #603 (W,wt=4): 620 J(0,16,24).  [hyper(11,a,570,a),eval(1)].
+
+given #604 (W,wt=4): 621 J(0,15,24).  [hyper(14,a,571,a),eval(4)].
+
+given #605 (W,wt=4): 622 J(0,0,24).  [hyper(11,a,571,a),eval(1)].
+
+given #606 (W,wt=4): 623 J(15,1,24).  [hyper(17,a,572,a),eval(7)].
+
+given #607 (W,wt=4): 624 J(15,15,24).  [hyper(10,a,573,a),eval(1)].
+
+given #608 (W,wt=4): 625 J(0,1,24).  [hyper(11,a,575,a),eval(1)].
+
+given #609 (W,wt=4): 626 J(14,16,24).  [hyper(15,a,576,a),eval(7)].
+
+given #610 (W,wt=4): 627 J(1,0,24).  [hyper(16,a,577,a),eval(4)].
+
+given #611 (W,wt=4): 628 J(14,0,24).  [hyper(13,a,578,a),eval(1)].
+
+given #612 (W,wt=4): 629 J(1,16,24).  [hyper(12,a,579,a),eval(1)].
+
+given #613 (W,wt=4): 630 J(0,14,24).  [hyper(14,a,580,a),eval(4)].
+
+given #614 (W,wt=4): 631 J(15,2,24).  [hyper(17,a,581,a),eval(7)].
+
+given #615 (W,wt=4): 632 J(15,14,24).  [hyper(10,a,582,a),eval(1)].
+
+given #616 (W,wt=4): 633 J(0,2,24).  [hyper(11,a,583,a),eval(1)].
+
+given #617 (W,wt=4): 634 J(13,16,24).  [hyper(15,a,584,a),eval(7)].
+
+given #618 (W,wt=4): 635 J(2,0,24).  [hyper(16,a,585,a),eval(4)].
+
+given #619 (W,wt=4): 636 J(13,0,24).  [hyper(13,a,586,a),eval(1)].
+
+given #620 (W,wt=4): 637 J(2,16,24).  [hyper(12,a,587,a),eval(1)].
+
+given #621 (W,wt=4): 638 J(0,13,24).  [hyper(14,a,588,a),eval(4)].
+
+given #622 (W,wt=4): 639 J(15,3,24).  [hyper(17,a,589,a),eval(7)].
+
+given #623 (W,wt=4): 640 J(15,13,24).  [hyper(10,a,590,a),eval(1)].
+
+given #624 (W,wt=4): 641 J(0,3,24).  [hyper(11,a,591,a),eval(1)].
+
+given #625 (W,wt=4): 642 J(12,16,24).  [hyper(15,a,592,a),eval(7)].
+
+given #626 (W,wt=4): 643 J(3,0,24).  [hyper(16,a,593,a),eval(4)].
+
+given #627 (W,wt=4): 644 J(12,0,24).  [hyper(13,a,594,a),eval(1)].
+
+given #628 (W,wt=4): 645 J(3,16,24).  [hyper(12,a,595,a),eval(1)].
+
+given #629 (W,wt=4): 646 J(0,12,24).  [hyper(14,a,596,a),eval(4)].
+
+given #630 (W,wt=4): 647 J(15,4,24).  [hyper(17,a,597,a),eval(7)].
+
+given #631 (W,wt=4): 648 J(15,12,24).  [hyper(10,a,598,a),eval(1)].
+
+given #632 (W,wt=4): 649 J(0,4,24).  [hyper(11,a,599,a),eval(1)].
+
+given #633 (W,wt=4): 650 J(11,16,24).  [hyper(15,a,600,a),eval(7)].
+
+given #634 (W,wt=4): 651 J(4,0,24).  [hyper(16,a,601,a),eval(4)].
+
+given #635 (W,wt=4): 652 J(11,0,24).  [hyper(13,a,602,a),eval(1)].
+
+given #636 (W,wt=4): 653 J(4,16,24).  [hyper(12,a,603,a),eval(1)].
+
+given #637 (W,wt=4): 654 J(0,11,24).  [hyper(14,a,604,a),eval(4)].
+
+given #638 (W,wt=4): 655 J(15,5,24).  [hyper(17,a,605,a),eval(7)].
+
+given #639 (W,wt=4): 656 J(15,11,24).  [hyper(10,a,606,a),eval(1)].
+
+given #640 (W,wt=4): 657 J(0,5,24).  [hyper(11,a,607,a),eval(1)].
+
+given #641 (W,wt=4): 658 J(10,16,24).  [hyper(15,a,608,a),eval(7)].
+
+given #642 (W,wt=4): 659 J(5,0,24).  [hyper(16,a,609,a),eval(4)].
+
+given #643 (W,wt=4): 660 J(10,0,24).  [hyper(13,a,610,a),eval(1)].
+
+given #644 (W,wt=4): 661 J(5,16,24).  [hyper(12,a,611,a),eval(1)].
+
+given #645 (W,wt=4): 662 J(0,10,24).  [hyper(14,a,612,a),eval(4)].
+
+given #646 (W,wt=4): 663 J(15,6,24).  [hyper(17,a,613,a),eval(7)].
+
+given #647 (W,wt=4): 664 J(15,10,24).  [hyper(10,a,614,a),eval(1)].
+
+given #648 (W,wt=4): 665 J(0,6,24).  [hyper(11,a,615,a),eval(1)].
+
+given #649 (W,wt=4): 666 J(9,16,24).  [hyper(15,a,616,a),eval(7)].
+
+given #650 (W,wt=4): 667 J(6,0,24).  [hyper(16,a,617,a),eval(4)].
+
+given #651 (W,wt=4): 668 J(15,16,25).  [hyper(17,a,618,a),eval(7)].
+
+given #652 (W,wt=4): 669 J(15,0,25).  [hyper(13,a,618,a),eval(1)].
+
+given #653 (W,wt=4): 670 J(0,16,25).  [hyper(11,a,618,a),eval(1)].
+
+given #654 (W,wt=4): 671 J(0,15,25).  [hyper(14,a,619,a),eval(4)].
+
+given #655 (W,wt=4): 672 J(0,0,25).  [hyper(11,a,619,a),eval(1)].
+
+given #656 (W,wt=4): 673 J(15,1,25).  [hyper(17,a,620,a),eval(7)].
+
+given #657 (W,wt=4): 674 J(15,15,25).  [hyper(10,a,621,a),eval(1)].
+
+given #658 (W,wt=4): 675 J(0,1,25).  [hyper(11,a,623,a),eval(1)].
+
+given #659 (W,wt=4): 676 J(14,16,25).  [hyper(15,a,624,a),eval(7)].
+
+given #660 (W,wt=4): 677 J(1,0,25).  [hyper(16,a,625,a),eval(4)].
+
+given #661 (W,wt=4): 678 J(14,0,25).  [hyper(13,a,626,a),eval(1)].
+
+given #662 (W,wt=4): 679 J(1,16,25).  [hyper(12,a,627,a),eval(1)].
+
+given #663 (W,wt=4): 680 J(0,14,25).  [hyper(14,a,628,a),eval(4)].
+
+given #664 (W,wt=4): 681 J(15,2,25).  [hyper(17,a,629,a),eval(7)].
+
+given #665 (W,wt=4): 682 J(15,14,25).  [hyper(10,a,630,a),eval(1)].
+
+given #666 (W,wt=4): 683 J(0,2,25).  [hyper(11,a,631,a),eval(1)].
+
+given #667 (W,wt=4): 684 J(13,16,25).  [hyper(15,a,632,a),eval(7)].
+
+given #668 (W,wt=4): 685 J(2,0,25).  [hyper(16,a,633,a),eval(4)].
+
+given #669 (W,wt=4): 686 J(13,0,25).  [hyper(13,a,634,a),eval(1)].
+
+given #670 (W,wt=4): 687 J(2,16,25).  [hyper(12,a,635,a),eval(1)].
+
+given #671 (W,wt=4): 688 J(0,13,25).  [hyper(14,a,636,a),eval(4)].
+
+given #672 (W,wt=4): 689 J(15,3,25).  [hyper(17,a,637,a),eval(7)].
+
+given #673 (W,wt=4): 690 J(15,13,25).  [hyper(10,a,638,a),eval(1)].
+
+given #674 (W,wt=4): 691 J(0,3,25).  [hyper(11,a,639,a),eval(1)].
+
+given #675 (W,wt=4): 692 J(12,16,25).  [hyper(15,a,640,a),eval(7)].
+
+given #676 (W,wt=4): 693 J(3,0,25).  [hyper(16,a,641,a),eval(4)].
+
+given #677 (W,wt=4): 694 J(12,0,25).  [hyper(13,a,642,a),eval(1)].
+
+given #678 (W,wt=4): 695 J(3,16,25).  [hyper(12,a,643,a),eval(1)].
+
+given #679 (W,wt=4): 696 J(0,12,25).  [hyper(14,a,644,a),eval(4)].
+
+given #680 (W,wt=4): 697 J(15,4,25).  [hyper(17,a,645,a),eval(7)].
+
+given #681 (W,wt=4): 698 J(15,12,25).  [hyper(10,a,646,a),eval(1)].
+
+given #682 (W,wt=4): 699 J(0,4,25).  [hyper(11,a,647,a),eval(1)].
+
+given #683 (W,wt=4): 700 J(11,16,25).  [hyper(15,a,648,a),eval(7)].
+
+given #684 (W,wt=4): 701 J(4,0,25).  [hyper(16,a,649,a),eval(4)].
+
+given #685 (W,wt=4): 702 J(11,0,25).  [hyper(13,a,650,a),eval(1)].
+
+given #686 (W,wt=4): 703 J(4,16,25).  [hyper(12,a,651,a),eval(1)].
+
+given #687 (W,wt=4): 704 J(0,11,25).  [hyper(14,a,652,a),eval(4)].
+
+given #688 (W,wt=4): 705 J(15,5,25).  [hyper(17,a,653,a),eval(7)].
+
+given #689 (W,wt=4): 706 J(15,11,25).  [hyper(10,a,654,a),eval(1)].
+
+given #690 (W,wt=4): 707 J(0,5,25).  [hyper(11,a,655,a),eval(1)].
+
+given #691 (W,wt=4): 708 J(10,16,25).  [hyper(15,a,656,a),eval(7)].
+
+given #692 (W,wt=4): 709 J(5,0,25).  [hyper(16,a,657,a),eval(4)].
+
+given #693 (W,wt=4): 710 J(10,0,25).  [hyper(13,a,658,a),eval(1)].
+
+given #694 (W,wt=4): 711 J(5,16,25).  [hyper(12,a,659,a),eval(1)].
+
+given #695 (W,wt=4): 712 J(0,10,25).  [hyper(14,a,660,a),eval(4)].
+
+given #696 (W,wt=4): 713 J(15,6,25).  [hyper(17,a,661,a),eval(7)].
+
+given #697 (W,wt=4): 714 J(15,10,25).  [hyper(10,a,662,a),eval(1)].
+
+given #698 (W,wt=4): 715 J(0,6,25).  [hyper(11,a,663,a),eval(1)].
+
+given #699 (W,wt=4): 716 J(9,16,25).  [hyper(15,a,664,a),eval(7)].
+
+given #700 (W,wt=4): 717 J(6,0,25).  [hyper(16,a,665,a),eval(4)].
+
+given #701 (W,wt=4): 718 J(9,0,25).  [hyper(13,a,666,a),eval(1)].
+
+given #702 (W,wt=4): 719 J(6,16,25).  [hyper(12,a,667,a),eval(1)].
+
+given #703 (W,wt=4): 720 J(15,16,26).  [hyper(17,a,668,a),eval(7)].
+
+given #704 (W,wt=4): 721 J(15,0,26).  [hyper(13,a,668,a),eval(1)].
+
+given #705 (W,wt=4): 722 J(0,16,26).  [hyper(11,a,668,a),eval(1)].
+
+given #706 (W,wt=4): 723 J(0,15,26).  [hyper(14,a,669,a),eval(4)].
+
+given #707 (W,wt=4): 724 J(0,0,26).  [hyper(11,a,669,a),eval(1)].
+
+given #708 (W,wt=4): 725 J(15,1,26).  [hyper(17,a,670,a),eval(7)].
+
+given #709 (W,wt=4): 726 J(15,15,26).  [hyper(10,a,671,a),eval(1)].
+
+given #710 (W,wt=4): 727 J(0,1,26).  [hyper(11,a,673,a),eval(1)].
+
+given #711 (W,wt=4): 728 J(14,16,26).  [hyper(15,a,674,a),eval(7)].
+
+given #712 (W,wt=4): 729 J(1,0,26).  [hyper(16,a,675,a),eval(4)].
+
+given #713 (W,wt=4): 730 J(14,0,26).  [hyper(13,a,676,a),eval(1)].
+
+given #714 (W,wt=4): 731 J(1,16,26).  [hyper(12,a,677,a),eval(1)].
+
+given #715 (W,wt=4): 732 J(0,14,26).  [hyper(14,a,678,a),eval(4)].
+
+given #716 (W,wt=4): 733 J(15,2,26).  [hyper(17,a,679,a),eval(7)].
+
+given #717 (W,wt=4): 734 J(15,14,26).  [hyper(10,a,680,a),eval(1)].
+
+given #718 (W,wt=4): 735 J(0,2,26).  [hyper(11,a,681,a),eval(1)].
+
+given #719 (W,wt=4): 736 J(13,16,26).  [hyper(15,a,682,a),eval(7)].
+
+given #720 (W,wt=4): 737 J(2,0,26).  [hyper(16,a,683,a),eval(4)].
+
+given #721 (W,wt=4): 738 J(13,0,26).  [hyper(13,a,684,a),eval(1)].
+
+given #722 (W,wt=4): 739 J(2,16,26).  [hyper(12,a,685,a),eval(1)].
+
+given #723 (W,wt=4): 740 J(0,13,26).  [hyper(14,a,686,a),eval(4)].
+
+given #724 (W,wt=4): 741 J(15,3,26).  [hyper(17,a,687,a),eval(7)].
+
+given #725 (W,wt=4): 742 J(15,13,26).  [hyper(10,a,688,a),eval(1)].
+
+given #726 (W,wt=4): 743 J(0,3,26).  [hyper(11,a,689,a),eval(1)].
+
+given #727 (W,wt=4): 744 J(12,16,26).  [hyper(15,a,690,a),eval(7)].
+
+given #728 (W,wt=4): 745 J(3,0,26).  [hyper(16,a,691,a),eval(4)].
+
+given #729 (W,wt=4): 746 J(12,0,26).  [hyper(13,a,692,a),eval(1)].
+
+given #730 (W,wt=4): 747 J(3,16,26).  [hyper(12,a,693,a),eval(1)].
+
+given #731 (W,wt=4): 748 J(0,12,26).  [hyper(14,a,694,a),eval(4)].
+
+given #732 (W,wt=4): 749 J(15,4,26).  [hyper(17,a,695,a),eval(7)].
+
+given #733 (W,wt=4): 750 J(15,12,26).  [hyper(10,a,696,a),eval(1)].
+
+given #734 (W,wt=4): 751 J(0,4,26).  [hyper(11,a,697,a),eval(1)].
+
+given #735 (W,wt=4): 752 J(11,16,26).  [hyper(15,a,698,a),eval(7)].
+
+given #736 (W,wt=4): 753 J(4,0,26).  [hyper(16,a,699,a),eval(4)].
+
+given #737 (W,wt=4): 754 J(11,0,26).  [hyper(13,a,700,a),eval(1)].
+
+given #738 (W,wt=4): 755 J(4,16,26).  [hyper(12,a,701,a),eval(1)].
+
+given #739 (W,wt=4): 756 J(0,11,26).  [hyper(14,a,702,a),eval(4)].
+
+given #740 (W,wt=4): 757 J(15,5,26).  [hyper(17,a,703,a),eval(7)].
+
+given #741 (W,wt=4): 758 J(15,11,26).  [hyper(10,a,704,a),eval(1)].
+
+given #742 (W,wt=4): 759 J(0,5,26).  [hyper(11,a,705,a),eval(1)].
+
+given #743 (W,wt=4): 760 J(10,16,26).  [hyper(15,a,706,a),eval(7)].
+
+given #744 (W,wt=4): 761 J(5,0,26).  [hyper(16,a,707,a),eval(4)].
+
+given #745 (W,wt=4): 762 J(10,0,26).  [hyper(13,a,708,a),eval(1)].
+
+given #746 (W,wt=4): 763 J(5,16,26).  [hyper(12,a,709,a),eval(1)].
+
+given #747 (W,wt=4): 764 J(0,10,26).  [hyper(14,a,710,a),eval(4)].
+
+given #748 (W,wt=4): 765 J(15,6,26).  [hyper(17,a,711,a),eval(7)].
+
+given #749 (W,wt=4): 766 J(15,10,26).  [hyper(10,a,712,a),eval(1)].
+
+given #750 (W,wt=4): 767 J(0,6,26).  [hyper(11,a,713,a),eval(1)].
+
+given #751 (W,wt=4): 768 J(9,16,26).  [hyper(15,a,714,a),eval(7)].
+
+given #752 (W,wt=4): 769 J(6,0,26).  [hyper(16,a,715,a),eval(4)].
+
+given #753 (W,wt=4): 770 J(9,0,26).  [hyper(13,a,716,a),eval(1)].
+
+given #754 (W,wt=4): 771 J(6,16,26).  [hyper(12,a,717,a),eval(1)].
+
+given #755 (W,wt=4): 772 J(0,9,26).  [hyper(14,a,718,a),eval(4)].
+
+given #756 (W,wt=4): 773 J(15,7,26).  [hyper(17,a,719,a),eval(7)].
+
+given #757 (W,wt=4): 774 J(15,16,27).  [hyper(17,a,720,a),eval(7)].
+
+given #758 (W,wt=4): 775 J(15,0,27).  [hyper(13,a,720,a),eval(1)].
+
+given #759 (W,wt=4): 776 J(0,16,27).  [hyper(11,a,720,a),eval(1)].
+
+given #760 (W,wt=4): 777 J(0,15,27).  [hyper(14,a,721,a),eval(4)].
+
+given #761 (W,wt=4): 778 J(0,0,27).  [hyper(11,a,721,a),eval(1)].
+
+given #762 (W,wt=4): 779 J(15,1,27).  [hyper(17,a,722,a),eval(7)].
+
+given #763 (W,wt=4): 780 J(15,15,27).  [hyper(10,a,723,a),eval(1)].
+
+given #764 (W,wt=4): 781 J(0,1,27).  [hyper(11,a,725,a),eval(1)].
+
+given #765 (W,wt=4): 782 J(14,16,27).  [hyper(15,a,726,a),eval(7)].
+
+given #766 (W,wt=4): 783 J(1,0,27).  [hyper(16,a,727,a),eval(4)].
+
+given #767 (W,wt=4): 784 J(14,0,27).  [hyper(13,a,728,a),eval(1)].
+
+given #768 (W,wt=4): 785 J(1,16,27).  [hyper(12,a,729,a),eval(1)].
+
+given #769 (W,wt=4): 786 J(0,14,27).  [hyper(14,a,730,a),eval(4)].
+
+given #770 (W,wt=4): 787 J(15,2,27).  [hyper(17,a,731,a),eval(7)].
+
+given #771 (W,wt=4): 788 J(15,14,27).  [hyper(10,a,732,a),eval(1)].
+
+given #772 (W,wt=4): 789 J(0,2,27).  [hyper(11,a,733,a),eval(1)].
+
+given #773 (W,wt=4): 790 J(13,16,27).  [hyper(15,a,734,a),eval(7)].
+
+given #774 (W,wt=4): 791 J(2,0,27).  [hyper(16,a,735,a),eval(4)].
+
+given #775 (W,wt=4): 792 J(13,0,27).  [hyper(13,a,736,a),eval(1)].
+
+given #776 (W,wt=4): 793 J(2,16,27).  [hyper(12,a,737,a),eval(1)].
+
+given #777 (W,wt=4): 794 J(0,13,27).  [hyper(14,a,738,a),eval(4)].
+
+given #778 (W,wt=4): 795 J(15,3,27).  [hyper(17,a,739,a),eval(7)].
+
+given #779 (W,wt=4): 796 J(15,13,27).  [hyper(10,a,740,a),eval(1)].
+
+given #780 (W,wt=4): 797 J(0,3,27).  [hyper(11,a,741,a),eval(1)].
+
+given #781 (W,wt=4): 798 J(12,16,27).  [hyper(15,a,742,a),eval(7)].
+
+given #782 (W,wt=4): 799 J(3,0,27).  [hyper(16,a,743,a),eval(4)].
+
+given #783 (W,wt=4): 800 J(12,0,27).  [hyper(13,a,744,a),eval(1)].
+
+given #784 (W,wt=4): 801 J(3,16,27).  [hyper(12,a,745,a),eval(1)].
+
+given #785 (W,wt=4): 802 J(0,12,27).  [hyper(14,a,746,a),eval(4)].
+
+given #786 (W,wt=4): 803 J(15,4,27).  [hyper(17,a,747,a),eval(7)].
+
+given #787 (W,wt=4): 804 J(15,12,27).  [hyper(10,a,748,a),eval(1)].
+
+given #788 (W,wt=4): 805 J(0,4,27).  [hyper(11,a,749,a),eval(1)].
+
+given #789 (W,wt=4): 806 J(11,16,27).  [hyper(15,a,750,a),eval(7)].
+
+given #790 (W,wt=4): 807 J(4,0,27).  [hyper(16,a,751,a),eval(4)].
+
+given #791 (W,wt=4): 808 J(11,0,27).  [hyper(13,a,752,a),eval(1)].
+
+given #792 (W,wt=4): 809 J(4,16,27).  [hyper(12,a,753,a),eval(1)].
+
+given #793 (W,wt=4): 810 J(0,11,27).  [hyper(14,a,754,a),eval(4)].
+
+given #794 (W,wt=4): 811 J(15,5,27).  [hyper(17,a,755,a),eval(7)].
+
+given #795 (W,wt=4): 812 J(15,11,27).  [hyper(10,a,756,a),eval(1)].
+
+given #796 (W,wt=4): 813 J(0,5,27).  [hyper(11,a,757,a),eval(1)].
+
+given #797 (W,wt=4): 814 J(10,16,27).  [hyper(15,a,758,a),eval(7)].
+
+given #798 (W,wt=4): 815 J(5,0,27).  [hyper(16,a,759,a),eval(4)].
+
+given #799 (W,wt=4): 816 J(10,0,27).  [hyper(13,a,760,a),eval(1)].
+
+given #800 (W,wt=4): 817 J(5,16,27).  [hyper(12,a,761,a),eval(1)].
+
+given #801 (W,wt=4): 818 J(0,10,27).  [hyper(14,a,762,a),eval(4)].
+
+given #802 (W,wt=4): 819 J(15,6,27).  [hyper(17,a,763,a),eval(7)].
+
+given #803 (W,wt=4): 820 J(15,10,27).  [hyper(10,a,764,a),eval(1)].
+
+given #804 (W,wt=4): 821 J(0,6,27).  [hyper(11,a,765,a),eval(1)].
+
+given #805 (W,wt=4): 822 J(9,16,27).  [hyper(15,a,766,a),eval(7)].
+
+given #806 (W,wt=4): 823 J(6,0,27).  [hyper(16,a,767,a),eval(4)].
+
+given #807 (W,wt=4): 824 J(9,0,27).  [hyper(13,a,768,a),eval(1)].
+
+given #808 (W,wt=4): 825 J(6,16,27).  [hyper(12,a,769,a),eval(1)].
+
+given #809 (W,wt=4): 826 J(0,9,27).  [hyper(14,a,770,a),eval(4)].
+
+given #810 (W,wt=4): 827 J(15,7,27).  [hyper(17,a,771,a),eval(7)].
+
+given #811 (W,wt=4): 828 J(15,9,27).  [hyper(10,a,772,a),eval(1)].
+
+============================== PROOF =================================
+
+% Proof 1 at 0.06 (+ 0.01) seconds.
+% Length of proof is 40.
+% Level of proof is 30.
+% Maximum clause weight is 4.000.
+% Given clauses 811.
+
+1 (all x all y all t (J(x,y,t) -> J(15,y,t + 1))) # label(non_clause).  [assumption].
+4 (all x all y all t (J(x,y,t) -> J(x,0,t + 1))) # label(non_clause).  [assumption].
+5 (all x all y all t (J(x,y,t) & x + y <= 16 -> J(0,y + x,t + 1))) # label(non_clause).  [assumption].
+6 (all x all y all t (J(x,y,t) & x + y > 16 -> J(x + -(16 + -y),16,t + 1))) # label(non_clause).  [assumption].
+9 (exists x exists t (J(8,x,t) | J(x,8,t))) # label(non_clause) # label(goal).  [goal].
+10 -J(x,y,z) | J(15,y,z + 1).  [clausify(1)].
+13 -J(x,y,z) | J(x,0,z + 1).  [clausify(4)].
+14 -J(x,y,z) | -(x + y <= 16) | J(0,y + x,z + 1).  [clausify(5)].
+15 -J(x,y,z) | -(x + y > 16) | J(x + -(16 + -y),16,z + 1).  [clausify(6)].
+18 J(15,16,0).  [assumption].
+19 -J(8,x,y).  [deny(9)].
+22 J(15,0,1).  [hyper(13,a,18,a),eval(1)].
+27 J(0,15,2).  [hyper(14,a,22,a),eval(4)].
+36 J(15,15,3).  [hyper(10,a,27,a),eval(1)].
+46 J(14,16,4).  [hyper(15,a,36,a),eval(7)].
+58 J(14,0,5).  [hyper(13,a,46,a),eval(1)].
+72 J(0,14,6).  [hyper(14,a,58,a),eval(4)].
+88 J(15,14,7).  [hyper(10,a,72,a),eval(1)].
+106 J(13,16,8).  [hyper(15,a,88,a),eval(7)].
+126 J(13,0,9).  [hyper(13,a,106,a),eval(1)].
+148 J(0,13,10).  [hyper(14,a,126,a),eval(4)].
+172 J(15,13,11).  [hyper(10,a,148,a),eval(1)].
+198 J(12,16,12).  [hyper(15,a,172,a),eval(7)].
+226 J(12,0,13).  [hyper(13,a,198,a),eval(1)].
+256 J(0,12,14).  [hyper(14,a,226,a),eval(4)].
+288 J(15,12,15).  [hyper(10,a,256,a),eval(1)].
+322 J(11,16,16).  [hyper(15,a,288,a),eval(7)].
+358 J(11,0,17).  [hyper(13,a,322,a),eval(1)].
+396 J(0,11,18).  [hyper(14,a,358,a),eval(4)].
+436 J(15,11,19).  [hyper(10,a,396,a),eval(1)].
+478 J(10,16,20).  [hyper(15,a,436,a),eval(7)].
+522 J(10,0,21).  [hyper(13,a,478,a),eval(1)].
+568 J(0,10,22).  [hyper(14,a,522,a),eval(4)].
+616 J(15,10,23).  [hyper(10,a,568,a),eval(1)].
+666 J(9,16,24).  [hyper(15,a,616,a),eval(7)].
+718 J(9,0,25).  [hyper(13,a,666,a),eval(1)].
+772 J(0,9,26).  [hyper(14,a,718,a),eval(4)].
+828 J(15,9,27).  [hyper(10,a,772,a),eval(1)].
+886 J(8,16,28).  [hyper(15,a,828,a),eval(7)].
+887 $F.  [resolve(886,a,19,a)].
+
+============================== end of proof ==========================
+
+============================== STATISTICS ============================
+
+Given=811. Generated=6470. Kept=869. proofs=1.
+Usable=819. Sos=57. Demods=0. Limbo=0, Disabled=3. Hints=0.
+Kept_by_rule=0, Deleted_by_rule=0.
+Forward_subsumed=5601. Back_subsumed=0.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=0 (0 lex), Back_demodulated=0. Back_unit_deleted=0.
+Demod_attempts=0. Demod_rewrites=0.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=0.
+Megabytes=0.57.
+User_CPU=0.06, System_CPU=0.01, Wall_clock=0.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+THEOREM PROVED
+
+Exiting with 1 proof.
+
+Process 2568 exit (max_proofs) Thu Jan 21 20:32:32 2021

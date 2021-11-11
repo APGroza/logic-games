@@ -1,0 +1,10 @@
+formulas(rotate). 
+  p1r <-> left(a1,b1).                        %rotate p1
+  p3r <-> left(a3,b3) & left(b3,a2).          %rotate p2
+  p4r <-> left(a4,b4).                        %rotate p3
+  
+  (p1 | p1r) & p2 & (p3 | p3r) & (p4 | p4r).  %four pieces are needed
+   p1 -> -p1r .                               %p1 XOR p1 rotated
+   p3 -> -p3r.                                %p3 XOR p3 rotated
+   p4 -> -p4r.                                %p4 XOR p4 rotated
+end_of_list.

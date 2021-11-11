@@ -1,0 +1,60 @@
+assign(domain_size,20).  %grid 4x5
+assign(max_models,-1).
+set(arithmetic).
+
+list(distinct).
+  [a0,a1,a2,a3,a4,
+   a5,a6,a7,a8,a9,
+   a10,a11,a12,a13,a14,
+   a15,a16,a17,a18,a19].
+end_of_list.
+
+formulas(utils).
+  x < 15 -> (on(x,y) <-> y = x + 5).   %x on y, 
+  x > 14 -> -on(x,y).                  %4x5 grid
+  
+  (x != 4 & x != 9 & x != 14 & x != 19) -> (left(x,y) <-> y = x + 1). 
+ -(x != 4 & x != 9 & x != 14 & x != 19) -> -left(x,y).                
+end_of_list.
+
+formulas(shapes).
+ s1   <-> on(a0,a1) & on(a1,a2)  & on(a2,a3) & left(a3,a4).     
+ s1r  <-> left(a1,a0) & left(a2,a1) & left(a3,a2) & on(a3,a4).     
+ s1rr <-> on(a1,a0) & on(a2,a1) & on(a3,a2) & left(a4,a3).     
+ s1rrr<-> left(a0,a1) & left(a1,a2) & left(a2,a3) & on(a4,a3).     
+ s1 | s1r | s1rr | s1rrr.            %at least one
+ s1    -> -s1r & -s1rr & -s1rrr.     %at most one
+ s1r   -> -s1  & -s1rr & -s1rrr.
+ s1rr  -> -s1  & -s1r  & -s1rrr.
+ s1rrr -> -s1  & -s1r  & -s1rr. 
+
+ s2   <-> on(a5,a6) & on(a7,a8) & on(a8,a9) & left(a5,a8) & left(a6,a9).
+ s2r  <-> left(a6,a5) & left(a8,a7) & left(a9,a8) & on(a5,a8) & on(a6,a9).
+ s2rr <-> on(a6,a5) & on(a8,a7) & on(a9,a8) & left(a8,a5) & left(a9,a6).
+ s2rrr<-> left(a5,a6) & left(a7,a8) & left(a8,a9) & on(a8,a5) & on(a9,a6).
+ s2 | s2r | s2rr | s2rrr.            
+ s2    -> -s2r & -s2rr & -s2rrr.     
+ s2r   -> -s2  & -s2rr & -s2rrr.
+ s2rr  -> -s2  & -s2r  & -s2rrr.
+ s2rrr -> -s2  & -s2r  & -s2rr. 
+
+ s3   <-> on(a11,a12) & on(a12,a13) & on(a13,a14) & left(a10,a12).
+ s3r  <-> left(a12,a11) & left(a13,a12) & left(a14,a13) & on(a10,a12).
+ s3rr <-> on(a12,a11) & on(a13,a12) & on(a14,a13) & left(a12,a10).
+ s3rrr<-> left(a11,a12) & left(a12,a13) & left(a13,a14) & on(a12,a10).
+ s3 | s3r | s3rr | s3rrr.            
+ s3    -> -s3r & -s3rr & -s3rrr.     
+ s3r   -> -s3  & -s3rr & -s3rrr.
+ s3rr  -> -s3  & -s3r  & -s3rrr.
+ s3rrr -> -s3  & -s3r  & -s3rr. 
+
+ s4   <-> on(a15,a16) & left(a16,a17) & on(a17,a18) & left(a18,a19). 
+ s4r  <-> left(a16,a15) & on(a16,a17) & left(a18,a17) & on(a18,a19). 
+ s4rr <-> on(a16,a15) & left(a17,a16) & on(a18,a17) & left(a19,a18). 
+ s4rrr<-> left(a15,a16) & on(a17,a16) & left(a17,a18) & on(a19,a18). 
+ s4 | s4r | s4rr | s4rrr.            
+ s4    -> -s4r & -s4rr & -s4rrr.     
+ s4r   -> -s4  & -s4rr & -s4rrr.
+ s4rr  -> -s4  & -s4r  & -s4rrr.
+ s4rrr -> -s4  & -s4r  & -s4rr. 
+end_of_list.

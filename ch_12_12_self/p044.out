@@ -1,0 +1,85 @@
+============================== Mace4 =================================
+Mace4 (64) version 2009-11A, November 2009.
+Process 2156 was started by adrian on adrian,
+Thu Jan 21 20:20:39 2021
+The command was "mace4 -f p044.in".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+% Reading from file p044.in
+
+set(arithmetic).
+    % set(arithmetic) -> clear(lnh).
+    % set(arithmetic) -> assign(selection_order, 0).
+
+    % Declaring Mace4 arithmetic parse types.
+assign(domain_size,100).
+    % assign(domain_size, 100) -> assign(start_size, 100).
+    % assign(domain_size, 100) -> assign(end_size, 100).
+assign(max_models,-1).
+
+formulas(assumptions).
+even(x) <-> x mod 2 = 0.
+odd(x) <-> x mod 2 = 1.
+even(r) -> odd(l).
+odd(r) -> even(l).
+even(r) | odd(r).
+even(l) | odd(l).
+sum = 3 * r + 2 * l.
+-(even(sum) -> even(r)).
+end_of_list.
+
+============================== end of input ==========================
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+1 even(x) <-> x mod 2 = 0 # label(non_clause).  [assumption].
+2 odd(x) <-> x mod 2 = 1 # label(non_clause).  [assumption].
+3 even(r) -> odd(l) # label(non_clause).  [assumption].
+4 odd(r) -> even(l) # label(non_clause).  [assumption].
+5 -(even(sum) -> even(r)) # label(non_clause).  [assumption].
+
+============================== end of process non-clausal formulas ===
+
+============================== CLAUSES FOR SEARCH ====================
+
+formulas(mace4_clauses).
+-even(x) | x mod 2 = 0.
+even(x) | x mod 2 != 0.
+-odd(x) | x mod 2 = 1.
+odd(x) | x mod 2 != 1.
+-even(r) | odd(l).
+-odd(r) | even(l).
+even(r) | odd(r).
+even(l) | odd(l).
+sum = 3 * r + 2 * l.
+even(sum).
+-even(r).
+end_of_list.
+
+============================== end of clauses for search =============
+
+% The largest natural number in the input is 3.
+
+============================== DOMAIN SIZE 100 =======================
+
+============================== STATISTICS ============================
+
+For domain size 100.
+
+Current CPU time: 0.00 seconds (total CPU time: 0.12 seconds).
+Ground clauses: seen=407, kept=207.
+Selections=2551, assignments=255100, propagations=200, current_models=0.
+Rewrite_terms=397850, rewrite_bools=387950, indexes=0.
+Rules_from_neg_clauses=0, cross_offs=2600.
+
+============================== end of statistics =====================
+
+User_CPU=0.12, System_CPU=0.00, Wall_clock=0.
+
+Exiting with failure.
+
+Process 2156 exit (exhausted) Thu Jan 21 20:20:39 2021
+The process finished Thu Jan 21 20:20:39 2021

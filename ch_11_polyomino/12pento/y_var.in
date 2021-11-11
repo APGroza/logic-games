@@ -1,0 +1,22 @@
+formulas(y_shape).
+ Y(x,y,z,u,v)    <->   on(x,y) &   on(y,z) &   on(z,u) & left(v,y).
+ Yr(x,y,z,u,v)   <-> left(y,x) & left(z,y) & left(u,z) &   on(v,y).
+ Yrr(x,y,z,u,v)  <->   on(y,x) &   on(z,y) &   on(u,z) & left(y,v).
+ Yrrr(x,y,z,u,v) <-> left(x,y) & left(y,z) & left(z,u) &   on(y,v).
+
+ Yu(x,y,z,u,v)   <->   on(x,y) &   on(y,z) &   on(z,u) & left(y,v).
+ Yur(x,y,z,u,v)  <-> left(y,x) & left(z,y) & left(u,z) &   on(y,v).
+ Yurr(x,y,z,u,v) <->   on(y,x) &   on(z,y) &   on(u,z) & left(v,y).
+ Yurrr(x,y,z,u,v)<-> left(x,y) & left(y,z) & left(z,u) &  on(v,y).
+
+ Y(x,y,z,u,v) | Yr(x,y,z,u,v) | Yrr(x,y,z,u,v) | Yrrr(x,y,z,u,v) | Yu(x,y,z,u,v) | Yur(x,y,z,u,v) | Yurr(x,y,z,u,v) | Yurrr(x,y,z,u,v).            
+ Y(x,y,z,u,v)    -> -Yr(x,y,z,u,v) & -Yrr(x,y,z,u,v) & -Yrrr(x,y,z,u,v) & -Yu(x,y,z,u,v)   & -Yur(x,y,z,u,v) & -Yurr(x,y,z,u,v) & -Yurrr(x,y,z,u,v).     
+ Yr(x,y,z,u,v)   -> -Y(x,y,z,u,v)  & -Yrr(x,y,z,u,v) & -Yrrr(x,y,z,u,v) & -Yu(x,y,z,u,v)   & -Yur(x,y,z,u,v) & -Yurr(x,y,z,u,v) & -Yurrr(x,y,z,u,v).
+ Yrr(x,y,z,u,v)  -> -Y(x,y,z,u,v)  & -Yr(x,y,z,u,v)  & -Yrrr(x,y,z,u,v) & -Yu(x,y,z,u,v)   & -Yur(x,y,z,u,v) & -Yurr(x,y,z,u,v) & -Yurrr(x,y,z,u,v).
+ Yrrr(x,y,z,u,v) -> -Y(x,y,z,u,v)  & -Yr(x,y,z,u,v)  & -Yrr(x,y,z,u,v)  & -Yu(x,y,z,u,v)   & -Yur(x,y,z,u,v) & -Yurr(x,y,z,u,v) & -Yurrr(x,y,z,u,v).
+ Yu(x,y,z,u,v)   -> -Y(x,y,z,u,v)  & -Yr(x,y,z,u,v)  & -Yrr(x,y,z,u,v)  & -Yrrr(x,y,z,u,v) & -Yur(x,y,z,u,v) & -Yurr(x,y,z,u,v) & -Yurrr(x,y,z,u,v).     
+ Yur(x,y,z,u,v)  -> -Y(x,y,z,u,v)  & -Yr(x,y,z,u,v)  & -Yrr(x,y,z,u,v)  & -Yrrr(x,y,z,u,v) & -Yu(x,y,z,u,v)  & -Yurr(x,y,z,u,v) & -Yurrr(x,y,z,u,v).
+ Yurr(x,y,z,u,v) -> -Y(x,y,z,u,v)  & -Yr(x,y,z,u,v)  & -Yrr(x,y,z,u,v)  & -Yrrr(x,y,z,u,v) & -Yu(x,y,z,u,v)  & -Yur(x,y,z,u,v)  & -Yurrr(x,y,z,u,v).
+ Yurrr(x,y,z,u,v)-> -Y(x,y,z,u,v) & -Yr(x,y,z,u,v)  & -Yrr(x,y,z,u,v)  & -Yrrr(x,y,z,u,v) & -Yu(x,y,z,u,v)  & -Yur(x,y,z,u,v)  & -Yurr(x,y,z,u,v).
+end_of_list.
+

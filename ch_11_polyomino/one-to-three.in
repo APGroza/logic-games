@@ -1,0 +1,19 @@
+assign(domain_size,9).
+assign(max_models,-1).
+set(arithmetic).
+
+list(distinct).
+  [a0,a1,a2,a3,a4,a5,a6,a7,a8].
+end_of_list.
+
+formulas(assumptions).
+  (x != 6 & x != 7 & x != 8) -> (on(x,y) <-> y = x + 3).   %x on y, 
+ -(x != 6 & x != 7 & x != 8) -> -on(x,y).                  %3x3 grid
+  
+  (x != 2 & x != 5 & x != 8) -> (left(x,y) <-> y = x + 1). %x left of y
+ -(x != 2 & x != 5 & x != 8) -> -left(x,y).                %3x3 grid
+
+  on(a0,a3) & on(a3,a6).                                   %green shape 
+  on(a2,a5).                                               %red shape
+  on(a4,a7) & left(a7,a8).                                 %yellow shape
+end_of_list.

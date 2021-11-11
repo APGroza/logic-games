@@ -1,0 +1,63 @@
+formulas(straight).  %i[0..3]
+ i  <-> left(a0,a1) & left(a1,a2) & left(a2,a3).
+ ir <-> on(a0,a1) & on(a1,a2) & on(a2,a3).
+ i | ir. 
+ i -> -ir.
+end_of_list.
+
+formulas(square).    %s[4..7]
+ s  <-> left(a4,a5) & on(a5,a6) & left(a7,a6).
+ s.  
+end_of_list.
+
+formulas(t).         %t[8..11]
+ t  <-> left(a8,a9) & left(a9,a10) & on(a9,a11).
+ tr <-> on(a8,a9) & on(a9,a10) & left(a11,a9).
+ trr <-> left(a9,a8) & left(a10,a9) & on(a11,a9).
+ trrr <-> on(a9,a8) & on(a10,a9) & left(a9,a11).
+ t | tr | trr | trrr.            
+ t    -> -tr & -trr & -trrr.     
+ tr   -> -t  & -trr & -trrr.
+ trr  -> -t  & -tr  & -trrr.
+ trrr -> -t  & -tr  & -trr. 
+end_of_list.
+
+formulas(skew).      %k[12..15].
+ k    <-> left(a12,a13) & on(a14,a13) & left(a14,a15).
+ kr   <-> on(a12,a13) & left(a13,a14) & on(a14,a15).  
+ krr  <-> left(a13,a12) & on(a13,a14) & left(a15,a14).  
+ krrr <-> on(a13,a12) & left(a14,a13) & on(a15,a14).  
+ ku   <-> left(a13,a11) & on(a14,a13) & left(a15,a14).
+ kur   <-> on(a13,a12) & left(a13,a14) & on(a15,a14).  
+ kurr  <-> left(a12,a13) & on(a13,a14) & left(a14,a15).  
+ kurrr <-> on(a12,a13) & left(a14,a13) & on(a14,a15).  
+ k | kr | krr | krrr | ku | kur | kurr | kurrr.            
+ k    -> -kr & -krr & -krrr & -ku   & -kur & -kurr & -kurrr.     
+ kr   -> -k  & -krr & -krrr & -ku   & -kur & -kurr & -kurrr.
+ krr  -> -k  & -kr  & -krrr & -ku   & -kur & -kurr & -kurrr.
+ krrr -> -k  & -kr  & -krr  & -ku   & -kur & -kurr & -kurrr.
+ ku   -> -k  & -kr  & -krr  & -krrr & -kur & -kurr & -kurrr.     
+ kur  -> -k  & -kr  & -krr  & -krrr & -ku  & -kurr & -kurrr.
+ kurr -> -k  & -kr  & -krr  & -krrr & -ku  & -kur  & -kurrr.
+ kurrr-> -k  & -kr  & -krr  & -krrr & -ku  & -kur  & -kurr.
+end_of_list. 
+  
+formulas(l).         %l[16..19]
+ l <-> on(a16,a17) & left(a17,a18) & left(a18,a19). 
+ lr <-> left(a17,a16) & on(a17,a18) & on(a18,a19).
+ lrr <-> on(a17,a16) & left(a18,a17) & left(a19,a18).
+ lrrr <-> left(a16,a17) & on(a18,a17) & on(a19,a18).
+ lu <-> on(a16,a17) & left(a18,a17) & left(a19,a18). 
+ lur <-> left(a17,a16) & on(a18,a17) & on(a19,a18).
+ lurr <-> on(a17,a16) & left(a17,a18) & left(a18,a19).
+ lurrr <-> left(a16,a17) & on(a17,a18) & on(a18,a19).
+ l | lr | lrr | lrrr | lu | lur | lurr | lurrr.            
+ l    -> -lr & -lrr & -lrrr & -lu   & -lur & -lurr & -lurrr.     
+ lr   -> -l  & -lrr & -lrrr & -lu   & -lur & -lurr & -lurrr.
+ lrr  -> -l  & -lr  & -lrrr & -lu   & -lur & -lurr & -lurrr.
+ lrrr -> -l  & -lr  & -lrr  & -lu   & -lur & -lurr & -lurrr.
+ lu   -> -l  & -lr  & -lrr  & -lrrr & -lur & -lurr & -lurrr.     
+ lur  -> -l  & -lr  & -lrr  & -lrrr & -lu  & -lurr & -lurrr.
+ lurr -> -l  & -lr  & -lrr  & -lrrr & -lu  & -lur  & -lurrr.
+ lurrr-> -l  & -lr  & -lrr  & -lrrr & -lu  & -lur  & -lurr.
+end_of_list. 

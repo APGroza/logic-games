@@ -1,0 +1,48 @@
+assign(domain_size,36).      %6x6 grid
+assign(max_models,-1).
+set(arithmetic).
+
+list(distinct).
+  [a0,  a1,  a2,  a3,  a4,  a5,
+   a6,  a7,  a8,  a9,  a10, a11,
+   a12, a13, a14, a15, a16, a17,
+   a18, a19, a20, a21, a22, a23,
+   a24, a25, a26, a27, a28, a29,
+   a30, a31, a32, a33, a34, a35].
+end_of_list.
+
+formulas(utils). 
+   x < 30 -> (on(x,y) <-> y = x + 6).   
+   x > 29 -> -on(x,y).
+   (x != 5 & x != 11 & x != 17 & x != 23 & x != 29 & x != 35) 
+        -> (left(x,y) <-> y = x + 1). 
+  -(x != 5 & x != 11 & x != 17 & x != 23 & x != 29 & x != 35) 
+         -> -left(x,y).
+end_of_list.
+
+formulas(ten_yen).
+   i1 <-> left(a6,a7)   & on(a0,a6)     & left(a7,a8) & on(a2,a8).        
+   b1 <-> left(a14,a15) & on(a9,a15)    & on(a3,a9)   & left(a3,a4).     
+   i2 <-> on(a5,a11)    & on(a11,a17).                                 
+   r2 <-> left(a12,a13) & on(a12,a18)   & on(a18,a24).                
+   i3 <-> left(a19,a20) & on(a20,a26)   & left(a26,a27).              
+   r3 <-> left(a21,a22) & left(a22,a23) & on(a16,a22) & on(a10,a16).
+   b2 <-> left(a30,a31) & on(a25,a31)   & left(a31,a32).              
+   r4 <-> left(a33,a34).                                            
+   b3 <-> left(a28,a29) & on(a29,a35).                               
+
+   i1 & i2 & i3 & r1 & r2 & r3 & r4 & b1 & b2 & b3.
+end_of_list.
+
+formulas(pretty_print).                %0 = white, 1 = black, 2 = red
+  c(a0)  = 0. c(a6)  = 0. c(a7)  = 0. c(a8)  = 0. c(a2)  = 0.     %i1
+  c(a1)  = 2.                                                     %r1 
+  c(a14) = 1. c(a15) = 1. c(a9)  = 1. c(a3)  = 1. c(a4)  = 1.     %b1  
+  c(a22) = 2. c(21)  = 2. c(a23) = 2. c(a16) = 2. c(a10) = 2.     %r2     
+  c(a5)  = 0. c(a11) = 0. c(a17) = 0.                             %i2       
+  c(a12) = 2. c(a13) = 2. c(a18) = 2. c(a24) = 2.                 %r3
+  c(a19) = 0. c(a20) = 0. c(a26) = 0. c(a27) = 0.                 %i3 
+  c(a30) = 1. c(a31) = 1. c(a25) = 1. c(a32) = 1.                 %b2    
+  c(a33) = 2. c(a34) = 2.                                         %r4
+  c(a28) = 1. c(a29) = 1. c(a35) = 1.                             %b3 
+end_of_list.

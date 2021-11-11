@@ -1,0 +1,3 @@
+formulas(goals).
+ exists x (drinks (x) -> all y drinks(y)).
+end_of_list.

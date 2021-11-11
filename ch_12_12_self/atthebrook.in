@@ -1,0 +1,22 @@
+set(production).
+
+formulas(usable).
+ all x all y all t (J(x,y,t) -> J(15,y,t+1)).  %fill 1   
+ all x all y all t (J(x,y,t) -> J(0,y,t+1)).   %empty 1
+  
+ all x all y all t (J(x,y,t) -> J(x,16,t+1)).  %fill 2
+ all x all y all t (J(x,y,t) -> J(x,0,t+1)).   %empty 2
+
+ all x all y all t (J(x,y,t) & x+y<=16 -> J(0,y+x,t+1)).  %empty(1,2) 
+ all x all y all t (J(x,y,t) & x+y> 16 -> J(x+ -(16+ -y),16,t+1)).%p(1,2)
+ all x all y all t (J(x,y,t) & x+y<=15 -> J(x+y,0,t+1)). %empty(2,1)   
+ all x all y all t (J(x,y,t) & x+y> 15 -> J(15,y+ -(15+ -x),t+1)).%p(2,1)
+end_of_list.
+
+formulas(assumptions).
+ J(15,16,0).     %init state
+end_of_list.
+
+formulas(goals).         
+  exists x exists t (J(8,x,t) | J(x,8,t)). 
+end_of_list.

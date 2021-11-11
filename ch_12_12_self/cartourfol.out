@@ -1,0 +1,126 @@
+============================== Mace4 =================================
+Mace4 (64) version 2009-11A, November 2009.
+Process 2569 was started by adrian on adrian,
+Thu Jan 21 20:32:32 2021
+The command was "mace4 -f cartourfol.in".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+% Reading from file cartourfol.in
+
+set(arithmetic).
+    % set(arithmetic) -> clear(lnh).
+    % set(arithmetic) -> assign(selection_order, 0).
+
+    % Declaring Mace4 arithmetic parse types.
+assign(domain_size,20).
+    % assign(domain_size, 20) -> assign(start_size, 20).
+    % assign(domain_size, 20) -> assign(end_size, 20).
+assign(max_models,-1).
+
+formulas(demodulators).
+x < 19 -> s(x) = x + 1.
+s(19) = 0.
+c(0) = 0 | c(0) = 1 | c(0) = 2 | c(0) = 3.
+c(9) = 10 | c(9) = 11 | c(9) = 12 | c(9) = 13.
+x > 9 -> c(x) = 0.
+end_of_list.
+
+formulas(assumptions).
+(all x all y (x != y & x <= 9 & y <= 9 -> c(x) != c(y))).
+(all x all y (x = y & x <= 9 & y <= 9 -> c(x) = c(y))).
+(all x all y all z (z < 10 & c(x) = z & x != y -> c(y) != z + 10)).
+(all x (x < 9 & c(x) = 0 -> c(s(x)) = 4 | c(s(x)) = 5 | c(s(x)) = 6)).
+(all x (x < 9 & c(x) = 1 -> c(s(x)) = 7 | c(s(x)) = 8 | c(s(x)) = 14)).
+(all x (x < 9 & c(x) = 2 -> c(s(x)) = 9 | c(s(x)) = 15 | c(s(x)) = 17)).
+(all x (x < 9 & c(x) = 3 -> c(s(x)) = 16 | c(s(x)) = 18 | c(s(x)) = 19)).
+(all x (x < 9 & c(x) = 4 -> c(s(x)) = 7 | c(s(x)) = 8 | c(s(x)) = 11)).
+(all x (x < 9 & c(x) = 5 -> c(s(x)) = 9 | c(s(x)) = 12 | c(s(x)) = 17)).
+(all x (x < 9 & c(x) = 6 -> c(s(x)) = 13 | c(s(x)) = 18 | c(s(x)) = 19)).
+(all x (x < 9 & c(x) = 7 -> c(s(x)) = 9 | c(s(x)) = 12 | c(s(x)) = 15)).
+(all x (x < 9 & c(x) = 8 -> c(s(x)) = 13 | c(s(x)) = 16 | c(s(x)) = 19)).
+(all x (x < 9 & c(x) = 9 -> c(s(x)) = 13 | c(s(x)) = 16 | c(s(x)) = 18)).
+(all x (x < 9 & c(x) = 10 -> c(s(x)) = 1 | c(s(x)) = 2 | c(s(x)) = 3)).
+(all x (x < 9 & c(x) = 11 -> c(s(x)) = 0 | c(s(x)) = 2 | c(s(x)) = 3)).
+(all x (x < 9 & c(x) = 12 -> c(s(x)) = 0 | c(s(x)) = 1 | c(s(x)) = 3)).
+(all x (x < 9 & c(x) = 13 -> c(s(x)) = 0 | c(s(x)) = 1 | c(s(x)) = 2)).
+(all x (x < 9 & c(x) = 14 -> c(s(x)) = 5 | c(s(x)) = 6 | c(s(x)) = 10)).
+(all x (x < 9 & c(x) = 15 -> c(s(x)) = 4 | c(s(x)) = 6 | c(s(x)) = 10)).
+(all x (x < 9 & c(x) = 16 -> c(s(x)) = 4 | c(s(x)) = 5 | c(s(x)) = 10)).
+(all x (x < 9 & c(x) = 17 -> c(s(x)) = 8 | c(s(x)) = 11 | c(s(x)) = 14)).
+(all x (x < 9 & c(x) = 18 -> c(s(x)) = 7 | c(s(x)) = 11 | c(s(x)) = 14)).
+(all x (x < 9 & c(x) = 19 -> c(s(x)) = 12 | c(s(x)) = 15 | c(s(x)) = 17)).
+end_of_list.
+
+============================== end of input ==========================
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+1 x < 19 -> s(x) = x + 1 # label(non_clause).  [assumption].
+2 x > 9 -> c(x) = 0 # label(non_clause).  [assumption].
+3 (all x all y (x != y & x <= 9 & y <= 9 -> c(x) != c(y))) # label(non_clause).  [assumption].
+4 (all x all y (x = y & x <= 9 & y <= 9 -> c(x) = c(y))) # label(non_clause).  [assumption].
+5 (all x all y all z (z < 10 & c(x) = z & x != y -> c(y) != z + 10)) # label(non_clause).  [assumption].
+6 (all x (x < 9 & c(x) = 0 -> c(s(x)) = 4 | c(s(x)) = 5 | c(s(x)) = 6)) # label(non_clause).  [assumption].
+7 (all x (x < 9 & c(x) = 1 -> c(s(x)) = 7 | c(s(x)) = 8 | c(s(x)) = 14)) # label(non_clause).  [assumption].
+8 (all x (x < 9 & c(x) = 2 -> c(s(x)) = 9 | c(s(x)) = 15 | c(s(x)) = 17)) # label(non_clause).  [assumption].
+9 (all x (x < 9 & c(x) = 3 -> c(s(x)) = 16 | c(s(x)) = 18 | c(s(x)) = 19)) # label(non_clause).  [assumption].
+10 (all x (x < 9 & c(x) = 4 -> c(s(x)) = 7 | c(s(x)) = 8 | c(s(x)) = 11)) # label(non_clause).  [assumption].
+11 (all x (x < 9 & c(x) = 5 -> c(s(x)) = 9 | c(s(x)) = 12 | c(s(x)) = 17)) # label(non_clause).  [assumption].
+12 (all x (x < 9 & c(x) = 6 -> c(s(x)) = 13 | c(s(x)) = 18 | c(s(x)) = 19)) # label(non_clause).  [assumption].
+13 (all x (x < 9 & c(x) = 7 -> c(s(x)) = 9 | c(s(x)) = 12 | c(s(x)) = 15)) # label(non_clause).  [assumption].
+14 (all x (x < 9 & c(x) = 8 -> c(s(x)) = 13 | c(s(x)) = 16 | c(s(x)) = 19)) # label(non_clause).  [assumption].
+15 (all x (x < 9 & c(x) = 9 -> c(s(x)) = 13 | c(s(x)) = 16 | c(s(x)) = 18)) # label(non_clause).  [assumption].
+16 (all x (x < 9 & c(x) = 10 -> c(s(x)) = 1 | c(s(x)) = 2 | c(s(x)) = 3)) # label(non_clause).  [assumption].
+17 (all x (x < 9 & c(x) = 11 -> c(s(x)) = 0 | c(s(x)) = 2 | c(s(x)) = 3)) # label(non_clause).  [assumption].
+18 (all x (x < 9 & c(x) = 12 -> c(s(x)) = 0 | c(s(x)) = 1 | c(s(x)) = 3)) # label(non_clause).  [assumption].
+19 (all x (x < 9 & c(x) = 13 -> c(s(x)) = 0 | c(s(x)) = 1 | c(s(x)) = 2)) # label(non_clause).  [assumption].
+20 (all x (x < 9 & c(x) = 14 -> c(s(x)) = 5 | c(s(x)) = 6 | c(s(x)) = 10)) # label(non_clause).  [assumption].
+21 (all x (x < 9 & c(x) = 15 -> c(s(x)) = 4 | c(s(x)) = 6 | c(s(x)) = 10)) # label(non_clause).  [assumption].
+22 (all x (x < 9 & c(x) = 16 -> c(s(x)) = 4 | c(s(x)) = 5 | c(s(x)) = 10)) # label(non_clause).  [assumption].
+23 (all x (x < 9 & c(x) = 17 -> c(s(x)) = 8 | c(s(x)) = 11 | c(s(x)) = 14)) # label(non_clause).  [assumption].
+24 (all x (x < 9 & c(x) = 18 -> c(s(x)) = 7 | c(s(x)) = 11 | c(s(x)) = 14)) # label(non_clause).  [assumption].
+25 (all x (x < 9 & c(x) = 19 -> c(s(x)) = 12 | c(s(x)) = 15 | c(s(x)) = 17)) # label(non_clause).  [assumption].
+
+============================== end of process non-clausal formulas ===
+
+============================== CLAUSES FOR SEARCH ====================
+
+formulas(mace4_clauses).
+-(x < 19) | s(x) = x + 1.
+s(19) = 0.
+c(0) = 0 | c(0) = 1 | c(0) = 2 | c(0) = 3.
+c(9) = 10 | c(9) = 11 | c(9) = 12 | c(9) = 13.
+-(x > 9) | c(x) = 0.
+x = y | -(y <= 9) | -(x <= 9) | c(x) != c(y).
+x != y | -(y <= 9) | -(x <= 9) | c(x) = c(y).
+-(x < 10) | c(y) != x | z = y | c(z) != x + 10.
+-(x < 9) | c(x) != 0 | c(s(x)) = 4 | c(s(x)) = 5 | c(s(x)) = 6.
+-(x < 9) | c(x) != 1 | c(s(x)) = 7 | c(s(x)) = 8 | c(s(x)) = 14.
+-(x < 9) | c(x) != 2 | c(s(x)) = 9 | c(s(x)) = 15 | c(s(x)) = 17.
+-(x < 9) | c(x) != 3 | c(s(x)) = 16 | c(s(x)) = 18 | c(s(x)) = 19.
+-(x < 9) | c(x) != 4 | c(s(x)) = 7 | c(s(x)) = 8 | c(s(x)) = 11.
+-(x < 9) | c(x) != 5 | c(s(x)) = 9 | c(s(x)) = 12 | c(s(x)) = 17.
+-(x < 9) | c(x) != 6 | c(s(x)) = 13 | c(s(x)) = 18 | c(s(x)) = 19.
+-(x < 9) | c(x) != 7 | c(s(x)) = 9 | c(s(x)) = 12 | c(s(x)) = 15.
+-(x < 9) | c(x) != 8 | c(s(x)) = 13 | c(s(x)) = 16 | c(s(x)) = 19.
+-(x < 9) | c(x) != 9 | c(s(x)) = 13 | c(s(x)) = 16 | c(s(x)) = 18.
+-(x < 9) | c(x) != 10 | c(s(x)) = 1 | c(s(x)) = 2 | c(s(x)) = 3.
+-(x < 9) | c(x) != 11 | c(s(x)) = 0 | c(s(x)) = 2 | c(s(x)) = 3.
+-(x < 9) | c(x) != 12 | c(s(x)) = 0 | c(s(x)) = 1 | c(s(x)) = 3.
+-(x < 9) | c(x) != 13 | c(s(x)) = 0 | c(s(x)) = 1 | c(s(x)) = 2.
+-(x < 9) | c(x) != 14 | c(s(x)) = 5 | c(s(x)) = 6 | c(s(x)) = 10.
+-(x < 9) | c(x) != 15 | c(s(x)) = 4 | c(s(x)) = 6 | c(s(x)) = 10.
+-(x < 9) | c(x) != 16 | c(s(x)) = 4 | c(s(x)) = 5 | c(s(x)) = 10.
+-(x < 9) | c(x) != 17 | c(s(x)) = 8 | c(s(x)) = 11 | c(s(x)) = 14.
+-(x < 9) | c(x) != 18 | c(s(x)) = 7 | c(s(x)) = 11 | c(s(x)) = 14.
+-(x < 9) | c(x) != 19 | c(s(x)) = 12 | c(s(x)) = 15 | c(s(x)) = 17.
+end_of_list.
+
+============================== end of clauses for search =============
+
+% The largest natural number in the input is 19.
+
+============================== DOMAIN SIZE 20 ========================

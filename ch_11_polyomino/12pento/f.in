@@ -1,0 +1,22 @@
+formulas(f_shape).
+ f    <-> left(a35,a37) &   on(a36,a37) &   on(a37,a38) & left(a36,a39).
+ fr   <->   on(a35,a37) & left(a37,a36) & left(a38,a37) &   on(a36,a39).
+ frr  <-> left(a37,a35) &   on(a37,a36) &   on(a38,a37) & left(a39,a36).
+ frrr <->   on(a37,a35) & left(a36,a37) & left(a37,a38) &   on(a39,a36).
+
+ fu   <-> left(a37,a35) &   on(a36,a37) &   on(a37,a38) & left(a39,a36).
+ fur  <->   on(a37,a35) & left(a37,a36) & left(a38,a37) &   on(a39,a36).
+ furr <-> left(a35,a37) &   on(a37,a36) &   on(a38,a37) & left(a36,a39).
+ furrr<->   on(a35,a37) & left(a36,a37) & left(a37,a38) &   on(a36,a39).
+
+ f | fr | frr | frrr | fu | fur | furr | furrr.            
+ f    -> -fr & -frr & -frrr & -fu   & -fur & -furr & -furrr.     
+ fr   -> -f  & -frr & -frrr & -fu   & -fur & -furr & -furrr.
+ frr  -> -f  & -fr  & -frrr & -fu   & -fur & -furr & -furrr.
+ frrr -> -f  & -fr  & -frr  & -fu   & -fur & -furr & -furrr.
+ fu   -> -f  & -fr  & -frr  & -frrr & -fur & -furr & -furrr.     
+ fur  -> -f  & -fr  & -frr  & -frrr & -fu  & -furr & -furrr.
+ furr -> -f  & -fr  & -frr  & -frrr & -fu  & -fur  & -furrr.
+ furrr-> -f  & -fr  & -frr  & -frrr & -fu  & -fur  & -furr.
+end_of_list.
+

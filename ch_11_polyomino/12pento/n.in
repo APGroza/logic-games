@@ -1,0 +1,22 @@
+formulas(n_shape).
+  n   <->   on(a55,a56) &   on(a56,a57) & left(a58,a57) &   on(a58,a59).
+  nr  <-> left(a56,a55) & left(a57,a56) &   on(a58,a57) & left(a59,a58).
+  nrr <->   on(a56,a55) &   on(a57,a56) & left(a57,a58) &   on(a59,a58).
+  nrrr<-> left(a55,a56) & left(a56,a57) &   on(a57,a58) & left(a58,a59).
+
+  nu   <->   on(a55,a56) &   on(a56,a57) & left(a57,a58) &   on(a58,a59).
+  nur  <-> left(a56,a55) & left(a57,a56) &   on(a57,a58) & left(a59,a58).
+  nurr <->   on(a56,a55) &   on(a57,a56) & left(a58,a57) &   on(a59,a58).
+  nurrr<-> left(a55,a56) & left(a56,a57) &   on(a58,a57) & left(a58,a59).  
+  
+  n | nr | nrr | nrrr | nu | nur | nurr | nurrr.            
+  n    -> -nr & -nrr & -nrrr & -nu   & -nur & -nurr & -nurrr.     
+  nr   -> -n  & -nrr & -nrrr & -nu   & -nur & -nurr & -nurrr.
+  nrr  -> -n  & -nr  & -nrrr & -nu   & -nur & -nurr & -nurrr.
+  nrrr -> -n  & -nr  & -nrr  & -nu   & -nur & -nurr & -nurrr.
+  nu   -> -n  & -nr  & -nrr  & -nrrr & -nur & -nurr & -nurrr.     
+  nur  -> -n  & -nr  & -nrr  & -nrrr & -nu  & -nurr & -nurrr.
+  nurr -> -n  & -nr  & -nrr  & -nrrr & -nu  & -nur  & -nurrr.
+  nurrr-> -n  & -nr  & -nrr  & -nrrr & -nu  & -nur  & -nurr.
+end_of_list.
+

@@ -1,0 +1,10 @@
+formulas(assumptions).
+ m1 <-> -m2.
+ m2 <-> -m3 & -m4.
+ m3 <-> -m4.
+ m4 <-> -m1.
+end_of_list.
+
+formulas(goals).
+ m1.
+end_of_list.

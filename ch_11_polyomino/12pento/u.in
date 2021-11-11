@@ -1,0 +1,12 @@
+formulas(u_shape).
+  U   <->   on(a5,a6) & left(a6,a7) & left(a7,a8) &   on(a9,a8).
+  Ur  <-> left(a6,a5) &   on(a6,a7) &   on(a7,a8) & left(a8,a9).
+  Urr <->   on(a6,a5) & left(a7,a6) & left(a8,a7) &   on(a8,a9).
+  Urrr<-> left(a5,a6) &   on(a7,a6) &   on(a8,a7) & left(a9,a8).
+  U | Ur | Urr | Urrr.            
+  U    -> -Ur & -Urr & -Urrr.     
+  Ur   -> -U  & -Urr & -Urrr.
+  Urr  -> -U  & -Ur  & -Urrr.
+  Urrr -> -U  & -Ur  & -Urr. 
+end_of_list.
+

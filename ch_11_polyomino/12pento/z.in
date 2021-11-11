@@ -1,0 +1,12 @@
+formulas(z_shape).
+ Z   <-> left(a30,a31) &   on(a31,a32) &   on(a32,a33) & left(a33,a34).
+ Zr  <->   on(a30,a31) & left(a32,a31) & left(a33,a32) &   on(a33,a34).
+ Zu   <-> left(a31,a30) &   on(a31,a32) &   on(a32,a33) & left(a34,a33).
+ Zur  <->   on(a31,a30) & left(a32,a31) & left(a33,a32) &   on(a34,a33).
+ Z | Zr | Zu |Zur.
+ Z -> -Zr & -Zu & -Zur.
+ Zr -> -Z & -Zu & -Zur.
+ Zu -> -Z & -Zr & -Zur.
+ Zur-> -Z & -Zr & -Zu.
+end_of_list.
+

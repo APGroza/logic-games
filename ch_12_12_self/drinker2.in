@@ -1,0 +1,3 @@
+formulas(goals).
+ exists x drinks(x) -> all p (inPub(p) -> drinks(p)).
+end_of_list.

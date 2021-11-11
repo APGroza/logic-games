@@ -1,0 +1,1468 @@
+============================== Mace4 =================================
+Mace4 (64) version 2009-11A, November 2009.
+Process 26019 was started by adrian on adrian,
+Thu Jan 21 12:38:44 2021
+The command was "mace4 -f chessline.in rotation.in".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+% Reading from file chessline.in
+
+set(arithmetic).
+    % set(arithmetic) -> clear(lnh).
+    % set(arithmetic) -> assign(selection_order, 0).
+
+    % Declaring Mace4 arithmetic parse types.
+assign(domain_size,8).
+    % assign(domain_size, 8) -> assign(start_size, 8).
+    % assign(domain_size, 8) -> assign(end_size, 8).
+assign(max_models,-1).
+
+list(distinct).
+[a1,a2,a3,a4,b1,b2,b3,b4].
+end_of_list.
+
+formulas(utils).
+w(a1).
+w(a2).
+w(a3).
+w(a4).
+b(b1).
+b(b2).
+b(b3).
+b(b4).
+w(x) <-> -b(x).
+b(0).
+left(x,y) <-> x + 1 = y.
+-left(7,y).
+left(x,y) & b(x) -> w(y).
+left(x,y) & w(x) -> b(y).
+end_of_list.
+
+formulas(polyomino).
+p1 <-> left(b1,a1).
+p3 <-> left(a2,b3) & left(b3,a3).
+p4 <-> left(b4,a4).
+end_of_list.
+
+formulas(pretty_print).
+c(a1) = 1.
+c(b1) = 1.
+c(b2) = 2.
+c(a2) = 3.
+c(b3) = 3.
+c(a3) = 3.
+c(a4) = 4.
+c(b4) = 4.
+end_of_list.
+
+% Reading from file rotation.in
+
+
+formulas(rotate).
+p1r <-> left(a1,b1).
+p3r <-> left(a3,b3) & left(b3,a2).
+p4r <-> left(a4,b4).
+(p1 | p1r) & p2 & (p3 | p3r) & (p4 | p4r).
+p1 -> -p1r.
+p3 -> -p3r.
+p4 -> -p4r.
+end_of_list.
+
+============================== end of input ==========================
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+1 w(x) <-> -b(x) # label(non_clause).  [assumption].
+2 left(x,y) <-> x + 1 = y # label(non_clause).  [assumption].
+3 left(x,y) & b(x) -> w(y) # label(non_clause).  [assumption].
+4 left(x,y) & w(x) -> b(y) # label(non_clause).  [assumption].
+5 p1 <-> left(b1,a1) # label(non_clause).  [assumption].
+6 p3 <-> left(a2,b3) & left(b3,a3) # label(non_clause).  [assumption].
+7 p4 <-> left(b4,a4) # label(non_clause).  [assumption].
+8 p1r <-> left(a1,b1) # label(non_clause).  [assumption].
+9 p3r <-> left(a3,b3) & left(b3,a2) # label(non_clause).  [assumption].
+10 p4r <-> left(a4,b4) # label(non_clause).  [assumption].
+11 (p1 | p1r) & p2 & (p3 | p3r) & (p4 | p4r) # label(non_clause).  [assumption].
+12 p1 -> -p1r # label(non_clause).  [assumption].
+13 p3 -> -p3r # label(non_clause).  [assumption].
+14 p4 -> -p4r # label(non_clause).  [assumption].
+
+============================== end of process non-clausal formulas ===
+
+============================== CLAUSES FOR SEARCH ====================
+
+formulas(mace4_clauses).
+w(a1).
+w(a2).
+w(a3).
+w(a4).
+b(b1).
+b(b2).
+b(b3).
+b(b4).
+-w(x) | -b(x).
+w(x) | b(x).
+b(0).
+-left(x,y) | x + 1 = y.
+left(x,y) | x + 1 != y.
+-left(7,x).
+-left(x,y) | -b(x) | w(y).
+-left(x,y) | -w(x) | b(y).
+-p1 | left(b1,a1).
+p1 | -left(b1,a1).
+-p3 | left(a2,b3).
+-p3 | left(b3,a3).
+p3 | -left(a2,b3) | -left(b3,a3).
+-p4 | left(b4,a4).
+p4 | -left(b4,a4).
+c(a1) = 1.
+c(b1) = 1.
+c(b2) = 2.
+c(a2) = 3.
+c(b3) = 3.
+c(a3) = 3.
+c(a4) = 4.
+c(b4) = 4.
+-p1r | left(a1,b1).
+p1r | -left(a1,b1).
+-p3r | left(a3,b3).
+-p3r | left(b3,a2).
+p3r | -left(a3,b3) | -left(b3,a2).
+-p4r | left(a4,b4).
+p4r | -left(a4,b4).
+p1 | p1r.
+p2.
+p3 | p3r.
+p4 | p4r.
+-p1 | -p1r.
+-p3 | -p3r.
+-p4 | -p4r.
+a1 != a2.
+a1 != a3.
+a1 != a4.
+a1 != b1.
+a1 != b2.
+a1 != b3.
+a1 != b4.
+a2 != a3.
+a2 != a4.
+a2 != b1.
+a2 != b2.
+a2 != b3.
+a2 != b4.
+a3 != a4.
+a3 != b1.
+a3 != b2.
+a3 != b3.
+a3 != b4.
+a4 != b1.
+a4 != b2.
+a4 != b3.
+a4 != b4.
+b1 != b2.
+b1 != b3.
+b1 != b4.
+b2 != b3.
+b2 != b4.
+b3 != b4.
+end_of_list.
+
+============================== end of clauses for search =============
+
+% The largest natural number in the input is 7.
+
+============================== DOMAIN SIZE 8 =========================
+
+============================== MODEL =================================
+
+interpretation( 8, [number=1, seconds=0], [
+
+        function(a1, [ 1 ]),
+
+        function(a2, [ 3 ]),
+
+        function(a3, [ 5 ]),
+
+        function(a4, [ 7 ]),
+
+        function(b1, [ 0 ]),
+
+        function(b2, [ 2 ]),
+
+        function(b3, [ 4 ]),
+
+        function(b4, [ 6 ]),
+
+        function(c(_), [ 1, 1, 2, 3, 3, 3, 4, 4 ]),
+
+        relation(p1, [ 1 ]),
+
+        relation(p1r, [ 0 ]),
+
+        relation(p2, [ 1 ]),
+
+        relation(p3, [ 1 ]),
+
+        relation(p3r, [ 0 ]),
+
+        relation(p4, [ 1 ]),
+
+        relation(p4r, [ 0 ]),
+
+        relation(b(_), [ 1, 0, 1, 0, 1, 0, 1, 0 ]),
+
+        relation(w(_), [ 0, 1, 0, 1, 0, 1, 0, 1 ]),
+
+        relation(left(_,_), [
+			   0, 1, 0, 0, 0, 0, 0, 0,
+			   0, 0, 1, 0, 0, 0, 0, 0,
+			   0, 0, 0, 1, 0, 0, 0, 0,
+			   0, 0, 0, 0, 1, 0, 0, 0,
+			   0, 0, 0, 0, 0, 1, 0, 0,
+			   0, 0, 0, 0, 0, 0, 1, 0,
+			   0, 0, 0, 0, 0, 0, 0, 1,
+			   0, 0, 0, 0, 0, 0, 0, 0 ])
+]).
+
+============================== end of model ==========================
+
+============================== MODEL =================================
+
+interpretation( 8, [number=2, seconds=0], [
+
+        function(a1, [ 1 ]),
+
+        function(a2, [ 3 ]),
+
+        function(a3, [ 5 ]),
+
+        function(a4, [ 7 ]),
+
+        function(b1, [ 2 ]),
+
+        function(b2, [ 0 ]),
+
+        function(b3, [ 4 ]),
+
+        function(b4, [ 6 ]),
+
+        function(c(_), [ 2, 1, 1, 3, 3, 3, 4, 4 ]),
+
+        relation(p1, [ 0 ]),
+
+        relation(p1r, [ 1 ]),
+
+        relation(p2, [ 1 ]),
+
+        relation(p3, [ 1 ]),
+
+        relation(p3r, [ 0 ]),
+
+        relation(p4, [ 1 ]),
+
+        relation(p4r, [ 0 ]),
+
+        relation(b(_), [ 1, 0, 1, 0, 1, 0, 1, 0 ]),
+
+        relation(w(_), [ 0, 1, 0, 1, 0, 1, 0, 1 ]),
+
+        relation(left(_,_), [
+			   0, 1, 0, 0, 0, 0, 0, 0,
+			   0, 0, 1, 0, 0, 0, 0, 0,
+			   0, 0, 0, 1, 0, 0, 0, 0,
+			   0, 0, 0, 0, 1, 0, 0, 0,
+			   0, 0, 0, 0, 0, 1, 0, 0,
+			   0, 0, 0, 0, 0, 0, 1, 0,
+			   0, 0, 0, 0, 0, 0, 0, 1,
+			   0, 0, 0, 0, 0, 0, 0, 0 ])
+]).
+
+============================== end of model ==========================
+
+============================== MODEL =================================
+
+interpretation( 8, [number=3, seconds=0], [
+
+        function(a1, [ 1 ]),
+
+        function(a2, [ 5 ]),
+
+        function(a3, [ 3 ]),
+
+        function(a4, [ 7 ]),
+
+        function(b1, [ 0 ]),
+
+        function(b2, [ 2 ]),
+
+        function(b3, [ 4 ]),
+
+        function(b4, [ 6 ]),
+
+        function(c(_), [ 1, 1, 2, 3, 3, 3, 4, 4 ]),
+
+        relation(p1, [ 1 ]),
+
+        relation(p1r, [ 0 ]),
+
+        relation(p2, [ 1 ]),
+
+        relation(p3, [ 0 ]),
+
+        relation(p3r, [ 1 ]),
+
+        relation(p4, [ 1 ]),
+
+        relation(p4r, [ 0 ]),
+
+        relation(b(_), [ 1, 0, 1, 0, 1, 0, 1, 0 ]),
+
+        relation(w(_), [ 0, 1, 0, 1, 0, 1, 0, 1 ]),
+
+        relation(left(_,_), [
+			   0, 1, 0, 0, 0, 0, 0, 0,
+			   0, 0, 1, 0, 0, 0, 0, 0,
+			   0, 0, 0, 1, 0, 0, 0, 0,
+			   0, 0, 0, 0, 1, 0, 0, 0,
+			   0, 0, 0, 0, 0, 1, 0, 0,
+			   0, 0, 0, 0, 0, 0, 1, 0,
+			   0, 0, 0, 0, 0, 0, 0, 1,
+			   0, 0, 0, 0, 0, 0, 0, 0 ])
+]).
+
+============================== end of model ==========================
+
+============================== MODEL =================================
+
+interpretation( 8, [number=4, seconds=0], [
+
+        function(a1, [ 1 ]),
+
+        function(a2, [ 5 ]),
+
+        function(a3, [ 3 ]),
+
+        function(a4, [ 7 ]),
+
+        function(b1, [ 2 ]),
+
+        function(b2, [ 0 ]),
+
+        function(b3, [ 4 ]),
+
+        function(b4, [ 6 ]),
+
+        function(c(_), [ 2, 1, 1, 3, 3, 3, 4, 4 ]),
+
+        relation(p1, [ 0 ]),
+
+        relation(p1r, [ 1 ]),
+
+        relation(p2, [ 1 ]),
+
+        relation(p3, [ 0 ]),
+
+        relation(p3r, [ 1 ]),
+
+        relation(p4, [ 1 ]),
+
+        relation(p4r, [ 0 ]),
+
+        relation(b(_), [ 1, 0, 1, 0, 1, 0, 1, 0 ]),
+
+        relation(w(_), [ 0, 1, 0, 1, 0, 1, 0, 1 ]),
+
+        relation(left(_,_), [
+			   0, 1, 0, 0, 0, 0, 0, 0,
+			   0, 0, 1, 0, 0, 0, 0, 0,
+			   0, 0, 0, 1, 0, 0, 0, 0,
+			   0, 0, 0, 0, 1, 0, 0, 0,
+			   0, 0, 0, 0, 0, 1, 0, 0,
+			   0, 0, 0, 0, 0, 0, 1, 0,
+			   0, 0, 0, 0, 0, 0, 0, 1,
+			   0, 0, 0, 0, 0, 0, 0, 0 ])
+]).
+
+============================== end of model ==========================
+
+============================== MODEL =================================
+
+interpretation( 8, [number=5, seconds=0], [
+
+        function(a1, [ 1 ]),
+
+        function(a2, [ 5 ]),
+
+        function(a3, [ 7 ]),
+
+        function(a4, [ 3 ]),
+
+        function(b1, [ 0 ]),
+
+        function(b2, [ 2 ]),
+
+        function(b3, [ 6 ]),
+
+        function(b4, [ 4 ]),
+
+        function(c(_), [ 1, 1, 2, 4, 4, 3, 3, 3 ]),
+
+        relation(p1, [ 1 ]),
+
+        relation(p1r, [ 0 ]),
+
+        relation(p2, [ 1 ]),
+
+        relation(p3, [ 1 ]),
+
+        relation(p3r, [ 0 ]),
+
+        relation(p4, [ 0 ]),
+
+        relation(p4r, [ 1 ]),
+
+        relation(b(_), [ 1, 0, 1, 0, 1, 0, 1, 0 ]),
+
+        relation(w(_), [ 0, 1, 0, 1, 0, 1, 0, 1 ]),
+
+        relation(left(_,_), [
+			   0, 1, 0, 0, 0, 0, 0, 0,
+			   0, 0, 1, 0, 0, 0, 0, 0,
+			   0, 0, 0, 1, 0, 0, 0, 0,
+			   0, 0, 0, 0, 1, 0, 0, 0,
+			   0, 0, 0, 0, 0, 1, 0, 0,
+			   0, 0, 0, 0, 0, 0, 1, 0,
+			   0, 0, 0, 0, 0, 0, 0, 1,
+			   0, 0, 0, 0, 0, 0, 0, 0 ])
+]).
+
+============================== end of model ==========================
+
+============================== MODEL =================================
+
+interpretation( 8, [number=6, seconds=0], [
+
+        function(a1, [ 1 ]),
+
+        function(a2, [ 5 ]),
+
+        function(a3, [ 7 ]),
+
+        function(a4, [ 3 ]),
+
+        function(b1, [ 0 ]),
+
+        function(b2, [ 4 ]),
+
+        function(b3, [ 6 ]),
+
+        function(b4, [ 2 ]),
+
+        function(c(_), [ 1, 1, 4, 4, 2, 3, 3, 3 ]),
+
+        relation(p1, [ 1 ]),
+
+        relation(p1r, [ 0 ]),
+
+        relation(p2, [ 1 ]),
+
+        relation(p3, [ 1 ]),
+
+        relation(p3r, [ 0 ]),
+
+        relation(p4, [ 1 ]),
+
+        relation(p4r, [ 0 ]),
+
+        relation(b(_), [ 1, 0, 1, 0, 1, 0, 1, 0 ]),
+
+        relation(w(_), [ 0, 1, 0, 1, 0, 1, 0, 1 ]),
+
+        relation(left(_,_), [
+			   0, 1, 0, 0, 0, 0, 0, 0,
+			   0, 0, 1, 0, 0, 0, 0, 0,
+			   0, 0, 0, 1, 0, 0, 0, 0,
+			   0, 0, 0, 0, 1, 0, 0, 0,
+			   0, 0, 0, 0, 0, 1, 0, 0,
+			   0, 0, 0, 0, 0, 0, 1, 0,
+			   0, 0, 0, 0, 0, 0, 0, 1,
+			   0, 0, 0, 0, 0, 0, 0, 0 ])
+]).
+
+============================== end of model ==========================
+
+============================== MODEL =================================
+
+interpretation( 8, [number=7, seconds=0], [
+
+        function(a1, [ 1 ]),
+
+        function(a2, [ 5 ]),
+
+        function(a3, [ 7 ]),
+
+        function(a4, [ 3 ]),
+
+        function(b1, [ 2 ]),
+
+        function(b2, [ 0 ]),
+
+        function(b3, [ 6 ]),
+
+        function(b4, [ 4 ]),
+
+        function(c(_), [ 2, 1, 1, 4, 4, 3, 3, 3 ]),
+
+        relation(p1, [ 0 ]),
+
+        relation(p1r, [ 1 ]),
+
+        relation(p2, [ 1 ]),
+
+        relation(p3, [ 1 ]),
+
+        relation(p3r, [ 0 ]),
+
+        relation(p4, [ 0 ]),
+
+        relation(p4r, [ 1 ]),
+
+        relation(b(_), [ 1, 0, 1, 0, 1, 0, 1, 0 ]),
+
+        relation(w(_), [ 0, 1, 0, 1, 0, 1, 0, 1 ]),
+
+        relation(left(_,_), [
+			   0, 1, 0, 0, 0, 0, 0, 0,
+			   0, 0, 1, 0, 0, 0, 0, 0,
+			   0, 0, 0, 1, 0, 0, 0, 0,
+			   0, 0, 0, 0, 1, 0, 0, 0,
+			   0, 0, 0, 0, 0, 1, 0, 0,
+			   0, 0, 0, 0, 0, 0, 1, 0,
+			   0, 0, 0, 0, 0, 0, 0, 1,
+			   0, 0, 0, 0, 0, 0, 0, 0 ])
+]).
+
+============================== end of model ==========================
+
+============================== MODEL =================================
+
+interpretation( 8, [number=8, seconds=0], [
+
+        function(a1, [ 1 ]),
+
+        function(a2, [ 7 ]),
+
+        function(a3, [ 5 ]),
+
+        function(a4, [ 3 ]),
+
+        function(b1, [ 0 ]),
+
+        function(b2, [ 2 ]),
+
+        function(b3, [ 6 ]),
+
+        function(b4, [ 4 ]),
+
+        function(c(_), [ 1, 1, 2, 4, 4, 3, 3, 3 ]),
+
+        relation(p1, [ 1 ]),
+
+        relation(p1r, [ 0 ]),
+
+        relation(p2, [ 1 ]),
+
+        relation(p3, [ 0 ]),
+
+        relation(p3r, [ 1 ]),
+
+        relation(p4, [ 0 ]),
+
+        relation(p4r, [ 1 ]),
+
+        relation(b(_), [ 1, 0, 1, 0, 1, 0, 1, 0 ]),
+
+        relation(w(_), [ 0, 1, 0, 1, 0, 1, 0, 1 ]),
+
+        relation(left(_,_), [
+			   0, 1, 0, 0, 0, 0, 0, 0,
+			   0, 0, 1, 0, 0, 0, 0, 0,
+			   0, 0, 0, 1, 0, 0, 0, 0,
+			   0, 0, 0, 0, 1, 0, 0, 0,
+			   0, 0, 0, 0, 0, 1, 0, 0,
+			   0, 0, 0, 0, 0, 0, 1, 0,
+			   0, 0, 0, 0, 0, 0, 0, 1,
+			   0, 0, 0, 0, 0, 0, 0, 0 ])
+]).
+
+============================== end of model ==========================
+
+============================== MODEL =================================
+
+interpretation( 8, [number=9, seconds=0], [
+
+        function(a1, [ 1 ]),
+
+        function(a2, [ 7 ]),
+
+        function(a3, [ 5 ]),
+
+        function(a4, [ 3 ]),
+
+        function(b1, [ 0 ]),
+
+        function(b2, [ 4 ]),
+
+        function(b3, [ 6 ]),
+
+        function(b4, [ 2 ]),
+
+        function(c(_), [ 1, 1, 4, 4, 2, 3, 3, 3 ]),
+
+        relation(p1, [ 1 ]),
+
+        relation(p1r, [ 0 ]),
+
+        relation(p2, [ 1 ]),
+
+        relation(p3, [ 0 ]),
+
+        relation(p3r, [ 1 ]),
+
+        relation(p4, [ 1 ]),
+
+        relation(p4r, [ 0 ]),
+
+        relation(b(_), [ 1, 0, 1, 0, 1, 0, 1, 0 ]),
+
+        relation(w(_), [ 0, 1, 0, 1, 0, 1, 0, 1 ]),
+
+        relation(left(_,_), [
+			   0, 1, 0, 0, 0, 0, 0, 0,
+			   0, 0, 1, 0, 0, 0, 0, 0,
+			   0, 0, 0, 1, 0, 0, 0, 0,
+			   0, 0, 0, 0, 1, 0, 0, 0,
+			   0, 0, 0, 0, 0, 1, 0, 0,
+			   0, 0, 0, 0, 0, 0, 1, 0,
+			   0, 0, 0, 0, 0, 0, 0, 1,
+			   0, 0, 0, 0, 0, 0, 0, 0 ])
+]).
+
+============================== end of model ==========================
+
+============================== MODEL =================================
+
+interpretation( 8, [number=10, seconds=0], [
+
+        function(a1, [ 1 ]),
+
+        function(a2, [ 7 ]),
+
+        function(a3, [ 5 ]),
+
+        function(a4, [ 3 ]),
+
+        function(b1, [ 2 ]),
+
+        function(b2, [ 0 ]),
+
+        function(b3, [ 6 ]),
+
+        function(b4, [ 4 ]),
+
+        function(c(_), [ 2, 1, 1, 4, 4, 3, 3, 3 ]),
+
+        relation(p1, [ 0 ]),
+
+        relation(p1r, [ 1 ]),
+
+        relation(p2, [ 1 ]),
+
+        relation(p3, [ 0 ]),
+
+        relation(p3r, [ 1 ]),
+
+        relation(p4, [ 0 ]),
+
+        relation(p4r, [ 1 ]),
+
+        relation(b(_), [ 1, 0, 1, 0, 1, 0, 1, 0 ]),
+
+        relation(w(_), [ 0, 1, 0, 1, 0, 1, 0, 1 ]),
+
+        relation(left(_,_), [
+			   0, 1, 0, 0, 0, 0, 0, 0,
+			   0, 0, 1, 0, 0, 0, 0, 0,
+			   0, 0, 0, 1, 0, 0, 0, 0,
+			   0, 0, 0, 0, 1, 0, 0, 0,
+			   0, 0, 0, 0, 0, 1, 0, 0,
+			   0, 0, 0, 0, 0, 0, 1, 0,
+			   0, 0, 0, 0, 0, 0, 0, 1,
+			   0, 0, 0, 0, 0, 0, 0, 0 ])
+]).
+
+============================== end of model ==========================
+
+============================== MODEL =================================
+
+interpretation( 8, [number=11, seconds=0], [
+
+        function(a1, [ 3 ]),
+
+        function(a2, [ 5 ]),
+
+        function(a3, [ 7 ]),
+
+        function(a4, [ 1 ]),
+
+        function(b1, [ 2 ]),
+
+        function(b2, [ 4 ]),
+
+        function(b3, [ 6 ]),
+
+        function(b4, [ 0 ]),
+
+        function(c(_), [ 4, 4, 1, 1, 2, 3, 3, 3 ]),
+
+        relation(p1, [ 1 ]),
+
+        relation(p1r, [ 0 ]),
+
+        relation(p2, [ 1 ]),
+
+        relation(p3, [ 1 ]),
+
+        relation(p3r, [ 0 ]),
+
+        relation(p4, [ 1 ]),
+
+        relation(p4r, [ 0 ]),
+
+        relation(b(_), [ 1, 0, 1, 0, 1, 0, 1, 0 ]),
+
+        relation(w(_), [ 0, 1, 0, 1, 0, 1, 0, 1 ]),
+
+        relation(left(_,_), [
+			   0, 1, 0, 0, 0, 0, 0, 0,
+			   0, 0, 1, 0, 0, 0, 0, 0,
+			   0, 0, 0, 1, 0, 0, 0, 0,
+			   0, 0, 0, 0, 1, 0, 0, 0,
+			   0, 0, 0, 0, 0, 1, 0, 0,
+			   0, 0, 0, 0, 0, 0, 1, 0,
+			   0, 0, 0, 0, 0, 0, 0, 1,
+			   0, 0, 0, 0, 0, 0, 0, 0 ])
+]).
+
+============================== end of model ==========================
+
+============================== MODEL =================================
+
+interpretation( 8, [number=12, seconds=0], [
+
+        function(a1, [ 3 ]),
+
+        function(a2, [ 5 ]),
+
+        function(a3, [ 7 ]),
+
+        function(a4, [ 1 ]),
+
+        function(b1, [ 4 ]),
+
+        function(b2, [ 0 ]),
+
+        function(b3, [ 6 ]),
+
+        function(b4, [ 2 ]),
+
+        function(c(_), [ 2, 4, 4, 1, 1, 3, 3, 3 ]),
+
+        relation(p1, [ 0 ]),
+
+        relation(p1r, [ 1 ]),
+
+        relation(p2, [ 1 ]),
+
+        relation(p3, [ 1 ]),
+
+        relation(p3r, [ 0 ]),
+
+        relation(p4, [ 0 ]),
+
+        relation(p4r, [ 1 ]),
+
+        relation(b(_), [ 1, 0, 1, 0, 1, 0, 1, 0 ]),
+
+        relation(w(_), [ 0, 1, 0, 1, 0, 1, 0, 1 ]),
+
+        relation(left(_,_), [
+			   0, 1, 0, 0, 0, 0, 0, 0,
+			   0, 0, 1, 0, 0, 0, 0, 0,
+			   0, 0, 0, 1, 0, 0, 0, 0,
+			   0, 0, 0, 0, 1, 0, 0, 0,
+			   0, 0, 0, 0, 0, 1, 0, 0,
+			   0, 0, 0, 0, 0, 0, 1, 0,
+			   0, 0, 0, 0, 0, 0, 0, 1,
+			   0, 0, 0, 0, 0, 0, 0, 0 ])
+]).
+
+============================== end of model ==========================
+
+============================== MODEL =================================
+
+interpretation( 8, [number=13, seconds=0], [
+
+        function(a1, [ 3 ]),
+
+        function(a2, [ 5 ]),
+
+        function(a3, [ 7 ]),
+
+        function(a4, [ 1 ]),
+
+        function(b1, [ 4 ]),
+
+        function(b2, [ 2 ]),
+
+        function(b3, [ 6 ]),
+
+        function(b4, [ 0 ]),
+
+        function(c(_), [ 4, 4, 2, 1, 1, 3, 3, 3 ]),
+
+        relation(p1, [ 0 ]),
+
+        relation(p1r, [ 1 ]),
+
+        relation(p2, [ 1 ]),
+
+        relation(p3, [ 1 ]),
+
+        relation(p3r, [ 0 ]),
+
+        relation(p4, [ 1 ]),
+
+        relation(p4r, [ 0 ]),
+
+        relation(b(_), [ 1, 0, 1, 0, 1, 0, 1, 0 ]),
+
+        relation(w(_), [ 0, 1, 0, 1, 0, 1, 0, 1 ]),
+
+        relation(left(_,_), [
+			   0, 1, 0, 0, 0, 0, 0, 0,
+			   0, 0, 1, 0, 0, 0, 0, 0,
+			   0, 0, 0, 1, 0, 0, 0, 0,
+			   0, 0, 0, 0, 1, 0, 0, 0,
+			   0, 0, 0, 0, 0, 1, 0, 0,
+			   0, 0, 0, 0, 0, 0, 1, 0,
+			   0, 0, 0, 0, 0, 0, 0, 1,
+			   0, 0, 0, 0, 0, 0, 0, 0 ])
+]).
+
+============================== end of model ==========================
+
+============================== MODEL =================================
+
+interpretation( 8, [number=14, seconds=0], [
+
+        function(a1, [ 3 ]),
+
+        function(a2, [ 7 ]),
+
+        function(a3, [ 5 ]),
+
+        function(a4, [ 1 ]),
+
+        function(b1, [ 2 ]),
+
+        function(b2, [ 4 ]),
+
+        function(b3, [ 6 ]),
+
+        function(b4, [ 0 ]),
+
+        function(c(_), [ 4, 4, 1, 1, 2, 3, 3, 3 ]),
+
+        relation(p1, [ 1 ]),
+
+        relation(p1r, [ 0 ]),
+
+        relation(p2, [ 1 ]),
+
+        relation(p3, [ 0 ]),
+
+        relation(p3r, [ 1 ]),
+
+        relation(p4, [ 1 ]),
+
+        relation(p4r, [ 0 ]),
+
+        relation(b(_), [ 1, 0, 1, 0, 1, 0, 1, 0 ]),
+
+        relation(w(_), [ 0, 1, 0, 1, 0, 1, 0, 1 ]),
+
+        relation(left(_,_), [
+			   0, 1, 0, 0, 0, 0, 0, 0,
+			   0, 0, 1, 0, 0, 0, 0, 0,
+			   0, 0, 0, 1, 0, 0, 0, 0,
+			   0, 0, 0, 0, 1, 0, 0, 0,
+			   0, 0, 0, 0, 0, 1, 0, 0,
+			   0, 0, 0, 0, 0, 0, 1, 0,
+			   0, 0, 0, 0, 0, 0, 0, 1,
+			   0, 0, 0, 0, 0, 0, 0, 0 ])
+]).
+
+============================== end of model ==========================
+
+============================== MODEL =================================
+
+interpretation( 8, [number=15, seconds=0], [
+
+        function(a1, [ 3 ]),
+
+        function(a2, [ 7 ]),
+
+        function(a3, [ 5 ]),
+
+        function(a4, [ 1 ]),
+
+        function(b1, [ 4 ]),
+
+        function(b2, [ 0 ]),
+
+        function(b3, [ 6 ]),
+
+        function(b4, [ 2 ]),
+
+        function(c(_), [ 2, 4, 4, 1, 1, 3, 3, 3 ]),
+
+        relation(p1, [ 0 ]),
+
+        relation(p1r, [ 1 ]),
+
+        relation(p2, [ 1 ]),
+
+        relation(p3, [ 0 ]),
+
+        relation(p3r, [ 1 ]),
+
+        relation(p4, [ 0 ]),
+
+        relation(p4r, [ 1 ]),
+
+        relation(b(_), [ 1, 0, 1, 0, 1, 0, 1, 0 ]),
+
+        relation(w(_), [ 0, 1, 0, 1, 0, 1, 0, 1 ]),
+
+        relation(left(_,_), [
+			   0, 1, 0, 0, 0, 0, 0, 0,
+			   0, 0, 1, 0, 0, 0, 0, 0,
+			   0, 0, 0, 1, 0, 0, 0, 0,
+			   0, 0, 0, 0, 1, 0, 0, 0,
+			   0, 0, 0, 0, 0, 1, 0, 0,
+			   0, 0, 0, 0, 0, 0, 1, 0,
+			   0, 0, 0, 0, 0, 0, 0, 1,
+			   0, 0, 0, 0, 0, 0, 0, 0 ])
+]).
+
+============================== end of model ==========================
+
+============================== MODEL =================================
+
+interpretation( 8, [number=16, seconds=0], [
+
+        function(a1, [ 3 ]),
+
+        function(a2, [ 7 ]),
+
+        function(a3, [ 5 ]),
+
+        function(a4, [ 1 ]),
+
+        function(b1, [ 4 ]),
+
+        function(b2, [ 2 ]),
+
+        function(b3, [ 6 ]),
+
+        function(b4, [ 0 ]),
+
+        function(c(_), [ 4, 4, 2, 1, 1, 3, 3, 3 ]),
+
+        relation(p1, [ 0 ]),
+
+        relation(p1r, [ 1 ]),
+
+        relation(p2, [ 1 ]),
+
+        relation(p3, [ 0 ]),
+
+        relation(p3r, [ 1 ]),
+
+        relation(p4, [ 1 ]),
+
+        relation(p4r, [ 0 ]),
+
+        relation(b(_), [ 1, 0, 1, 0, 1, 0, 1, 0 ]),
+
+        relation(w(_), [ 0, 1, 0, 1, 0, 1, 0, 1 ]),
+
+        relation(left(_,_), [
+			   0, 1, 0, 0, 0, 0, 0, 0,
+			   0, 0, 1, 0, 0, 0, 0, 0,
+			   0, 0, 0, 1, 0, 0, 0, 0,
+			   0, 0, 0, 0, 1, 0, 0, 0,
+			   0, 0, 0, 0, 0, 1, 0, 0,
+			   0, 0, 0, 0, 0, 0, 1, 0,
+			   0, 0, 0, 0, 0, 0, 0, 1,
+			   0, 0, 0, 0, 0, 0, 0, 0 ])
+]).
+
+============================== end of model ==========================
+
+============================== MODEL =================================
+
+interpretation( 8, [number=17, seconds=0], [
+
+        function(a1, [ 5 ]),
+
+        function(a2, [ 1 ]),
+
+        function(a3, [ 3 ]),
+
+        function(a4, [ 7 ]),
+
+        function(b1, [ 4 ]),
+
+        function(b2, [ 0 ]),
+
+        function(b3, [ 2 ]),
+
+        function(b4, [ 6 ]),
+
+        function(c(_), [ 2, 3, 3, 3, 1, 1, 4, 4 ]),
+
+        relation(p1, [ 1 ]),
+
+        relation(p1r, [ 0 ]),
+
+        relation(p2, [ 1 ]),
+
+        relation(p3, [ 1 ]),
+
+        relation(p3r, [ 0 ]),
+
+        relation(p4, [ 1 ]),
+
+        relation(p4r, [ 0 ]),
+
+        relation(b(_), [ 1, 0, 1, 0, 1, 0, 1, 0 ]),
+
+        relation(w(_), [ 0, 1, 0, 1, 0, 1, 0, 1 ]),
+
+        relation(left(_,_), [
+			   0, 1, 0, 0, 0, 0, 0, 0,
+			   0, 0, 1, 0, 0, 0, 0, 0,
+			   0, 0, 0, 1, 0, 0, 0, 0,
+			   0, 0, 0, 0, 1, 0, 0, 0,
+			   0, 0, 0, 0, 0, 1, 0, 0,
+			   0, 0, 0, 0, 0, 0, 1, 0,
+			   0, 0, 0, 0, 0, 0, 0, 1,
+			   0, 0, 0, 0, 0, 0, 0, 0 ])
+]).
+
+============================== end of model ==========================
+
+============================== MODEL =================================
+
+interpretation( 8, [number=18, seconds=0], [
+
+        function(a1, [ 5 ]),
+
+        function(a2, [ 3 ]),
+
+        function(a3, [ 1 ]),
+
+        function(a4, [ 7 ]),
+
+        function(b1, [ 4 ]),
+
+        function(b2, [ 0 ]),
+
+        function(b3, [ 2 ]),
+
+        function(b4, [ 6 ]),
+
+        function(c(_), [ 2, 3, 3, 3, 1, 1, 4, 4 ]),
+
+        relation(p1, [ 1 ]),
+
+        relation(p1r, [ 0 ]),
+
+        relation(p2, [ 1 ]),
+
+        relation(p3, [ 0 ]),
+
+        relation(p3r, [ 1 ]),
+
+        relation(p4, [ 1 ]),
+
+        relation(p4r, [ 0 ]),
+
+        relation(b(_), [ 1, 0, 1, 0, 1, 0, 1, 0 ]),
+
+        relation(w(_), [ 0, 1, 0, 1, 0, 1, 0, 1 ]),
+
+        relation(left(_,_), [
+			   0, 1, 0, 0, 0, 0, 0, 0,
+			   0, 0, 1, 0, 0, 0, 0, 0,
+			   0, 0, 0, 1, 0, 0, 0, 0,
+			   0, 0, 0, 0, 1, 0, 0, 0,
+			   0, 0, 0, 0, 0, 1, 0, 0,
+			   0, 0, 0, 0, 0, 0, 1, 0,
+			   0, 0, 0, 0, 0, 0, 0, 1,
+			   0, 0, 0, 0, 0, 0, 0, 0 ])
+]).
+
+============================== end of model ==========================
+
+============================== MODEL =================================
+
+interpretation( 8, [number=19, seconds=0], [
+
+        function(a1, [ 7 ]),
+
+        function(a2, [ 1 ]),
+
+        function(a3, [ 3 ]),
+
+        function(a4, [ 5 ]),
+
+        function(b1, [ 6 ]),
+
+        function(b2, [ 0 ]),
+
+        function(b3, [ 2 ]),
+
+        function(b4, [ 4 ]),
+
+        function(c(_), [ 2, 3, 3, 3, 4, 4, 1, 1 ]),
+
+        relation(p1, [ 1 ]),
+
+        relation(p1r, [ 0 ]),
+
+        relation(p2, [ 1 ]),
+
+        relation(p3, [ 1 ]),
+
+        relation(p3r, [ 0 ]),
+
+        relation(p4, [ 1 ]),
+
+        relation(p4r, [ 0 ]),
+
+        relation(b(_), [ 1, 0, 1, 0, 1, 0, 1, 0 ]),
+
+        relation(w(_), [ 0, 1, 0, 1, 0, 1, 0, 1 ]),
+
+        relation(left(_,_), [
+			   0, 1, 0, 0, 0, 0, 0, 0,
+			   0, 0, 1, 0, 0, 0, 0, 0,
+			   0, 0, 0, 1, 0, 0, 0, 0,
+			   0, 0, 0, 0, 1, 0, 0, 0,
+			   0, 0, 0, 0, 0, 1, 0, 0,
+			   0, 0, 0, 0, 0, 0, 1, 0,
+			   0, 0, 0, 0, 0, 0, 0, 1,
+			   0, 0, 0, 0, 0, 0, 0, 0 ])
+]).
+
+============================== end of model ==========================
+
+============================== MODEL =================================
+
+interpretation( 8, [number=20, seconds=0], [
+
+        function(a1, [ 7 ]),
+
+        function(a2, [ 3 ]),
+
+        function(a3, [ 1 ]),
+
+        function(a4, [ 5 ]),
+
+        function(b1, [ 6 ]),
+
+        function(b2, [ 0 ]),
+
+        function(b3, [ 2 ]),
+
+        function(b4, [ 4 ]),
+
+        function(c(_), [ 2, 3, 3, 3, 4, 4, 1, 1 ]),
+
+        relation(p1, [ 1 ]),
+
+        relation(p1r, [ 0 ]),
+
+        relation(p2, [ 1 ]),
+
+        relation(p3, [ 0 ]),
+
+        relation(p3r, [ 1 ]),
+
+        relation(p4, [ 1 ]),
+
+        relation(p4r, [ 0 ]),
+
+        relation(b(_), [ 1, 0, 1, 0, 1, 0, 1, 0 ]),
+
+        relation(w(_), [ 0, 1, 0, 1, 0, 1, 0, 1 ]),
+
+        relation(left(_,_), [
+			   0, 1, 0, 0, 0, 0, 0, 0,
+			   0, 0, 1, 0, 0, 0, 0, 0,
+			   0, 0, 0, 1, 0, 0, 0, 0,
+			   0, 0, 0, 0, 1, 0, 0, 0,
+			   0, 0, 0, 0, 0, 1, 0, 0,
+			   0, 0, 0, 0, 0, 0, 1, 0,
+			   0, 0, 0, 0, 0, 0, 0, 1,
+			   0, 0, 0, 0, 0, 0, 0, 0 ])
+]).
+
+============================== end of model ==========================
+
+============================== MODEL =================================
+
+interpretation( 8, [number=21, seconds=0], [
+
+        function(a1, [ 7 ]),
+
+        function(a2, [ 3 ]),
+
+        function(a3, [ 5 ]),
+
+        function(a4, [ 1 ]),
+
+        function(b1, [ 6 ]),
+
+        function(b2, [ 0 ]),
+
+        function(b3, [ 4 ]),
+
+        function(b4, [ 2 ]),
+
+        function(c(_), [ 2, 4, 4, 3, 3, 3, 1, 1 ]),
+
+        relation(p1, [ 1 ]),
+
+        relation(p1r, [ 0 ]),
+
+        relation(p2, [ 1 ]),
+
+        relation(p3, [ 1 ]),
+
+        relation(p3r, [ 0 ]),
+
+        relation(p4, [ 0 ]),
+
+        relation(p4r, [ 1 ]),
+
+        relation(b(_), [ 1, 0, 1, 0, 1, 0, 1, 0 ]),
+
+        relation(w(_), [ 0, 1, 0, 1, 0, 1, 0, 1 ]),
+
+        relation(left(_,_), [
+			   0, 1, 0, 0, 0, 0, 0, 0,
+			   0, 0, 1, 0, 0, 0, 0, 0,
+			   0, 0, 0, 1, 0, 0, 0, 0,
+			   0, 0, 0, 0, 1, 0, 0, 0,
+			   0, 0, 0, 0, 0, 1, 0, 0,
+			   0, 0, 0, 0, 0, 0, 1, 0,
+			   0, 0, 0, 0, 0, 0, 0, 1,
+			   0, 0, 0, 0, 0, 0, 0, 0 ])
+]).
+
+============================== end of model ==========================
+
+============================== MODEL =================================
+
+interpretation( 8, [number=22, seconds=0], [
+
+        function(a1, [ 7 ]),
+
+        function(a2, [ 3 ]),
+
+        function(a3, [ 5 ]),
+
+        function(a4, [ 1 ]),
+
+        function(b1, [ 6 ]),
+
+        function(b2, [ 2 ]),
+
+        function(b3, [ 4 ]),
+
+        function(b4, [ 0 ]),
+
+        function(c(_), [ 4, 4, 2, 3, 3, 3, 1, 1 ]),
+
+        relation(p1, [ 1 ]),
+
+        relation(p1r, [ 0 ]),
+
+        relation(p2, [ 1 ]),
+
+        relation(p3, [ 1 ]),
+
+        relation(p3r, [ 0 ]),
+
+        relation(p4, [ 1 ]),
+
+        relation(p4r, [ 0 ]),
+
+        relation(b(_), [ 1, 0, 1, 0, 1, 0, 1, 0 ]),
+
+        relation(w(_), [ 0, 1, 0, 1, 0, 1, 0, 1 ]),
+
+        relation(left(_,_), [
+			   0, 1, 0, 0, 0, 0, 0, 0,
+			   0, 0, 1, 0, 0, 0, 0, 0,
+			   0, 0, 0, 1, 0, 0, 0, 0,
+			   0, 0, 0, 0, 1, 0, 0, 0,
+			   0, 0, 0, 0, 0, 1, 0, 0,
+			   0, 0, 0, 0, 0, 0, 1, 0,
+			   0, 0, 0, 0, 0, 0, 0, 1,
+			   0, 0, 0, 0, 0, 0, 0, 0 ])
+]).
+
+============================== end of model ==========================
+
+============================== MODEL =================================
+
+interpretation( 8, [number=23, seconds=0], [
+
+        function(a1, [ 7 ]),
+
+        function(a2, [ 5 ]),
+
+        function(a3, [ 3 ]),
+
+        function(a4, [ 1 ]),
+
+        function(b1, [ 6 ]),
+
+        function(b2, [ 0 ]),
+
+        function(b3, [ 4 ]),
+
+        function(b4, [ 2 ]),
+
+        function(c(_), [ 2, 4, 4, 3, 3, 3, 1, 1 ]),
+
+        relation(p1, [ 1 ]),
+
+        relation(p1r, [ 0 ]),
+
+        relation(p2, [ 1 ]),
+
+        relation(p3, [ 0 ]),
+
+        relation(p3r, [ 1 ]),
+
+        relation(p4, [ 0 ]),
+
+        relation(p4r, [ 1 ]),
+
+        relation(b(_), [ 1, 0, 1, 0, 1, 0, 1, 0 ]),
+
+        relation(w(_), [ 0, 1, 0, 1, 0, 1, 0, 1 ]),
+
+        relation(left(_,_), [
+			   0, 1, 0, 0, 0, 0, 0, 0,
+			   0, 0, 1, 0, 0, 0, 0, 0,
+			   0, 0, 0, 1, 0, 0, 0, 0,
+			   0, 0, 0, 0, 1, 0, 0, 0,
+			   0, 0, 0, 0, 0, 1, 0, 0,
+			   0, 0, 0, 0, 0, 0, 1, 0,
+			   0, 0, 0, 0, 0, 0, 0, 1,
+			   0, 0, 0, 0, 0, 0, 0, 0 ])
+]).
+
+============================== end of model ==========================
+
+============================== MODEL =================================
+
+interpretation( 8, [number=24, seconds=0], [
+
+        function(a1, [ 7 ]),
+
+        function(a2, [ 5 ]),
+
+        function(a3, [ 3 ]),
+
+        function(a4, [ 1 ]),
+
+        function(b1, [ 6 ]),
+
+        function(b2, [ 2 ]),
+
+        function(b3, [ 4 ]),
+
+        function(b4, [ 0 ]),
+
+        function(c(_), [ 4, 4, 2, 3, 3, 3, 1, 1 ]),
+
+        relation(p1, [ 1 ]),
+
+        relation(p1r, [ 0 ]),
+
+        relation(p2, [ 1 ]),
+
+        relation(p3, [ 0 ]),
+
+        relation(p3r, [ 1 ]),
+
+        relation(p4, [ 1 ]),
+
+        relation(p4r, [ 0 ]),
+
+        relation(b(_), [ 1, 0, 1, 0, 1, 0, 1, 0 ]),
+
+        relation(w(_), [ 0, 1, 0, 1, 0, 1, 0, 1 ]),
+
+        relation(left(_,_), [
+			   0, 1, 0, 0, 0, 0, 0, 0,
+			   0, 0, 1, 0, 0, 0, 0, 0,
+			   0, 0, 0, 1, 0, 0, 0, 0,
+			   0, 0, 0, 0, 1, 0, 0, 0,
+			   0, 0, 0, 0, 0, 1, 0, 0,
+			   0, 0, 0, 0, 0, 0, 1, 0,
+			   0, 0, 0, 0, 0, 0, 0, 1,
+			   0, 0, 0, 0, 0, 0, 0, 0 ])
+]).
+
+============================== end of model ==========================
+
+============================== STATISTICS ============================
+
+For domain size 8.
+
+Current CPU time: 0.00 seconds (total CPU time: 0.01 seconds).
+Ground clauses: seen=346, kept=155.
+Selections=209, assignments=1672, propagations=1779, current_models=24.
+Rewrite_terms=14362, rewrite_bools=10984, indexes=646.
+Rules_from_neg_clauses=276, cross_offs=1156.
+
+============================== end of statistics =====================
+
+User_CPU=0.01, System_CPU=0.00, Wall_clock=0.
+
+Exiting with 24 models.
+
+Process 26019 exit (all_models) Thu Jan 21 12:38:44 2021
+The process finished Thu Jan 21 12:38:44 2021

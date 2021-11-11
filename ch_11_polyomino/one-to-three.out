@@ -1,0 +1,223 @@
+============================== Mace4 =================================
+Mace4 (64) version 2009-11A, November 2009.
+Process 27881 was started by adrian on adrian,
+Thu Jan 21 14:35:14 2021
+The command was "mace4 -f one-to-three.in".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+% Reading from file one-to-three.in
+
+assign(domain_size,9).
+    % assign(domain_size, 9) -> assign(start_size, 9).
+    % assign(domain_size, 9) -> assign(end_size, 9).
+assign(max_models,-1).
+set(arithmetic).
+    % set(arithmetic) -> clear(lnh).
+    % set(arithmetic) -> assign(selection_order, 0).
+
+    % Declaring Mace4 arithmetic parse types.
+
+list(distinct).
+[a0,a1,a2,a3,a4,a5,a6,a7,a8].
+end_of_list.
+
+formulas(assumptions).
+x != 6 & x != 7 & x != 8 -> (on(x,y) <-> y = x + 3).
+-(x != 6 & x != 7 & x != 8) -> -on(x,y).
+x != 2 & x != 5 & x != 8 -> (left(x,y) <-> y = x + 1).
+-(x != 2 & x != 5 & x != 8) -> -left(x,y).
+on(a0,a3) & on(a3,a6).
+on(a2,a5).
+on(a4,a7) & left(a7,a8).
+end_of_list.
+
+============================== end of input ==========================
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+1 x != 6 & x != 7 & x != 8 -> (on(x,y) <-> y = x + 3) # label(non_clause).  [assumption].
+2 -(x != 6 & x != 7 & x != 8) -> -on(x,y) # label(non_clause).  [assumption].
+3 x != 2 & x != 5 & x != 8 -> (left(x,y) <-> y = x + 1) # label(non_clause).  [assumption].
+4 -(x != 2 & x != 5 & x != 8) -> -left(x,y) # label(non_clause).  [assumption].
+5 on(a0,a3) & on(a3,a6) # label(non_clause).  [assumption].
+6 on(a4,a7) & left(a7,a8) # label(non_clause).  [assumption].
+
+============================== end of process non-clausal formulas ===
+
+============================== CLAUSES FOR SEARCH ====================
+
+formulas(mace4_clauses).
+6 = x | 7 = x | 8 = x | -on(x,y) | x + 3 = y.
+6 = x | 7 = x | 8 = x | on(x,y) | x + 3 != y.
+6 != x | -on(x,y).
+7 != x | -on(x,y).
+8 != x | -on(x,y).
+2 = x | 5 = x | 8 = x | -left(x,y) | x + 1 = y.
+2 = x | 5 = x | 8 = x | left(x,y) | x + 1 != y.
+2 != x | -left(x,y).
+5 != x | -left(x,y).
+8 != x | -left(x,y).
+on(a0,a3).
+on(a3,a6).
+on(a2,a5).
+on(a4,a7).
+left(a7,a8).
+a0 != a1.
+a0 != a2.
+a0 != a3.
+a0 != a4.
+a0 != a5.
+a0 != a6.
+a0 != a7.
+a0 != a8.
+a1 != a2.
+a1 != a3.
+a1 != a4.
+a1 != a5.
+a1 != a6.
+a1 != a7.
+a1 != a8.
+a2 != a3.
+a2 != a4.
+a2 != a5.
+a2 != a6.
+a2 != a7.
+a2 != a8.
+a3 != a4.
+a3 != a5.
+a3 != a6.
+a3 != a7.
+a3 != a8.
+a4 != a5.
+a4 != a6.
+a4 != a7.
+a4 != a8.
+a5 != a6.
+a5 != a7.
+a5 != a8.
+a6 != a7.
+a6 != a8.
+a7 != a8.
+end_of_list.
+
+============================== end of clauses for search =============
+
+% The largest natural number in the input is 8.
+
+============================== DOMAIN SIZE 9 =========================
+
+============================== MODEL =================================
+
+interpretation( 9, [number=1, seconds=0], [
+
+        function(a0, [ 0 ]),
+
+        function(a2, [ 2 ]),
+
+        function(a3, [ 3 ]),
+
+        function(a4, [ 4 ]),
+
+        function(a5, [ 5 ]),
+
+        function(a6, [ 6 ]),
+
+        function(a7, [ 7 ]),
+
+        function(a8, [ 8 ]),
+
+        relation(left(_,_), [
+			   0, 1, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 1, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 1, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 1, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 1, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 1,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0 ]),
+
+        relation(on(_,_), [
+			   0, 0, 0, 1, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 1, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 1, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 1, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 1, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 1,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0 ]),
+
+        function(a1, [ 1 ])
+]).
+
+============================== end of model ==========================
+
+============================== MODEL =================================
+
+interpretation( 9, [number=2, seconds=0], [
+
+        function(a0, [ 2 ]),
+
+        function(a2, [ 1 ]),
+
+        function(a3, [ 5 ]),
+
+        function(a4, [ 3 ]),
+
+        function(a5, [ 4 ]),
+
+        function(a6, [ 8 ]),
+
+        function(a7, [ 6 ]),
+
+        function(a8, [ 7 ]),
+
+        relation(left(_,_), [
+			   0, 1, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 1, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 1, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 1, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 1, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 1,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0 ]),
+
+        relation(on(_,_), [
+			   0, 0, 0, 1, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 1, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 1, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 1, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 1, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 1,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0 ]),
+
+        function(a1, [ 0 ])
+]).
+
+============================== end of model ==========================
+
+============================== STATISTICS ============================
+
+For domain size 9.
+
+Current CPU time: 0.00 seconds (total CPU time: 0.01 seconds).
+Ground clauses: seen=851, kept=203.
+Selections=16, assignments=144, propagations=269, current_models=2.
+Rewrite_terms=1507, rewrite_bools=935, indexes=0.
+Rules_from_neg_clauses=107, cross_offs=755.
+
+============================== end of statistics =====================
+
+User_CPU=0.01, System_CPU=0.00, Wall_clock=0.
+
+Exiting with 2 models.
+
+Process 27881 exit (all_models) Thu Jan 21 14:35:14 2021
+The process finished Thu Jan 21 14:35:14 2021

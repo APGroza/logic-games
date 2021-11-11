@@ -1,0 +1,34 @@
+assign(domain_size,64).  %grid 8x8
+assign(max_models,1).
+assign(max_megs,-1).
+set(arithmetic).
+
+list(distinct).
+  [a0,a1,a2,a3,a4,a5,a6,a7,
+   a8,a9,a10,a11,a12,a13,a14,a15,
+   a16,a17,a18,a19,a20,a21,a22,a23,
+   a24,a25,a26,a27,a28,a29,a30,a31,
+   a32,a33,a34,a35,a36,a37,a38,a39,
+   a40,a41,a42,a43,a44,a45,a46,a47,
+   a48,a49,a50,a51,a52,a53,a54,a55,
+   a56,a57,a58,a59,27,28,35,36].  %the center is free
+end_of_list.
+
+formulas(utils).
+  x < 56 -> (on(x,y) <-> y = x + 8).   %x on y, 
+  x > 55 -> -on(x,y).                  %8x8 grid
+  
+  (x != 7  & x != 15 & x != 23 & x != 31 & 
+   x != 39 & x != 47 & x != 55 & x != 63) -> (left(x,y) <-> y = x + 1). 
+ -(x != 7 & x != 15 & x != 23 & x != 31 & 
+   x != 39 & x != 47 & x != 55 & x != 63) -> -left(x,y).                
+end_of_list.
+
+formulas(assumptions).
+  a40=0.   a41=8.   a42=16.   a43=24.   a44=32. %I
+  a8=1.   a9=9. a7=2. a6=3. a5=11.		%Urr
+  a20=10. a22=18. a21=17. a23=19. a24=26.       %X
+  a26=31. a27=39. a28=47. a29=55. a25=38.
+  a12=7. a13=6. a14=5. a11=15. a10=23. 
+  trr. Urr. Vrr. prr. Y.  
+end_of_list.

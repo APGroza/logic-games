@@ -1,0 +1,12 @@
+formulas(t_shape).
+  t   <-> left(a0,a1) & left(a1,a2) &   on(a1,a3) &   on(a3,a4).
+  tr  <->   on(a0,a1) &   on(a1,a2) & left(a3,a1) & left(a4,a3).
+  trr <-> left(a1,a0) & left(a2,a1) &   on(a3,a1) &   on(a4,a3).
+  trrr<->   on(a1,a0) & on(a2,a1) & left(a1,a3) & left(a3,a4).
+  t | tr | trr | trrr.            
+  t    -> -tr & -trr & -trrr.     
+  tr   -> -t  & -trr & -trrr.
+  trr  -> -t  & -tr  & -trrr.
+  trrr -> -t  & -tr  & -trr. 
+end_of_list.
+

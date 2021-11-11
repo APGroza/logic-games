@@ -1,0 +1,5 @@
+formulas(x_shape).
+  X   <-> on(a20,a22) & on(a22,a24) & left(a21,a22) & left(a22,a23).  
+  X.
+end_of_list.
+

@@ -1,0 +1,22 @@
+formulas(l_shape).
+ l   <->   on(a45,a46) &   on(a46,a47) &   on(a47,a48) & left(a48,a49). 
+ lr  <-> left(a46,a45) & left(a47,a46) & left(a48,a47) &   on(a48,a49).     
+ lrr <->   on(a46,a45) &   on(a47,a46) &   on(a48,a47) & left(a49,a48).     
+ lrrr<-> left(a45,a46) & left(a46,a47) & left(a47,a48) &   on(a49,a48).
+
+ lu   <->   on(a45,a46) &   on(a46,a47) &   on(a47,a48) & left(a49,a48). 
+ lur  <-> left(a46,a45) & left(a47,a46) & left(a48,a47) &   on(a49,a48).     
+ lurr <->   on(a46,a45) &   on(a47,a46) &   on(a48,a47) & left(a48,a49).     
+ lurrr<-> left(a45,a46) & left(a46,a47) & left(a47,a48) &   on(a48,a49).
+        
+ l | lr | lrr | lrrr | lu | lur | lurr | lurrr.            
+ l    -> -lr & -lrr & -lrrr & -lu   & -lur & -lurr & -lurrr.     
+ lr   -> -l  & -lrr & -lrrr & -lu   & -lur & -lurr & -lurrr.
+ lrr  -> -l  & -lr  & -lrrr & -lu   & -lur & -lurr & -lurrr.
+ lrrr -> -l  & -lr  & -lrr  & -lu   & -lur & -lurr & -lurrr.
+ lu   -> -l  & -lr  & -lrr  & -lrrr & -lur & -lurr & -lurrr.     
+ lur  -> -l  & -lr  & -lrr  & -lrrr & -lu  & -lurr & -lurrr.
+ lurr -> -l  & -lr  & -lrr  & -lrrr & -lu  & -lur  & -lurrr.
+ lurrr-> -l  & -lr  & -lrr  & -lrrr & -lu  & -lur  & -lurr.
+end_of_list.
+

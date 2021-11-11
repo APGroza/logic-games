@@ -1,0 +1,93 @@
+============================== Mace4 =================================
+Mace4 (64) version 2009-11A, November 2009.
+Process 1677 was started by adrian on adrian,
+Thu Jan 21 20:10:51 2021
+The command was "mace4 -f trickymessages2.in".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+% Reading from file trickymessages2.in
+
+set(arithmetic).
+    % set(arithmetic) -> clear(lnh).
+    % set(arithmetic) -> assign(selection_order, 0).
+
+    % Declaring Mace4 arithmetic parse types.
+assign(max_models,-1).
+assign(domain_size,2).
+    % assign(domain_size, 2) -> assign(start_size, 2).
+    % assign(domain_size, 2) -> assign(end_size, 2).
+
+formulas(assumptions).
+m1 <-> -m2.
+m2 <-> -m3 & -m4.
+m3 <-> -m4.
+m4 <-> -m1.
+end_of_list.
+
+============================== end of input ==========================
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+1 m1 <-> -m2 # label(non_clause).  [assumption].
+2 m2 <-> -m3 & -m4 # label(non_clause).  [assumption].
+3 m3 <-> -m4 # label(non_clause).  [assumption].
+4 m4 <-> -m1 # label(non_clause).  [assumption].
+
+============================== end of process non-clausal formulas ===
+
+============================== CLAUSES FOR SEARCH ====================
+
+formulas(mace4_clauses).
+-m1 | -m2.
+m1 | m2.
+-m2 | -m3.
+-m2 | -m4.
+m2 | m3 | m4.
+-m3 | -m4.
+m3 | m4.
+-m4 | -m1.
+m4 | m1.
+end_of_list.
+
+============================== end of clauses for search =============
+
+% There are no natural numbers in the input.
+
+============================== DOMAIN SIZE 2 =========================
+
+============================== MODEL =================================
+
+interpretation( 2, [number=1, seconds=0], [
+
+        relation(m1, [ 1 ]),
+
+        relation(m2, [ 0 ]),
+
+        relation(m3, [ 1 ]),
+
+        relation(m4, [ 0 ])
+]).
+
+============================== end of model ==========================
+
+============================== STATISTICS ============================
+
+For domain size 2.
+
+Current CPU time: 0.00 seconds (total CPU time: 0.02 seconds).
+Ground clauses: seen=9, kept=9.
+Selections=1, assignments=2, propagations=5, current_models=1.
+Rewrite_terms=0, rewrite_bools=20, indexes=0.
+Rules_from_neg_clauses=0, cross_offs=0.
+
+============================== end of statistics =====================
+
+User_CPU=0.02, System_CPU=0.00, Wall_clock=0.
+
+Exiting with 1 model.
+
+Process 1677 exit (all_models) Thu Jan 21 20:10:51 2021
+The process finished Thu Jan 21 20:10:51 2021

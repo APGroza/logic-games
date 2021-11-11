@@ -1,0 +1,14 @@
+assign(domain_size,30).  %grid 5x6
+assign(max_models,2).
+set(arithmetic).
+
+formulas(utils).
+  x < 24 -> (on(x,y) <-> y = x + 6).   %x on y, 
+  x > 23 -> -on(x,y).                  %4x5 grid
+  
+  (x != 5 & x != 11 & x != 17 & x != 23 & x != 29) -> 
+                                       (left(x,y) <-> y = x + 1). 
+ -(x != 5 & x != 11 & x != 17 & x != 23 & x != 29) -> -left(x,y).                
+end_of_list.
+
+

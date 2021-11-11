@@ -1,0 +1,4 @@
+formulas(help).
+ a6 = 0.  a5 =1.  a20 = 2. a44 = 3.  a43 = 4. a42 = 5. a41 = 6.  a40=7.
+ a30 = 8. a19=9.  
+end_of_list.

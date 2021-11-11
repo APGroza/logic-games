@@ -1,0 +1,1450 @@
+============================== Mace4 =================================
+Mace4 (64) version 2009-11A, November 2009.
+Process 32541 was started by adrian on adrian,
+Thu Jan 21 18:54:17 2021
+The command was "mace4 -f 5x6.in vars_u_v_x_f_p_n.in ./12pento/u.in ./12pento/v.in ./12pento/x.in ./12pento/f.in ./12pento/p.in ./12pento/n.in".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+% Reading from file 5x6.in
+
+assign(domain_size,30).
+    % assign(domain_size, 30) -> assign(start_size, 30).
+    % assign(domain_size, 30) -> assign(end_size, 30).
+assign(max_models,2).
+set(arithmetic).
+    % set(arithmetic) -> clear(lnh).
+    % set(arithmetic) -> assign(selection_order, 0).
+
+    % Declaring Mace4 arithmetic parse types.
+
+formulas(utils).
+x < 24 -> (on(x,y) <-> y = x + 6).
+x > 23 -> -on(x,y).
+x != 5 & x != 11 & x != 17 & x != 23 & x != 29 -> (left(x,y) <-> y = x + 1).
+-(x != 5 & x != 11 & x != 17 & x != 23 & x != 29) -> -left(x,y).
+end_of_list.
+
+% Reading from file vars_u_v_x_f_p_n.in
+
+
+list(distinct).
+[a5,a6,a7,a8,a9,a10,a11,a12,a13,a14,a20,a21,a22,a23,a24,a35,a36,a37,a38,a39,a50,a51,a52,a53,a54,a55,a56,a57,a58,a59].
+end_of_list.
+
+% Reading from file ./12pento/u.in
+
+
+formulas(u_shape).
+U <-> on(a5,a6) & left(a6,a7) & left(a7,a8) & on(a9,a8).
+Ur <-> left(a6,a5) & on(a6,a7) & on(a7,a8) & left(a8,a9).
+Urr <-> on(a6,a5) & left(a7,a6) & left(a8,a7) & on(a8,a9).
+Urrr <-> left(a5,a6) & on(a7,a6) & on(a8,a7) & left(a9,a8).
+U | Ur | Urr | Urrr.
+U -> -Ur & -Urr & -Urrr.
+Ur -> -U & -Urr & -Urrr.
+Urr -> -U & -Ur & -Urrr.
+Urrr -> -U & -Ur & -Urr.
+end_of_list.
+
+% Reading from file ./12pento/v.in
+
+
+formulas(v_shape).
+V <-> on(a10,a11) & on(a11,a12) & left(a12,a13) & left(a13,a14).
+Vr <-> left(a11,a10) & left(a12,a11) & on(a12,a13) & on(a13,a14).
+Vrr <-> on(a11,a10) & on(a12,a11) & left(a13,a12) & left(a14,a13).
+Vrrr <-> left(a10,a11) & left(a11,a12) & on(a13,a12) & on(a14,a13).
+V | Vr | Vrr | Vrrr.
+V -> -Vr & -Vrr & -Vrrr.
+Vr -> -V & -Vrr & -Vrrr.
+Vrr -> -V & -Vr & -Vrrr.
+Vrrr -> -V & -Vr & -Vrr.
+end_of_list.
+
+% Reading from file ./12pento/x.in
+
+
+formulas(x_shape).
+X <-> on(a20,a22) & on(a22,a24) & left(a21,a22) & left(a22,a23).
+X.
+end_of_list.
+
+% Reading from file ./12pento/f.in
+
+
+formulas(f_shape).
+f <-> left(a35,a37) & on(a36,a37) & on(a37,a38) & left(a36,a39).
+fr <-> on(a35,a37) & left(a37,a36) & left(a38,a37) & on(a36,a39).
+frr <-> left(a37,a35) & on(a37,a36) & on(a38,a37) & left(a39,a36).
+frrr <-> on(a37,a35) & left(a36,a37) & left(a37,a38) & on(a39,a36).
+fu <-> left(a37,a35) & on(a36,a37) & on(a37,a38) & left(a39,a36).
+fur <-> on(a37,a35) & left(a37,a36) & left(a38,a37) & on(a39,a36).
+furr <-> left(a35,a37) & on(a37,a36) & on(a38,a37) & left(a36,a39).
+furrr <-> on(a35,a37) & left(a36,a37) & left(a37,a38) & on(a36,a39).
+f | fr | frr | frrr | fu | fur | furr | furrr.
+f -> -fr & -frr & -frrr & -fu & -fur & -furr & -furrr.
+fr -> -f & -frr & -frrr & -fu & -fur & -furr & -furrr.
+frr -> -f & -fr & -frrr & -fu & -fur & -furr & -furrr.
+frrr -> -f & -fr & -frr & -fu & -fur & -furr & -furrr.
+fu -> -f & -fr & -frr & -frrr & -fur & -furr & -furrr.
+fur -> -f & -fr & -frr & -frrr & -fu & -furr & -furrr.
+furr -> -f & -fr & -frr & -frrr & -fu & -fur & -furrr.
+furrr -> -f & -fr & -frr & -frrr & -fu & -fur & -furr.
+end_of_list.
+
+% Reading from file ./12pento/p.in
+
+
+formulas(p_shape).
+p <-> on(a50,a51) & on(a52,a53) & on(a53,a54) & left(a51,a54).
+pr <-> left(a51,a50) & left(a53,a52) & left(a54,a53) & on(a51,a54).
+prr <-> on(a51,a50) & on(a53,a52) & on(a54,a53) & left(a54,a51).
+prrr <-> left(a50,a51) & left(a52,a53) & left(a53,a54) & on(a54,a51).
+pu <-> on(a50,a51) & on(a52,a53) & on(a53,a54) & left(a54,a51).
+pur <-> left(a51,a50) & left(a53,a52) & left(a54,a53) & on(a54,a51).
+purr <-> on(a51,a50) & on(a53,a52) & on(a54,a53) & left(a51,a54).
+purrr <-> left(a50,a51) & left(a52,a53) & left(a53,a54) & on(a51,a54).
+p | pr | prr | prrr | pu | pur | purr | purrr.
+p -> -pr & -prr & -prrr & -pu & -pur & -purr & -purrr.
+pr -> -p & -prr & -prrr & -pu & -pur & -purr & -purrr.
+prr -> -p & -pr & -prrr & -pu & -pur & -purr & -purrr.
+prrr -> -p & -pr & -prr & -pu & -pur & -purr & -purrr.
+pu -> -p & -pr & -prr & -prrr & -pur & -purr & -purrr.
+pur -> -p & -pr & -prr & -prrr & -pu & -purr & -purrr.
+purr -> -p & -pr & -prr & -prrr & -pu & -pur & -purrr.
+purrr -> -p & -pr & -prr & -prrr & -pu & -pur & -purr.
+end_of_list.
+
+% Reading from file ./12pento/n.in
+
+
+formulas(n_shape).
+n <-> on(a55,a56) & on(a56,a57) & left(a58,a57) & on(a58,a59).
+nr <-> left(a56,a55) & left(a57,a56) & on(a58,a57) & left(a59,a58).
+nrr <-> on(a56,a55) & on(a57,a56) & left(a57,a58) & on(a59,a58).
+nrrr <-> left(a55,a56) & left(a56,a57) & on(a57,a58) & left(a58,a59).
+nu <-> on(a55,a56) & on(a56,a57) & left(a57,a58) & on(a58,a59).
+nur <-> left(a56,a55) & left(a57,a56) & on(a57,a58) & left(a59,a58).
+nurr <-> on(a56,a55) & on(a57,a56) & left(a58,a57) & on(a59,a58).
+nurrr <-> left(a55,a56) & left(a56,a57) & on(a58,a57) & left(a58,a59).
+n | nr | nrr | nrrr | nu | nur | nurr | nurrr.
+n -> -nr & -nrr & -nrrr & -nu & -nur & -nurr & -nurrr.
+nr -> -n & -nrr & -nrrr & -nu & -nur & -nurr & -nurrr.
+nrr -> -n & -nr & -nrrr & -nu & -nur & -nurr & -nurrr.
+nrrr -> -n & -nr & -nrr & -nu & -nur & -nurr & -nurrr.
+nu -> -n & -nr & -nrr & -nrrr & -nur & -nurr & -nurrr.
+nur -> -n & -nr & -nrr & -nrrr & -nu & -nurr & -nurrr.
+nurr -> -n & -nr & -nrr & -nrrr & -nu & -nur & -nurrr.
+nurrr -> -n & -nr & -nrr & -nrrr & -nu & -nur & -nurr.
+end_of_list.
+
+============================== end of input ==========================
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+1 x < 24 -> (on(x,y) <-> y = x + 6) # label(non_clause).  [assumption].
+2 x > 23 -> -on(x,y) # label(non_clause).  [assumption].
+3 x != 5 & x != 11 & x != 17 & x != 23 & x != 29 -> (left(x,y) <-> y = x + 1) # label(non_clause).  [assumption].
+4 -(x != 5 & x != 11 & x != 17 & x != 23 & x != 29) -> -left(x,y) # label(non_clause).  [assumption].
+5 U <-> on(a5,a6) & left(a6,a7) & left(a7,a8) & on(a9,a8) # label(non_clause).  [assumption].
+6 Ur <-> left(a6,a5) & on(a6,a7) & on(a7,a8) & left(a8,a9) # label(non_clause).  [assumption].
+7 Urr <-> on(a6,a5) & left(a7,a6) & left(a8,a7) & on(a8,a9) # label(non_clause).  [assumption].
+8 Urrr <-> left(a5,a6) & on(a7,a6) & on(a8,a7) & left(a9,a8) # label(non_clause).  [assumption].
+9 U -> -Ur & -Urr & -Urrr # label(non_clause).  [assumption].
+10 Ur -> -U & -Urr & -Urrr # label(non_clause).  [assumption].
+11 Urr -> -U & -Ur & -Urrr # label(non_clause).  [assumption].
+12 Urrr -> -U & -Ur & -Urr # label(non_clause).  [assumption].
+13 V <-> on(a10,a11) & on(a11,a12) & left(a12,a13) & left(a13,a14) # label(non_clause).  [assumption].
+14 Vr <-> left(a11,a10) & left(a12,a11) & on(a12,a13) & on(a13,a14) # label(non_clause).  [assumption].
+15 Vrr <-> on(a11,a10) & on(a12,a11) & left(a13,a12) & left(a14,a13) # label(non_clause).  [assumption].
+16 Vrrr <-> left(a10,a11) & left(a11,a12) & on(a13,a12) & on(a14,a13) # label(non_clause).  [assumption].
+17 V -> -Vr & -Vrr & -Vrrr # label(non_clause).  [assumption].
+18 Vr -> -V & -Vrr & -Vrrr # label(non_clause).  [assumption].
+19 Vrr -> -V & -Vr & -Vrrr # label(non_clause).  [assumption].
+20 Vrrr -> -V & -Vr & -Vrr # label(non_clause).  [assumption].
+21 X <-> on(a20,a22) & on(a22,a24) & left(a21,a22) & left(a22,a23) # label(non_clause).  [assumption].
+22 f <-> left(a35,a37) & on(a36,a37) & on(a37,a38) & left(a36,a39) # label(non_clause).  [assumption].
+23 fr <-> on(a35,a37) & left(a37,a36) & left(a38,a37) & on(a36,a39) # label(non_clause).  [assumption].
+24 frr <-> left(a37,a35) & on(a37,a36) & on(a38,a37) & left(a39,a36) # label(non_clause).  [assumption].
+25 frrr <-> on(a37,a35) & left(a36,a37) & left(a37,a38) & on(a39,a36) # label(non_clause).  [assumption].
+26 fu <-> left(a37,a35) & on(a36,a37) & on(a37,a38) & left(a39,a36) # label(non_clause).  [assumption].
+27 fur <-> on(a37,a35) & left(a37,a36) & left(a38,a37) & on(a39,a36) # label(non_clause).  [assumption].
+28 furr <-> left(a35,a37) & on(a37,a36) & on(a38,a37) & left(a36,a39) # label(non_clause).  [assumption].
+29 furrr <-> on(a35,a37) & left(a36,a37) & left(a37,a38) & on(a36,a39) # label(non_clause).  [assumption].
+30 f -> -fr & -frr & -frrr & -fu & -fur & -furr & -furrr # label(non_clause).  [assumption].
+31 fr -> -f & -frr & -frrr & -fu & -fur & -furr & -furrr # label(non_clause).  [assumption].
+32 frr -> -f & -fr & -frrr & -fu & -fur & -furr & -furrr # label(non_clause).  [assumption].
+33 frrr -> -f & -fr & -frr & -fu & -fur & -furr & -furrr # label(non_clause).  [assumption].
+34 fu -> -f & -fr & -frr & -frrr & -fur & -furr & -furrr # label(non_clause).  [assumption].
+35 fur -> -f & -fr & -frr & -frrr & -fu & -furr & -furrr # label(non_clause).  [assumption].
+36 furr -> -f & -fr & -frr & -frrr & -fu & -fur & -furrr # label(non_clause).  [assumption].
+37 furrr -> -f & -fr & -frr & -frrr & -fu & -fur & -furr # label(non_clause).  [assumption].
+38 p <-> on(a50,a51) & on(a52,a53) & on(a53,a54) & left(a51,a54) # label(non_clause).  [assumption].
+39 pr <-> left(a51,a50) & left(a53,a52) & left(a54,a53) & on(a51,a54) # label(non_clause).  [assumption].
+40 prr <-> on(a51,a50) & on(a53,a52) & on(a54,a53) & left(a54,a51) # label(non_clause).  [assumption].
+41 prrr <-> left(a50,a51) & left(a52,a53) & left(a53,a54) & on(a54,a51) # label(non_clause).  [assumption].
+42 pu <-> on(a50,a51) & on(a52,a53) & on(a53,a54) & left(a54,a51) # label(non_clause).  [assumption].
+43 pur <-> left(a51,a50) & left(a53,a52) & left(a54,a53) & on(a54,a51) # label(non_clause).  [assumption].
+44 purr <-> on(a51,a50) & on(a53,a52) & on(a54,a53) & left(a51,a54) # label(non_clause).  [assumption].
+45 purrr <-> left(a50,a51) & left(a52,a53) & left(a53,a54) & on(a51,a54) # label(non_clause).  [assumption].
+46 p -> -pr & -prr & -prrr & -pu & -pur & -purr & -purrr # label(non_clause).  [assumption].
+47 pr -> -p & -prr & -prrr & -pu & -pur & -purr & -purrr # label(non_clause).  [assumption].
+48 prr -> -p & -pr & -prrr & -pu & -pur & -purr & -purrr # label(non_clause).  [assumption].
+49 prrr -> -p & -pr & -prr & -pu & -pur & -purr & -purrr # label(non_clause).  [assumption].
+50 pu -> -p & -pr & -prr & -prrr & -pur & -purr & -purrr # label(non_clause).  [assumption].
+51 pur -> -p & -pr & -prr & -prrr & -pu & -purr & -purrr # label(non_clause).  [assumption].
+52 purr -> -p & -pr & -prr & -prrr & -pu & -pur & -purrr # label(non_clause).  [assumption].
+53 purrr -> -p & -pr & -prr & -prrr & -pu & -pur & -purr # label(non_clause).  [assumption].
+54 n <-> on(a55,a56) & on(a56,a57) & left(a58,a57) & on(a58,a59) # label(non_clause).  [assumption].
+55 nr <-> left(a56,a55) & left(a57,a56) & on(a58,a57) & left(a59,a58) # label(non_clause).  [assumption].
+56 nrr <-> on(a56,a55) & on(a57,a56) & left(a57,a58) & on(a59,a58) # label(non_clause).  [assumption].
+57 nrrr <-> left(a55,a56) & left(a56,a57) & on(a57,a58) & left(a58,a59) # label(non_clause).  [assumption].
+58 nu <-> on(a55,a56) & on(a56,a57) & left(a57,a58) & on(a58,a59) # label(non_clause).  [assumption].
+59 nur <-> left(a56,a55) & left(a57,a56) & on(a57,a58) & left(a59,a58) # label(non_clause).  [assumption].
+60 nurr <-> on(a56,a55) & on(a57,a56) & left(a58,a57) & on(a59,a58) # label(non_clause).  [assumption].
+61 nurrr <-> left(a55,a56) & left(a56,a57) & on(a58,a57) & left(a58,a59) # label(non_clause).  [assumption].
+62 n -> -nr & -nrr & -nrrr & -nu & -nur & -nurr & -nurrr # label(non_clause).  [assumption].
+63 nr -> -n & -nrr & -nrrr & -nu & -nur & -nurr & -nurrr # label(non_clause).  [assumption].
+64 nrr -> -n & -nr & -nrrr & -nu & -nur & -nurr & -nurrr # label(non_clause).  [assumption].
+65 nrrr -> -n & -nr & -nrr & -nu & -nur & -nurr & -nurrr # label(non_clause).  [assumption].
+66 nu -> -n & -nr & -nrr & -nrrr & -nur & -nurr & -nurrr # label(non_clause).  [assumption].
+67 nur -> -n & -nr & -nrr & -nrrr & -nu & -nurr & -nurrr # label(non_clause).  [assumption].
+68 nurr -> -n & -nr & -nrr & -nrrr & -nu & -nur & -nurrr # label(non_clause).  [assumption].
+69 nurrr -> -n & -nr & -nrr & -nrrr & -nu & -nur & -nurr # label(non_clause).  [assumption].
+
+============================== end of process non-clausal formulas ===
+
+============================== CLAUSES FOR SEARCH ====================
+
+formulas(mace4_clauses).
+-(x < 24) | -on(x,y) | x + 6 = y.
+-(x < 24) | on(x,y) | x + 6 != y.
+-(x > 23) | -on(x,y).
+5 = x | 11 = x | 17 = x | 23 = x | 29 = x | -left(x,y) | x + 1 = y.
+5 = x | 11 = x | 17 = x | 23 = x | 29 = x | left(x,y) | x + 1 != y.
+5 != x | -left(x,y).
+11 != x | -left(x,y).
+17 != x | -left(x,y).
+23 != x | -left(x,y).
+29 != x | -left(x,y).
+-U | on(a5,a6).
+-U | left(a6,a7).
+-U | left(a7,a8).
+-U | on(a9,a8).
+U | -on(a5,a6) | -left(a6,a7) | -left(a7,a8) | -on(a9,a8).
+-Ur | left(a6,a5).
+-Ur | on(a6,a7).
+-Ur | on(a7,a8).
+-Ur | left(a8,a9).
+Ur | -left(a6,a5) | -on(a6,a7) | -on(a7,a8) | -left(a8,a9).
+-Urr | on(a6,a5).
+-Urr | left(a7,a6).
+-Urr | left(a8,a7).
+-Urr | on(a8,a9).
+Urr | -on(a6,a5) | -left(a7,a6) | -left(a8,a7) | -on(a8,a9).
+-Urrr | left(a5,a6).
+-Urrr | on(a7,a6).
+-Urrr | on(a8,a7).
+-Urrr | left(a9,a8).
+Urrr | -left(a5,a6) | -on(a7,a6) | -on(a8,a7) | -left(a9,a8).
+U | Ur | Urr | Urrr.
+-U | -Ur.
+-U | -Urr.
+-U | -Urrr.
+-Ur | -U.
+-Ur | -Urr.
+-Ur | -Urrr.
+-Urr | -U.
+-Urr | -Ur.
+-Urr | -Urrr.
+-Urrr | -U.
+-Urrr | -Ur.
+-Urrr | -Urr.
+-V | on(a10,a11).
+-V | on(a11,a12).
+-V | left(a12,a13).
+-V | left(a13,a14).
+V | -on(a10,a11) | -on(a11,a12) | -left(a12,a13) | -left(a13,a14).
+-Vr | left(a11,a10).
+-Vr | left(a12,a11).
+-Vr | on(a12,a13).
+-Vr | on(a13,a14).
+Vr | -left(a11,a10) | -left(a12,a11) | -on(a12,a13) | -on(a13,a14).
+-Vrr | on(a11,a10).
+-Vrr | on(a12,a11).
+-Vrr | left(a13,a12).
+-Vrr | left(a14,a13).
+Vrr | -on(a11,a10) | -on(a12,a11) | -left(a13,a12) | -left(a14,a13).
+-Vrrr | left(a10,a11).
+-Vrrr | left(a11,a12).
+-Vrrr | on(a13,a12).
+-Vrrr | on(a14,a13).
+Vrrr | -left(a10,a11) | -left(a11,a12) | -on(a13,a12) | -on(a14,a13).
+V | Vr | Vrr | Vrrr.
+-V | -Vr.
+-V | -Vrr.
+-V | -Vrrr.
+-Vr | -V.
+-Vr | -Vrr.
+-Vr | -Vrrr.
+-Vrr | -V.
+-Vrr | -Vr.
+-Vrr | -Vrrr.
+-Vrrr | -V.
+-Vrrr | -Vr.
+-Vrrr | -Vrr.
+-X | on(a20,a22).
+-X | on(a22,a24).
+-X | left(a21,a22).
+-X | left(a22,a23).
+X | -on(a20,a22) | -on(a22,a24) | -left(a21,a22) | -left(a22,a23).
+X.
+-f | left(a35,a37).
+-f | on(a36,a37).
+-f | on(a37,a38).
+-f | left(a36,a39).
+f | -left(a35,a37) | -on(a36,a37) | -on(a37,a38) | -left(a36,a39).
+-fr | on(a35,a37).
+-fr | left(a37,a36).
+-fr | left(a38,a37).
+-fr | on(a36,a39).
+fr | -on(a35,a37) | -left(a37,a36) | -left(a38,a37) | -on(a36,a39).
+-frr | left(a37,a35).
+-frr | on(a37,a36).
+-frr | on(a38,a37).
+-frr | left(a39,a36).
+frr | -left(a37,a35) | -on(a37,a36) | -on(a38,a37) | -left(a39,a36).
+-frrr | on(a37,a35).
+-frrr | left(a36,a37).
+-frrr | left(a37,a38).
+-frrr | on(a39,a36).
+frrr | -on(a37,a35) | -left(a36,a37) | -left(a37,a38) | -on(a39,a36).
+-fu | left(a37,a35).
+-fu | on(a36,a37).
+-fu | on(a37,a38).
+-fu | left(a39,a36).
+fu | -left(a37,a35) | -on(a36,a37) | -on(a37,a38) | -left(a39,a36).
+-fur | on(a37,a35).
+-fur | left(a37,a36).
+-fur | left(a38,a37).
+-fur | on(a39,a36).
+fur | -on(a37,a35) | -left(a37,a36) | -left(a38,a37) | -on(a39,a36).
+-furr | left(a35,a37).
+-furr | on(a37,a36).
+-furr | on(a38,a37).
+-furr | left(a36,a39).
+furr | -left(a35,a37) | -on(a37,a36) | -on(a38,a37) | -left(a36,a39).
+-furrr | on(a35,a37).
+-furrr | left(a36,a37).
+-furrr | left(a37,a38).
+-furrr | on(a36,a39).
+furrr | -on(a35,a37) | -left(a36,a37) | -left(a37,a38) | -on(a36,a39).
+f | fr | frr | frrr | fu | fur | furr | furrr.
+-f | -fr.
+-f | -frr.
+-f | -frrr.
+-f | -fu.
+-f | -fur.
+-f | -furr.
+-f | -furrr.
+-fr | -f.
+-fr | -frr.
+-fr | -frrr.
+-fr | -fu.
+-fr | -fur.
+-fr | -furr.
+-fr | -furrr.
+-frr | -f.
+-frr | -fr.
+-frr | -frrr.
+-frr | -fu.
+-frr | -fur.
+-frr | -furr.
+-frr | -furrr.
+-frrr | -f.
+-frrr | -fr.
+-frrr | -frr.
+-frrr | -fu.
+-frrr | -fur.
+-frrr | -furr.
+-frrr | -furrr.
+-fu | -f.
+-fu | -fr.
+-fu | -frr.
+-fu | -frrr.
+-fu | -fur.
+-fu | -furr.
+-fu | -furrr.
+-fur | -f.
+-fur | -fr.
+-fur | -frr.
+-fur | -frrr.
+-fur | -fu.
+-fur | -furr.
+-fur | -furrr.
+-furr | -f.
+-furr | -fr.
+-furr | -frr.
+-furr | -frrr.
+-furr | -fu.
+-furr | -fur.
+-furr | -furrr.
+-furrr | -f.
+-furrr | -fr.
+-furrr | -frr.
+-furrr | -frrr.
+-furrr | -fu.
+-furrr | -fur.
+-furrr | -furr.
+-p | on(a50,a51).
+-p | on(a52,a53).
+-p | on(a53,a54).
+-p | left(a51,a54).
+p | -on(a50,a51) | -on(a52,a53) | -on(a53,a54) | -left(a51,a54).
+-pr | left(a51,a50).
+-pr | left(a53,a52).
+-pr | left(a54,a53).
+-pr | on(a51,a54).
+pr | -left(a51,a50) | -left(a53,a52) | -left(a54,a53) | -on(a51,a54).
+-prr | on(a51,a50).
+-prr | on(a53,a52).
+-prr | on(a54,a53).
+-prr | left(a54,a51).
+prr | -on(a51,a50) | -on(a53,a52) | -on(a54,a53) | -left(a54,a51).
+-prrr | left(a50,a51).
+-prrr | left(a52,a53).
+-prrr | left(a53,a54).
+-prrr | on(a54,a51).
+prrr | -left(a50,a51) | -left(a52,a53) | -left(a53,a54) | -on(a54,a51).
+-pu | on(a50,a51).
+-pu | on(a52,a53).
+-pu | on(a53,a54).
+-pu | left(a54,a51).
+pu | -on(a50,a51) | -on(a52,a53) | -on(a53,a54) | -left(a54,a51).
+-pur | left(a51,a50).
+-pur | left(a53,a52).
+-pur | left(a54,a53).
+-pur | on(a54,a51).
+pur | -left(a51,a50) | -left(a53,a52) | -left(a54,a53) | -on(a54,a51).
+-purr | on(a51,a50).
+-purr | on(a53,a52).
+-purr | on(a54,a53).
+-purr | left(a51,a54).
+purr | -on(a51,a50) | -on(a53,a52) | -on(a54,a53) | -left(a51,a54).
+-purrr | left(a50,a51).
+-purrr | left(a52,a53).
+-purrr | left(a53,a54).
+-purrr | on(a51,a54).
+purrr | -left(a50,a51) | -left(a52,a53) | -left(a53,a54) | -on(a51,a54).
+p | pr | prr | prrr | pu | pur | purr | purrr.
+-p | -pr.
+-p | -prr.
+-p | -prrr.
+-p | -pu.
+-p | -pur.
+-p | -purr.
+-p | -purrr.
+-pr | -p.
+-pr | -prr.
+-pr | -prrr.
+-pr | -pu.
+-pr | -pur.
+-pr | -purr.
+-pr | -purrr.
+-prr | -p.
+-prr | -pr.
+-prr | -prrr.
+-prr | -pu.
+-prr | -pur.
+-prr | -purr.
+-prr | -purrr.
+-prrr | -p.
+-prrr | -pr.
+-prrr | -prr.
+-prrr | -pu.
+-prrr | -pur.
+-prrr | -purr.
+-prrr | -purrr.
+-pu | -p.
+-pu | -pr.
+-pu | -prr.
+-pu | -prrr.
+-pu | -pur.
+-pu | -purr.
+-pu | -purrr.
+-pur | -p.
+-pur | -pr.
+-pur | -prr.
+-pur | -prrr.
+-pur | -pu.
+-pur | -purr.
+-pur | -purrr.
+-purr | -p.
+-purr | -pr.
+-purr | -prr.
+-purr | -prrr.
+-purr | -pu.
+-purr | -pur.
+-purr | -purrr.
+-purrr | -p.
+-purrr | -pr.
+-purrr | -prr.
+-purrr | -prrr.
+-purrr | -pu.
+-purrr | -pur.
+-purrr | -purr.
+-n | on(a55,a56).
+-n | on(a56,a57).
+-n | left(a58,a57).
+-n | on(a58,a59).
+n | -on(a55,a56) | -on(a56,a57) | -left(a58,a57) | -on(a58,a59).
+-nr | left(a56,a55).
+-nr | left(a57,a56).
+-nr | on(a58,a57).
+-nr | left(a59,a58).
+nr | -left(a56,a55) | -left(a57,a56) | -on(a58,a57) | -left(a59,a58).
+-nrr | on(a56,a55).
+-nrr | on(a57,a56).
+-nrr | left(a57,a58).
+-nrr | on(a59,a58).
+nrr | -on(a56,a55) | -on(a57,a56) | -left(a57,a58) | -on(a59,a58).
+-nrrr | left(a55,a56).
+-nrrr | left(a56,a57).
+-nrrr | on(a57,a58).
+-nrrr | left(a58,a59).
+nrrr | -left(a55,a56) | -left(a56,a57) | -on(a57,a58) | -left(a58,a59).
+-nu | on(a55,a56).
+-nu | on(a56,a57).
+-nu | left(a57,a58).
+-nu | on(a58,a59).
+nu | -on(a55,a56) | -on(a56,a57) | -left(a57,a58) | -on(a58,a59).
+-nur | left(a56,a55).
+-nur | left(a57,a56).
+-nur | on(a57,a58).
+-nur | left(a59,a58).
+nur | -left(a56,a55) | -left(a57,a56) | -on(a57,a58) | -left(a59,a58).
+-nurr | on(a56,a55).
+-nurr | on(a57,a56).
+-nurr | left(a58,a57).
+-nurr | on(a59,a58).
+nurr | -on(a56,a55) | -on(a57,a56) | -left(a58,a57) | -on(a59,a58).
+-nurrr | left(a55,a56).
+-nurrr | left(a56,a57).
+-nurrr | on(a58,a57).
+-nurrr | left(a58,a59).
+nurrr | -left(a55,a56) | -left(a56,a57) | -on(a58,a57) | -left(a58,a59).
+n | nr | nrr | nrrr | nu | nur | nurr | nurrr.
+-n | -nr.
+-n | -nrr.
+-n | -nrrr.
+-n | -nu.
+-n | -nur.
+-n | -nurr.
+-n | -nurrr.
+-nr | -n.
+-nr | -nrr.
+-nr | -nrrr.
+-nr | -nu.
+-nr | -nur.
+-nr | -nurr.
+-nr | -nurrr.
+-nrr | -n.
+-nrr | -nr.
+-nrr | -nrrr.
+-nrr | -nu.
+-nrr | -nur.
+-nrr | -nurr.
+-nrr | -nurrr.
+-nrrr | -n.
+-nrrr | -nr.
+-nrrr | -nrr.
+-nrrr | -nu.
+-nrrr | -nur.
+-nrrr | -nurr.
+-nrrr | -nurrr.
+-nu | -n.
+-nu | -nr.
+-nu | -nrr.
+-nu | -nrrr.
+-nu | -nur.
+-nu | -nurr.
+-nu | -nurrr.
+-nur | -n.
+-nur | -nr.
+-nur | -nrr.
+-nur | -nrrr.
+-nur | -nu.
+-nur | -nurr.
+-nur | -nurrr.
+-nurr | -n.
+-nurr | -nr.
+-nurr | -nrr.
+-nurr | -nrrr.
+-nurr | -nu.
+-nurr | -nur.
+-nurr | -nurrr.
+-nurrr | -n.
+-nurrr | -nr.
+-nurrr | -nrr.
+-nurrr | -nrrr.
+-nurrr | -nu.
+-nurrr | -nur.
+-nurrr | -nurr.
+a5 != a6.
+a5 != a7.
+a5 != a8.
+a5 != a9.
+a5 != a10.
+a5 != a11.
+a5 != a12.
+a5 != a13.
+a5 != a14.
+a5 != a20.
+a5 != a21.
+a5 != a22.
+a5 != a23.
+a5 != a24.
+a5 != a35.
+a5 != a36.
+a5 != a37.
+a5 != a38.
+a5 != a39.
+a5 != a50.
+a5 != a51.
+a5 != a52.
+a5 != a53.
+a5 != a54.
+a5 != a55.
+a5 != a56.
+a5 != a57.
+a5 != a58.
+a5 != a59.
+a6 != a7.
+a6 != a8.
+a6 != a9.
+a6 != a10.
+a6 != a11.
+a6 != a12.
+a6 != a13.
+a6 != a14.
+a6 != a20.
+a6 != a21.
+a6 != a22.
+a6 != a23.
+a6 != a24.
+a6 != a35.
+a6 != a36.
+a6 != a37.
+a6 != a38.
+a6 != a39.
+a6 != a50.
+a6 != a51.
+a6 != a52.
+a6 != a53.
+a6 != a54.
+a6 != a55.
+a6 != a56.
+a6 != a57.
+a6 != a58.
+a6 != a59.
+a7 != a8.
+a7 != a9.
+a7 != a10.
+a7 != a11.
+a7 != a12.
+a7 != a13.
+a7 != a14.
+a7 != a20.
+a7 != a21.
+a7 != a22.
+a7 != a23.
+a7 != a24.
+a7 != a35.
+a7 != a36.
+a7 != a37.
+a7 != a38.
+a7 != a39.
+a7 != a50.
+a7 != a51.
+a7 != a52.
+a7 != a53.
+a7 != a54.
+a7 != a55.
+a7 != a56.
+a7 != a57.
+a7 != a58.
+a7 != a59.
+a8 != a9.
+a8 != a10.
+a8 != a11.
+a8 != a12.
+a8 != a13.
+a8 != a14.
+a8 != a20.
+a8 != a21.
+a8 != a22.
+a8 != a23.
+a8 != a24.
+a8 != a35.
+a8 != a36.
+a8 != a37.
+a8 != a38.
+a8 != a39.
+a8 != a50.
+a8 != a51.
+a8 != a52.
+a8 != a53.
+a8 != a54.
+a8 != a55.
+a8 != a56.
+a8 != a57.
+a8 != a58.
+a8 != a59.
+a9 != a10.
+a9 != a11.
+a9 != a12.
+a9 != a13.
+a9 != a14.
+a9 != a20.
+a9 != a21.
+a9 != a22.
+a9 != a23.
+a9 != a24.
+a9 != a35.
+a9 != a36.
+a9 != a37.
+a9 != a38.
+a9 != a39.
+a9 != a50.
+a9 != a51.
+a9 != a52.
+a9 != a53.
+a9 != a54.
+a9 != a55.
+a9 != a56.
+a9 != a57.
+a9 != a58.
+a9 != a59.
+a10 != a11.
+a10 != a12.
+a10 != a13.
+a10 != a14.
+a10 != a20.
+a10 != a21.
+a10 != a22.
+a10 != a23.
+a10 != a24.
+a10 != a35.
+a10 != a36.
+a10 != a37.
+a10 != a38.
+a10 != a39.
+a10 != a50.
+a10 != a51.
+a10 != a52.
+a10 != a53.
+a10 != a54.
+a10 != a55.
+a10 != a56.
+a10 != a57.
+a10 != a58.
+a10 != a59.
+a11 != a12.
+a11 != a13.
+a11 != a14.
+a11 != a20.
+a11 != a21.
+a11 != a22.
+a11 != a23.
+a11 != a24.
+a11 != a35.
+a11 != a36.
+a11 != a37.
+a11 != a38.
+a11 != a39.
+a11 != a50.
+a11 != a51.
+a11 != a52.
+a11 != a53.
+a11 != a54.
+a11 != a55.
+a11 != a56.
+a11 != a57.
+a11 != a58.
+a11 != a59.
+a12 != a13.
+a12 != a14.
+a12 != a20.
+a12 != a21.
+a12 != a22.
+a12 != a23.
+a12 != a24.
+a12 != a35.
+a12 != a36.
+a12 != a37.
+a12 != a38.
+a12 != a39.
+a12 != a50.
+a12 != a51.
+a12 != a52.
+a12 != a53.
+a12 != a54.
+a12 != a55.
+a12 != a56.
+a12 != a57.
+a12 != a58.
+a12 != a59.
+a13 != a14.
+a13 != a20.
+a13 != a21.
+a13 != a22.
+a13 != a23.
+a13 != a24.
+a13 != a35.
+a13 != a36.
+a13 != a37.
+a13 != a38.
+a13 != a39.
+a13 != a50.
+a13 != a51.
+a13 != a52.
+a13 != a53.
+a13 != a54.
+a13 != a55.
+a13 != a56.
+a13 != a57.
+a13 != a58.
+a13 != a59.
+a14 != a20.
+a14 != a21.
+a14 != a22.
+a14 != a23.
+a14 != a24.
+a14 != a35.
+a14 != a36.
+a14 != a37.
+a14 != a38.
+a14 != a39.
+a14 != a50.
+a14 != a51.
+a14 != a52.
+a14 != a53.
+a14 != a54.
+a14 != a55.
+a14 != a56.
+a14 != a57.
+a14 != a58.
+a14 != a59.
+a20 != a21.
+a20 != a22.
+a20 != a23.
+a20 != a24.
+a20 != a35.
+a20 != a36.
+a20 != a37.
+a20 != a38.
+a20 != a39.
+a20 != a50.
+a20 != a51.
+a20 != a52.
+a20 != a53.
+a20 != a54.
+a20 != a55.
+a20 != a56.
+a20 != a57.
+a20 != a58.
+a20 != a59.
+a21 != a22.
+a21 != a23.
+a21 != a24.
+a21 != a35.
+a21 != a36.
+a21 != a37.
+a21 != a38.
+a21 != a39.
+a21 != a50.
+a21 != a51.
+a21 != a52.
+a21 != a53.
+a21 != a54.
+a21 != a55.
+a21 != a56.
+a21 != a57.
+a21 != a58.
+a21 != a59.
+a22 != a23.
+a22 != a24.
+a22 != a35.
+a22 != a36.
+a22 != a37.
+a22 != a38.
+a22 != a39.
+a22 != a50.
+a22 != a51.
+a22 != a52.
+a22 != a53.
+a22 != a54.
+a22 != a55.
+a22 != a56.
+a22 != a57.
+a22 != a58.
+a22 != a59.
+a23 != a24.
+a23 != a35.
+a23 != a36.
+a23 != a37.
+a23 != a38.
+a23 != a39.
+a23 != a50.
+a23 != a51.
+a23 != a52.
+a23 != a53.
+a23 != a54.
+a23 != a55.
+a23 != a56.
+a23 != a57.
+a23 != a58.
+a23 != a59.
+a24 != a35.
+a24 != a36.
+a24 != a37.
+a24 != a38.
+a24 != a39.
+a24 != a50.
+a24 != a51.
+a24 != a52.
+a24 != a53.
+a24 != a54.
+a24 != a55.
+a24 != a56.
+a24 != a57.
+a24 != a58.
+a24 != a59.
+a35 != a36.
+a35 != a37.
+a35 != a38.
+a35 != a39.
+a35 != a50.
+a35 != a51.
+a35 != a52.
+a35 != a53.
+a35 != a54.
+a35 != a55.
+a35 != a56.
+a35 != a57.
+a35 != a58.
+a35 != a59.
+a36 != a37.
+a36 != a38.
+a36 != a39.
+a36 != a50.
+a36 != a51.
+a36 != a52.
+a36 != a53.
+a36 != a54.
+a36 != a55.
+a36 != a56.
+a36 != a57.
+a36 != a58.
+a36 != a59.
+a37 != a38.
+a37 != a39.
+a37 != a50.
+a37 != a51.
+a37 != a52.
+a37 != a53.
+a37 != a54.
+a37 != a55.
+a37 != a56.
+a37 != a57.
+a37 != a58.
+a37 != a59.
+a38 != a39.
+a38 != a50.
+a38 != a51.
+a38 != a52.
+a38 != a53.
+a38 != a54.
+a38 != a55.
+a38 != a56.
+a38 != a57.
+a38 != a58.
+a38 != a59.
+a39 != a50.
+a39 != a51.
+a39 != a52.
+a39 != a53.
+a39 != a54.
+a39 != a55.
+a39 != a56.
+a39 != a57.
+a39 != a58.
+a39 != a59.
+a50 != a51.
+a50 != a52.
+a50 != a53.
+a50 != a54.
+a50 != a55.
+a50 != a56.
+a50 != a57.
+a50 != a58.
+a50 != a59.
+a51 != a52.
+a51 != a53.
+a51 != a54.
+a51 != a55.
+a51 != a56.
+a51 != a57.
+a51 != a58.
+a51 != a59.
+a52 != a53.
+a52 != a54.
+a52 != a55.
+a52 != a56.
+a52 != a57.
+a52 != a58.
+a52 != a59.
+a53 != a54.
+a53 != a55.
+a53 != a56.
+a53 != a57.
+a53 != a58.
+a53 != a59.
+a54 != a55.
+a54 != a56.
+a54 != a57.
+a54 != a58.
+a54 != a59.
+a55 != a56.
+a55 != a57.
+a55 != a58.
+a55 != a59.
+a56 != a57.
+a56 != a58.
+a56 != a59.
+a57 != a58.
+a57 != a59.
+a58 != a59.
+end_of_list.
+
+============================== end of clauses for search =============
+
+% The largest natural number in the input is 29.
+
+============================== DOMAIN SIZE 30 ========================
+
+============================== MODEL =================================
+
+interpretation( 30, [number=1, seconds=22], [
+
+        function(a10, [ 2 ]),
+
+        function(a11, [ 1 ]),
+
+        function(a12, [ 0 ]),
+
+        function(a13, [ 6 ]),
+
+        function(a14, [12 ]),
+
+        function(a20, [ 3 ]),
+
+        function(a21, [ 8 ]),
+
+        function(a22, [ 9 ]),
+
+        function(a23, [10 ]),
+
+        function(a24, [15 ]),
+
+        function(a35, [14 ]),
+
+        function(a36, [19 ]),
+
+        function(a37, [13 ]),
+
+        function(a38, [ 7 ]),
+
+        function(a39, [18 ]),
+
+        function(a5, [16 ]),
+
+        function(a50, [22 ]),
+
+        function(a51, [23 ]),
+
+        function(a52, [27 ]),
+
+        function(a53, [28 ]),
+
+        function(a54, [29 ]),
+
+        function(a55, [24 ]),
+
+        function(a56, [25 ]),
+
+        function(a57, [26 ]),
+
+        function(a58, [20 ]),
+
+        function(a59, [21 ]),
+
+        function(a6, [17 ]),
+
+        function(a7, [11 ]),
+
+        function(a8, [ 5 ]),
+
+        function(a9, [ 4 ]),
+
+        relation(U, [ 0 ]),
+
+        relation(Ur, [ 0 ]),
+
+        relation(Urr, [ 0 ]),
+
+        relation(Urrr, [ 1 ]),
+
+        relation(V, [ 0 ]),
+
+        relation(Vr, [ 1 ]),
+
+        relation(Vrr, [ 0 ]),
+
+        relation(Vrrr, [ 0 ]),
+
+        relation(X, [ 1 ]),
+
+        relation(f, [ 0 ]),
+
+        relation(fr, [ 0 ]),
+
+        relation(frr, [ 1 ]),
+
+        relation(frrr, [ 0 ]),
+
+        relation(fu, [ 0 ]),
+
+        relation(fur, [ 0 ]),
+
+        relation(furr, [ 0 ]),
+
+        relation(furrr, [ 0 ]),
+
+        relation(n, [ 0 ]),
+
+        relation(nr, [ 0 ]),
+
+        relation(nrr, [ 0 ]),
+
+        relation(nrrr, [ 0 ]),
+
+        relation(nu, [ 0 ]),
+
+        relation(nur, [ 0 ]),
+
+        relation(nurr, [ 0 ]),
+
+        relation(nurrr, [ 1 ]),
+
+        relation(p, [ 0 ]),
+
+        relation(pr, [ 0 ]),
+
+        relation(prr, [ 0 ]),
+
+        relation(prrr, [ 0 ]),
+
+        relation(pu, [ 0 ]),
+
+        relation(pur, [ 0 ]),
+
+        relation(purr, [ 0 ]),
+
+        relation(purrr, [ 1 ]),
+
+        relation(left(_,_), [
+			   0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]),
+
+        relation(on(_,_), [
+			   0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ])
+]).
+
+============================== end of model ==========================
+
+============================== MODEL =================================
+
+interpretation( 30, [number=2, seconds=31], [
+
+        function(a10, [ 2 ]),
+
+        function(a11, [ 1 ]),
+
+        function(a12, [ 0 ]),
+
+        function(a13, [ 6 ]),
+
+        function(a14, [12 ]),
+
+        function(a20, [ 3 ]),
+
+        function(a21, [ 8 ]),
+
+        function(a22, [ 9 ]),
+
+        function(a23, [10 ]),
+
+        function(a24, [15 ]),
+
+        function(a35, [21 ]),
+
+        function(a36, [26 ]),
+
+        function(a37, [20 ]),
+
+        function(a38, [14 ]),
+
+        function(a39, [25 ]),
+
+        function(a5, [16 ]),
+
+        function(a50, [22 ]),
+
+        function(a51, [23 ]),
+
+        function(a52, [27 ]),
+
+        function(a53, [28 ]),
+
+        function(a54, [29 ]),
+
+        function(a55, [ 7 ]),
+
+        function(a56, [13 ]),
+
+        function(a57, [19 ]),
+
+        function(a58, [18 ]),
+
+        function(a59, [24 ]),
+
+        function(a6, [17 ]),
+
+        function(a7, [11 ]),
+
+        function(a8, [ 5 ]),
+
+        function(a9, [ 4 ]),
+
+        relation(U, [ 0 ]),
+
+        relation(Ur, [ 0 ]),
+
+        relation(Urr, [ 0 ]),
+
+        relation(Urrr, [ 1 ]),
+
+        relation(V, [ 0 ]),
+
+        relation(Vr, [ 1 ]),
+
+        relation(Vrr, [ 0 ]),
+
+        relation(Vrrr, [ 0 ]),
+
+        relation(X, [ 1 ]),
+
+        relation(f, [ 0 ]),
+
+        relation(fr, [ 0 ]),
+
+        relation(frr, [ 1 ]),
+
+        relation(frrr, [ 0 ]),
+
+        relation(fu, [ 0 ]),
+
+        relation(fur, [ 0 ]),
+
+        relation(furr, [ 0 ]),
+
+        relation(furrr, [ 0 ]),
+
+        relation(n, [ 1 ]),
+
+        relation(nr, [ 0 ]),
+
+        relation(nrr, [ 0 ]),
+
+        relation(nrrr, [ 0 ]),
+
+        relation(nu, [ 0 ]),
+
+        relation(nur, [ 0 ]),
+
+        relation(nurr, [ 0 ]),
+
+        relation(nurrr, [ 0 ]),
+
+        relation(p, [ 0 ]),
+
+        relation(pr, [ 0 ]),
+
+        relation(prr, [ 0 ]),
+
+        relation(prrr, [ 0 ]),
+
+        relation(pu, [ 0 ]),
+
+        relation(pur, [ 0 ]),
+
+        relation(purr, [ 0 ]),
+
+        relation(purrr, [ 1 ]),
+
+        relation(left(_,_), [
+			   0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]),
+
+        relation(on(_,_), [
+			   0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ])
+]).
+
+============================== end of model ==========================
+
+============================== STATISTICS ============================
+
+For domain size 30.
+
+Current CPU time: 0.00 seconds (total CPU time: 31.23 seconds).
+Ground clauses: seen=9798, kept=2598.
+Selections=352108, assignments=10563039, propagations=8832487, current_models=2.
+Rewrite_terms=329274630, rewrite_bools=203565232, indexes=0.
+Rules_from_neg_clauses=2768, cross_offs=35180114.
+
+============================== end of statistics =====================
+
+User_CPU=31.23, System_CPU=0.32, Wall_clock=31.
+
+Exiting with 2 models.
+
+Process 32541 exit (max_models) Thu Jan 21 18:54:48 2021
+The process finished Thu Jan 21 18:54:48 2021

@@ -1,0 +1,15 @@
+set(arithmetic).
+assign(domain_size,100).
+assign(max_models,-1).
+
+formulas(assumptions).
+  even(x) <-> x mod 2 = 0.          odd(x)  <-> x mod 2 = 1.
+  even(r) -> odd(l).                odd(r) -> even(l).
+  even(r) | odd(r).                 even(l) | odd(l).
+  
+  sum = 3*r + 2*l.
+
+  -(even(sum) -> even(r)).       
+  %-(odd(sum) -> even(l)).
+end_of_list.
+

@@ -1,0 +1,22 @@
+formulas(y_shape).
+ Y    <->   on(a26,a27) &   on(a27,a28) &   on(a28,a29) & left(a25,a27).
+ Yr   <-> left(a27,a26) & left(a28,a27) & left(a29,a28) &   on(a25,a27).
+ Yrr  <->   on(a27,a26) &   on(a28,a27) &   on(a29,a28) & left(a27,a25).
+ Yrrr <-> left(a26,a27) & left(a27,a28) & left(a28,a29) &   on(a27,a25).
+
+ Yu   <->   on(a26,a27) &   on(a27,a28) &   on(a28,a29) & left(a27,a25).
+ Yur  <-> left(a27,a26) & left(a28,a27) & left(a29,a28) &   on(a27,a25).
+ Yurr <->   on(a27,a26) &   on(a28,a27) &   on(a29,a28) & left(a25,a27).
+ Yurrr <-> left(a26,a27) & left(a27,a28) & left(a28,a29) &  on(a25,a27).
+
+ Y | Yr | Yrr | Yrrr | Yu | Yur | Yurr | Yurrr.            
+ Y    -> -Yr & -Yrr & -Yrrr & -Yu   & -Yur & -Yurr & -Yurrr.     
+ Yr   -> -Y  & -Yrr & -Yrrr & -Yu   & -Yur & -Yurr & -Yurrr.
+ Yrr  -> -Y  & -Yr  & -Yrrr & -Yu   & -Yur & -Yurr & -Yurrr.
+ Yrrr -> -Y  & -Yr  & -Yrr  & -Yu   & -Yur & -Yurr & -Yurrr.
+ Yu   -> -Y  & -Yr  & -Yrr  & -Yrrr & -Yur & -Yurr & -Yurrr.     
+ Yur  -> -Y  & -Yr  & -Yrr  & -Yrrr & -Yu  & -Yurr & -Yurrr.
+ Yurr -> -Y  & -Yr  & -Yrr  & -Yrrr & -Yu  & -Yur  & -Yurrr.
+ Yurrr-> -Y  & -Yr  & -Yrr  & -Yrrr & -Yu  & -Yur  & -Yurr.
+end_of_list.
+

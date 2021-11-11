@@ -1,0 +1,3 @@
+formulas(no_rotation). 
+  p1 & p2 & p3 & p4.          %all four pieces are needed
+end_of_list.

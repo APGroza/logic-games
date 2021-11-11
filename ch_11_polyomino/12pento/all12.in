@@ -1,0 +1,182 @@
+formulas(t_shape).
+  t   <-> left(a0,a1) & left(a1,a2) &   on(a1,a3) &   on(a3,a4).
+  tr  <->   on(a0,a1) &   on(a1,a2) & left(a3,a1) & left(a4,a3).
+  trr <-> left(a1,a0) & left(a2,a1) &   on(a3,a1) &   on(a4,a3).
+  trrr<->   on(a1,a0) & on  (a2,a1) & left(a1,a3) & left(a3,a4).
+  t | tr | trr | trrr.            
+  t    -> -tr & -trr & -trrr.     
+  tr   -> -t  & -trr & -trrr.
+  trr  -> -t  & -tr  & -trrr.
+  trrr -> -t  & -tr  & -trr. 
+end_of_list.
+
+formulas(u_shape).
+  U   <->   on(a5,a6) & left(a6,a7) & left(a7,a8) &   on(a9,a8).
+  Ur  <-> left(a6,a5) &   on(a6,a7) &   on(a7,a8) & left(a8,a9).
+  Urr <->   on(a6,a5) & left(a7,a6) & left(a8,a7) &   on(a8,a9).
+  Urrr<-> left(a5,a6) &   on(a7,a6) &   on(a8,a7) & left(a9,a8).
+  U | Ur | Urr | Urrr.            
+  U    -> -Ur & -Urr & -Urrr.     
+  Ur   -> -U  & -Urr & -Urrr.
+  Urr  -> -U  & -Ur  & -Urrr.
+  Urrr -> -U  & -Ur  & -Urr. 
+end_of_list.
+
+formulas(v_shape).
+  V   <->   on(a10,a11) &   on(a11,a12) & left(a12,a13) & left(a13,a14).
+  Vr  <-> left(a11,a10) & left(a12,a11) &   on(a12,a13) &   on(a13,a14).
+  Vrr <->   on(a11,a10) &   on(a12,a11) & left(a13,a12) & left(a14,a13).
+  Vrrr<-> left(a10,a11) & left(a11,a12) &   on(a13,a12) &   on(a14,a13).
+  V | Vr | Vrr | Vrrr.            
+  V    -> -Vr & -Vrr & -Vrrr.     
+  Vr   -> -V  & -Vrr & -Vrrr.
+  Vrr  -> -V  & -Vr  & -Vrrr.
+  Vrrr -> -V  & -Vr  & -Vrr. 
+end_of_list.
+
+formulas(w_shape).
+ W   <->   on(a15,a16) & left(a16,a17) &   on(a17,a18) & left(a18,a19). 
+ Wr  <-> left(a16,a15) &   on(a16,a17) & left(a18,a17) &   on(a18,a19). 
+ Wrr <->   on(a16,a15) & left(a17,a16) &   on(a18,a17) & left(a19,a18). 
+ Wrrr<-> left(a15,a16) &   on(a17,a16) & left(a17,a18) &   on(a19,a18). 
+ W | Wr | Wrr | Wrrr.            
+ W    -> -Wr & -Wrr & -Wrrr.     
+ Wr   -> -W  & -Wrr & -Wrrr.
+ Wrr  -> -W  & -Wr  & -Wrrr.
+ Wrrr -> -W  & -Wr  & -Wrr. 
+end_of_list.
+
+formulas(x_shape).
+  X   <-> on(a20,a22) & on(a22,a24) & left(a21,a22) & left(a22,a23).  
+  X.
+end_of_list.
+
+formulas(y_shape).
+ Y    <->   on(a26,a27) &   on(a27,a28) &   on(a28,a29) & left(a25,a27).
+ Yr   <-> left(a27,a26) & left(a28,a27) & left(a29,a28) &   on(a25,a27).
+ Yrr  <->   on(a27,a26) &   on(a28,a27) &   on(a29,a28) & left(a27,a25).
+ Yrrr <-> left(a26,a27) & left(a27,a28) & left(a28,a29) &   on(a27,a25).
+
+ Yu   <->   on(a26,a27) &   on(a27,a28) &   on(a28,a29) & left(a27,a25).
+ Yur  <-> left(a27,a26) & left(a28,a27) & left(a29,a28) &   on(a27,a25).
+ Yurr <->   on(a27,a26) &   on(a28,a27) &   on(a29,a28) & left(a25,a27).
+ Yurrr <-> left(a26,a27) & left(a27,a28) & left(a28,a29) &  on(a25,a27).
+
+ Y | Yr | Yrr | Yrrr | Yu | Yur | Yurr | Yurrr.            
+ Y    -> -Yr & -Yrr & -Yrrr & -Yu   & -Yur & -Yurr & -Yurrr.     
+ Yr   -> -Y  & -Yrr & -Yrrr & -Yu   & -Yur & -Yurr & -Yurrr.
+ Yrr  -> -Y  & -Yr  & -Yrrr & -Yu   & -Yur & -Yurr & -Yurrr.
+ Yrrr -> -Y  & -Yr  & -Yrr  & -Yu   & -Yur & -Yurr & -Yurrr.
+ Yu   -> -Y  & -Yr  & -Yrr  & -Yrrr & -Yur & -Yurr & -Yurrr.     
+ Yur  -> -Y  & -Yr  & -Yrr  & -Yrrr & -Yu  & -Yurr & -Yurrr.
+ Yurr -> -Y  & -Yr  & -Yrr  & -Yrrr & -Yu  & -Yur  & -Yurrr.
+ Yurrr-> -Y  & -Yr  & -Yrr  & -Yrrr & -Yu  & -Yur  & -Yurr.
+end_of_list.
+
+formulas(z_shape).
+ Z   <-> left(a30,a31) &   on(a31,a32) &   on(a32,a33) & left(a33,a34).
+ Zr  <->   on(a30,a31) & left(a32,a31) & left(a33,a32) &   on(a33,a34).
+ Zu   <-> left(a31,a30) &   on(a31,a32) &   on(a32,a33) & left(a34,a33).
+ Zur  <->   on(a31,a30) & left(a32,a31) & left(a33,a32) &   on(a34,a33).
+ Z | Zr | Zu |Zur.
+ Z -> -Zr & -Zu & -Zur.
+ Zr -> -Z & -Zu & -Zur.
+ Zu -> -Z & -Zr & -Zur.
+ Zur-> -Z & -Zr & -Zu.
+end_of_list.
+
+formulas(f_shape).
+ f    <-> left(a35,a37) &   on(a36,a37) &   on(a37,a38) & left(a36,a39).
+ fr   <->   on(a35,a37) & left(a37,a36) & left(a38,a37) &   on(a36,a39).
+ frr  <-> left(a37,a35) &   on(a37,a36) &   on(a38,a37) & left(a39,a36).
+ frrr <->   on(a37,a35) & left(a36,a37) & left(a37,a38) &   on(a39,a36).
+
+ fu   <-> left(a37,a35) &   on(a36,a37) &   on(a37,a38) & left(a39,a36).
+ fur  <->   on(a37,a35) & left(a37,a36) & left(a38,a37) &   on(a39,a36).
+ furr <-> left(a35,a37) &   on(a37,a36) &   on(a38,a37) & left(a36,a39).
+ furrr<->   on(a35,a37) & left(a36,a37) & left(a37,a38) &   on(a36,a39).
+
+ f | fr | frr | frrr | fu | fur | furr | furrr.            
+ f    -> -fr & -frr & -frrr & -fu   & -fur & -furr & -furrr.     
+ fr   -> -f  & -frr & -frrr & -fu   & -fur & -furr & -furrr.
+ frr  -> -f  & -fr  & -frrr & -fu   & -fur & -furr & -furrr.
+ frrr -> -f  & -fr  & -frr  & -fu   & -fur & -furr & -furrr.
+ fu   -> -f  & -fr  & -frr  & -frrr & -fur & -furr & -furrr.     
+ fur  -> -f  & -fr  & -frr  & -frrr & -fu  & -furr & -furrr.
+ furr -> -f  & -fr  & -frr  & -frrr & -fu  & -fur  & -furrr.
+ furrr-> -f  & -fr  & -frr  & -frrr & -fu  & -fur  & -furr.
+end_of_list.
+
+formulas(i_shape).
+ i  <->   on(a40,a41) &   on(a41,a42) &   on(a42,a43) &   on(a43,a44).
+ ir <-> left(a41,a40) & left(a42,a41) & left(a43,a42) & left(a44,a43).
+ i | ir.
+ i -> -ir.  
+end_of_list.
+
+formulas(l_shape).
+ l   <->   on(a45,a46) &   on(a46,a47) &   on(a47,a48) & left(a48,a49). 
+ lr  <-> left(a46,a45) & left(a47,a46) & left(a48,a47) &   on(a48,a49).     
+ lrr <->   on(a46,a45) &   on(a47,a46) &   on(a48,a47) & left(a49,a48).     
+ lrrr<-> left(a45,a46) & left(a46,a47) & left(a47,a48) &   on(a49,a48).
+
+ lu   <->   on(a45,a46) &   on(a46,a47) &   on(a47,a48) & left(a49,a48). 
+ lur  <-> left(a46,a45) & left(a47,a46) & left(a48,a47) &   on(a49,a48).     
+ lurr <->   on(a46,a45) &   on(a47,a46) &   on(a48,a47) & left(a48,a49).     
+ lurrr<-> left(a45,a46) & left(a46,a47) & left(a47,a48) &   on(a48,a49).
+        
+ l | lr | lrr | lrrr | lu | lur | lurr | lurrr.            
+ l    -> -lr & -lrr & -lrrr & -lu   & -lur & -lurr & -lurrr.     
+ lr   -> -l  & -lrr & -lrrr & -lu   & -lur & -lurr & -lurrr.
+ lrr  -> -l  & -lr  & -lrrr & -lu   & -lur & -lurr & -lurrr.
+ lrrr -> -l  & -lr  & -lrr  & -lu   & -lur & -lurr & -lurrr.
+ lu   -> -l  & -lr  & -lrr  & -lrrr & -lur & -lurr & -lurrr.     
+ lur  -> -l  & -lr  & -lrr  & -lrrr & -lu  & -lurr & -lurrr.
+ lurr -> -l  & -lr  & -lrr  & -lrrr & -lu  & -lur  & -lurrr.
+ lurrr-> -l  & -lr  & -lrr  & -lrrr & -lu  & -lur  & -lurr.
+end_of_list.
+
+formulas(p_shape).
+ p    <->   on(a50,a51) &   on(a52,a53) &   on(a53,a54) & left(a51,a54).
+ pr   <-> left(a51,a50) & left(a53,a52) & left(a54,a53) &   on(a51,a54).
+ prr  <->   on(a51,a50) &   on(a53,a52) &   on(a54,a53) & left(a54,a51).
+ prrr <-> left(a50,a51) & left(a52,a53) & left(a53,a54) &   on(a54,a51).
+
+ pu   <->   on(a50,a51) &   on(a52,a53) &   on(a53,a54) & left(a54,a51).
+ pur  <-> left(a51,a50) & left(a53,a52) & left(a54,a53) &   on(a54,a51).
+ purr <->   on(a51,a50) &   on(a53,a52) &   on(a54,a53) & left(a51,a54).
+ purrr<-> left(a50,a51) & left(a52,a53) & left(a53,a54) &   on(a51,a54).
+
+ p | pr | prr | prrr | pu | pur | purr | purrr.            
+ p    -> -pr & -prr & -prrr & -pu   & -pur & -purr & -purrr.     
+ pr   -> -p  & -prr & -prrr & -pu   & -pur & -purr & -purrr.
+ prr  -> -p  & -pr  & -prrr & -pu   & -pur & -purr & -purrr.
+ prrr -> -p  & -pr  & -prr  & -pu   & -pur & -purr & -purrr.
+ pu   -> -p  & -pr  & -prr  & -prrr & -pur & -purr & -purrr.     
+ pur  -> -p  & -pr  & -prr  & -prrr & -pu  & -purr & -purrr.
+ purr -> -p  & -pr  & -prr  & -prrr & -pu  & -pur  & -purrr.
+ purrr-> -p  & -pr  & -prr  & -prrr & -pu  & -pur  & -purr.
+end_of_list.
+
+formulas(n_shape).
+  n   <->   on(a55,a56) &   on(a56,a57) & left(a58,a57) &   on(a58,a59).
+  nr  <-> left(a56,a55) & left(a57,a56) &   on(a58,a57) & left(a59,a58).
+  nrr <->   on(a56,a55) &   on(a57,a56) & left(a57,a58) &   on(a59,a58).
+  nrrr<-> left(a55,a56) & left(a56,a57) &   on(a57,a58) & left(a58,a59).
+
+  nu   <->   on(a55,a56) &   on(a56,a57) & left(a57,a58) &   on(a58,a59).
+  nur  <-> left(a56,a55) & left(a57,a56) &   on(a57,a58) & left(a59,a58).
+  nurr <->   on(a56,a55) &   on(a57,a56) & left(a58,a57) &   on(a59,a58).
+  nurrr<-> left(a55,a56) & left(a56,a57) &   on(a58,a57) & left(a58,a59).  
+  
+  n | nr | nrr | nrrr | nu | nur | nurr | nurrr.            
+  n    -> -nr & -nrr & -nrrr & -nu   & -nur & -nurr & -nurrr.     
+  nr   -> -n  & -nrr & -nrrr & -nu   & -nur & -nurr & -nurrr.
+  nrr  -> -n  & -nr  & -nrrr & -nu   & -nur & -nurr & -nurrr.
+  nrrr -> -n  & -nr  & -nrr  & -nu   & -nur & -nurr & -nurrr.
+  nu   -> -n  & -nr  & -nrr  & -nrrr & -nur & -nurr & -nurrr.     
+  nur  -> -n  & -nr  & -nrr  & -nrrr & -nu  & -nurr & -nurrr.
+  nurr -> -n  & -nr  & -nrr  & -nrrr & -nu  & -nur  & -nurrr.
+  nurrr-> -n  & -nr  & -nrr  & -nrrr & -nu  & -nur  & -nurr.
+end_of_list.
+

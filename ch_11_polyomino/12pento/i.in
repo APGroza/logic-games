@@ -1,0 +1,7 @@
+formulas(i_shape).
+ i  <->   on(a40,a41) &   on(a41,a42) &   on(a42,a43) &   on(a43,a44).
+ ir <-> left(a41,a40) & left(a42,a41) & left(a43,a42) & left(a44,a43).
+ i | ir.
+ i -> -ir.  
+end_of_list.
+

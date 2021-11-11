@@ -1,0 +1,55 @@
+assign(domain_size,36).      %6x6 grid
+assign(max_models,-1).
+set(arithmetic).
+
+list(distinct).
+  [a0,  a1,  a2,  a3,  a4,  a5,
+   a6,  a7,  a8,  a9,  a10, a11,
+   a12, a13, a14, a15, a16, a17,
+   a18, a19, a20, a21, a22, a23,
+   a24, a25, a26, a27, a28, a29,
+   a30, a31, a32, a33, a34, a35].
+end_of_list.
+
+formulas(utils). 
+   x < 30 -> (on(x,y) <-> y = x + 6).   %x on y, 
+   x > 29 -> -on(x,y).
+   
+   (x != 5 & x != 11 & x != 17 & x != 23 & x != 29 & x != 35) 
+        -> (left(x,y) <-> y = x + 1). %x left of y
+  -(x != 5 & x != 11 & x != 17 & x != 23 & x != 29 & x != 35) 
+         -> -left(x,y).
+end_of_list.
+
+formulas(shapes).
+   i1 <-> on(a0,a6) & left(a6,a7) & left(a7,a8) & on(a2,a8).        
+   r1.
+   b1 <-> left(a14,a15) & on(a9,a15) & on(a3,a9) & left(a3,a4).     
+   i2 <-> on(a5,a11) & on(a11,a17).                                 
+   r2 <-> left(a12,a13) & on(a12,a18) & on(a18,a24).                
+  
+   i3 <-> left(a19,a20) & on(a20,a26) & left(a26,a27).              
+   r3 <-> left(a21,a22) & left(a22,a23) & on(a16,a22) & on(a10,a16).
+   b2 <-> left(a30,a31) & on(a25,a31) & left(a31,a32).              
+   r4 <-> left(a33,a34).                                            
+   b3 <-> left(a28,a29) & on(a29,a35).                               
+end_of_list.
+
+formulas(rotating_r4).
+   i2r   <-> left(a5,a11) & left(a11,a17).
+   r4r   <-> on(a33,a34).
+   b3r   <-> on(a28,a29) & left(a35,a29).
+   b3rr  <-> left(a29,a28) & on(a35,a29).
+   b3rrr <-> on(a29,a28) & left(a29,a35).
+end_of_list.
+
+formulas(ten_yen).
+  i1 & (i2 | i2r) & i3 & r1 & r2 & r3 & (r4 | r4r) & 
+  b1 & b2 & (b3 | b3r | b3rr | b3rrr).
+  r4    -> -r4r.
+  i2    -> -i2r.
+  b3    -> -b3r & -b3rr & -b3rrr.
+  b3r   -> -b3  & -b3rr & -b3rrr.
+  b3rr  -> -b3  & -b3r  & -b3rrr.
+  b3rrr -> -b3  & -b3r  & -b3rr.
+end_of_list.

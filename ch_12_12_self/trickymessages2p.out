@@ -1,0 +1,140 @@
+============================== Prover9 ===============================
+Prover9 (64) version 2009-11A, November 2009.
+Process 1678 was started by adrian on adrian,
+Thu Jan 21 20:10:51 2021
+The command was "prover9 -f trickymessages2p.in".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+% Reading from file trickymessages2p.in
+
+
+formulas(assumptions).
+m1 <-> -m2.
+m2 <-> -m3 & -m4.
+m3 <-> -m4.
+m4 <-> -m1.
+end_of_list.
+
+formulas(goals).
+m1.
+end_of_list.
+
+============================== end of input ==========================
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+1 m1 <-> -m2 # label(non_clause).  [assumption].
+2 m2 <-> -m3 & -m4 # label(non_clause).  [assumption].
+3 m3 <-> -m4 # label(non_clause).  [assumption].
+4 m4 <-> -m1 # label(non_clause).  [assumption].
+5 m1 # label(non_clause) # label(goal).  [goal].
+
+============================== end of process non-clausal formulas ===
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+-m1 | -m2.  [clausify(1)].
+m1 | m2.  [clausify(1)].
+-m2 | -m3.  [clausify(2)].
+-m2 | -m4.  [clausify(2)].
+m2 | m3 | m4.  [clausify(2)].
+-m3 | -m4.  [clausify(3)].
+m3 | m4.  [clausify(3)].
+-m4 | -m1.  [clausify(4)].
+m4 | m1.  [clausify(4)].
+-m1.  [deny(5)].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== PREDICATE ELIMINATION =================
+
+No predicates eliminated.
+
+============================== end predicate elimination =============
+
+Auto_denials:  (non-Horn, no changes).
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ m4, m1, m2, m3 ]).
+Function symbol precedence:  function_order([ ]).
+After inverse_order:  (no changes).
+Unfolding symbols: (none).
+
+Auto_inference settings:
+  % set(binary_resolution).  % (non-Horn)
+  % set(neg_ur_resolution).  % (non-Horn, less than 100 clauses)
+
+Auto_process settings:
+  % set(factor).  % (non-Horn)
+  % set(unit_deletion).  % (non-Horn)
+
+kept:      6 -m1 | -m2.  [clausify(1)].
+kept:      7 m1 | m2.  [clausify(1)].
+kept:      8 -m2 | -m3.  [clausify(2)].
+kept:      9 -m2 | -m4.  [clausify(2)].
+kept:      10 m2 | m3 | m4.  [clausify(2)].
+kept:      11 -m3 | -m4.  [clausify(3)].
+kept:      12 m3 | m4.  [clausify(3)].
+kept:      13 -m4 | -m1.  [clausify(4)].
+kept:      14 m4 | m1.  [clausify(4)].
+kept:      15 -m1.  [deny(5)].
+kept:      16 m4.  [back_unit_del(14),unit_del(b,15)].
+kept:      17 m2.  [back_unit_del(7),unit_del(a,15)].
+kept:      18 -m3.  [back_unit_del(11),unit_del(b,16)].
+
+============================== PROOF =================================
+
+% Proof 1 at 0.01 (+ 0.00) seconds.
+% Length of proof is 11.
+% Level of proof is 3.
+% Maximum clause weight is 2.000.
+% Given clauses 0.
+
+1 m1 <-> -m2 # label(non_clause).  [assumption].
+2 m2 <-> -m3 & -m4 # label(non_clause).  [assumption].
+4 m4 <-> -m1 # label(non_clause).  [assumption].
+5 m1 # label(non_clause) # label(goal).  [goal].
+7 m1 | m2.  [clausify(1)].
+9 -m2 | -m4.  [clausify(2)].
+14 m4 | m1.  [clausify(4)].
+15 -m1.  [deny(5)].
+16 m4.  [back_unit_del(14),unit_del(b,15)].
+17 m2.  [back_unit_del(7),unit_del(a,15)].
+19 $F.  [back_unit_del(9),unit_del(a,17),unit_del(b,16)].
+
+============================== end of proof ==========================
+
+============================== STATISTICS ============================
+
+Given=0. Generated=14. Kept=13. proofs=1.
+Usable=0. Sos=2. Demods=0. Limbo=3, Disabled=18. Hints=0.
+Kept_by_rule=0, Deleted_by_rule=0.
+Forward_subsumed=0. Back_subsumed=4.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=0 (0 lex), Back_demodulated=0. Back_unit_deleted=4.
+Demod_attempts=0. Demod_rewrites=0.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=13.
+Megabytes=0.03.
+User_CPU=0.01, System_CPU=0.00, Wall_clock=0.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+THEOREM PROVED
+
+Exiting with 1 proof.
+
+Process 1678 exit (max_proofs) Thu Jan 21 20:10:51 2021

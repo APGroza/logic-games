@@ -1,0 +1,12 @@
+formulas(w_shape).
+ W   <->   on(a15,a16) & left(a16,a17) &   on(a17,a18) & left(a18,a19). 
+ Wr  <-> left(a16,a15) &   on(a16,a17) & left(a18,a17) &   on(a18,a19). 
+ Wrr <->   on(a16,a15) & left(a17,a16) &   on(a18,a17) & left(a19,a18). 
+ Wrrr<-> left(a15,a16) &   on(a17,a16) & left(a17,a18) &   on(a19,a18). 
+ W | Wr | Wrr | Wrrr.            
+ W    -> -Wr & -Wrr & -Wrrr.     
+ Wr   -> -W  & -Wrr & -Wrrr.
+ Wrr  -> -W  & -Wr  & -Wrrr.
+ Wrrr -> -W  & -Wr  & -Wrr. 
+end_of_list.
+

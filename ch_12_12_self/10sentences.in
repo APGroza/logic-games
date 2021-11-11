@@ -1,0 +1,12 @@
+set(arithmetic).
+assign(max_models,-1).
+assign(domain_size,11).
+
+formulas(assumptions).
+  m(x) = 0 | m(x) = 1.
+  NoSentences = 10.
+  NoTrue = NoSentences + -NoFalse. 
+  
+  m(x) = 1 <-> NoFalse = x. 
+  m(1)+m(2)+m(3)+m(4)+m(5)+m(6)+m(7)+m(8)+m(9)+m(10) = NoTrue.
+end_of_list.

@@ -1,0 +1,17 @@
+set(arithmetic).
+assign(max_models,-1).
+assign(domain_size,6).
+
+formulas(six_sentences).
+  m(0) <-> (all x (x > 0 ->  m(x))).
+  m(1) <-> (all x (x > 1 -> -m(x))).
+  m(2) <-> (all x (x < 2 ->  m(x))).
+  m(3) <-> (all x all y ((x < 3 & x < 3 & m(x) & m(y)) -> x = y) & 
+           (exists x (x < 3 & m(x)))). 
+  m(4) <-> (all x (x < 4 -> -m(x))).
+  m(5) <-> (all x (x < 5 -> -m(x))).
+end_of_list.
+
+formulas(test). %test that in all models the formula is true
+  -m(0) & -m(1) & -m(2) & -m(3) & m(4) & -m(5).          
+end_of_list.

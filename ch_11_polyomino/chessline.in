@@ -1,0 +1,31 @@
+set(arithmetic).
+assign(domain_size,8).
+assign(max_models,-1).
+
+list(distinct).
+  [a1,a2,a3,a4,b1,b2,b3,b4].
+end_of_list.
+
+formulas(utils).
+  w(a1).   w(a2).   w(a3).   w(a4).  %white squares
+  b(b1).   b(b2).   b(b3).   b(b4).  %black squares
+  w(x) <-> -b(x).                    %black xor white
+  b(0).                              %first cell is black
+  left(x,y) <-> x + 1 = y.
+ -left(7,y).
+  left(x,y) & b(x) -> w(y).  %two adjacent squares have distinct color
+  left(x,y) & w(x) -> b(y).
+end_of_list.
+
+formulas(polyomino).
+  p1 <-> left(b1,a1).                 
+  p3 <-> left(a2,b3) & left(b3,a3).   
+  p4 <-> left(b4,a4).                 
+end_of_list.
+
+formulas(pretty_print).  
+  c(a1)=1.   c(b1)=1.                %p1
+  c(b2)=2.                           %p2
+  c(a2)=3.   c(b3)=3.   c(a3)=3.     %p3
+  c(a4)=4.   c(b4)=4.                %p4
+end_of_list.

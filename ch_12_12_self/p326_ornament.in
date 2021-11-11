@@ -1,0 +1,16 @@
+assign(domain_size,16).
+assign(max_models,-1).
+set(arithmetic).
+
+list(distinct).
+  [0,c1,c2,c3,c4,c5,c6,c7,c8,c9,c10,c11,c12,c13,c14,c15].
+end_of_list.
+
+formulas(assumptions).
+  c1  + c2  + c3  + c5  + c6  = 40.    %circles
+  c2  + c5  + c9  + c8  + c4  = 40.
+  c8  + c9  + c12 + c13 + c14 = 40.
+  c10 + c11 + c12 + c13 + c15 = 40.
+  c6  + c7  + c3  + c10 + c11 = 40.
+  c1  + c7  + c15 + c14 + c4  = 40.    %values from the ends of the star
+end_of_list.

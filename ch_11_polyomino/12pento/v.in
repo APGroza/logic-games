@@ -1,0 +1,12 @@
+formulas(v_shape).
+  V   <->   on(a10,a11) &   on(a11,a12) & left(a12,a13) & left(a13,a14).
+  Vr  <-> left(a11,a10) & left(a12,a11) &   on(a12,a13) &   on(a13,a14).
+  Vrr <->   on(a11,a10) &   on(a12,a11) & left(a13,a12) & left(a14,a13).
+  Vrrr<-> left(a10,a11) & left(a11,a12) &   on(a13,a12) &   on(a14,a13).
+  V | Vr | Vrr | Vrrr.            
+  V    -> -Vr & -Vrr & -Vrrr.     
+  Vr   -> -V  & -Vrr & -Vrrr.
+  Vrr  -> -V  & -Vr  & -Vrrr.
+  Vrrr -> -V  & -Vr  & -Vrr. 
+end_of_list.
+

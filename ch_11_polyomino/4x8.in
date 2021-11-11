@@ -1,0 +1,19 @@
+assign(domain_size,32).  %grid 4x8
+assign(max_models,3).
+set(arithmetic).
+
+list(distinct).
+  [a0,  a1, a2, a3,             %i[0..3]
+   a4,  a5, a6, a7,             %s[4..7]
+   a8,  a9, a10,a11,            %t[8..11]
+   a12, a13,a14, a15,           %k[12..15]
+   a16,a17,a18,a19,             %l[16..19]            
+   0,1,5,6,7,8,14,15,24,27,30,31]. %the given shape   
+end_of_list.
+
+formulas(utils).
+  left(x,y) <-> x mod 8 != 7 & y = x + 1. 
+  on(x,y)   <-> x < 24       & y = x + 8.
+end_of_list.
+
+

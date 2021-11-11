@@ -1,0 +1,22 @@
+formulas(p_shape).
+ p    <->   on(a50,a51) &   on(a52,a53) &   on(a53,a54) & left(a51,a54).
+ pr   <-> left(a51,a50) & left(a53,a52) & left(a54,a53) &   on(a51,a54).
+ prr  <->   on(a51,a50) &   on(a53,a52) &   on(a54,a53) & left(a54,a51).
+ prrr <-> left(a50,a51) & left(a52,a53) & left(a53,a54) &   on(a54,a51).
+
+ pu   <->   on(a50,a51) &   on(a52,a53) &   on(a53,a54) & left(a54,a51).
+ pur  <-> left(a51,a50) & left(a53,a52) & left(a54,a53) &   on(a54,a51).
+ purr <->   on(a51,a50) &   on(a53,a52) &   on(a54,a53) & left(a51,a54).
+ purrr<-> left(a50,a51) & left(a52,a53) & left(a53,a54) &   on(a51,a54).
+
+ p | pr | prr | prrr | pu | pur | purr | purrr.            
+ p    -> -pr & -prr & -prrr & -pu   & -pur & -purr & -purrr.     
+ pr   -> -p  & -prr & -prrr & -pu   & -pur & -purr & -purrr.
+ prr  -> -p  & -pr  & -prrr & -pu   & -pur & -purr & -purrr.
+ prrr -> -p  & -pr  & -prr  & -pu   & -pur & -purr & -purrr.
+ pu   -> -p  & -pr  & -prr  & -prrr & -pur & -purr & -purrr.     
+ pur  -> -p  & -pr  & -prr  & -prrr & -pu  & -purr & -purrr.
+ purr -> -p  & -pr  & -prr  & -prrr & -pu  & -pur  & -purrr.
+ purrr-> -p  & -pr  & -prr  & -prrr & -pu  & -pur  & -purr.
+end_of_list.
+

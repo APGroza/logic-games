@@ -1,0 +1,725 @@
+============================== Mace4 =================================
+Mace4 (64) version 2009-11A, November 2009.
+Process 32520 was started by adrian on adrian,
+Thu Jan 21 18:53:36 2021
+The command was "mace4 -f 4x5.in".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+% Reading from file 4x5.in
+
+assign(domain_size,20).
+    % assign(domain_size, 20) -> assign(start_size, 20).
+    % assign(domain_size, 20) -> assign(end_size, 20).
+assign(max_models,-1).
+set(arithmetic).
+    % set(arithmetic) -> clear(lnh).
+    % set(arithmetic) -> assign(selection_order, 0).
+
+    % Declaring Mace4 arithmetic parse types.
+
+list(distinct).
+[a0,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13,a14,a15,a16,a17,a18,a19].
+end_of_list.
+
+formulas(utils).
+x < 15 -> (on(x,y) <-> y = x + 5).
+x > 14 -> -on(x,y).
+x != 4 & x != 9 & x != 14 & x != 19 -> (left(x,y) <-> y = x + 1).
+-(x != 4 & x != 9 & x != 14 & x != 19) -> -left(x,y).
+end_of_list.
+
+formulas(shapes).
+s1 <-> on(a0,a1) & on(a1,a2) & on(a2,a3) & left(a3,a4).
+s1r <-> left(a1,a0) & left(a2,a1) & left(a3,a2) & on(a3,a4).
+s1rr <-> on(a1,a0) & on(a2,a1) & on(a3,a2) & left(a4,a3).
+s1rrr <-> left(a0,a1) & left(a1,a2) & left(a2,a3) & on(a4,a3).
+s1 | s1r | s1rr | s1rrr.
+s1 -> -s1r & -s1rr & -s1rrr.
+s1r -> -s1 & -s1rr & -s1rrr.
+s1rr -> -s1 & -s1r & -s1rrr.
+s1rrr -> -s1 & -s1r & -s1rr.
+s2 <-> on(a5,a6) & on(a7,a8) & on(a8,a9) & left(a5,a8) & left(a6,a9).
+s2r <-> left(a6,a5) & left(a8,a7) & left(a9,a8) & on(a5,a8) & on(a6,a9).
+s2rr <-> on(a6,a5) & on(a8,a7) & on(a9,a8) & left(a8,a5) & left(a9,a6).
+s2rrr <-> left(a5,a6) & left(a7,a8) & left(a8,a9) & on(a8,a5) & on(a9,a6).
+s2 | s2r | s2rr | s2rrr.
+s2 -> -s2r & -s2rr & -s2rrr.
+s2r -> -s2 & -s2rr & -s2rrr.
+s2rr -> -s2 & -s2r & -s2rrr.
+s2rrr -> -s2 & -s2r & -s2rr.
+s3 <-> on(a11,a12) & on(a12,a13) & on(a13,a14) & left(a10,a12).
+s3r <-> left(a12,a11) & left(a13,a12) & left(a14,a13) & on(a10,a12).
+s3rr <-> on(a12,a11) & on(a13,a12) & on(a14,a13) & left(a12,a10).
+s3rrr <-> left(a11,a12) & left(a12,a13) & left(a13,a14) & on(a12,a10).
+s3 | s3r | s3rr | s3rrr.
+s3 -> -s3r & -s3rr & -s3rrr.
+s3r -> -s3 & -s3rr & -s3rrr.
+s3rr -> -s3 & -s3r & -s3rrr.
+s3rrr -> -s3 & -s3r & -s3rr.
+s4 <-> on(a15,a16) & left(a16,a17) & on(a17,a18) & left(a18,a19).
+s4r <-> left(a16,a15) & on(a16,a17) & left(a18,a17) & on(a18,a19).
+s4rr <-> on(a16,a15) & left(a17,a16) & on(a18,a17) & left(a19,a18).
+s4rrr <-> left(a15,a16) & on(a17,a16) & left(a17,a18) & on(a19,a18).
+s4 | s4r | s4rr | s4rrr.
+s4 -> -s4r & -s4rr & -s4rrr.
+s4r -> -s4 & -s4rr & -s4rrr.
+s4rr -> -s4 & -s4r & -s4rrr.
+s4rrr -> -s4 & -s4r & -s4rr.
+end_of_list.
+
+============================== end of input ==========================
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+1 x < 15 -> (on(x,y) <-> y = x + 5) # label(non_clause).  [assumption].
+2 x > 14 -> -on(x,y) # label(non_clause).  [assumption].
+3 x != 4 & x != 9 & x != 14 & x != 19 -> (left(x,y) <-> y = x + 1) # label(non_clause).  [assumption].
+4 -(x != 4 & x != 9 & x != 14 & x != 19) -> -left(x,y) # label(non_clause).  [assumption].
+5 s1 <-> on(a0,a1) & on(a1,a2) & on(a2,a3) & left(a3,a4) # label(non_clause).  [assumption].
+6 s1r <-> left(a1,a0) & left(a2,a1) & left(a3,a2) & on(a3,a4) # label(non_clause).  [assumption].
+7 s1rr <-> on(a1,a0) & on(a2,a1) & on(a3,a2) & left(a4,a3) # label(non_clause).  [assumption].
+8 s1rrr <-> left(a0,a1) & left(a1,a2) & left(a2,a3) & on(a4,a3) # label(non_clause).  [assumption].
+9 s1 -> -s1r & -s1rr & -s1rrr # label(non_clause).  [assumption].
+10 s1r -> -s1 & -s1rr & -s1rrr # label(non_clause).  [assumption].
+11 s1rr -> -s1 & -s1r & -s1rrr # label(non_clause).  [assumption].
+12 s1rrr -> -s1 & -s1r & -s1rr # label(non_clause).  [assumption].
+13 s2 <-> on(a5,a6) & on(a7,a8) & on(a8,a9) & left(a5,a8) & left(a6,a9) # label(non_clause).  [assumption].
+14 s2r <-> left(a6,a5) & left(a8,a7) & left(a9,a8) & on(a5,a8) & on(a6,a9) # label(non_clause).  [assumption].
+15 s2rr <-> on(a6,a5) & on(a8,a7) & on(a9,a8) & left(a8,a5) & left(a9,a6) # label(non_clause).  [assumption].
+16 s2rrr <-> left(a5,a6) & left(a7,a8) & left(a8,a9) & on(a8,a5) & on(a9,a6) # label(non_clause).  [assumption].
+17 s2 -> -s2r & -s2rr & -s2rrr # label(non_clause).  [assumption].
+18 s2r -> -s2 & -s2rr & -s2rrr # label(non_clause).  [assumption].
+19 s2rr -> -s2 & -s2r & -s2rrr # label(non_clause).  [assumption].
+20 s2rrr -> -s2 & -s2r & -s2rr # label(non_clause).  [assumption].
+21 s3 <-> on(a11,a12) & on(a12,a13) & on(a13,a14) & left(a10,a12) # label(non_clause).  [assumption].
+22 s3r <-> left(a12,a11) & left(a13,a12) & left(a14,a13) & on(a10,a12) # label(non_clause).  [assumption].
+23 s3rr <-> on(a12,a11) & on(a13,a12) & on(a14,a13) & left(a12,a10) # label(non_clause).  [assumption].
+24 s3rrr <-> left(a11,a12) & left(a12,a13) & left(a13,a14) & on(a12,a10) # label(non_clause).  [assumption].
+25 s3 -> -s3r & -s3rr & -s3rrr # label(non_clause).  [assumption].
+26 s3r -> -s3 & -s3rr & -s3rrr # label(non_clause).  [assumption].
+27 s3rr -> -s3 & -s3r & -s3rrr # label(non_clause).  [assumption].
+28 s3rrr -> -s3 & -s3r & -s3rr # label(non_clause).  [assumption].
+29 s4 <-> on(a15,a16) & left(a16,a17) & on(a17,a18) & left(a18,a19) # label(non_clause).  [assumption].
+30 s4r <-> left(a16,a15) & on(a16,a17) & left(a18,a17) & on(a18,a19) # label(non_clause).  [assumption].
+31 s4rr <-> on(a16,a15) & left(a17,a16) & on(a18,a17) & left(a19,a18) # label(non_clause).  [assumption].
+32 s4rrr <-> left(a15,a16) & on(a17,a16) & left(a17,a18) & on(a19,a18) # label(non_clause).  [assumption].
+33 s4 -> -s4r & -s4rr & -s4rrr # label(non_clause).  [assumption].
+34 s4r -> -s4 & -s4rr & -s4rrr # label(non_clause).  [assumption].
+35 s4rr -> -s4 & -s4r & -s4rrr # label(non_clause).  [assumption].
+36 s4rrr -> -s4 & -s4r & -s4rr # label(non_clause).  [assumption].
+
+============================== end of process non-clausal formulas ===
+
+============================== CLAUSES FOR SEARCH ====================
+
+formulas(mace4_clauses).
+-(x < 15) | -on(x,y) | x + 5 = y.
+-(x < 15) | on(x,y) | x + 5 != y.
+-(x > 14) | -on(x,y).
+4 = x | 9 = x | 14 = x | 19 = x | -left(x,y) | x + 1 = y.
+4 = x | 9 = x | 14 = x | 19 = x | left(x,y) | x + 1 != y.
+4 != x | -left(x,y).
+9 != x | -left(x,y).
+14 != x | -left(x,y).
+19 != x | -left(x,y).
+-s1 | on(a0,a1).
+-s1 | on(a1,a2).
+-s1 | on(a2,a3).
+-s1 | left(a3,a4).
+s1 | -on(a0,a1) | -on(a1,a2) | -on(a2,a3) | -left(a3,a4).
+-s1r | left(a1,a0).
+-s1r | left(a2,a1).
+-s1r | left(a3,a2).
+-s1r | on(a3,a4).
+s1r | -left(a1,a0) | -left(a2,a1) | -left(a3,a2) | -on(a3,a4).
+-s1rr | on(a1,a0).
+-s1rr | on(a2,a1).
+-s1rr | on(a3,a2).
+-s1rr | left(a4,a3).
+s1rr | -on(a1,a0) | -on(a2,a1) | -on(a3,a2) | -left(a4,a3).
+-s1rrr | left(a0,a1).
+-s1rrr | left(a1,a2).
+-s1rrr | left(a2,a3).
+-s1rrr | on(a4,a3).
+s1rrr | -left(a0,a1) | -left(a1,a2) | -left(a2,a3) | -on(a4,a3).
+s1 | s1r | s1rr | s1rrr.
+-s1 | -s1r.
+-s1 | -s1rr.
+-s1 | -s1rrr.
+-s1r | -s1.
+-s1r | -s1rr.
+-s1r | -s1rrr.
+-s1rr | -s1.
+-s1rr | -s1r.
+-s1rr | -s1rrr.
+-s1rrr | -s1.
+-s1rrr | -s1r.
+-s1rrr | -s1rr.
+-s2 | on(a5,a6).
+-s2 | on(a7,a8).
+-s2 | on(a8,a9).
+-s2 | left(a5,a8).
+-s2 | left(a6,a9).
+s2 | -on(a5,a6) | -on(a7,a8) | -on(a8,a9) | -left(a5,a8) | -left(a6,a9).
+-s2r | left(a6,a5).
+-s2r | left(a8,a7).
+-s2r | left(a9,a8).
+-s2r | on(a5,a8).
+-s2r | on(a6,a9).
+s2r | -left(a6,a5) | -left(a8,a7) | -left(a9,a8) | -on(a5,a8) | -on(a6,a9).
+-s2rr | on(a6,a5).
+-s2rr | on(a8,a7).
+-s2rr | on(a9,a8).
+-s2rr | left(a8,a5).
+-s2rr | left(a9,a6).
+s2rr | -on(a6,a5) | -on(a8,a7) | -on(a9,a8) | -left(a8,a5) | -left(a9,a6).
+-s2rrr | left(a5,a6).
+-s2rrr | left(a7,a8).
+-s2rrr | left(a8,a9).
+-s2rrr | on(a8,a5).
+-s2rrr | on(a9,a6).
+s2rrr | -left(a5,a6) | -left(a7,a8) | -left(a8,a9) | -on(a8,a5) | -on(a9,a6).
+s2 | s2r | s2rr | s2rrr.
+-s2 | -s2r.
+-s2 | -s2rr.
+-s2 | -s2rrr.
+-s2r | -s2.
+-s2r | -s2rr.
+-s2r | -s2rrr.
+-s2rr | -s2.
+-s2rr | -s2r.
+-s2rr | -s2rrr.
+-s2rrr | -s2.
+-s2rrr | -s2r.
+-s2rrr | -s2rr.
+-s3 | on(a11,a12).
+-s3 | on(a12,a13).
+-s3 | on(a13,a14).
+-s3 | left(a10,a12).
+s3 | -on(a11,a12) | -on(a12,a13) | -on(a13,a14) | -left(a10,a12).
+-s3r | left(a12,a11).
+-s3r | left(a13,a12).
+-s3r | left(a14,a13).
+-s3r | on(a10,a12).
+s3r | -left(a12,a11) | -left(a13,a12) | -left(a14,a13) | -on(a10,a12).
+-s3rr | on(a12,a11).
+-s3rr | on(a13,a12).
+-s3rr | on(a14,a13).
+-s3rr | left(a12,a10).
+s3rr | -on(a12,a11) | -on(a13,a12) | -on(a14,a13) | -left(a12,a10).
+-s3rrr | left(a11,a12).
+-s3rrr | left(a12,a13).
+-s3rrr | left(a13,a14).
+-s3rrr | on(a12,a10).
+s3rrr | -left(a11,a12) | -left(a12,a13) | -left(a13,a14) | -on(a12,a10).
+s3 | s3r | s3rr | s3rrr.
+-s3 | -s3r.
+-s3 | -s3rr.
+-s3 | -s3rrr.
+-s3r | -s3.
+-s3r | -s3rr.
+-s3r | -s3rrr.
+-s3rr | -s3.
+-s3rr | -s3r.
+-s3rr | -s3rrr.
+-s3rrr | -s3.
+-s3rrr | -s3r.
+-s3rrr | -s3rr.
+-s4 | on(a15,a16).
+-s4 | left(a16,a17).
+-s4 | on(a17,a18).
+-s4 | left(a18,a19).
+s4 | -on(a15,a16) | -left(a16,a17) | -on(a17,a18) | -left(a18,a19).
+-s4r | left(a16,a15).
+-s4r | on(a16,a17).
+-s4r | left(a18,a17).
+-s4r | on(a18,a19).
+s4r | -left(a16,a15) | -on(a16,a17) | -left(a18,a17) | -on(a18,a19).
+-s4rr | on(a16,a15).
+-s4rr | left(a17,a16).
+-s4rr | on(a18,a17).
+-s4rr | left(a19,a18).
+s4rr | -on(a16,a15) | -left(a17,a16) | -on(a18,a17) | -left(a19,a18).
+-s4rrr | left(a15,a16).
+-s4rrr | on(a17,a16).
+-s4rrr | left(a17,a18).
+-s4rrr | on(a19,a18).
+s4rrr | -left(a15,a16) | -on(a17,a16) | -left(a17,a18) | -on(a19,a18).
+s4 | s4r | s4rr | s4rrr.
+-s4 | -s4r.
+-s4 | -s4rr.
+-s4 | -s4rrr.
+-s4r | -s4.
+-s4r | -s4rr.
+-s4r | -s4rrr.
+-s4rr | -s4.
+-s4rr | -s4r.
+-s4rr | -s4rrr.
+-s4rrr | -s4.
+-s4rrr | -s4r.
+-s4rrr | -s4rr.
+a0 != a1.
+a0 != a2.
+a0 != a3.
+a0 != a4.
+a0 != a5.
+a0 != a6.
+a0 != a7.
+a0 != a8.
+a0 != a9.
+a0 != a10.
+a0 != a11.
+a0 != a12.
+a0 != a13.
+a0 != a14.
+a0 != a15.
+a0 != a16.
+a0 != a17.
+a0 != a18.
+a0 != a19.
+a1 != a2.
+a1 != a3.
+a1 != a4.
+a1 != a5.
+a1 != a6.
+a1 != a7.
+a1 != a8.
+a1 != a9.
+a1 != a10.
+a1 != a11.
+a1 != a12.
+a1 != a13.
+a1 != a14.
+a1 != a15.
+a1 != a16.
+a1 != a17.
+a1 != a18.
+a1 != a19.
+a2 != a3.
+a2 != a4.
+a2 != a5.
+a2 != a6.
+a2 != a7.
+a2 != a8.
+a2 != a9.
+a2 != a10.
+a2 != a11.
+a2 != a12.
+a2 != a13.
+a2 != a14.
+a2 != a15.
+a2 != a16.
+a2 != a17.
+a2 != a18.
+a2 != a19.
+a3 != a4.
+a3 != a5.
+a3 != a6.
+a3 != a7.
+a3 != a8.
+a3 != a9.
+a3 != a10.
+a3 != a11.
+a3 != a12.
+a3 != a13.
+a3 != a14.
+a3 != a15.
+a3 != a16.
+a3 != a17.
+a3 != a18.
+a3 != a19.
+a4 != a5.
+a4 != a6.
+a4 != a7.
+a4 != a8.
+a4 != a9.
+a4 != a10.
+a4 != a11.
+a4 != a12.
+a4 != a13.
+a4 != a14.
+a4 != a15.
+a4 != a16.
+a4 != a17.
+a4 != a18.
+a4 != a19.
+a5 != a6.
+a5 != a7.
+a5 != a8.
+a5 != a9.
+a5 != a10.
+a5 != a11.
+a5 != a12.
+a5 != a13.
+a5 != a14.
+a5 != a15.
+a5 != a16.
+a5 != a17.
+a5 != a18.
+a5 != a19.
+a6 != a7.
+a6 != a8.
+a6 != a9.
+a6 != a10.
+a6 != a11.
+a6 != a12.
+a6 != a13.
+a6 != a14.
+a6 != a15.
+a6 != a16.
+a6 != a17.
+a6 != a18.
+a6 != a19.
+a7 != a8.
+a7 != a9.
+a7 != a10.
+a7 != a11.
+a7 != a12.
+a7 != a13.
+a7 != a14.
+a7 != a15.
+a7 != a16.
+a7 != a17.
+a7 != a18.
+a7 != a19.
+a8 != a9.
+a8 != a10.
+a8 != a11.
+a8 != a12.
+a8 != a13.
+a8 != a14.
+a8 != a15.
+a8 != a16.
+a8 != a17.
+a8 != a18.
+a8 != a19.
+a9 != a10.
+a9 != a11.
+a9 != a12.
+a9 != a13.
+a9 != a14.
+a9 != a15.
+a9 != a16.
+a9 != a17.
+a9 != a18.
+a9 != a19.
+a10 != a11.
+a10 != a12.
+a10 != a13.
+a10 != a14.
+a10 != a15.
+a10 != a16.
+a10 != a17.
+a10 != a18.
+a10 != a19.
+a11 != a12.
+a11 != a13.
+a11 != a14.
+a11 != a15.
+a11 != a16.
+a11 != a17.
+a11 != a18.
+a11 != a19.
+a12 != a13.
+a12 != a14.
+a12 != a15.
+a12 != a16.
+a12 != a17.
+a12 != a18.
+a12 != a19.
+a13 != a14.
+a13 != a15.
+a13 != a16.
+a13 != a17.
+a13 != a18.
+a13 != a19.
+a14 != a15.
+a14 != a16.
+a14 != a17.
+a14 != a18.
+a14 != a19.
+a15 != a16.
+a15 != a17.
+a15 != a18.
+a15 != a19.
+a16 != a17.
+a16 != a18.
+a16 != a19.
+a17 != a18.
+a17 != a19.
+a18 != a19.
+end_of_list.
+
+============================== end of clauses for search =============
+
+% The largest natural number in the input is 19.
+
+============================== DOMAIN SIZE 20 ========================
+
+============================== MODEL =================================
+
+interpretation( 20, [number=1, seconds=0], [
+
+        function(a0, [ 3 ]),
+
+        function(a1, [ 2 ]),
+
+        function(a10, [ 8 ]),
+
+        function(a11, [ 4 ]),
+
+        function(a12, [ 9 ]),
+
+        function(a13, [14 ]),
+
+        function(a14, [19 ]),
+
+        function(a15, [18 ]),
+
+        function(a16, [13 ]),
+
+        function(a17, [12 ]),
+
+        function(a18, [ 7 ]),
+
+        function(a19, [ 6 ]),
+
+        function(a2, [ 1 ]),
+
+        function(a3, [ 0 ]),
+
+        function(a4, [ 5 ]),
+
+        function(a5, [11 ]),
+
+        function(a6, [10 ]),
+
+        function(a7, [17 ]),
+
+        function(a8, [16 ]),
+
+        function(a9, [15 ]),
+
+        relation(s1, [ 0 ]),
+
+        relation(s1r, [ 1 ]),
+
+        relation(s1rr, [ 0 ]),
+
+        relation(s1rrr, [ 0 ]),
+
+        relation(s2, [ 0 ]),
+
+        relation(s2r, [ 1 ]),
+
+        relation(s2rr, [ 0 ]),
+
+        relation(s2rrr, [ 0 ]),
+
+        relation(s3, [ 1 ]),
+
+        relation(s3r, [ 0 ]),
+
+        relation(s3rr, [ 0 ]),
+
+        relation(s3rrr, [ 0 ]),
+
+        relation(s4, [ 0 ]),
+
+        relation(s4r, [ 0 ]),
+
+        relation(s4rr, [ 1 ]),
+
+        relation(s4rrr, [ 0 ]),
+
+        relation(left(_,_), [
+			   0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]),
+
+        relation(on(_,_), [
+			   0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ])
+]).
+
+============================== end of model ==========================
+
+============================== MODEL =================================
+
+interpretation( 20, [number=2, seconds=0], [
+
+        function(a0, [16 ]),
+
+        function(a1, [17 ]),
+
+        function(a10, [11 ]),
+
+        function(a11, [15 ]),
+
+        function(a12, [10 ]),
+
+        function(a13, [ 5 ]),
+
+        function(a14, [ 0 ]),
+
+        function(a15, [ 1 ]),
+
+        function(a16, [ 6 ]),
+
+        function(a17, [ 7 ]),
+
+        function(a18, [12 ]),
+
+        function(a19, [13 ]),
+
+        function(a2, [18 ]),
+
+        function(a3, [19 ]),
+
+        function(a4, [14 ]),
+
+        function(a5, [ 8 ]),
+
+        function(a6, [ 9 ]),
+
+        function(a7, [ 2 ]),
+
+        function(a8, [ 3 ]),
+
+        function(a9, [ 4 ]),
+
+        relation(s1, [ 0 ]),
+
+        relation(s1r, [ 0 ]),
+
+        relation(s1rr, [ 0 ]),
+
+        relation(s1rrr, [ 1 ]),
+
+        relation(s2, [ 0 ]),
+
+        relation(s2r, [ 0 ]),
+
+        relation(s2rr, [ 0 ]),
+
+        relation(s2rrr, [ 1 ]),
+
+        relation(s3, [ 0 ]),
+
+        relation(s3r, [ 0 ]),
+
+        relation(s3rr, [ 1 ]),
+
+        relation(s3rrr, [ 0 ]),
+
+        relation(s4, [ 1 ]),
+
+        relation(s4r, [ 0 ]),
+
+        relation(s4rr, [ 0 ]),
+
+        relation(s4rrr, [ 0 ]),
+
+        relation(left(_,_), [
+			   0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]),
+
+        relation(on(_,_), [
+			   0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ])
+]).
+
+============================== end of model ==========================
+
+============================== STATISTICS ============================
+
+For domain size 20.
+
+Current CPU time: 0.00 seconds (total CPU time: 0.45 seconds).
+Ground clauses: seen=3926, kept=1126.
+Selections=5847, assignments=116940, propagations=262488, current_models=2.
+Rewrite_terms=3520542, rewrite_bools=3014388, indexes=0.
+Rules_from_neg_clauses=3448, cross_offs=838914.
+
+============================== end of statistics =====================
+
+User_CPU=0.45, System_CPU=0.02, Wall_clock=1.
+
+Exiting with 2 models.
+
+Process 32520 exit (all_models) Thu Jan 21 18:53:37 2021
+The process finished Thu Jan 21 18:53:37 2021
