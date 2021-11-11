@@ -1,0 +1,10 @@
+interpretation( 2, [number = 1,seconds = 0], [
+    relation(L1, [1]),
+    relation(L2, [0]),
+    relation(L3, [0]),
+    relation(R1, [1]),
+    relation(R2, [1]),
+    relation(R3, [0]),
+    relation(T1, [0]),
+    relation(T2, [1]),
+    relation(T3, [1])]).
