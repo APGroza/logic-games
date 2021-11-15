@@ -5,3 +5,5 @@ Contains the code from the book "Modelling logic games and puzzles in First Orde
 
 
 Alternative resources https://users.utcluj.ro/~agroza/puzzles/maloga/
+
+Install Prover9/Mace4 from https://github.com/ai4reason/Prover9
