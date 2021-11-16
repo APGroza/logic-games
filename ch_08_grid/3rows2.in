@@ -1,0 +1,30 @@
+set(arithmetic).
+assign(domain_size,6). 
+assign(max_models,-1).
+
+formulas(utils).
+  ds1 = domain_size + -1.
+  con = domain_size/2.                            %con=3 for a 6x6 grid
+  all x (x < ds1 -> s(x) = x+1).   s(ds1) = 5.    %successor function
+end_of_list.
+
+formulas(3_in_a_row_with_one_function).
+  all x all y (f(x,y) <= 1).         %f(x,y)=1 is blue, f(x,y)=0 is white
+  
+  %number(white cells) = number(blue cells) = 3 on each row/column
+  all x f(x,0) + f(x,1) + f(x,2) + f(x,3) + f(x,4) + f(x,5) = con.
+  all y f(0,y) + f(1,y) + f(2,y) + f(3,y) + f(4,y) + f(5,y) = con.
+
+  %Cannot have 3-in-a-row consecutive cells of the same color
+  all x all y (y <= con -> -(f(x,y)=1 & f(x,s(y))=1 & f(x,s(s(y)))=1) & 
+                           -(f(x,y)=0 & f(x,s(y))=0 & f(x,s(s(y)))=0)).
+        
+  %Cannot have 3-in-a-column consecutive cells of the same color
+  all x all y (x <= con -> -(f(x,y)=1 & f(s(x),y)=1 & f(s(s(x)),y)=1) & 
+                           -(f(x,y)=0 & f(s(x),y)=0 & f(s(s(x)),y)=0)).
+end_of_list.
+
+formulas(sample_puzzle).
+  f(0,4)=1 & f(1,0)=1 & f(1,4)=1 & f(4,0)=1 & f(5,0)=1.
+  f(0,1)=0 & f(3,5)=0 & f(4,5)=0.
+end_of_list.

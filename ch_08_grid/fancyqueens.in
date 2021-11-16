@@ -1,0 +1,21 @@
+set(arithmetic).
+assign(max_models,-1).
+assign(domain_size,8).   %queens can be placed in one column from 0 to 7
+
+formulas(classic_queens).
+  all x exists y Q(x, y).              %each row has at least one queen
+  Q(x,y1) & Q(x,y2) -> y1 = y2.        %each row has at most one queen
+  Q(x1,y) & Q(x2,y) -> x1 = x2.        %each column has at most one queen
+
+  %each / diagonal has at most one queen
+  Q(x1,y1) & Q(x2,y2) & (x2 + -x1 = y2 + -y1) -> x1 = x2 & y1 = y2.  
+    
+  %each \ diagonal has at most one queen
+  Q(x1,y1 ) & Q(x2,y2) & (x1 + -x2 = y2 + -y1) -> x1 = x2 & y1 = y2. 
+end_of_list.
+
+formulas(fancy_queens).
+   Q(x,y) -> x != y.                         %no queen on the main diag
+   Q(x,y) -> x != domain_size + -y + -1.     %no queen on the sec. diag
+   Q(6,0).                                   %there is a queen at (6,0)
+end_of_list.
