@@ -1,0 +1,20 @@
+set(arithmetic).
+assign(domain_size,5).      
+assign(max_models,-1).
+
+formulas(star_battle).
+  all x exists y s(x,y).                 %at least a star on each line
+  s(x,y1) & s(x,y2) -> y1 = y2.          %at most a star on each line
+  s(x1,y) & s(x2,y) -> x1 = x2.          %at most one star on each column    
+  s(x1,y1) & s(x2,y2) &            %at most one star on diagonal + no adj     
+     (abs(x2 + -x1) = abs(y2 + -y1) & abs(x2 + -x1) = 1) 
+             -> (x1 = x2) & (y1 = y2).
+end_of_list.
+
+formulas(sample_puzzle).
+  s(0,0) | s(0,1) | s(1,0) | s(1,1) | s(1,2) | s(2,1) | s(2,2).   %1 zone
+  s(2,0) | s(3,0).                                                %2 zone
+  s(0,2) | s(0,3) | s(0,4) | s(1,3) | s(2,3) | s(3,3) | s(3,4).   %3 zone
+  s(1,4) | s(2,4).                                                %4 zone
+  s(4,0) | s(4,1) | s(4,2) | s(4,3) | s(4,4) | s(3,1) | s(3,2).   %5 zone
+end_of_list.
