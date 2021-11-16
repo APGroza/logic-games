@@ -1,0 +1,33 @@
+assign(domain_size,6).
+assign(max_models,-1).
+
+formulas(assumptions).
+  neq(a,b). neq(a,c). neq(a,d). neq(a,e). neq(a,f).
+  neq(b,c). neq(b,d). neq(b,e). neq(b,f).
+  neq(c,d). neq(c,e). neq(c,f). 
+  neq(d,e). neq(d,f).
+  neq(e,f).
+  neq(x, y) -> neq(y, x).
+ 
+  %each person stays somewhere
+  s1(a) | s2(a) | s3(a) | s4(a) | s5(a) | s6(a).
+  s1(b) | s2(b) | s3(b) | s4(b) | s5(b) | s6(b).
+  s1(c) | s2(c) | s3(c) | s4(c) | s5(c) | s6(c).
+  s1(d) | s2(d) | s3(d) | s4(d) | s5(d) | s6(d).
+  s1(e) | s2(e) | s3(e) | s4(e) | s5(e) | s6(e).
+  s1(f) | s2(f) | s3(f) | s4(f) | s5(f) | s6(f).
+ 
+  %two persons can not share the same seat
+  s1(x) & s1(y) -> -neq(x,y).    s2(x) & s2(y) -> -neq(x,y).
+  s3(x) & s3(y) -> -neq(x,y).    s4(x) & s4(y) -> -neq(x,y).
+  s5(x) & s5(y) -> -neq(x,y).    s6(x) & s6(y) -> -neq(x,y).    
+
+  man(a) & man(b) & man(c) & woman(d) & woman(e) & woman(f).
+  man(x) -> -woman(x).
+  
+  driver(a) & driver(b) & driver(c) &-driver(d) &-driver(e) &-driver(f).
+  s1(x) -> driver(x).
+  s1(x) & man(x) & s2(y) -> woman(y).
+  s3(x) & man(x) & s4(y) -> woman(y).
+  s5(x) & man(x) & s6(y) -> woman(y).
+end_of_list.

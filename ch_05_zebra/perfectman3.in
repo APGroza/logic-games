@@ -1,0 +1,37 @@
+assign(domain_size, 4).
+assign(max_models,-1).
+  
+formulas(perfect_man).
+  arthur = 0 & bill = 1 & charles = 2 & dave = 3.     %avoid isomorphisms
+ 
+  all x (perfectMan(x) <-> (tall(x) & dark(x) & slim(x) & brownEyed(x))). 
+   
+  exists x perfectMan(x).                       %at least one perfect man
+  perfectMan(x) & perfectMan(y) -> x = y.       %at most one perfect man
+
+  brownEyed(arthur) <-> brownEyed(bill).                           %Clue1
+  exists x (brownEyed(x) & dark(x)).                               %Clue2 
+  (brownEyed(x) & dark(x) & brownEyed(y) & dark(y)) -> x = y.      
+  dark(bill) <-> dark(charles).                                    %Clue3  
+
+  exists x exists y (tall(x) & slim(x) & tall(y) & slim(y) & x != y). 
+ (tall(x) & slim(x) & tall(y) & slim(y) & tall(z) & slim(z) & 
+                     x != y) -> (z = x | z = y).                   %Clue4 
+
+  slim(charles) <-> -slim(dave).                                   %Clue5
+                                                                   
+  exists x exists y (tall(x) & dark(x) & tall(y) & dark(y) & x != y).
+ (tall(x) & dark(x) & tall(y) & dark(y) & tall(z) & dark(z) & 
+                     x != y) -> (z = x | z = y).                   %Clue6 
+
+  tall(dave) <-> tall(arthur).                                     %Clue7
+
+  exists x -(brownEyed(x) & slim(x)).                              %Clue8
+  (-(brownEyed(x) & slim(x)) & -(brownEyed(y) & slim(y))) -> x = y.
+end_of_list.
+
+formulas(test).
+  %perfectMan(1) | perfectMan(2) | perfectMan(3). 
+  perfectMan(0).
+end_of_list.
+

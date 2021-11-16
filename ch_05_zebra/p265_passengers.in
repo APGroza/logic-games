@@ -1,0 +1,32 @@
+assign(max_models,-1).
+assign(domain_size,6).
+
+formulas(assumptions).
+  A=0 & B=1 & C=2 & D=3 & E=4 & F=5.                %remove isomorphic
+ 
+all x ((Mosc(x) & -Leni(x) & -Tula(x) & -Kiev(x) & -Khar(x) & -Odes(x)) 
+   |  (-Mosc(x) &  Leni(x) & -Tula(x) & -Kiev(x) & -Khar(x) & -Odes(x)) 
+   |  (-Mosc(x) & -Leni(x) &  Tula(x) & -Kiev(x) & -Khar(x) & -Odes(x)) 
+   |  (-Mosc(x) & -Leni(x) & -Tula(x) &  Kiev(x) & -Khar(x) & -Odes(x)) 
+   |  (-Mosc(x) & -Leni(x) & -Tula(x) & -Kiev(x) &  Khar(x) & -Odes(x)) 
+   |  (-Mosc(x) & -Leni(x) & -Tula(x) & -Kiev(x) & -Khar(x) &  Odes(x))).
+
+ all x (( physician(x) & -teacher(x) & -engineer(x) & -armForce(x)) 
+     |  (-physician(x) &  teacher(x) & -engineer(x) & -armForce(x)) 
+     |  (-physician(x) & -teacher(x) &  engineer(x) & -armForce(x)) 
+     |  (-physician(x) & -teacher(x) & -engineer(x) &  armForce(x))).
+
+ Mosc(x) & Mosc(y) -> x=y.                 Leni(x) & Leni(y) -> x=y.
+ Tula(x) & Tula(y) -> x=y.                 Kiev(x) & Kiev(y) -> x=y.
+ Khar(x) & Khar(y) -> x=y.                 Odes(x) & Odes(y) -> x=y.
+
+ physician(A) & -Mosc(A) & (Mosc(x) -> physician(x)).             %Clue 1
+ teacher(E)   & -Leni(E) & (Leni(x) -> teacher(x)).               %Clue 2  
+ engineer(C)  & -Tula(C) & (Tula(x) -> engineer(x)).              %Clue 3
+ -Tula(B)     & -Tula(F) & (Tula(x) -> -armForce(x)).             %Clue 4
+ -Khar(A).                                                        %Clue 5
+ -Odes(C).                                                        %Clue 6 
+ -Mosc(B).                                                        %Clue 7
+ -Khar(C) & -Khar(A).                                             %Clue 8
+end_of_list.
+

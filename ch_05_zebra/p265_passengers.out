@@ -1,0 +1,17 @@
+interpretation( 6, [number = 1,seconds = 0], [
+    function(A, [0]),
+    function(B, [1]),
+    function(C, [2]),
+    function(D, [3]),
+    function(E, [4]),
+    function(F, [5]),
+    relation(Khar(_), [0,0,0,0,1,0]),
+    relation(Kiev(_), [0,0,1,0,0,0]),
+    relation(Leni(_), [0,1,0,0,0,0]),
+    relation(Mosc(_), [0,0,0,0,0,1]),
+    relation(Odes(_), [1,0,0,0,0,0]),
+    relation(Tula(_), [0,0,0,1,0,0]),
+    relation(armForce(_), [0,0,0,0,0,0]),
+    relation(engineer(_), [0,0,1,1,0,0]),
+    relation(physician(_), [1,0,0,0,0,1]),
+    relation(teacher(_), [0,1,0,0,1,0])]).
