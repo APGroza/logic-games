@@ -1,0 +1,17 @@
+set(arithmetic).
+assign(domain_size,37).
+assign(max_models,-1).
+
+list(distinct).
+  [a2,a3,a4,a5,b1,b2,b3,b4,b5].
+end_of_list. 
+
+formulas(fort_garrisons). 
+  a1 = 28.                       a1 + b2 + b3 + a3 = 100.       
+  a1 + b1 + b5 + a4 = 100.       a2 + b2 + b1 + a5 = 100.       
+  a2 + b3 + b4 + a4 = 100.       a3 + b4 + b5 + a5 = 100.
+
+  n(x) -> x=16 | x=18 | x=20 | x=22 | x=24 | x=26 | x=28 | x=32 | x=36. 
+  n(a2).  n(a3).  n(a4).  n(a5). n(b1). n(b2).  n(b3).  n(b4).  n(b5).
+end_of_list.  
+

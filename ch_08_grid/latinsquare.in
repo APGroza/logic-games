@@ -1,0 +1,8 @@
+assign(domain_size,3). 
+assign(max_models,-1).
+set(arithmetic).
+
+formulas(latin_square).
+   all x  all y1 all y2 (f(x, y1) = f(x, y2) -> y1 = y2).
+   all x1 all x2 all y  (f(x1, y) = f(x2, y) -> x1 = x2).
+end_of_list.

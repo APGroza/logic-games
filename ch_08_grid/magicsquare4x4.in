@@ -1,0 +1,24 @@
+assign(domain_size,35).
+assign(max_models,-1).
+set(arithmetic).
+
+formulas(magicsquare4x4).
+  gridsize = 4.
+  max = gridsize * gridsize.             %max value appearing in the grid
+  M = 34.                                %magic sum for 4x4 grid
+
+  %Sum on each row and each column is M
+  all x ((x < gridsize) -> (f(x,0) + f(x,1) + f(x,2) = M)). 
+  all x ((x < gridsize) -> (f(0,x) + f(1,x) + f(2,x) = M)).
+  f(0,0) + f(1,1) + f(2,2) = M.          %sum on the main diagonal
+  f(0,2) + f(1,1) + f(2,0) = M.          %sum on the secundary diagonal
+
+  all x1 all x2 all y1 all y2            %Distinct values in each cell
+     (((x1 < gridsize) & (x2 < gridsize) & 
+       (y1 < gridsize) & (y2 < gridsize) & 
+       ((x1 != x2) | ( y1 != y2))) -> (f(x1,y1) != f(x2,y2))).
+  
+  f(x,y) != 0.
+  ((x < gridsize)  & (y < gridsize)) ->  f(x,y) <= max.
+  all x all y (((x >= gridsize) | (y >= gridsize)) -> (f(x,y)  = M)).
+end_of_list.

@@ -1,0 +1,2 @@
+interpretation( 3, [number = 1,seconds = 0], [
+    function(f(_,_), [0,1,2,1,2,0,2,0,1])]).
